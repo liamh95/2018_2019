@@ -1,0 +1,160 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol, systeme}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+\sysdelim..
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{center}
+{\bf \Large Row Reduction and Echelon Forms}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\begin{multicols*}{2}
+	\begin{enumerate}
+		\item Consider each matrix as the augmented matrix of a linear system. What are the next two row operations that should be performed in the process of solving the system? Finish solving the system.
+		\begin{enumerate}
+			\item \[
+			\begin{bmatrix}
+				5 & 1 & 0 & 13\\
+				1 & -4 & 0 & -10\\
+				0 & 3 & -1 & 5
+			\end{bmatrix}
+			\]
+			\vfill
+			\item \[
+			\begin{bmatrix}
+				1 & -6 & 4 & 0 & -1\\
+				0 & 2 & -7 & 0 & 3\\
+				0 & 0 & 1 & 2 & -3\\
+				0 & 0 & 3 & 1 & 6
+			\end{bmatrix}
+			\]
+			\vfill
+		\end{enumerate}
+
+		\item Solve the systems.
+		\begin{enumerate}
+			\item \systeme{
+			x_2 + 4x_3 = -5,
+			x_1 + 3x_2 + 5x_3 = -2,
+			3x_1+7x_2 + 7x_3 = 6
+			}
+
+			\vfill
+
+			\item \systeme{
+			x_1 - 3x_2 = 5,
+			-x_1 + x_2 + 5x_3 = 2,
+			x_2 + x_3 = 0
+			}
+		\end{enumerate}
+		\vfill
+		\item Do the three planes $x+2y+z=4$, $y-z=1$, and $x+3y=0$ have at least one common point of intersection?
+		\vfill\null\columnbreak
+
+		\item Suppose $a,b,c,$ and $d$ are constants such that $a$ is nonzero and the system below is consistent for all possible values of $f$ and $g$. What can you say about the numbers $a,b,c$, and $d$?
+		\[
+		\begin{array}{rcrcr}
+			ax_1 & + & bx_2 & = & f\\
+			cx_1 & + & dx_2 & = & g	
+		\end{array}
+		\]
+		\vfill
+
+		\item Row reduce the matrix to reduced echelon form. Circle the pivot positions in the final matrix and in the original matrix and list the pivot columns.
+		\[
+		\begin{bmatrix}
+			1 & 3 & 5 & 7\\
+			3 & 5 & 7 & 9\\
+			5 & 7 & 9 & 1
+		\end{bmatrix}
+		\]
+		\vfill
+
+		\item Find the general solutions of the system whose augmented matrices are given here.
+		\begin{enumerate}
+			\item \[
+			\begin{bmatrix}
+				1 & 4 & 0 & 7\\
+				2 & 7 & 0 & 10
+			\end{bmatrix}
+			\]
+			\vfill
+			\item \[
+			\begin{bmatrix}
+				1 & -7 & 0  & 6 & 5\\
+				0 & 0 & 1 & -2 & -3\\
+				-1 & 7 & -4 & 2 & 7
+			\end{bmatrix}
+			\]
+			\vfill
+		\end{enumerate}
+
+		\item Determine the value(s) of $h$ such that the matrix is the augmented matrix of a consistent linear system.
+		\begin{enumerate}
+			\item 
+			\[
+			\begin{bmatrix}
+				1 & 1 & h & 1\\
+				1 & h & 1 & 1\\
+				h & 1 & 1 & 1
+			\end{bmatrix}
+			\]
+		\end{enumerate}
+		\vfill\null\pagebreak
+
+		\item Choose $h$ and $k$ such that the system has (a) no solution, (b) a unique solution, and (c) many solutions.
+		\[
+		\begin{array}{rcrcr}
+			x & + & 3y & = & 2\\
+			3x & + & hy & = & k
+		\end{array}
+		\]
+		\vfill
+
+		\item True or False? Justify.
+		\begin{enumerate}
+			\item If one row in an echelon form of an augmented matrix is $[0\ 0\ 0\ 5\ 0]$, then the associated linear system is inconsistent.
+			\vfill
+			\item The echelon form of a matrix is unique.
+			\vfill
+			\item Whenever a (consistent) system has free variables, the solution set contains many solutions.
+			\vfill
+		\end{enumerate}
+
+		\item Suppose the coefficient matrix of a system of linear equations has a pivot position in every row. Explain why the system is consistent.
+		\vfill
+	\end{enumerate}
+\end{multicols*}
+
+\end{document}
