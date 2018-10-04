@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol, systeme}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+\sysdelim..
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{center}
+{\bf \Large Vector Equations}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+%\begin{multicols*}{2}
+	\begin{enumerate}
+		\item Determine if $\mathbf{b}$ is a linear combination of $\mathbf{a}_1$, $\mathbf{a}_2$, and $\mathbf{a}_3$.
+		\begin{enumerate}
+		\item
+		\[
+		\mathbf{a}_1 = \begin{bmatrix}
+			1\\ 0\\ 1
+		\end{bmatrix},\ \mathbf{a}_2 = \begin{bmatrix}
+			-2\\ 3\\ -2	
+		\end{bmatrix},\ \mathbf{a}_3 = \begin{bmatrix}
+			-6\\ 7\\ 5
+		\end{bmatrix},\ 
+		\mathbf{b} = \begin{bmatrix}
+			11\\-5\\9
+		\end{bmatrix}
+		\]
+		\vfill
+
+		\item \[
+		\mathbf{a}_1 = \begin{bmatrix}
+			2\\1\\-1
+		\end{bmatrix},\ \mathbf{a}_2 = \begin{bmatrix}
+			1\\0\\-3
+		\end{bmatrix},\ \mathbf{a}_3 = \begin{bmatrix}
+			3\\1\\-4
+		\end{bmatrix},\ 
+		\mathbf{b} = \begin{bmatrix}
+			-3\\5\\-1
+		\end{bmatrix}
+		\]
+		\vfill
+	\end{enumerate}
+
+	\item Let $\mathbf{a}_1$, $\mathbf{a}_2$, and $\mathbf{b}$ be given below. For what value(s) of $h$ is $\mathbf{b}$ in the plane spanned by $\mathbf{a}_1$ and $\mathbf{a}_2$?
+	\[
+	\mathbf{a}_1 = \begin{bmatrix}
+		1\\3\\-1
+	\end{bmatrix},\ \mathbf{a}_2 = \begin{bmatrix}
+		-5\\-8\\2
+	\end{bmatrix},\ \mathbf{b} = \begin{bmatrix}
+		3\\-5\\h
+	\end{bmatrix}
+	\] 
+	\vfill
+
+	\item Show that $\begin{bmatrix}p\\q\\r\end{bmatrix}$ is in Span$\{\mathbf{u}, \mathbf{v}, \mathbf{w}\}$ for all real $p,q,r$ where
+	\[
+	\mathbf{u} = \begin{bmatrix}
+		1\\-2\\3
+	\end{bmatrix},\ \mathbf{v} = \begin{bmatrix}
+		5\\-13\\-3
+	\end{bmatrix},\ \mathbf{w} = \begin{bmatrix}
+		-3\\8\\1
+	\end{bmatrix}
+	\]
+	\vfill
+	\end{enumerate}
+%\end{multicols*}
+
+\end{document}
