@@ -1,0 +1,163 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol, systeme}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+\sysdelim..
+%%Set margins, defaults are ok. 
+
+
+
+
+
+
+
+%Section 1.4: 1,3,4,5,8,9,13,15,17,21,23,29,30.
+
+%Section 1.5: 1,4,5,9,12,14,17,19,22,24,25
+
+\begin{document}
+\begin{center}
+{\bf \Large Matrix Equations and Solution Sets}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\begin{multicols*}{2}
+	\begin{enumerate}
+		\item Compute the matrix product. If the product is undefined, explain why.
+		\begin{enumerate}
+			\item \[
+			\begin{bmatrix}
+				-1 & 6\\
+				5 & -3
+			\end{bmatrix}\begin{bmatrix}
+				4\\-7
+			\end{bmatrix}
+			\]
+
+			\vfill
+
+			\item \[
+			\begin{bmatrix}
+				5 & 5 & -1\\
+				1 & -7 & 0
+			\end{bmatrix}
+			\begin{bmatrix}
+				12\\4
+			\end{bmatrix}
+			\]
+
+			\vfill
+		\end{enumerate}
+
+		\item Write the system as a vector equation and then as a matrix equation.
+		\begin{enumerate}
+			\item \[
+			\begin{array}{rcrcr}
+				2x & + & 5y & = & -10\\
+				-2x & + & 4y & = & 0
+			\end{array}
+			\]
+			\vfill
+
+			\item \[
+			\begin{array}{rcrcrcr}
+				x & - & 7y & &&=&12\\
+				-2x & + & 5y & + & 13z & =& 0\\
+				&&6y & - & z & = & -1
+			\end{array}
+			\]
+			\vfill
+		\end{enumerate}
+
+		\item Let $u = \begin{bmatrix}
+			4\\-1\\4
+		\end{bmatrix}$ and $A = \begin{bmatrix}
+			2 & 5 & -1\\
+			0 & 1 & -1\\
+			1 & 2 & 0
+		\end{bmatrix}$. Is $u$ in the subset of $\mathbb{R}^3$ spanned by the columns of $A$? What does this say about the solution set for the equation $Ax = u$?
+		\vfill\null\columnbreak
+
+		\item Let $A = \begin{bmatrix}
+			1 & -2 & -1\\
+			-2 & 2 & 0\\
+			4 & -1 & 3
+		\end{bmatrix}$ and $b = \begin{bmatrix}
+			b_1\\b_2\\b_3
+		\end{bmatrix}$.
+		Show that the equation $Ax=b$ does not have a solution for all possible $b$. Describe the set of all $b$ for which $Ax=b$ \textit{does} have a solution.
+		\vfill
+
+		\item Write the solution set of the given homogeneous system in parametric vector form.
+		\[
+		\begin{array}{rcrcrcr}
+			x_1 & + & 2x_2 & - & 3x_3 &=&0\\
+			2x_1 & + & x_2 & - & 3x_3 & = & 0\\
+			-x_1 & + & x_2 & && = & 0
+		\end{array}
+		\]
+		\vfill
+
+		\item Write the solution set to $Ax=0$ in parametric vector form where $A$ is given by
+		\[
+		A = \begin{bmatrix}
+			1 & 2 & 0 & -1\\
+			-2 & -3 & 4 & 5\\
+			2 & 4 & 0 & -2
+		\end{bmatrix}.
+		\]
+		\vfill
+
+		\item Describe the solutions of the following system in parametric vector form. Give a geometric description of the solution set.
+		\[
+		\begin{array}{rcrcrcrcr}
+			x_1 & + & 3x_2 & - & 4x_3 & + & 4x_4 & = & 4\\
+			x_1 & + & 4x_2 & - & 7x_3 & +&6x_4 & = & 3
+		\end{array}
+		\]
+		\vfill\null\pagebreak
+
+		\item Find a parametric equation of the line $\ell$ through $p=\begin{bmatrix}
+			3\\-3
+		\end{bmatrix}$ and $q=\begin{bmatrix}
+			4\\1
+		\end{bmatrix}$.
+		\vfill
+
+		\item Suppose that the equation $Ax=b$ is consistent for some $b$, and let $p$ be a solution. Prove that the solution set of $Ax=b$ is the set of all vectors of the form $w=p+v_h$, where $v_h$ is any solution of the homogeneous equation $Ax=0$.
+		\vfill
+
+		\item (Bonus) Suppose $A$ is a $3\times 3$ matrix and $b$ is a vector in $\mathbb{R}^3$ such that the equation $Ax=b$ does \textit{not} have a solution. Does there exist a vector $y$ in $\mathbb{R}^3$ such that the equation $Ax=y$ has a \textit{unique} solution?
+		\vfill
+	\end{enumerate}
+\end{multicols*}
+
+\end{document}
