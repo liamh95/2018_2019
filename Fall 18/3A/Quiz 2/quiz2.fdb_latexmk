@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1538694038 "quiz1.tex" "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/3A/Quiz 1/quiz1.pdf" "quiz1" 1538694038
+["pdflatex"] 1539217149 "quiz2.tex" "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/3A/Quiz 2/quiz2.pdf" "quiz2" 1539217150
   "/etc/texmf/web2c/texmf.cnf" 1532652117 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/3A/Quiz 1/quiz1.aux" 1538694038 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/3A/Quiz 2/quiz2.aux" 1539217149 8 a94a2480d3289e625eea47cd1b285758 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -24,7 +24,6 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1248133631 36741 fa121aac0049305630cf160b86157ee4 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
-  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii" 1337017135 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texlive/texmf-dist/tex/generic/epsf/epsf.sty" 1298075956 27123 4572e7b856182a1e6e9df1c7cc21de80 ""
   "/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty" 1335995445 7612 c47308d923ec19888707b0f1792b326a ""
@@ -62,11 +61,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1532652118 127715 132155e7ee9993e0b74e204ed9b866dc ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1532652121 718487 60500e3fecdadb06ec45ba54a4af0de5 ""
-  "quiz1.aux" 1538694038 8 a94a2480d3289e625eea47cd1b285758 ""
-  "quiz1.tex" 1538694038 1756 9fa3befc699599af49ee88458528579f ""
+  "quiz2.aux" 1539217149 8 a94a2480d3289e625eea47cd1b285758 ""
+  "quiz2.tex" 1539217149 1856 b575de05d0f575460d587a0f96c9aad6 ""
   (generated)
-  "quiz1.pdf"
-  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/3A/Quiz 1/quiz1.log"
-  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/3A/Quiz 1/quiz1.pdf"
-  "quiz1.log"
-  "quiz1.aux"
+  "quiz2.aux"
+  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/3A/Quiz 2/quiz2.pdf"
+  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/3A/Quiz 2/quiz2.log"
+  "quiz2.log"
+  "quiz2.pdf"
