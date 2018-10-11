@@ -47,8 +47,44 @@
 		q_3^s&= p_3
 	\end{align*}
 	\begin{align*}
-		
+		q_1^d &= 80 - 2p_1-p_2\\
+		q_2^d &= 200 - p_2\\
+		q_3^d &= 100-2p_3-p_1
 	\end{align*}
+	\begin{enumerate}
+		\item Comment on the relationship between the three goods on the demand side.
+		\vfill
+		\item What is the nature of any production externality on the supply side?
+		\vfill
+		\item Solve for the equilibrium prices and quantities of the three goods.
+	\end{enumerate}
+	\vfill
+
+	\item Suppose experimental data are represented by a set of points in the plane. An \textbf{interpolating polynomial} for the data is a polynomial whose graph passes through every point. In scientific work, such a polynomial can be used, for example, to estimate values between known data points. Another use is to create curves for graphical images on a computer screen. One method for finding an interpolating polynomial is to solve a system of linear equations.\\\\Find the interpolating polynomial $p(t) = a_0+a_1t+a_2t^2$ for the data $(1, 6)$, $(2, 15)$, $(3, 28)$.
+	\vfill\null\pagebreak
+
+	\item Choose a number $S$ and keep it a secret, say $S = 12$. Now pick two numbers $a_1$ and $a_2$ at random - say $a_1 = -3$ and $a_2 = 4$. Build the polynomial $p(t)$ out of these three numbers like so:
+	\[
+	p(t) = S + a_1t + a_2t^2 = 12 - 3t + 4t^2.
+	\]
+	Suppose you have four friends - Alice, Bob, Carol, and David. Tell each of them that $p(t)$ has degree 2 and give Alice the pair $(1, p(1))$, Bob the pair $(2, p(2))$, Carol $(3, p(3))$, and David $(4, p(4))$.
+	\begin{enumerate}
+		\item Say your friends want to uncover the secret number $S$ but Alice is sick at home. Can Bob, Carol, and David share their pairs and work together to uncover the secret? What if Alice is present and instead Bob is sick at home?
+
+		\vfill
+
+		\item What if Alice and Bob are both sick? Can Carol and David recover the secret? Can \textit{any} two of your friends reveal $S$?
+
+		\vfill
+
+		\item You meet Elaine in discussion and she wants to join this circle of friends. Do you have to come up with a new polynomial and/or reissue numbers to Alice, Bob, Carol, and David to ensure that three people are still necessary in order to recover $S$?
+
+		\vfill
+
+		\item Suppose you have $n$ friends and you want no fewer than $k\leq n$ of them to be able to come together to figure out $S$. How can you adapt the above scheme to suit your needs?
+
+		\vfill
+	\end{enumerate}
 \end{enumerate}
 
 \end{document}
