@@ -1,0 +1,89 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+\newcommand{\reals}{\mathbb{R}}
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{center}
+{\bf \Large Matrix of a Linear Transformation}
+\vspace{0.2cm}
+\hrule
+\end{center}
+% 1,4,5,7,9,10,13,16,17,18,23,24,25,29,30,33
+\begin{multicols*}{2}
+	\begin{enumerate}
+		\item Assume that $T$ is a linear transformation. Find the standard matrix of $T$.
+		\begin{enumerate}
+			\item $T:\reals^3\to \reals^2$. $T(e_1) = (1,4)$, $T(e_2) = (-2, 9)$, and $T(e_3) = (3, -8)$, where $e_1$, $e_2$, and $e_3$ are the columns of the $3\times 3$ identity matrix.
+			\vfill
+			\item $T:\reals^2\to \reals^2$ is a vertical shear transformation that maps $e_1$ into $e_1-3e_2$, but leaves $e_2$ unchanged.
+			\vfill
+			\item $T:\reals^2\to \reals^2$ rotates points about the origin through $3\pi/4$ radians, clockwise.
+			\vfill
+			\item $T:\reals^3\to \reals^3$ contracts points by a factor of $\frac{1}{2}$ ($T(x) = \frac{1}{2}x$).
+			\vfill
+			\item $T(x_1, x_2, x_3, x_4) = 3x_1 + 4x_3-2x_4$
+		\end{enumerate}
+		\vfill
+		\item Fill in the missing entries of the matrix, assuming that the equation holds for all values of the variables.
+		\[
+		\begin{bmatrix}
+			? & ? & ?\\
+			? & ? & ?\\
+			? & ? & ?
+		\end{bmatrix}\begin{bmatrix}
+			x_1\\x_2\\x_3
+		\end{bmatrix}=\begin{bmatrix}
+			2x_1 - 4x_2\\
+			x_1 - x_3\\
+			-x_2 + 3x_3
+		\end{bmatrix}
+		\]
+		\vfill\null\columnbreak
+
+		\item Determine if the specified linear transformation is (a) one-to-one and (b) onto.
+		\begin{enumerate}
+			\item $T:\reals^2\to \reals^2$ that reflects points about the $x$-axis.
+			\vfill
+			\item $T:\reals^2\to \reals^2$ that projects points onto the $y$-axis.
+			\vfill
+			\item $T:\reals^3\to \reals$ that sends $(x,y,z)$ to $x+y+z$.
+			\vfill
+			\item $T:\reals\to \reals^3$ that sends $t$ to $(t, 2t, 3t)$.
+		\end{enumerate}
+		\vfill
+
+		\item If a linear transformation $T:\reals^n\to \reals^m$ maps $\reals^n$ onto $\reals^m$, can you give a relation between $m$ and $n$? If $T$ is one-to-one, what can you say about $m$ and $n$?
+		\vfill
+	\end{enumerate}
+\end{multicols*}
+
+\end{document}
