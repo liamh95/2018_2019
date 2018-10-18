@@ -154,18 +154,14 @@ Show that linear combinations of functions of the form
 \]
 are dense in the space of continuous functions on $\reals$ which tend to zero at infinity.
 \begin{proof}
-	% Let $W$ be the the set of linear combinations of functions of the given form. By the spanning criterion we have that the closure of $W$ in $C_{(0)}(\reals)$ is given by
-	% \[
-	% \overline{W} = \bigcap_{\substack{T\in C_{(0)}(\reals)^*\\T|_{W} = 0}} \ker T.
-	% \]
-	% In other words, we want to show that intersection on the right is all of $C_{(0)}(\reals)$. Now by Riesz-Markov-Kakutani, we have that the dual space $C_{(0)}(\reals)^*$ is the set of all complex Radon measures on $\reals$. What we're trying to show is that for any $\mu \in C_{(0)}(\reals)^*$, if $\int_\reals \varphi\ d\mu = 0$ for all $\varphi\in W$, then $\int_\reals f\ d\mu = 0$ for all $f\in C_{(0)}(\reals)$ (i.e., $\mu \equiv 0$).\\
-	% Our plan is to use the Stone-Weierstrass theorem. Let $\mu \in C_{(0)}(\reals)^*$ be such that for all complex $z$ with Im$(z) \neq 0$, $f(z) = \int_\reals \frac{1}{t-z}\ d\mu(t) = 0$. $f$ is finite for all real $z$ since Im$(z) \neq 0$ and $\mu(\reals)$ is finite. Furthermore, by dominated convergence, $f\in C^\infty(\reals)$ since $\partial^n_z(\frac{1}{t-z}) = C_n \frac{1}{(t-z)^n}$ exists and is $L^1(\mu(t))$.
+	Let $W$ be the the set of linear combinations of functions of the given form. By the spanning criterion we have that the closure of $W$ in $C_{(0)}(\reals)$ is given by
+	\[
+	\overline{W} = \bigcap_{\substack{T\in C_{(0)}(\reals)^*\\T|_{W} = 0}} \ker T.
+	\]
+	Now by Riesz-Markov-Kakutani, we have that the dual space, $C_{(0)}(\reals)^*$, is the set of all complex Radon measures on $\reals$. It then suffices to show that for any $\mu \in C_{(0)}(\reals)^*$ that satisfies $\int_\reals \varphi\ d\mu = 0$ for all $\varphi\in W$, then $\int_\reals f\ d\mu = 0$ for all $f\in C_{(0)}(\reals)$.\\
+	
 
-	%
-	%
-	% Rephrase all of this because it sucks
-	%
-	%
+	
 
 \end{proof}
 

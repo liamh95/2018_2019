@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1539737079 "hw1.tex" "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW1/hw1.pdf" "hw1" 1539737079
+["pdflatex"] 1539798835 "hw1.tex" "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW1/hw1.pdf" "hw1" 1539798835
   "/etc/texmf/web2c/texmf.cnf" 1532652117 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW1/hw1.aux" 1539737079 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW1/hw1.aux" 1539798835 8 a94a2480d3289e625eea47cd1b285758 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -136,11 +136,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1532652118 127715 132155e7ee9993e0b74e204ed9b866dc ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1539710921 718488 c5108bf7b701d9d82ac4c24d6741da60 ""
-  "hw1.aux" 1539737079 8 a94a2480d3289e625eea47cd1b285758 ""
-  "hw1.tex" 1539737079 11946 74db562f99f9dd2ed571837d9e0133cc ""
+  "hw1.aux" 1539798835 8 a94a2480d3289e625eea47cd1b285758 ""
+  "hw1.tex" 1539798835 12972 9d04301662f8ac54617920f57fb176ee ""
   (generated)
-  "hw1.log"
-  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW1/hw1.log"
-  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW1/hw1.pdf"
-  "hw1.aux"
   "hw1.pdf"
+  "hw1.aux"
+  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW1/hw1.log"
+  "hw1.log"
+  "/home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW1/hw1.pdf"
