@@ -161,8 +161,60 @@ are dense in the space of continuous functions on $\reals$ which tend to zero at
 	\]
 	Now by Riesz-Markov-Kakutani, we have that the dual space, $C_{(0)}(\reals)^*$, is the set of all complex Radon measures on $\reals$. It then suffices to show that for any $\mu \in C_{(0)}(\reals)^*$ that satisfies $\int_\reals \varphi\ d\mu = 0$ for all $\varphi\in W$, then $\int_\reals f\ d\mu = 0$ for all $f\in C_{(0)}(\reals)$.\\
 	
+	Let $\mu$ be a measure such that $\int \varphi\ d\mu$ for all $\varphi$ in $W$ and let $f(z) = \int_\reals \frac{1}{t+z}d\mu(t)$ for Im$(z)\neq 0$. By hypothesis, $f$ is identically zero. By dominated convergence, $f$ is infinitely differentiable with $f^{(n)}(z) = C_n\int_\reals \frac{1}{(t+z)^{n+1}}d\mu(t) = 0$ for some constant $C_n$ dependent on $n$.\\
 
+	Now the set, $\mcal{A}$, of all linear combinations of functions of the form $t\mapsto \frac{1}{(t+z)^n}$ is an algebra of continuous functions that separates points and vanishes nowhere. By Stone-Weierstrass, their uniform closure is all of $C_{(0)}(\reals)$.
+	Since any function in $C_{(0)}(\reals)$ can be uniformly approximated by an element of $\mcal{A}$ and $\mu(\reals)$ is finite, we have that $\int \psi d\mu = 0$ for any continuous function $\psi$. By the spanning criterion, the closure of $W$ is all of $C_{(0)}(\reals)$.
+\end{proof}
 
+\noindent\textbf{Problem 4. }
+Let $V$ be a complex vector space and let $f_j$, $0\leq j\leq N$, be linear forms on $V$ such that
+\[
+\bigcap_{j=1}^N\ker f_j \subseteq \ker f_0.
+\]
+Show that $f_0$ is a linear combination of the $f_j$'s, $1\leq j\leq N$.
+\begin{proof}
+	(This is lemma 3.9 in Rudin's \textit{Functional Analysis}.) In order to apply any result related to Hahn-Banach, we need to be working with a normed vector space, which $V$ needn't be.
+	Our plan is to map into $\complex^n$, which clearly is a normed space. We'll apply Hahn-Banach there and use that to help us back in $V$. Define $f: V\to \complex^n$ by $f(x) = (f_1(x), \ldots, f_N(x))$. Now define the linear functional $T:f(V)\to \complex$ by $T(f(x)) = f_0(x)$.\\
+
+	First we need to show that $T$ is well-defined. Suppose $f(x) = f(y)$. Then $f_j(x) = f_j(y)$ for $j = 1, \ldots, N$. In this case, $x-y$ is in the kernel of each $f_j$, so by hypothesis, it's in the kernel of $f_0$ too, so $T(f(x)) = T(f(y))$. Any linear functional on the finite dimensional space $\complex^N$ is continuous, so $T$ is a linear continuous functional on $f(V)$. By Hahn-Banach, we can extend $T$ to a linear functional, $\tilde{T}$, on all of $\complex^N$.\\
+
+	Now any continuous linear functional on $\complex^N$ has the form
+	\[
+	\tilde{T}(z_1, \ldots, z_N) = \alpha_1z_1 + \cdots + \alpha_Nz_N
+	\]
+	for some complex numbers $\alpha_1, \ldots, \alpha_N$. This representation gives us exactly what we need. For any $x\in V$ we have
+	\begin{align*}
+		f_0(x) &= \tilde{T}(f(x))\\
+		&= \tilde{T}(f_1(x), \ldots, f_N(x))\\
+		&= \alpha_1f_1(x) + \cdots \alpha_Nf_N(x),
+	\end{align*}
+	so $f_0$ is a linear combination of the $f_j$'s.
+\end{proof}
+
+\noindent\textbf{Problem 5. }
+Let $X$ be a Banach space such that $X^*$ is separable. Prove that $X$ is separable.
+\begin{proof}
+	Let $T_n$ be a countable and dense subset of $X^*$. For each $n$ we can find an $x_n$ in $X$ so that $\frac{1}{2}\|T_n\| \leq |T_n x_n| \leq \|T_n\|$ and $\|x_n\| = 1$. We claim that the rational span of the $x_n$'s, $Y$, is a countable dense subset of $X$.\\
+
+	\noindent Suppose not. Then we can find an open neighborhood in $X$ disjoint from $\overline{Y}$. By the geometric form of Hahn-Banach, we can find a closed affine hyperplane separating $\overline{Y}$ and this neighborhood (since linear subspaces and their complements are convex). That is, we can find $T\in X^*$ that vanishes on $\overline{Y}$ but is not identically zero. Now by the density of the $T_n$'s, we can find a sequence $T_{n_j}$ that limits to $T$ in $X^*$. Now let's look at the norms of the $T_{n_j}$'s
+	\begin{align*}
+		\frac{1}{2}\|T_{n_j}\| &\leq |T_{n_j}x_{n_j}|\\
+		&\leq |T_{n_j}x_{n_j} - Tx_{n_j}| + |Tx_{n_j}|\\
+		&= |T_{n_j}x_{n_j}-Tx_{n_j}|\\
+		&\leq \|T_{n_j}-T\|,
+	\end{align*}
+	which goes to zero by construction. But then $T$ would be the zero functional - a contradiction. We conclude that $\overline{Y} = X$ and $X$ is separable.
+\end{proof}
+
+\noindent\textbf{Problem 6. }
+Show that the closure in $L^2(\reals)$ of the set of functions of the form
+\[
+p(x)e^{-x^2},\quad x\in \reals,
+\]
+where $p$ is a complex polynomial on $\reals$, is equal to all of $L^2(\reals)$.
+\begin{proof}
+	
 \end{proof}
 
 \end{document}
