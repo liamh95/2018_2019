@@ -154,7 +154,7 @@ Show that linear combinations of functions of the form
 \]
 are dense in the space of continuous functions on $\reals$ which tend to zero at infinity.
 \begin{proof}
-	Let $W$ be the the set of linear combinations of functions of the given form. We'd like to apply Stone-Weierstrass, but unfortunately, $W$ isn't a suba-algebra of $C_{(0)}(\reals)$ since it isn't closed under multiplication. Our plan is to make ourselves a sub-algebra.\\
+	Let $W$ be the the set of linear combinations of functions of the given form. We'd like to apply Stone-Weierstrass, but unfortunately, $W$ isn't a sub-algebra of $C_{(0)}(\reals)$ since it isn't closed under multiplication. Our plan is to make ourselves a sub-algebra.\\
 	By the spanning criterion we have that the closure of $W$ in $C_{(0)}(\reals)$ is given by
 	\[
 	\overline{W} = \bigcap_{\substack{T\in C_{(0)}(\reals)^*\\T|_{W} = 0}} \ker T.
@@ -213,6 +213,26 @@ Show that the closure in $L^2(\reals)$ of the set of functions of the form
 p(x)e^{-x^2},\quad x\in \reals,
 \]
 where $p$ is a complex polynomial on $\reals$, is equal to all of $L^2(\reals)$.
+\begin{proof}
+	Let $W$ be the set of all polynomials of the form $p(x)e^{-x^2}$. $W$ is a linear subspace of $L^2(\reals)$, and since $L^2(\reals)$ is a Hilbert space, we have that $L^2(\reals) = \overline{W}\oplus \overline{W}^\perp$. It then suffices to show that $W^\perp= \{0\}$.\\
+
+	\noindent Rather than dealing with general polynomials, we can consider $W$ to be the span of functions of the form $f_n(x) = x^ne^{-x^2}$. Our plan is to show that if $f\in L^2(\reals)$ is orthogonal to each $f_n$, then its Fourier transform vanishes identically. Since the map that sends $\varphi$ to its Fourier transform is an isometric isomorphism on $L^2(\reals)$, this will show that $f$ itself is identically zero.
+	\begin{align*}
+		(\widehat{\overline{f}(x)e^{-x^2}})(t)&= \int_\reals \overline{f}(x)e^{-x^2}e^{-itx}\ dx\\
+		&= \int_\reals \overline{f}(x)e^{-x^2}\sum_{n=0}^\infty \frac{(-itx)^n}{n!}\ dx\\
+		&= \sum_{n=0}^\infty \frac{(-it)^n}{n!}\int_\reals\overline{f}(x)x^ne^{-x^2}\ dx\\
+		&= \sum_{n=0}^\infty \frac{(-it)^n}{n!}\langle f_n, f\rangle\\
+		&= 0.
+	\end{align*}
+	We used Fubini's theorem to switch the order of integration and summation since
+	\[
+	\left|\overline{f}(x)e^{-x^2}\frac{(-itx)^n}{n!}\right| = |f(x)|e^{-x^2}\frac{|t|^n|x|^n}{n!}
+	\]
+	is integrable in $x$ (by H\"older's inequality) and summable in $n$. Now this shows that the Fourier transform of $\overline{f}$ vanishes. But $\widehat{\overline{f}}(t) = \widehat{f}(-t)$, so one vanishes if and only if the other does. 
+\end{proof}
+
+\noindent\textbf{Problem 7. }
+Let $f\in L^1_{loc}(\reals)$ be $2\pi$-periodic. Show that linear combinations of the translates $f(x-a)$, $a\in \reals$ are dense in $L^1(0, 2\pi)$ if and only if each Fourier coefficient of $f$ is nonzero.
 \begin{proof}
 	
 \end{proof}
