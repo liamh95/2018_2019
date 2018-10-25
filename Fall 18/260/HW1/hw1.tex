@@ -234,7 +234,17 @@ where $p$ is a complex polynomial on $\reals$, is equal to all of $L^2(\reals)$.
 \noindent\textbf{Problem 7. }
 Let $f\in L^1_{loc}(\reals)$ be $2\pi$-periodic. Show that linear combinations of the translates $f(x-a)$, $a\in \reals$ are dense in $L^1(0, 2\pi)$ if and only if each Fourier coefficient of $f$ is nonzero.
 \begin{proof}
-	
+	Suppose that the translates of $f$ are dense in $L^1(0, 2\pi)$, but $\widehat{f}(n) = 0$ for some $n$. Let's look at the Fourier coefficients of the translates.
+	\begin{align*}
+	\widehat{f(x-a)}(n) &= \frac{1}{2\pi}\int_0^{2\pi}f(x-a)e^{-inx}\ dx\\
+	&= e^{-ina}\frac{1}{2\pi}\int_0^{2\pi}f(t)e^{-int}\ dt\\
+	&= e^{-ina}\widehat{f}(n).
+	\end{align*}
+	In particular, if $\widehat{f}(n) = 0$, then the $n$-th Fourier coefficient of each translate also vanishes.\\
+
+	\noindent Now $e^{-inx}$ is bounded for all real $t$, so the map $g\mapsto \frac{1}{2\pi}\int_0^{2\pi}g(x)e^{-inx}\ dx$ is a continuous (by H\"older's inequality) linear functional on $L^1(0, 2\pi)$. By the above discussion, we have that this functional vanishes on all translates of $f$. Since these translates are dense in $L^1(0, 2\pi)$ by hypothesis, we must have that this functional is the zero functional, which it clearly isn't. We conclude that none of $f$'s Fourier coefficients vanish.\\
+
+	Suppose now 
 \end{proof}
 
 \end{document}
