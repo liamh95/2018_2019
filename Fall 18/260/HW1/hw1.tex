@@ -228,7 +228,7 @@ where $p$ is a complex polynomial on $\reals$, is equal to all of $L^2(\reals)$.
 	\[
 	\left|\overline{f}(x)e^{-x^2}\frac{(-itx)^n}{n!}\right| = |f(x)|e^{-x^2}\frac{|t|^n|x|^n}{n!}
 	\]
-	is integrable in $x$ (by H\"older's inequality) and summable in $n$. Now this shows that the Fourier transform of $\overline{f}$ vanishes. But $\widehat{\overline{f}}(t) = \widehat{f}(-t)$, so one vanishes if and only if the other does. 
+	is integrable in $x$ (by H\"older's inequality) and summable in $n$. Now this shows that the Fourier transform of $\overline{f}(x)e^{-x^2}$ vanishes. But $\widehat{\overline{f}(x)e^{-x^2}}(t) = \widehat{f(x)e^{-x^2}}$, so one vanishes if and only if the other does. Since $e^{-x^2}$ is nonvanishing, we have that $f$ must vanish.
 \end{proof}
 
 \noindent\textbf{Problem 7. }
@@ -248,7 +248,7 @@ Let $f\in L^1_{loc}(\reals)$ be $2\pi$-periodic. Show that linear combinations o
 	\[
 	T(f(x-a)) = \int_0^{2\pi}f(x-a)h(x)\ dx = 0\quad\text{for all }a\in \reals.
 	\]
-	This says that the convolution $f*h$ vanishes identically. Since $\widehat{f*h} = \widehat{f}\cdot\widehat{h}$, we have that $\widehat{f}(t)\widehat{h}(t) = 0$ for all $t$. By hypothesis, $\widehat{f}(n)\neq 0$ for all $n$, so $\widehat{h}(n) = 0$ for all $n$. (Note that $\widehat{h}$ exists since the Fourier transform is defined on $L^1(0,2\pi)$ and $L^\infty(0,2\pi)\subseteq L^1(0,2\pi)$, since $(0,2\pi)$ has finite measure.)\\
+	This says that the convolution $f*h$ vanishes identically. Since $\widehat{f*h} = \widehat{f}\cdot\widehat{h}$, we have that $\widehat{f}(-t)\widehat{h}(t) = 0$ for all $t$. By hypothesis, $\widehat{f}(n)\neq 0$ for all $n$, so $\widehat{h}(n) = 0$ for all $n$. (Note that $\widehat{h}$ exists since the Fourier transform is defined on $L^1(0,2\pi)$ and $L^\infty(0,2\pi)\subseteq L^1(0,2\pi)$, since $(0,2\pi)$ has finite measure.)\\
 
 	\noindent Now by Stone-Weierstrass, the linear space spanned by functions of the form $e^{-ikx}$ is dense in the space of continuous functions on the torus. Since the continuous functions here are dense in $L^1(0,2\pi)$, we have that the functional $T$ vanishes on a dense subset of $L^1(0,2\pi)$, and therefore on all of $L^1(0,2\pi)$. By the spanning criterion, we have that the set of translates of $f$ is then dense in $L^1(0,2\pi)$.
 \end{proof}
@@ -258,9 +258,10 @@ Let $E_1$ be a finite-dimensional subspace of the normed space $E$. Show that th
 \begin{proof}
 	Suppose that $E_1$ is spanned by the vectors $e_1, \ldots, e_n\in E$ for some $1\leq n<\infty$. Define the functionals $P_i: E_1\to \complex$ by $\sum_{j=1}^n \alpha_j e_j\mapsto \alpha_i$. We have that for any $x\in E_1$, $|P_i(x)|\leq \|x\|$, so the $P_i$'s are continuous. By Hahn-Banach, we can extend each $P_i$ to $\tilde{P}_i: E\to \complex$. Now define $P: E\to E_1$ by
 	\[
-	P(x) = \tilde{P}_1(x)e_1 + \cdots \tilde{P}_n(x)e_n.
+	P(x) = \tilde{P}_1(x)e_1 + \cdots +\tilde{P}_n(x)e_n.
 	\]
 	Since the $e_j$'s are in $E_1$, we have that the range of $P$ is contained in $E_1$. Furthermore, $P$ restricts to the identity map on $E_1$, so the range of $P$ is all of $E_1$ and $P^2 = P$.
 \end{proof}
+
 
 \end{document}
