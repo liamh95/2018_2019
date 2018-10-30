@@ -248,7 +248,7 @@ Let $f\in L^1_{loc}(\reals)$ be $2\pi$-periodic. Show that linear combinations o
 	\[
 	T(f(x-a)) = \int_0^{2\pi}f(x-a)h(x)\ dx = 0\quad\text{for all }a\in \reals.
 	\]
-	This says that the convolution $f*h$ vanishes identically. Since $\widehat{f*h} = \widehat{f}\cdot\widehat{h}$, we have that $\widehat{f}(-t)\widehat{h}(t) = 0$ for all $t$. By hypothesis, $\widehat{f}(n)\neq 0$ for all $n$, so $\widehat{h}(n) = 0$ for all $n$. (Note that $\widehat{h}$ exists since the Fourier transform is defined on $L^1(0,2\pi)$ and $L^\infty(0,2\pi)\subseteq L^1(0,2\pi)$, since $(0,2\pi)$ has finite measure.)\\
+	This says that the convolution $f(-x)*h(x)$ vanishes identically. Since $\widehat{f(-x)*h(x)} = \widehat{f}(-t)\cdot\widehat{h}(t)$, we have that $\widehat{f}(-t)\widehat{h}(t) = 0$ for all $t$. By hypothesis, $\widehat{f}(n)\neq 0$ for all $n$, so $\widehat{h}(n) = 0$ for all $n$. (Note that $\widehat{h}$ exists since the Fourier transform is defined on $L^1(0,2\pi)$ and $L^\infty(0,2\pi)\subseteq L^1(0,2\pi)$, since $(0,2\pi)$ has finite measure.)\\
 
 	\noindent Now by Stone-Weierstrass, the linear space spanned by functions of the form $e^{-ikx}$ is dense in the space of continuous functions on the torus. Since the continuous functions here are dense in $L^1(0,2\pi)$, we have that the functional $T$ vanishes on a dense subset of $L^1(0,2\pi)$, and therefore on all of $L^1(0,2\pi)$. By the spanning criterion, we have that the set of translates of $f$ is then dense in $L^1(0,2\pi)$.
 \end{proof}

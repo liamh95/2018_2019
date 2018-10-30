@@ -1,0 +1,165 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol,mathtools}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{center}
+{\bf \Large Matrix Inversion}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+%Section 2.2: 2,3,6,9,13,14,19,21,31,32
+
+%Section 2.3: 2,5,8,11,12,13,16,18,19,23,28
+
+\begin{multicols*}{2}
+	\begin{enumerate}
+		\item Find the inverses of the matrices (i) by using the formula for the inverse of a 2 by 2 matrix and (ii) by row reduction.
+		\[
+		\text{(a)}\quad \begin{bmatrix}
+			8 & 6\\
+			5 & 4
+		\end{bmatrix}\qquad\text{(b)}\quad
+		\begin{bmatrix}
+			3 & -4\\
+			7 & -8
+		\end{bmatrix}
+		\]
+		\vfill
+
+		\item Solve the system of equations using matrix inversion.
+		\[
+		\begin{array}{rcrcr}
+			2x & + & y & = & 1\\
+			-3x & +&2y & = & 0
+		\end{array}
+		\]
+		\vfill
+		\item True or False? Explain.
+		\begin{enumerate}
+			\item A product of invertible $n\times n$ matrices is invertible, and the inverse of the product is the product of the inverses.
+			\vfill
+			\item If $A$ is invertible, then so is $A^{-1}$ and the inverse of $A^{-1}$ is $A$.
+			\vfill
+			\item If $A = \begin{bmatrix}a&b\\c&d\end{bmatrix}$ and $ad=bc$ then $A$ is not invertible.
+			\vfill
+			\item If $A$ can be row reduced to the identity matrix, then $A$ must be invertible.
+			\vfill
+			\item If $A$ is invertible, then elementary row operations that reduce $A$ to the identity matrix also reduce $A^{-1}$ to the identity matrix.
+		\end{enumerate}
+		\vfill\null\columnbreak
+
+		\item Let $A$ be an invertible $n\times n$ matrix, and let $B$ be an $n\times p$ matrix. Show that the equation $AX=B$ has a unique solution $A^{-1}B$.
+		\vfill
+
+		\item Suppose $A$ and $B$ are $n\times n$, $B$ is invertible, and $AB$ is invertible. Show that $A$ is invertible.
+		\vfill
+
+		\item Explain why the columns of an $n\times n$ matrix span $\mathbb{R}^n$ when $A$ is invertible.
+		\vfill
+
+		\item Find the inverses of the matrices by row reduction.
+		\begin{enumerate}
+			\item \[
+			\begin{bmatrix*}[r]
+				3 & 0 & 2\\
+				2 & 0 & -2\\
+				0 & 1 & 1
+			\end{bmatrix*}
+			\]
+			\vfill
+
+			\item \[
+			\begin{bmatrix*}[r]
+				0 & -3 & -2\\
+				1 & -4 & -2\\
+				-3 & 4 & 1	
+			\end{bmatrix*}
+			\]
+		\end{enumerate}
+		\vfill\null\pagebreak
+		%Section 2.3: 2,5,8,11,12,13,16,18,19,23,28
+
+		\item Determine whether the matrices are invertible using as few computations as possible.
+		\begin{enumerate}
+			\item \[
+			\begin{bmatrix*}[r]
+				5 & 7\\
+				-3 & -6
+			\end{bmatrix*}
+			\]
+			\vfill
+			\item \[
+			\begin{bmatrix*}[r]
+				-7 & 0 & 4\\
+				3 & 0 & -1\\
+				2 & 0 & 9	
+			\end{bmatrix*}
+			\]
+			\vfill
+			\item \[
+			\begin{bmatrix*}[r]
+				-1 & -3 & 0 & 1\\
+				3 & 5 & 8 & -3\\
+				-2 & -6 & 3 & 2\\
+				0 & -1 & 2 & 1
+			\end{bmatrix*}
+			\]
+		\end{enumerate}
+		\vfill
+
+		\item An $m\times n$ matrix is lower triangular if all of its entries lying above the main diagonal are zero. When is a square lower triangular matrix invertible?
+
+		\vfill
+
+		\item Can a square matrix with two identical columns be invertible?
+		\vfill
+
+		\item If $A$ is invertible, then the columns of $A^{-1}$ are linearly independent. Why?
+
+		\vfill\null\columnbreak
+
+		\item If the equation $Gx = y$ has more than one solution for some $y\in \mathbb{R}^n$, can the columns of $G$ span $\mathbb{R}^n$?
+		\vfill
+
+		\item Explain why the columns of $A^2$ span $\mathbb{R}^n$ whenever the columns of $A$ are linearly independent.
+		\vfill
+
+		\item If $A$ is an $n\times n$ matrix and the transformation $x\mapsto Ax$ is one-to-one, is it necessarily also onto? What if $x\mapsto Ax$ is onto. Then is it one-to-one too?
+
+		\vfill
+
+	\end{enumerate}	
+\end{multicols*}
+
+\end{document}
