@@ -1,0 +1,69 @@
+%% Please change the file name by replacing N with the apporpriate number
+%% corresponding to the current homework and XX with your initials.
+%% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
+
+\documentclass[11pt,letterpaper]{report}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amsthm}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\exreals}{\overline{\mathbb{R}}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\mable}{measurable}
+\newcommand{\quats}{\mathbb{H}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\disk}{\mathbb{D}}
+\newcommand{\halfplane}{\mathbb{H}}
+\newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
+\newcommand{\supp}[1]{\text{supp}({#1})}
+\newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\field}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Gal}[1]{\text{Gal}\left({#1}\right)}
+\newcommand{\esssup}{\text{ess sup }}
+\newcommand{\essinf}{\text{ess inf }}
+\newcommand{\affine}{\mathbb{A}}
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+\addtolength{\jot}{8pt}
+\linespread{1.3}
+
+\begin{document}
+\noindent{\em Liam Hardiman\hfill{November 9, 2018} }
+% Please give relevant information
+\begin{center}
+{\bf \Large 260A - Homework 2} %Replace N with the appropriate number
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\noindent\textbf{Problem 1. }
+Let $(e_n)_{n=1}^\infty$ be an orthonormal basis in the Hilbert space $H$. Let $T: H\to H$ be a linear continuous map such that
+\[
+\sum_{n=1}^\infty \|Te_n\|^2
+\]
+converges. Show that there is a sequence $(T_n)_{n=1}^\infty$ of linear continuous maps $H\to H$ such that $T_n(H)$ has a finite dimension and $\|T_n-T\|\to 0$ as $n\to \infty$.
+\begin{proof}
+	Consider the projection $T_m$ defined by
+	\[
+	T_m(x) = \langle x, e_1\rangle e_1 + \cdots +\langle x, e_m\rangle e_m.
+	\]
+	This function is continuous by an argument similar to the one used on Homework 1, where we showed that every finite dimensional subspace of a normed vector space admits a continuous projection (first we define projections onto the individual components on the space spanned by $e_1, \ldots, e_m$ and then extend these through Hahn-Banach).\\
+
+	\noindent The image of $H$ under $ 
+\end{proof}
+
+\end{document}
