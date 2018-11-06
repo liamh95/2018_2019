@@ -1,0 +1,197 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol,mathtools,enumerate}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{center}
+{\bf \Large Dimension and Determinants}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+%Section 2.9:1,2,3,4,7,9,10,12,13,15,17,18,20,25
+%Section 3.1: 2,3,4,5,10,12,14,15,19,21,22,25,27,29,31,32
+\begin{multicols*}{2}
+	\begin{enumerate}
+		\item The vector $x$ is in a subspace $H$ with a basis $\mathcal{B} = \{b_1, b_2\}$. Find the $\mathcal{B}$-coordinate vector of $x$.
+		\begin{enumerate}[(a)]
+			\item $b_1 = \begin{bmatrix*}[r]
+				1\\4\\-3
+			\end{bmatrix*}$, $b_2 = \begin{bmatrix*}[r]
+				-2\\-7\\5
+			\end{bmatrix*}$, $x=\begin{bmatrix*}[r]
+				2\\9\\-7
+			\end{bmatrix*}$.
+			\vfill
+
+			\item $b_1 = \begin{bmatrix*}[r]
+				-3\\2\\-4
+			\end{bmatrix*}$, $b_2= \begin{bmatrix*}[r]
+				7\\-3\\5
+			\end{bmatrix*}$, $x=\begin{bmatrix*}[r]
+				5\\0\\-2
+			\end{bmatrix*}$.
+		\end{enumerate}
+		\vfill
+		\item We're given a matrix $A$ and an echelon form of $A$. Find bases for Col$(A)$ and Nul$(A)$, and then state the dimension of these subspaces.
+		\begin{align*}
+		A &= \begin{bmatrix*}[r]
+			2 & 4 & -5 & 2 & -3\\
+			3 & 6 & -8 & 3 & -5\\
+			0 & 0 & 9 & 0 & 9\\
+			-3 & -6 & -7 & -3 & -10
+		\end{bmatrix*} \\&\sim \begin{bmatrix*}[r]
+			1 & 2 & -5 & 1 & -4\\
+			0 & 0 & 5 & 0 & 5\\
+			0 & 0 & 0 & 0 & 0\\
+			0 & 0 & 0 & 0 & 0
+		\end{bmatrix*}.
+		\end{align*}
+		\vfill
+
+		\item Find a basis for the subspace spanned by the given vectors. What is the dimension of the subspace?
+		\begin{gather*}
+			\begin{bmatrix*}[r]
+				1\\-1\\-2\\3
+			\end{bmatrix*},\ \begin{bmatrix*}[r]
+				2\\-3\\-1\\4
+			\end{bmatrix*},\ \begin{bmatrix*}[r]
+				0\\-1\\3\\-2
+			\end{bmatrix*}\\
+			\begin{bmatrix*}[r]
+				-1\\4\\-7\\7
+			\end{bmatrix*},\ \begin{bmatrix*}[r]
+				3\\-7\\6\\-9
+			\end{bmatrix*}.
+		\end{gather*}
+		\vfill\null\columnbreak
+
+		\item Suppose a $4\times 7$ matrix $A$ has three pivot columns. Is Col$(A) = \mathbb{R}^3$? What is the dimension of Nul$(A)$? Explain
+		\vfill
+
+		\item If the subspace of all solutions of $Ax=0$ has a basis consisting of three vectors and if $A$ is a $5\times 7$ matrix, what is the rank of $A$?
+
+		\vfill
+
+		\item Construct a $3\times 4$ matrix with rank 1.
+
+		\vfill
+
+		\item If a $9\times 8$ matrix has rank 7, then what is the dimension of the solution space to $Ax=0$?
+
+		\vfill\null\pagebreak
+
+		%Section 3.1: 2,3,4,5,10,12,14,15,19,21,22,25,27,29,31,32
+		\item Compute the determinant using the cofactor expansion in two different ways. Try to use as few computations as possible. For the $3\times 3$s try the upward and downward product rule (sometimes called the rule of Sarrus).
+		\begin{gather*}
+		\text{(a)\ }\begin{vmatrix*}[r]
+			3 & 0 & 4\\
+			2 & 3 & 2\\
+			0 & 5 & -1
+		\end{vmatrix*}\qquad \text{(b)\ }
+		\begin{vmatrix*}[r]
+			5 & -2 & 4\\
+			0 & 3 & -5\\
+			2 & -4 & 7
+		\end{vmatrix*}\\
+		\text{(c)\ }\begin{vmatrix*}[r]
+			6 & 0 & 0 & 5\\
+			1 & 7 & 2 & -5\\
+			2 & 0 & 0 & 0\\
+			8 & 3 & 1 & 8
+		\end{vmatrix*}\quad \text{(d)\ }\begin{vmatrix*}[r]
+			3 & 5 & -8 & 4\\
+			0 & -2 & 3 & -7\\
+			0 & 0 & 1 & 5\\
+			0 & 0 & 0 & 2
+		\end{vmatrix*}
+		\end{gather*}
+
+		\vfill
+
+		\item Here you're given a matrix and one obtained from it by a row operation. How does this affect its determinant?
+		\begin{enumerate}
+		\item \[
+		\begin{bmatrix*}[r]
+			a & b\\
+			c & d
+		\end{bmatrix*}\sim \begin{bmatrix*}[r]
+			a & b\\
+			kc & kd
+		\end{bmatrix*}
+		\]
+		\vfill
+
+		\item \[
+		\begin{bmatrix*}[r]
+			1 & 1 & 1\\
+			-3 & 8 & -4\\
+			2 & -3 & 2
+		\end{bmatrix*}\sim \begin{bmatrix*}[r]
+			k & k & k\\
+			-3 & 8 & -4\\
+			2 & -3 & 2
+		\end{bmatrix*}
+		\]
+		\vfill
+
+		\item \[
+		\begin{bmatrix*}[r]
+			a & b & c\\
+			3 & 2 & 2\\
+			6 & 5 & 6
+		\end{bmatrix*}\sim \begin{bmatrix*}[r]
+			3 & 2 & 2\\
+			a & b & c\\
+			6 & 5 & 6
+		\end{bmatrix*}
+		\]
+		\vfill
+		\end{enumerate}
+
+		\item Let $A = \begin{bmatrix*}[r]
+			3 & 1\\
+			4 & 2
+		\end{bmatrix*}$. Write $5A$. Is $\det 5A = 5 \det A$?
+		\vfill\null\columnbreak
+
+		\item What is the determinant of an elementary row replacement matrix?
+
+		\vfill
+
+		\item What affect does adding two copies of one row to a different row have on the determinant of a matrix? What about columns?
+		\vfill
+	\end{enumerate}
+\end{multicols*}
+%Section 3.1: 2,3,4,5,10,12,14,15,19,21,22,25,27,29,31,32
+
+\end{document}
