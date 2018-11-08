@@ -59,11 +59,28 @@ converges. Show that there is a sequence $(T_n)_{n=1}^\infty$ of linear continuo
 \begin{proof}
 	Consider the projection $T_m$ defined by
 	\[
-	T_m(x) = \langle x, e_1\rangle e_1 + \cdots +\langle x, e_m\rangle e_m.
+	T_m(x) = \langle x, e_1\rangle Te_1 + \cdots +\langle x, e_m\rangle Te_m.
 	\]
 	This function is continuous by an argument similar to the one used on Homework 1, where we showed that every finite dimensional subspace of a normed vector space admits a continuous projection (first we define projections onto the individual components on the space spanned by $e_1, \ldots, e_m$ and then extend these through Hahn-Banach).\\
 
-	\noindent The image of $H$ under $ 
+	\noindent The image of $H$ under $T_m$ has dimension at most $m$ as the $e_j$'s are linearly independent. Furthermore, we have by Cauchy-Schwarz
+	\begin{align*}
+	|T_nx - Tx|^2 &= \left|\sum_{j = n+1}^\infty \langle x, e_j\rangle Te_j\right|^2\\
+	&\leq \|x\|^2\cdot \sum_{j=n+1}^\infty \|Te_j\|^2.
+	\end{align*}
+	Since the sum $\sum_{j=1}^\infty\|Te_j\|^2$ converges, the tail (the last line in the above inequality) must go to zero as $n\to \infty$. We then have that $\|T_n-T\|\to 0$ as desired.
+\end{proof}
+
+\noindent\textbf{Problem 3. }
+Let $H$ be a separable infinite dimensional Hilbert space, and suppose that $e_1, e_2, \ldots$ is an orthonormal system in $H$. Let $f_1, \ldots$ be another orthonormal system which is complete.
+\begin{enumerate}[(i)]
+	\item Prove that if $\sum_{n=1}^\infty \|e_n-f_n\|^2<1$ then $\{e_n\}$ is also a complete orthonormal system.
+	\item Suppose only that $\sum_{n=1}^\infty \|e_n-f_n\|^2<\infty$. Prove that it is still true that $\{e_n\}$ is a complete orthonormal system.
+\end{enumerate}
+\begin{proof}
+	\begin{enumerate}[(i)]
+		\item In order to show that the $e_j$'s form a complete system, we'll show that if $\langle x, e_j\rangle =0 $ for all $j$ then $x = 0$.
+	\end{enumerate}
 \end{proof}
 
 \end{document}
