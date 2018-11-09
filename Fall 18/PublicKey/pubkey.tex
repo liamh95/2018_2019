@@ -53,7 +53,7 @@ What can you and your friend do to ensure that your friend \textit{and only your
 \vspace{3cm}
 
 \section*{Graphs}
-A \textbf{graph} is made of \textbf{vertices} (the plural of \textbf{vertex}) and \textbf{edges} between them. An edge joining vertex $v_1$ to $v_2$ is represented by the pair $(v_1, v_2)$. Here we say that $v_1$ is \textbf{adjacent} to $v_2$ or that $v_1$ and $v_2$ are \textbf{neighbors}. We can visualize a graph by representing its vertices by points and its edges as line segments or curves connecting these points.\\
+A \textbf{graph} is made of \textbf{vertices} (the plural of \textbf{vertex}) and \textbf{edges} between them. We can think of a vertex as just being a single point. An edge joining vertex $v_1$ to $v_2$ is represented by the pair $(v_1, v_2)$. Here we say that $v_1$ is \textbf{adjacent} to $v_2$ or that $v_1$ and $v_2$ are \textbf{neighbors}. We can visualize a graph by representing its vertices by points and its edges as line segments or curves connecting these points.\\
 
 \noindent Now say we have a set of five vertices, $V = \{v_1, v_2, \ldots, v_5\}$. We can form several graphs with these vertices, a couple of which are shown in Figure 1. Graph $(V, E_1)$ has the edges $E_1 = \{(v_1, v_2), (v_1, v_4), (v_3, v_4), (v_4, v_5)\}$.
 \begin{figure}
@@ -133,12 +133,10 @@ The graphs you were handed were carefully designed so that the encryption proces
     %\label{fig:example}%
 	\end{figure}
 
-	\item Can you come up with an efficient way to see if a graph has an exact dominating set?
-	\newpage
 	\item Draw a graph with five vertices that has an exact dominating set. What are the possible sizes for an exact dominating set in a graph with five vertices?
-	\vspace{3cm}
+	%\vspace{3cm}
 
-	\item Given integers $m$ and $n\geq m$, can you come up with a way to draw a graph with $m+n$ vertices that has an exact dominating set of size $m$?
+	\item Given integers $m$ and $n$, can you come up with a way to draw a graph with $m+n$ vertices that has an exact dominating set of size $m$?
 
 	\vspace{3cm}
 
@@ -147,8 +145,9 @@ The graphs you were handed were carefully designed so that the encryption proces
 	\vspace{3cm}
 
 	\item A \textbf{dominating set}, $D'$, of a graph is a subset of its vertices such that each vertex not in $D'$ is adjacent to at least one vertex in $D'$. Explain how this is different from an \textit{exact} dominating set, maybe by drawing a graph that has a dominating set that isn't an exact dominating set. Why is it important that we use exact dominating sets for our encryption scheme?
+
+	\vspace{3cm}
 \end{enumerate}
-\newpage
 
 \section*{Putting it Together}
 Public-key cryptography is the process of encrypting and decrypting messages in such a way that \textit{anybody} can encrypt a given message but only the recipient can decrypt it. To accomplish this, the recipient, Alice, publishes her \textit{public key} for the world to see -- it isn't kept secret. If Bob has Alice's public key, he can use it to encrypt a message and send it to Alice, who decrypts it using her secret \textit{private key}.\\
@@ -157,7 +156,7 @@ Public-key cryptography is the process of encrypting and decrypting messages in 
 
 \subsection*{Question 4}
 \begin{enumerate}[(a)]
-	\item Consider the graph-based encryption scheme we discussed earlier. How is this a public-key system? What part constitutes the public key and what part is the private key? How can Alice and Bob use this system to communicate in the presence of an eavesdropper, Eve?
+	\item Consider the graph-based encryption scheme we discussed earlier. How is this a public-key system? What part constitutes the public key and what part is the private key? Is it hard to find the private key if you know only the public key? How can Alice and Bob use this system to communicate in the presence of an eavesdropper, Eve?
 
 	\vspace {3cm}
 
@@ -167,23 +166,26 @@ Public-key cryptography is the process of encrypting and decrypting messages in 
 \newpage
 
 \section*{Bonus Material: Number Theory}
-Let $a$, $b$, and $n$ be positive integers. We say that $a$ is \textbf{congruent to} $b$ \textbf{mod} $n$ if $a$ and $b$ have the same remainder when divided by $n$. We write this as $a\equiv b\pmod{n}$. Here's a theorem often attributed to the French mathematician Fermat:
-\begin{theorem}(Fermat's little theorem)
-	Let $p$ be a prime number and let $a$ be an integer not divisible by $p$. Then $a^{p-1}\equiv a \pmod{p}$.
-\end{theorem}
-
-\noindent Here's another theorem about prime numbers.
+Let $a$, $b$, and $n$ be positive integers. We say that $a$ is \textbf{congruent to} $b$ \textbf{mod} $n$ if $a$ and $b$ have the same remainder when divided by $n$. We write this as $a\equiv b\pmod{n}$. Here's a theorem about prime numbers.
 \begin{theorem}
 	Let $p$ be a prime number and let $a$ be an integer not divisible by $p$. Then there exists a number $b$ such that $ab\equiv 1\pmod{p}$.
 \end{theorem}
 
+\noindent Here's another theorem often attributed to the French mathematician Fermat:
+\begin{theorem}(Fermat's little theorem)
+	Let $p$ be a prime number and let $a$ be an integer not divisible by $p$. Then $a^{p-1}\equiv a \pmod{p}$.
+\end{theorem}
+
+
+
 \section*{Question 5}
 \begin{enumerate}[(a)]
-	\item (Hard) Prove Fermat's little theorem. Hint: consider the sets \\$S = \{1, 2, \ldots, p-1\}$ and $aS = \{a, a\cdot 2, \ldots, a\cdot (p-1)\}$.
-
+	
+	\item (A bit hard) Prove the first theorem. Hint: think about greatest common divisors and the Euclidean algorithm.
 	\vspace{4cm}
 
-	\item (Not quite as hard, but still involved) Prove the second theorem. Hint: think about greatest common divisors and the Euclidean algorithm.
+	\item (Harder) Prove Fermat's little theorem. Hint: consider the sets \\$S = \{1, 2, \ldots, p-1\}$ and $aS = \{a, a\cdot 2, \ldots, a\cdot (p-1)\}$.
+	
 
 	\vspace{4cm}
 

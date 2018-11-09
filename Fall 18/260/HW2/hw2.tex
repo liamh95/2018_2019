@@ -29,6 +29,7 @@
 \newcommand{\esssup}{\text{ess sup }}
 \newcommand{\essinf}{\text{ess inf }}
 \newcommand{\affine}{\mathbb{A}}
+\newcommand{\im}[1]{\text{Im}\left({#1}\right)}
 
 \newenvironment{solution}
 {\begin{proof}[Solution]}
@@ -79,8 +80,111 @@ Let $H$ be a separable infinite dimensional Hilbert space, and suppose that $e_1
 \end{enumerate}
 \begin{proof}
 	\begin{enumerate}[(i)]
-		\item In order to show that the $e_j$'s form a complete system, we'll show that if $\langle x, e_j\rangle =0 $ for all $j$ then $x = 0$.
+		\item In order to show that the $e_j$'s form a complete system, we'll show that if $\langle x, e_j\rangle =0 $ for all $j$ then $x = 0$. If this is the case then we have by Cauchy-Schwarz
+		\begin{align*}
+			\|x\|^2 &= \left\|\sum_{j=1}^\infty \langle x, f_j\rangle f_j\right\|^2\\
+			&= \left\|\sum_{j=1}^\infty \langle x, f_j-e_j\rangle f_j + \langle x, e_j\rangle f_j\right\|^2\\
+			&\leq \|x\|^2 \cdot \sum_{j=1}^\infty \|f_j-e_j\|^2\\
+			&<\|x\|^2.
+		\end{align*}
+		This is a contradiction unless $x = 0$, so we conclude that the $e_j$'s are complete.
+
+		\item (This one was tricky. This solution is in Halmos's book on Hilbert space problems). If the given sum is to converge, then we can choose $N$ large enough so that $\sum_{j=N}^\infty \|e_j-f_j\|^2<1$. Now define the operator $T: H\to H$ by
+		\[
+		Tf_j = \begin{cases}
+			f_j &\text{if }j<N\\
+			e_j &\text{if }j\geq N
+		\end{cases}.
+		\]
+		We have the following bound for any $x\in H$
+		\begin{align*}
+			\|x - Tx\|^2 &= \left\|\sum_{j=1}^\infty \langle x, f_j\rangle f_j - Tx\right\|^2\\
+			&= \left\|\sum_{j=N}^\infty \langle x, f_j\rangle (f_j-e_j)\right\|^2\\
+			&\leq \|x\|^2 \cdot \sum_{j=N}^\infty\|f_j-e_j\|^2\\
+			&\leq \|x\|^2.
+		\end{align*}
+		In particular, we have that the operator $I-T$ has norm less than 1. We claim this means that $T$ is invertible. In general, if an operator $A$ satisfies $\|A\|<1$, then $I-A$ is invertible where it is defined. The bound on $A$ tells us that $\sum \|A\|^n$ is finite, so the operator $\sum A^n$ exists. Furthermore we have
+		\[
+		(1-A)\cdot \sum_{n=0}^\infty A^n = \sum_{n=0}^\infty A^n - \sum_{n=1}^\infty A^n = I.
+		\]
+		Returning to the problem at hand, we have that $T$ is invertible on the span of the $f_j$'s. Since this span is dense, by continuity we have that $T$'s inverse extends to an operator on all of $H$. By invertibility we have that the $Tf_j$'s span all of $H$. But $\{Tf_j\} = \{f_1, \ldots, f_{N-1}, e_N, e_{N+1}, \ldots\}$. In particular, we have that the orthogonal complement to the span of $\{e_N, \ldots, \}$ has dimension $N-1$. But $e_1, \ldots, e_{N-1}$ are $N-1$ linearly independent vectors outside of the span of $\{e_N, \ldots\}$. We conclude that the $e_j$'s span $H$.
 	\end{enumerate}
+\end{proof}
+
+\noindent\textbf{Problem 4. }Let $T:B_1\to B_2$ be a compact operator where $B_1$ and $B_2$ are Banach spaces. Show that if $T$ is compact then Im$T$ has a dense countable subset.
+\begin{proof}
+	Write $B_1 = \cup_{n\in \naturals}B(0, n)$. That is, $B_1$ is a union of balls centered at the origin with natural radius. From this we have that Im$T = \cup_{n\in \naturals}T[B(0,n)]$. If we can show that $T[B(0,n)]$ is separable for each $n$ then we're done since the countable union of separable spaces is separable.\\
+
+	\noindent Our plan is to show that $T[B(0,n)]$ is precompact for each $n$. Then we'll show that precompact spaces are separable and we'll be finished. That $T[B(0,n)]$ is precompact follows from the compactness of $T$. If we let $y_k = Tx_k$ be a sequence in $T[B(0,n)]$, then the compactness of $T$ says that $y_k$ has a convergent subsequence.\\
+
+	\noindent Suppose $A$ is a precompact subset of a metric space $(X, d)$. For each $m$ the collection $\{B(x, \frac{1}{m})\}_{x\in A}$ forms an open cover for the closure of $A$. Since the closure of $A$ is compact, we need to take only finitely many of these balls to cover $\overline{A}$. As $m$ ranges over the natural numbers, the centers of these finite coverings form a countable dense subset of $A$, so $A$ is separable.\\
+
+	\noindent The image of $T$ is the union $\cup_{n\in \naturals}T[B(0,n)]$. Since each $T[B(0,n)]$ is precompact, it is separable. Since the countable union of separable sets is separable, we have that the image of $T$ is separable.
+\end{proof}
+
+\noindent\textbf{Problem 5. }Let $H$ be a Hilbert space and let $U: H\to H$ be unitary so that $UU^* = U^*U = 1$.
+\begin{enumerate}[(i)]
+	\item Show that
+	\[
+	H = \ker(1-U)\oplus\overline{\im{I-U}},
+	\]
+	where the direct sum is orthogonal.
+
+	\item Let $P$ be the orthogonal projection onto $\ker(1-U)$ and let us set
+	\[
+	S_n = \frac{1}{n}\sum_{j=0}^{n-1}U^j.
+	\]
+	Show that $S_nx\to Px$ for all $x\in H$ as $n\to \infty$.
+\end{enumerate}
+
+\begin{proof}
+	\begin{enumerate}[(i)]
+		\item Suppose $y$ is in $\overline{\im{1-U}}$ and $z$ is in $\ker(1-U)$. Then there is a sequence of $y_n\in \im{1-U}$ with $y_n = (1-U)x_n$ for some sequence $x_n\in H$ and $y_n\to y$. By the continuity of the inner product we have
+		\begin{align*}
+			\langle y, z\rangle &= \lim_{n\to \infty}\langle (1-U)x_n, z\rangle\\
+			&= \lim_{n\to \infty}\langle (U^*-1)U x_n, z\rangle\\
+			&= \lim_{n\to \infty}\langle Ux_n, (U-1)z\rangle\\
+			&= 0.
+		\end{align*}
+		This shows that $\ker(1-U)\subseteq \overline{\im{1-U}}^\perp$. Suppose conversely that for some $z\in H$ we have that $\langle y, z\rangle = 0$ for all $y\in \overline{\im{1-U}}$. We then have
+		\begin{align*}
+			\|(1-U)z\|^2 &= \langle (1-U)z, (1-U)z\rangle\\
+			&= \langle (1-U^*)(1-U)z, z\rangle\\
+			&= \langle (1-U)(1-U^*)z, z\rangle\\
+			&= 0.
+		\end{align*}
+		This shows that $\overline{\im{1-U}}^\perp \subseteq \ker(1-U)$. Finally, we know that any Hilbert space splits as a direct sum of a closed subspace and its orthogonal complement, so $H = \ker(1-U)\oplus \overline{\im{1-U}}$. 
+
+		\item Take $y\in H$. By part (i) of this exercise, we can write $y = \lim_{m\to \infty}(y_0 + y_m)$, where $y_0$ is in the kernel of $1-U$ and $y_m = (1-U)x_m$ for some sequence $x_m$ in $H$. $P$, the orthogonal projection onto the kernel of $1-U$ will send $y$ to $y_0$. We then have
+		\begin{align*}
+			\|S_ny - Py\| &= \lim_{m\to \infty}\|S_n(y_0 + y_m) - y_0\|\\
+			&= \lim_{m\to \infty}\left\|\left(\frac{1}{n}\sum_{j=0}^{n-1}U^j\right)(y_0+y_m) - y_0\right\|\\
+			&= \lim_{m\to \infty}\left\|\left(\frac{1}{n}\sum_{j=0}^{n-1}U^j\right)(1-U)x_m\right\|\\
+			&= \lim_{m\to \infty}\frac{1}{n}\cdot \left\|\sum_{j=0}^{n-1} (U^j - U^{j+1})x_m\right\|\\
+			&= \lim_{m\to \infty}\frac{1}{n}\|(1-U^n)x_m\|\\
+			&\leq \lim_{m\to \infty}\frac{2}{n}\|x_m\|.
+		\end{align*}
+		The last line follows from the fact that $U$ is unitary, so $\|U^nx\| = \|x\|$. As $n\to \infty$, this quantity goes to zero as desired. 
+	\end{enumerate}
+\end{proof}
+
+\noindent\textbf{Problem 6. }Define the space $\mcal{B}$ by
+\[
+\mcal{B} = \left\{u:\complex\to \complex: u\text{ is holomorphic and }\int_\complex|u(z)|^2e^{-|z|^2}L(dz)<\infty\right\},
+\]
+where $L(dz)$ is the Lebesgue measure in $\complex$. Show that $\mcal{B}$ becomes a Hilbert space when equipped with the scalar product
+\[
+\langle u, v\rangle = \int_\complex u(z)\overline{v(z)}e^{-|z|^2} L(dz).
+\]
+\begin{proof}
+	That $\mcal{B}$ is a complex vector space follows immediately from the triangle inequality on $\complex$. That the proposed scalar product is finite follows from Cauchy-Schwarz:
+	\begin{align*}
+		|\langle u, v\rangle| &= \left|\int_\complex u(z)\overline{v(z)}e^{-|z|^2}L(dz)\right|\\
+		&\leq \int_\complex(|u(z)|e^{-|z|^2/2})\cdot (|v(z)|e^{-|z|^2/2})L(dz)\\
+		&\leq \left(\int_\complex |u(z)|^2e^{-|z|^2}L(dz)\right)^{1/2}\cdot \left(\int_\complex |v(z)|^2e^{-|z|^2}L(dz)\right)^{1/2}\\
+		&<\infty.
+	\end{align*}
+	That the scalar product is sesquilinear is obvious. It remains to show that $\mcal{B}$ is complete with respect to the norm induced by this inner product. 
 \end{proof}
 
 \end{document}
