@@ -30,6 +30,7 @@
 \newcommand{\essinf}{\text{ess inf }}
 \newcommand{\affine}{\mathbb{A}}
 \newcommand{\im}[1]{\text{Im}\left({#1}\right)}
+\newcommand{\re}[1]{\text{Re}\left({#1}\right)}
 
 \newenvironment{solution}
 {\begin{proof}[Solution]}
@@ -184,7 +185,71 @@ where $L(dz)$ is the Lebesgue measure in $\complex$. Show that $\mcal{B}$ become
 		&\leq \left(\int_\complex |u(z)|^2e^{-|z|^2}L(dz)\right)^{1/2}\cdot \left(\int_\complex |v(z)|^2e^{-|z|^2}L(dz)\right)^{1/2}\\
 		&<\infty.
 	\end{align*}
-	That the scalar product is sesquilinear is obvious. It remains to show that $\mcal{B}$ is complete with respect to the norm induced by this inner product. 
+	That the scalar product is sesquilinear is obvious. It remains to show that $\mcal{B}$ is complete with respect to the norm induced by this inner product. Suppose $u_n$ is a Cauchy sequence in $\mcal{B}$. Then for a given $\epsilon>0$ we have that
+	\[
+	\int_\complex |u_m(z)-u_n(z)|^2 e^{-|z|^2}L(dz)<\epsilon
+	\]
+	for $m$ and $n$ sufficiently large. In this case we also have that for any $R>0$
+	\begin{align*}
+		\epsilon &> \int_\complex |u_m(z)-u_n(z)|^2 e^{-|z|^2}L(dz)\\
+		&\geq \int_{|z|\leq R}|u_m(z)-u_n(z)|^2 e^{-|z|^2}L(dz)\\
+		&\geq e^{-R^2}\int_{|z|\leq R}|u_m(z)-u_n(z)|^2\ L(dz).
+	\end{align*}
+	Now take any $w\in B(0, R)$ and $r<$ dist$(w, \partial B(0, R))$. By Cauchy's integral formula we have
+	\begin{align*}
+		\epsilon &\geq e^{-R^2}\cdot \pi r^2\cdot |u_m(z)-u_n(z)|^2.
+	\end{align*}
+	In particular, this shows that $u_n$ is uniformly Cauchy on the closed disk of radius $R$. Since any compact set in $\complex$ lies inside $\overline{D(0,R)}$ for some $R$, we have that $u_n$ converges uniformly on compact subsets of $\complex$. Now the uniform limit of holomorphic functions on a compact set is holomorphic. By the uniqueness of analytic continuation, we have that $u_n$ converges pointwise to an entire function, $u$.\\
+
+	\noindent Now we need to show that $u$ is in $\mcal{B}$. This follows from the uniform convergence of $u_n$ to $u$ on compact subsets and the fact that $u_n\to u$ in $L^2$ on all compact subsets.
+\end{proof}
+
+\noindent\textbf{Problem 7. }
+\begin{enumerate}[(i)]
+	\item Let $S$ be a unitary operator on a complex Hilbert space. Prove that for every complex number $|\lambda|<1$ the operator $S-\lambda I$ is invertible.
+
+	\item For a fixed vector $v$ in the Hilbert space and all $\lambda \in \complex$, $|\lambda|<1$, we define
+	\[
+	h(\lambda) = \langle (S+\lambda I)(S-\lambda I)^{-1}v,v\rangle.
+	\]
+	Show that $\re h$ is a positive harmonic function.
+\end{enumerate}
+
+\begin{proof}
+	\begin{enumerate}[(i)]
+		\item Since $S$ is unitary we have that $S-\lambda I = S(1-\lambda S^*)$. Furthermore, we have that $\sum_{j=0}^\infty \|\lambda S^*\|^j = \sum_{j=0}^\infty |\lambda|^j<\infty$. This shows that $\sum_{j=0}^\infty (\lambda S^*)^j$ converges to a linear operator: the inverse of $1-\lambda S^*$. This tells us that $(S-\lambda I)^{-1} = S^*(1-\lambda S^*)^{-1}$ is well-defined.
+
+		\item Check out this computation.
+		\begin{align*}
+			h(\lambda) &= \langle (S+\lambda I)(S-\lambda I)^{-1}v,v\rangle\\
+			&= \left\langle (S+\lambda I)S^*\sum_{n=0}^\infty \lambda^n(S^*)^nv, v\right\rangle\\
+			&= \left\langle\sum_{n=0}^\infty\left[\lambda^n(S^*)^n + \lambda^{n+1}(S^*)^{n+1}\right]v, v\right\rangle\\
+			&= \langle v, v\rangle + 2\sum_{n=1}^\infty \langle (S^*)^nv,v\rangle\lambda^n.
+		\end{align*}
+		By Cauchy-Schwarz and the fact that $S$ is unitary we have that $|\langle (S^*)^nv,v\rangle|^2 \leq \|v\|^2$, so the above sum converges for all $|\lambda|<1$ and $h$ is holomorphic on the unit disk and its real part is harmonic.
+	\end{enumerate}
+\end{proof}
+
+\noindent\textbf{Problem 8. }
+Let $H$ be the Hilbert space $L^2(\reals)$ and define $U:H\to H$ by
+\[
+Uf(x) = f(x-1).
+\]
+Show that $U$ has no nonzero eigenvectors.
+\begin{proof}
+	If $Uf = \lambda f$ then we would have
+	\[
+	\int |\lambda|^2|f(x)|^2\ dx = \int |f(x-1)|^2\ dx = \int |f(x)|^2\ dx,
+	\]
+	which would imply that $|\lambda| = 1$. This tells us that for all $n\in \integers$
+	\[
+	\int_n^{n+1}|f(x)|^2\ dx = \int_n^{n+1}|f(x-1)|^2\ dx = \cdots = \int_n^{n+1}|f(x-n)|^2\ dx = \int_0^1|f(x)|^2\ dx.
+	\]
+	But this is a problem, since by the monotone convergence theorem we have
+	\[
+	\int |f|^2\ dx = \sum_{n\in \integers}\int_n^{n+1}|f(x)|^2\ dx = \sum_{n\in \integers}\int_0^1|f(x)|^2\ dx
+	\]
+	The only way this can be finite is if $\int_0^1|f(x)|^2\ dx = 0$, i.e. $f = 0$ a.e..
 \end{proof}
 
 \end{document}
