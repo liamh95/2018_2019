@@ -1,0 +1,71 @@
+%% Please change the file name by replacing N with the apporpriate number
+%% corresponding to the current homework and XX with your initials.
+%% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
+
+\documentclass[11pt,letterpaper]{report}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amsthm}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\exreals}{\overline{\mathbb{R}}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\mable}{measurable}
+\newcommand{\quats}{\mathbb{H}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\disk}{\mathbb{D}}
+\newcommand{\halfplane}{\mathbb{H}}
+\newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
+\newcommand{\supp}[1]{\text{supp}({#1})}
+\newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\field}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Gal}[1]{\text{Gal}\left({#1}\right)}
+\newcommand{\esssup}{\text{ess sup }}
+\newcommand{\essinf}{\text{ess inf }}
+\newcommand{\affine}{\mathbb{A}}
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+\addtolength{\jot}{8pt}
+\linespread{1.3}
+
+\begin{document}
+\noindent{\em Liam Hardiman\hfill{November 26, 2018} }
+% Please give relevant information
+\begin{center}
+{\bf \Large 260A - Homework 3} %Replace N with the appropriate number
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\noindent\textbf{Problem 1. }
+Let $(b_1, b_2, \ldots)$ be a sequence of complex numbers such that $\sum_{n=1}^\infty b_nc_n$ is convergent for every $c = (c_1, c_2, \ldots)\in \ell^2$. Show that $b\in \ell^2$.
+\begin{proof}
+	Consider the sequence of maps $T_n: \ell^2\to \complex$ that send $(c_1, \ldots)$ to $\sum_{j=1}^n b_jc_j$. Since each $T_n$ is just a finite sum, we have that the $T_n$'s form a sequence of bounded linear operators on $\ell^2$. Furthermore, this sequence is pointwise bounded: given any $(c_1, c_2, \ldots)\in \ell^2$, since $\sum_{j=1}^\infty b_jc_j$ converges, we have that the sequence of partial sums $|T_n(c_1, c_2, \ldots)| = |\sum_{j=1}^n b_jc_j|$ is bounded. By the uniform boundedness principle, we have that
+	\[
+	\sup_{n\in \naturals,\ \|(c_1, c_2, \ldots)\|_2 = 1}|T_n(c_1, c_2, \ldots)| = \sup_{n\in \naturals}\|T_n\| = \sum_{j=1}^\infty |b_j|<\infty,
+	\]
+	so $(b_1, b_2, \ldots)\in \ell^2$.
+\end{proof}
+
+\noindent\textbf{Problem 2. }
+Let $M$ be a measurable subset of $\reals^n$ with finite positive measure. Prove that $L^q(M)$ is of the first category in $L^p(M)$ if $1\leq p<q\leq \infty$.
+\begin{proof}
+	Since $M$ has finite measure, we have that $L^q(M)\subseteq L^p(M)$ whenever $1\leq p<q\leq \infty$. Consider the injection $\iota: L^q(M)\to L^p(M)$ that simply sends $f\in L^p(M)$ to itself. By the generalized H\"older inequality we have that $\Lp{\iota(f)}{p} = \Lp{f}{p}\leq \mu(M)^{1/r}\Lp{f}{q}$, where $\frac{1}{p} = \frac{1}{q} + \frac{1}{r}$. This shows that $\iota$ is bounded, and therefore continuous. Since $L^p(M)$ and $L^q(M)$ are Banach spaces, the open mapping theorem tells us that the image of $\iota$ is either surjective and open or of the first category in $L^p(M)$.\\
+
+	\noindent
+\end{proof}
+
+\end{document}
