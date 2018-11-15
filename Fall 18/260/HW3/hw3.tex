@@ -3,7 +3,7 @@
 %% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
 
 \documentclass[11pt,letterpaper]{report}
-\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate,array}
 \usepackage{tikz} %This package offers the ability to draw pictures
 \usepackage{amsthm}
 
@@ -29,6 +29,9 @@
 \newcommand{\esssup}{\text{ess sup }}
 \newcommand{\essinf}{\text{ess inf }}
 \newcommand{\affine}{\mathbb{A}}
+
+\newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
+\newcolumntype{C}{>{$}c<{$}} % math-mode version of "l" column type
 
 \newenvironment{solution}
 {\begin{proof}[Solution]}
@@ -66,6 +69,16 @@ Let $M$ be a measurable subset of $\reals^n$ with finite positive measure. Prove
 	Since $M$ has finite measure, we have that $L^q(M)\subseteq L^p(M)$ whenever $1\leq p<q\leq \infty$. Consider the injection $\iota: L^q(M)\to L^p(M)$ that simply sends $f\in L^p(M)$ to itself. By the generalized H\"older inequality we have that $\Lp{\iota(f)}{p} = \Lp{f}{p}\leq \mu(M)^{1/r}\Lp{f}{q}$, where $\frac{1}{p} = \frac{1}{q} + \frac{1}{r}$. This shows that $\iota$ is bounded, and therefore continuous. Since $L^p(M)$ and $L^q(M)$ are Banach spaces, the open mapping theorem tells us that the image of $\iota$ is either surjective and open or of the first category in $L^p(M)$.\\
 
 	\noindent
+	\begin{tabular}{L||C|C|C|C|C|C}
+		\text{File block} & b_1 & b_2 & \cdots & b_k & b_{k+1} & \cdots\\
+		\text{$j$-th Share Compressed File} & a_{j1} & a_{j2} & \cdots & a_{jk} & a_{j(k+1)} & \cdots
+	\end{tabular}
+
+	\noindent K i'm just going to k $\underbrace{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }_{a_j}$
+
+	\[
+	F_{j1} = a_j\cdot f_1\pmod{p}
+	\]
 \end{proof}
 
 \end{document}
