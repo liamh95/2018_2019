@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+% \addtolength{\oddsidemargin}{-.75in}
+% \addtolength{\evensidemargin}{-.75in}
+% \addtolength{\textwidth}{1.5in}
+% \addtolength{\topmargin}{-1in}
+% \addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{center}
+{\bf \Large Problem 3B}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\noindent\textbf{Claim: }Suppose $E$ and $F$ are $n\times n$ matrices with $EF = I$. Then $EF = FE$.
+\begin{proof}
+	Let $M_n$ be the set of all $n\times n$ matrices. It's not too hard to see that $M_n$ is a vector space (the sum of $n\times n$ matrices is an $n\times n$ matrix, we can multiply them by scalars, and the zero matrix is our zero ``vector''). You can also probably convince yourself that $M_n$ has dimension $n^2$ (you need $n^2$ entries to specify an $n\times n$ matrix. Try to come up with a basis!).\\
+
+	\noindent Define the set $FM_n$ to be the set obtained by multiplying every $n\times n$ matrix on the left by $F$:
+	\[
+	FM_n = \{FA: A\in M_n\}.
+	\]
+	We can similarly define $F^kM_n = \{F^kA: A\in M_n\}$ to be the set obtained my multiplying all matrices on the left by $F^k$. You can check for yourself (it's easy) that each $F^kM_n$ is a subspace of $M_n$. In fact, we actually have this descending chain of subspaces.
+	\begin{equation}\label{chain}
+	M_n \supseteq FM_n\supseteq F^2M_n\supseteq F^3M_n\supseteq \cdots
+	\end{equation}
+	This is basically saying that any matrix that starts with $F^2$ is also a matrix that starts with $F$, and so on.\\
+
+	\noindent We said earlier that $M_n$ has dimension $n^2$, so since $FM_n$ lives inside $M_n$, $FM_n$ has dimension \textit{at most} $n^2$. Similarly, $F^2M_n$, as a subspace of $FM_n$, has dimension no larger than that of $FM_n$. Put succinctly, as we go down the chain in (\ref{chain}), \textit{our dimension can only decrease or stay the same}.\\
+
+	\noindent Dimension is a nonnegative integer. A decreasing (``not increasing'' is more appropriate) sequence of nonnegative integers must either trail down to zero and then stop or it must stop at some positive number. In other words, as we go down the chain in (\ref{chain}), the dimension must eventually become constant. But if we have a subspace of some larger space with the same dimension, they must be the same space. This tells us that
+	\begin{equation}\label{terminate}
+	F^kM_n = F^{k+1}M_n
+	\end{equation}
+	for some integer $k$ -- the chain (\ref{chain}) eventually terminates.\\
+
+	\noindent Equation (\ref{terminate}) tells us that every matrix that starts with $F^k$ is also some other matrix that starts with $F^{k+1}$. In particular, we have that
+	\begin{equation}
+		F^k = F^{k+1}A
+	\end{equation}
+	for some $n\times n$ matrix $A$. Now multiply both sides of this equation on the left by $E^k$.
+	\begin{equation}
+		E^kF^k = E^kF^{k+1}A.
+	\end{equation}
+	Since $EF = I$, the $k$ copies of $E$ on the left-hand side will cancel with the $k$ copies of $F$. Similarly on the right-hand side, the $k$ copies of $E$ will cancel $k$ of the copies of $F$, leaving one behind. This gives us
+	\begin{equation}
+		I = FA.
+	\end{equation}
+	Now we're in business.
+	\begin{align*}
+		FE &= FE\cdot I\\
+		&= FE(FA)\\
+		&= F(EF)A\\
+		&= FIA\\
+		&= FA\\
+		&= I\\
+		&= EF.
+	\end{align*}
+\end{proof}
+
+\end{document}
