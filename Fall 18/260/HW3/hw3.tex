@@ -68,17 +68,24 @@ Let $M$ be a measurable subset of $\reals^n$ with finite positive measure. Prove
 \begin{proof}
 	Since $M$ has finite measure, we have that $L^q(M)\subseteq L^p(M)$ whenever $1\leq p<q\leq \infty$. Consider the injection $\iota: L^q(M)\to L^p(M)$ that simply sends $f\in L^p(M)$ to itself. By the generalized H\"older inequality we have that $\Lp{\iota(f)}{p} = \Lp{f}{p}\leq \mu(M)^{1/r}\Lp{f}{q}$, where $\frac{1}{p} = \frac{1}{q} + \frac{1}{r}$. This shows that $\iota$ is bounded, and therefore continuous. Since $L^p(M)$ and $L^q(M)$ are Banach spaces, the open mapping theorem tells us that the image of $\iota$ is either surjective and open or of the first category in $L^p(M)$.\\
 
-	\noindent
-	\begin{tabular}{L||C|C|C|C|C|C}
-		\text{File block} & b_1 & b_2 & \cdots & b_k & b_{k+1} & \cdots\\
-		\text{$j$-th Share Compressed File} & a_{j1} & a_{j2} & \cdots & a_{jk} & a_{j(k+1)} & \cdots
-	\end{tabular}
+	\noindent Our plan is to show that $\iota$ is \textit{not} surjective, i.e. that $L^p(M)\setminus L^q(M)$ is nonempty. We'll do this by showing that $L^q(M) = L^p(M)$ would forbid the existence of subsets of $M$ with arbitrarily small measure. Since sets of positive measure in $\mathbb{R}^n$ \textit{do} contain sets of arbitrarily small measure, we'll conclude that $L^q(M)\neq L^p(M)$.\\
 
-	\noindent K i'm just going to k $\underbrace{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }_{a_j}$
-
+	\noindent If the embedding $\iota: L^q(M)\to L^p(M)$ were surjective, then the open mapping theorem would imply that $\iota$ is actually a homeomorphism. In particular, its inverse, $\iota': L^p(M)\to L^q(M)$ is a bounded operator. Let $A$ be a subset of $M$ with positive, finite measure and define the function
 	\[
-	F_{j1} = a_j\cdot f_1\pmod{p}
+	f_A(x) = \frac{1}{m(A)^{1/p}}\cdot \chi_A(x).
 	\]
+	It's clear that $\Lp{f_A}{p} = 1$ and that $\Lp{f_A}{q} = \frac{1}{m(A)^{1/p-1/q}}$. Since $\iota'$ is bounded, we have
+	\[
+	0<\Lp{f_A}{q} \leq \|\iota'\|\cdot \Lp{f_A}{p} \implies 0<\frac{1}{\|\iota'\|^{\frac{pq}{q-p}}}\leq m(A).
+	\]
+	This puts a positive lower bound on the measure of subsets of $M$. But $M$, as a subset of $\reals^n$ with positive measure, contains set of arbitrarily small measure. We conclude that $L^q(M)$ is of the first category of $L^p(M)$.
+\end{proof}
+
+
+\noindent\textbf{Problem 3. }
+Let $(X, \mcal{A}, \mu)$ be a finite measure space. Assume that $E$ is a closed subspace of $L^2(X, \mu)$, and that $E$ is contained in $L^\infty(X, \mu)$. Prove that $E$ is finite dimensional.
+\begin{proof}
+	By H\"older's inequality, the embedding $\iota: L^\infty(X)\to L^2(X)$, $f\mapsto f$ is continuous, i.e., $\Lp{f}{\infty}\leq C\cdot \Lp{f}{2}$ for some finite $C>0$. Let $e_1, \ldots e_n$ be an orthonormal set in $E$. 
 \end{proof}
 
 \end{document}
