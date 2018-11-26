@@ -29,6 +29,7 @@
 \newcommand{\esssup}{\text{ess sup }}
 \newcommand{\essinf}{\text{ess inf }}
 \newcommand{\affine}{\mathbb{A}}
+\newcommand{\torus}{\mathbb{T}}
 
 \newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
 \newcolumntype{C}{>{$}c<{$}} % math-mode version of "l" column type
@@ -85,7 +86,102 @@ Let $M$ be a measurable subset of $\reals^n$ with finite positive measure. Prove
 \noindent\textbf{Problem 3. }
 Let $(X, \mcal{A}, \mu)$ be a finite measure space. Assume that $E$ is a closed subspace of $L^2(X, \mu)$, and that $E$ is contained in $L^\infty(X, \mu)$. Prove that $E$ is finite dimensional.
 \begin{proof}
-	By H\"older's inequality, the embedding $\iota: L^\infty(X)\to L^2(X)$, $f\mapsto f$ is continuous, i.e., $\Lp{f}{\infty}\leq C\cdot \Lp{f}{2}$ for some finite $C>0$. Let $e_1, \ldots e_n$ be an orthonormal set in $E$. 
+	By H\"older's inequality, the embedding $\iota: L^\infty(X)\to L^2(X)$, $f\mapsto f$ is continuous, i.e., $\Lp{f}{2}\leq \mu(X)^{1/2}\cdot \Lp{f}{\infty}$. When we restrict $\iota$ to $E$ we obtain a continuous surjection from $E$ to itself. By the open mapping theorem, $\iota:E\to E$ is a homeomorphism, so there is some positive $C>0$ with $\Lp{f}{\infty}\leq C\cdot \Lp{f}{2}$ for any $f\in E$. Now let $e_1, \ldots, e_n$ be an orthonormal set in $E$ and fix $a\in \complex^n$. Then for all $x$ in $S_a$, where $S_a$ has $\mu$-full measure in $X$, we have 
+	\begin{align*}
+	|a_1e_1(x) + \cdots + a_ne_n(x)|^2 &\leq \Lp{a_1e_1 + \cdots + a_ne_n}{\infty}^2\\
+	&\leq C^2\cdot \Lp{a_1e_1 + \cdots a_ne_n}{2}^2\\
+	&= C^2\cdot(|a_1|^2 + \cdots + |a_n|^2).
+	\end{align*}
+	We'd like to replace the $a_i$'s with $\overline{e_i(x)}$'s, but here $x$ depends on $a$. We accomplish this through a limiting process (Alec Fox showed me how to do this).\\
+
+	\noindent Let $Q$ be a countable dense subset of $\complex^n$. The intersection $S := \cap_{q\in Q}S_q$ has full measure in $X$. Now for any $a\in \complex^n$, we can find a sequence $q^{(k)}$ in $Q$ that limits to $a$. For any $k$ and $x\in S$ we have by the above inequalities
+	\[
+	\left|\sum_{j=1}^nb_j^{(k)}e_j(x)\right|^2 \leq C^2\cdot \sum_{j=1}^n|b_j^{(k)}|^2.
+	\]
+	Taking the limit $k\to \infty$ gives
+	\[
+	\left|\sum_{j=1}^na_je_j(x)\right|^2 \leq C^2\cdot \sum_{j=1}^n|a_j|^2.
+	\]
+	Now for any $x\in S$, which is $\mu$-almost all of $X$, we can substitute $a_j = \overline{e_j(x)}$ into the above inequality to obtain (by the orthonormality of the $e_j$'s)
+	\[
+	\sum_{j=1}^n|e_j(x)|^2 \leq C^2.
+	\]
+	Integration gives
+	\[
+	n = \sum_{j=1}^n\int_X|e_j(x)|^2\ d\mu \leq \int_XC^2\ d\mu = C^2\cdot \mu(X)<\infty,
+	\]
+	so $E$ is finite-dimensional.
+\end{proof}
+
+\noindent\textbf{Problem 4. }
+Let $X$ be a locally compact and locally convex space.
+\begin{enumerate}[(i)]
+	\item Let $U$ be a compact neighborhood of the origin. Show that one can find $x_1, \ldots, x_n$ so that $U\subseteq \cup_{j=1}^n(x_j + \frac{1}{2}U)$, and thus, a finite dimensional space, $M$, with $U\subseteq M+\frac{1}{2}U$.
+	\begin{proof}
+		Cover $U$ with dilates of itself: $U\subseteq \cup_{x\in U}(x+\frac{1}{2}U^\circ)$. This is indeed an open cover since $U$, as a compact neighborhood, has nonempty interior. By compactness, we can extract a finite subcover, based around the points $x_1, \ldots, x_n$:
+		\begin{align*}
+			U \subseteq \bigcup_{j=1}^nx_j+\frac{1}{2}U^\circ\subseteq \bigcup_{j=1}^nx_j+\frac{1}{2}U.
+		\end{align*}
+		Let $M$ be the linear span of the $x_j$'s, $M:= \langle x_1, \ldots, x_j\rangle$. Since $M$ is the span of finitely many vectors, it is finite dimensional and we clearly have the inclusion
+		\[
+		U\subseteq \bigcup_{j=1}^nx_j+\frac{1}{2}U\subseteq M+\frac{1}{2}U.
+		\] 
+	\end{proof}
+
+	\item Prove that $U\subseteq M+\frac{1}{2^m}U$ for any $m$.
+	\begin{proof}
+		In the above construction, it would appear the our choice of finite dimensional space, $M$, depends on our choice of cover. An induction on $m$ will show that it doesn't. The base case $m=1$ follows from part (i). Now assume that $U\subseteq M+\frac{1}{2^m}U$. We dilate both sides of this inclusion to obtain
+		\[
+		\frac{1}{2}U\subseteq \frac{1}{2}M + \frac{1}{2^{m+1}}U = M+\frac{1}{2^{m+1}}U.
+		\]
+		By part (i) we then have
+		\[
+		U\subseteq M+\frac{1}{2}U\subseteq M + \left(M + \frac{1}{2^{m+1}}U\right) = M +\frac{1}{2^{m+1}}U.
+		\]
+		By induction, the proposition holds for all $m$.
+	\end{proof}
+
+	\item Prove that $U\subseteq \overline{M}$.
+	\begin{proof}
+		Take $x\notin \overline{M}$. Then there is some balanced neighborhood of the origin, $V$, with $x\notin M+V$. Since balanced neighborhoods are absorbing, we have that $U\subseteq \cup_{n=1}^\infty nV$. The compactness of $U$ and the fact that this union is increasing (since $V$ is balanced) tells us that $U\subseteq 2^NV$ for some large $N$. By part (ii) we have
+		\begin{align*}
+		U &\subseteq M+\frac{1}{2^N}U\\
+		&\subseteq M+\frac{1}{2^N}(2^NV)\\
+		&= M+V.
+		\end{align*}
+		Since $x\notin M+V$, we conclude that $x\notin U$. This shows that $U\subseteq \overline{M}$.
+	\end{proof}
+
+	\item Conclude that $\overline{M} = X = M$.
+	\begin{proof}
+		
+	\end{proof}
+\end{enumerate}
+
+\noindent\textbf{Problem 5. }
+Let $a_n$, $n\in \integers$, be a sequence of complex numbers such that $a_nb_n$ is the sequence of Fourier coefficients of a continuous function on $\reals/2\pi\integers$ when this is true for the sequence $b_n$, $n\in \integers$. Prove that there is a measure with Fourier coefficients $a_n$, $n\in \integers$.
+\begin{proof}
+	Denote $\reals/2\pi \integers$ by $\torus$. The plan is to use the closed graph theorem and Riesz-Markov-Kakutani. Define the map $T: C(\torus)\to C(\torus)$ that maps $f$ to the continuous function with Fourier coefficients $a_n\widehat{f}(-n)$ (the reason for the negative sign will become clear). That $T$ is well defined follows from the fact that the assignment of a continuous function to its Fourier coefficients is injective and from the hypothesis that $a_n\widehat{f}(-n)$ is indeed the set of Fourier coefficients of a continuous function.\\
+
+	\noindent That $T$ is linear follows simply from the linearity of the integral. We'll use the closed graph theorem to show that $T$ is continuous. Suppose that $f_j\to f$ in $C(\torus)$ and $Tf_j\to g$ in $C(\torus)$. Let's look at the Fourier coefficients of $g$.
+	\begin{align*}
+		\widehat{g}(n) &= \frac{1}{2\pi}\int_\torus g(x)e^{-inx}\ dx\\
+		&= \lim_{j\to \infty}\frac{1}{2\pi}\int_\torus (Tf_j)(x)e^{-inx}\ dx\\
+		&= \lim_{j\to \infty}\widehat{Tf_j}(n)\\
+		&= a_n\cdot \lim_{j\to \infty}\widehat{f_j}(-n)\\
+		&= a_n\cdot \lim_{j\to \infty}\frac{1}{2\pi}\int_\torus f_j(x)e^{inx}\ dx\\
+		&= a_n\cdot \frac{1}{2\pi}\int_\torus f(x)e^{inx}\ dx\\
+		&= a_n\widehat{f}(-n)\\
+		&= \widehat{Tf}(n).
+	\end{align*}
+	The movement of limits through integrals follows from the fact that convergence in $C(\torus)$ is uniform on a finite measure space. Again by the uniqueness of Fourier coefficients for continuous functions, we have that $Tf = g$, so by the closed graph theorem, $T$ is continuous.\\
+
+	\noindent Now define the map $S: C(\torus)\to \complex$ by $Sf = (Tf)(0)$. Evaluation at zero is a continuous linear functional on $C(\torus)$ and the composition of continuous functions is continuous, so $S$ is a continuous linear functional on $C(\torus)$. By the Riesz-Markov-Kakutani representation theorem, there is a unique regular Borel measure $\mu$ on $\torus$ such that $Sf = \int_\torus f\ d\mu$. This measure has the desired property since its Fourier coefficients are given by
+	\begin{align*}
+		\int_\torus e^{-inx}\ d\mu &= S(e^{-inx})\\
+		&= (a_ne^{inx})(0)\\
+		&= a_n.
+	\end{align*}
 \end{proof}
 
 \end{document}
