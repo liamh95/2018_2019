@@ -53,7 +53,23 @@
 \noindent\textbf{1.4.6}
 Let $Y$ be a subspace of a topological space $X$. Show that $Y$ is irreducible if and only if the closure of $Y$ in $X$ is irreducible.
 \begin{proof}
-	
+	First suppose that $Y$ is irreducible. If $\overline{Y}$ (the closure of $Y$ in $X$) were reducible, then we could write $\overline{Y} = \tilde{F}_1\cup \tilde{F}_2$, where $\tilde{F}_1$ and $\tilde{F}_2$ are nonempty (relatively) closed subsets of $\overline{Y}$. In particular, this means that we can write $\overline{Y}\subseteq F_1\cup F_2$, where $F_1$ and $F_2$ are closed in $X$ and $Y$ is not entirely contained in either $F_1$ or $F_2$. If $Y$ is contained in say $F_1$, then $\overline{Y}\subseteq \overline{F}_1 = F_1$, which contradicts the reducibility of $\overline{Y}$, so $Y$ isn't contained in $F_1$. By symmetry, $Y$ is not contained in $F_2$ either. But we have
+	\[
+	Y\subseteq \overline{Y}\subseteq F_1\cup F_2.
+	\]
+	This shows that $Y$ is contained in the union of closed (in $X$) subsets, but is contained in neither set individually, contradicting the irreducibility of $Y$. We conclude that $\overline{Y}$ is also irreducible.\\
+
+	\noindent Conversely, suppose that $\overline{Y}$ is irreducible but $Y$ is reducible. Then $Y\subseteq F_1\cup F_2$, where $F_1$ and $F_2$ are closed in $X$ and $Y$ is contained in neither $F_1$ nor $F_2$. When we take the closure of both sides of this inclusion we get
+	\[
+	\overline{Y}\subseteq \overline{F_1\cup F_2} = \overline{F_1}\cup \overline{F_2} = F_1\cup F_2.
+	\]
+	Since $\overline{Y}$ is irreducible, it must be contained in $F_1$ or $F_2$, say $F_1$. But then $Y\subseteq \overline{Y}\subseteq F_1$, contradicting our assumption about $Y$ not being contained in $F_1$. We conclude that $Y$ is irreducible.
+\end{proof}
+
+\noindent\textbf{2.6.13}
+Let $X$ and $Y$ be prevarieties with affine open covers $\{U_i\}$ and $\{V_j\}$, respectively. Construct the product prevariety $X\times Y$ by gluing the affine varieties $U_i\times V_j$ together. Moreover, show that there are projection morphisms $\pi_X:X\times Y\to X$ and $\pi_Y:X\times Y\to Y$ satisfying the usual universal property for products.
+\begin{proof}
+	The affine varieties $U_i\times V_j$ (as the product of two affine varieties is an affine variety) form a finite open cover for $X\times Y$ as a topological space. The idea is to glue the sets $U_i\times V_j$ and $U_{i'}\times V_{j'}$ along the identity morphism on the intersection $(U_i\cap U_{i'})\times (V_i\cap V_{i'})$. 
 \end{proof}
 
 \end{document}
