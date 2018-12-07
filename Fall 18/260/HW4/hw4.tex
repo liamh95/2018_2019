@@ -31,6 +31,7 @@
 \newcommand{\affine}{\mathbb{A}}
 \newcommand{\img}{\text{Im}}
 \newcommand{\dist}{\text{dist}}
+\newcommand{\spec}{\text{Spec}}
 
 \newenvironment{solution}
 {\begin{proof}[Solution]}
@@ -64,16 +65,70 @@
 	% for all $x\in E$. If the image of $T$ is closed, then $F/\img T$ is a Banach space
 	First suppose that the given inequality holds for some $C>0$. Let $Tx_n$ be a convergent sequence in the image of $T$. Then the sequence of $x_n+\ker T$'s converges in the quotient $E/\ker T$ by the given inequality. Since $T$ is continuous, $\ker T$ is closed and the quotient $E/\ker T$ is complete. Thus, $x_n+\ker T$ converges to some $x+\ker T$. By continuity, $Tx_n$ then converges to $Tx$, which is in the image of $T$. Thus, the image of $T$ is closed.\\
 
-	\noindent Conversely, suppose that $\img(T)$ is closed. 
+	\noindent Conversely, suppose that $\img(T)$ is closed. Then the image is a Banach space. By the first isomorphism theorem, $T$ induces an isomorphism $\tilde{T}: E/\ker T \to \img T$. By the open mapping theorem, $\tilde{T}$ is a homeomorphism, and the statement that $\tilde{T}$ is continuous is equivalent to the desired inequality.
 \end{proof}
 
+\noindent\textbf{Problem 2. }
+Prove that if $H$ is a Hilbert space and $B$ is a Banach space, then the space $\mcal{L}_c(B, H)$ of compact operators $B\to H$ is the closure of the set of operators in $\mcal{L}(B, H)$ which are of finite rank.
+\begin{proof}
+Suppose $T$ is a compact operator $B\to H$. By the compactness of $T$, for any $n>0$ we can find a finite covering of $\overline{T[B(0,1)]}$, the closure of the image of the unit ball in $B$, by balls of radius $\frac{1}{n}$. Say $\overline{T[B(0,1)]}\subseteq \cup_{j=1}^{M_n}B(y_j, \frac{1}{n})$ for some finite $M_n>0$. Let $P_n$ be the projection onto the vectors $y_1, \ldots, y_{M_n}$. Then $P_nT$ is clearly of finite rank as $P_n$ has finite rank.\\
+
+\noindent Now given any $x\in B(0,1)\subseteq B$, we can find a $y_j$ with $\|Tx-y_j\|_H \leq \frac{1}{n}$. We use this to show that the $P_nT$'s approximate $T$. We have
+\begin{align*}
+	\|P_nTx - Tx\|_H &\leq \|P_nTx - y_j\|_H + \|y_j - Tx\|_H\\
+	&\leq \|Tx-y_j\|_H + \|y_j-Tx\|_H\\
+	&\leq \frac{2}{n}.
+\end{align*}
+The fact that $\|P_nTx-y_j\|_H \leq \|Tx-y_j\|_H$ follows from the fact that $P_n$ projects onto the space spanned by the $y_k$'s. Sending $n\to \infty$ shows that the finite rank $P_nT$'s approximate $T$, so the compact operators $B\to H$ are in the closure of of the set of finite rank operators in $\mcal{L}(B, H)$.\\
+
+\noindent Conversely, suppose that $T_n$ is a sequence of finite rank operators in $\mcal{L}(B, H)$ that converges to $T\in \mcal{L}(B, H)$. Choose $N$ large so that $\|T_n - T\|<\epsilon$ for all $n>N$. Since finite-rank operators are compact, for any $n$ we can cover $\overline{T_n[B(0,1)]}$ by finitely many $\epsilon$-balls. Since $\|T_nx-Tx\|_H<\epsilon$ for any $x\in B(0,1)$, we have that the $2\epsilon$-balls with the same centers cover $\overline{T[B(0,1)]}$. Sine $\epsilon$ was arbitrary, this shows that the closed image of the unit ball under $T$ is compact, so $T$ is a compact operator.
+\end{proof}
+
+\noindent\textbf{Problem 3. }Let $B$ be a complex Banach space, $B\neq \{0\}$, and let $T\in \mcal{L}(B, B)$. Prove the following.
+\begin{enumerate}[(i)]
+	\item There exists a non-empty compact set $\spec(T)\subseteq \complex$, called the spectrum of $T$, such that the resolvent $R(z) = (T-zI)^{-1}\in \mcal{L}(B, B)$ exists if and only if $z\notin \spec(T)$.
+	\begin{proof}
+		
+	\end{proof}
+\end{enumerate}
+
 \noindent\textbf{Problem 4. }
-Let $E = L^p(0,1)$ with $1\leq p<\infty$. Given $u\in E$, set
+Let $E = L^p[0,1]$ with $1\leq p<\infty$. Given $u\in E$, set
 \[
 Tu(x) = \int_0^xu(t)\ dt.
 \]
 \begin{enumerate}[(i)]
 	\item Prove that $T:E\to E$ is compact.
+	\begin{proof}
+		Fix $u\in L^p[0,1]$ and suppose that $x_n\to x$ in $[0,1]$. Since $|\chi_{[0, x_n]}(t)u(t)|\leq |u(t)|\in L^p[0,1]$ for all $n$, the dominated convergence theorem tells us that
+		\[
+			Tu(x_n) = \int_0^1\chi_{[0, x_n]}(t)u(t)\ dt \to \int_0^1 \chi_{[0, x]}(t)u(t)\ dt = Tu(x).
+		\]
+		That is, $T$ maps $E$ into $C[0,1]$. Suppose we're given a bounded sequence $u_n\in L^p[0,1]$, i.e. $\Lp{u_n}{p}\leq M<\infty$. We then have
+		\begin{align*}
+		|Tu_n(x)| &= \left|\int_0^1\chi_{[0,x]}(t)u_n(t)\ dt\right|\\
+		&\leq \int_0^1\chi_{[0,x]}(t)|u_n(t)|\ dt\\
+		&\leq x^{1/q}\cdot \Lp{u}{p}\\
+		&\leq M,
+		\end{align*}
+		where $\frac{1}{p}+\frac{1}{q} = 1$ (the inequality still holds if $p = 1$). Thus, the sequence of continuous functions $Tu_n$ is uniformly bounded. Now fix $\epsilon>0$. For any $x<y\in [0,1]$ and $p>1$ we have
+		\begin{align*}
+			|Tu_n(x) - Tu_n(y)| & = \left|\int_0^1\chi_{[x,y]}(t)u_n(t)\ dt\right|\\
+			&\leq \int_0^1\chi_{[x,y]}(t)|u_n(t)|\ dt\\
+			&\leq |y-x|^{1/q}\cdot \Lp{u_n}{p}\\
+			&\leq |y-x|^{1/q}\cdot M.
+		\end{align*}
+		We can choose $|y-x|$ small enough so that the above quantity is bounded by $\epsilon$, which shows that the sequence of continuous functions $Tu_n$ is equicontinuous (I'm not sure how get this to work for $p=1$). By the Arzela-Ascoli theorem we have that $Tu_n$ has a uniformly convergent subsequence. Since uniform convergence implies $L^p$ convergence, we have that $Tu_n$ has a convergent subsequence in $E$, so $T$ is a compact operator.
+	\end{proof}
+
+	\item Compute the eigenvalues of $T$ and the spectrum of $T$.
+	\begin{solution}
+		In our discussion of part (i) we showed that $T$ maps $L^p[0,1]$ into $C[0,1]$. In particular, if $Tu = \lambda u$, then $u$ must be continuous. But the fundamental theorem of calculus tells us that the integral of a continuous function is differentiable, so $u$ is actually differentiable. Differentiating both sides of the eigenvalue equation gives $u = \lambda u'$. If $\lambda \neq 0$, then the solutions to this differential equation are of the form $u(x) = Ce^{x/\lambda}$, $C\in \complex$. However, we must also have
+		\[
+		\lambda u(0) = Tu(0) = \int_0^0u(t)\ dt = 0,
+		\]
+		so $u(0) = Ce^0 = 0$. But then $C$ must be zero, which would force $u$ to be identically zero. We conclude that there are no eigenvectors for $\lambda \neq 0$. If $\lambda = 0$ then any $L^p$ function with vanishing integral is an eigenfunction with eigenvalue zero.
+	\end{solution}
 \end{enumerate}
 
 \noindent\textbf{Problem 5. }
