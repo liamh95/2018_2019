@@ -69,7 +69,9 @@ Let $Y$ be a subspace of a topological space $X$. Show that $Y$ is irreducible i
 \noindent\textbf{2.6.13}
 Let $X$ and $Y$ be prevarieties with affine open covers $\{U_i\}$ and $\{V_j\}$, respectively. Construct the product prevariety $X\times Y$ by gluing the affine varieties $U_i\times V_j$ together. Moreover, show that there are projection morphisms $\pi_X:X\times Y\to X$ and $\pi_Y:X\times Y\to Y$ satisfying the usual universal property for products.
 \begin{proof}
-	The affine varieties $U_i\times V_j$ (as the product of two affine varieties is an affine variety) form a finite open cover for $X\times Y$ as a topological space. The idea is to glue the sets $U_i\times V_j$ and $U_{i'}\times V_{j'}$ along the identity morphism on the intersection $(U_i\cap U_{i'})\times (V_i\cap V_{i'})$. 
+	The affine varieties $U_i\times V_j$ (as the product of two affine varieties is an affine variety) form a finite affine open cover for $X\times Y$ as a topological space. The idea now is to glue the sets $U_i\times V_j$ and $U_k\times V_l$ along the identity morphism on the intersection $(U_i\cap U_k)\times (V_j\cap V_l)$. Let $f_{ijkl}:U_i\times V_j\to U_k\times V_l$ be the identity morphism on the intersection. Then we clearly have that $f_{ijkl} = (f_{klij})^{-1}$ and the cocycle condition holds on triple intersections.\\
+
+	\noindent Let $\pi_X:X\times Y\to X$ and $\pi_Y:X\times Y\to Y$ be the usual set-theoretic projection maps. As maps of topological spaces they are certainly continuous. We just have to show that they are morphisms. 
 \end{proof}
 
 \end{document}

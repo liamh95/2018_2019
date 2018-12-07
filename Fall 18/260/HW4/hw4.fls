@@ -1,10 +1,10 @@
-PWD /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/233/Final
+PWD /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW4
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/233/Final/final.tex
-OUTPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/233/Final/final.log
+INPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW4/hw4.tex
+OUTPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW4/hw4.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
@@ -140,9 +140,9 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
-INPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/233/Final/final.aux
-INPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/233/Final/final.aux
-OUTPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/233/Final/final.aux
+INPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW4/hw4.aux
+INPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW4/hw4.aux
+OUTPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW4/hw4.aux
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
@@ -189,14 +189,17 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-OUTPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/233/Final/final.pdf
+OUTPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW4/hw4.pdf
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
-INPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/233/Final/final.aux
+INPUT /home/liam/Documents/UCI/Fall18-Spring19/Fall 18/260/HW4/hw4.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb

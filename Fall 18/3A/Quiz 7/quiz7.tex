@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol,mathtools}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{flushleft} 
+%%Paragraphs will not be indented in this 
+%%environment
+\centerline{\LARGE{Quiz 7}} 
+\vspace{5 mm}
+{Student ID Number:}\hfill  
+%%\hfill forces following text 
+%%to right margin
+{Name \rule {2 in}{0.01in}}\\
+Math 3A, 6PM
+\\
+%%gives a line of length 2in and 
+%%thickness 0.01in
+{Please justify all your answers}\hfill {December 6, 2018}
+\\
+{Please also write your full name on the back} 
+
+\medskip
+\end{flushleft}
+
+\begin{enumerate}
+	\item Is
+	\[
+	\left\{\begin{bmatrix*}[r]
+		1\\1\\1
+	\end{bmatrix*}, \begin{bmatrix*}[r]
+		1\\-1\\0
+	\end{bmatrix*}, \begin{bmatrix*}[r]
+		1\\1\\-2
+	\end{bmatrix*}\right\}
+	\]
+	an orthogonal basis for $\mathbb{R}^3$?
+
+	\vfill
+
+	\item True or False? Explain.
+	\begin{enumerate}
+		\item Let $u,v\in \mathbb{R}^n$. If $u$ is orthogonal to $v$ then $v$ is orthogonal to $u$.
+
+		\vfill
+
+		\item Let $A$ be an $n\times n$ matrix whose columns form an orthonormal basis for $\mathbb{R}^n$. Then $A^TA = I$.
+		\vfill
+	\end{enumerate}
+\end{enumerate}
+
+
+%\vfill will divide page evenly
+%use \begin{enumerate} environment for ordered lists
+\end{document}

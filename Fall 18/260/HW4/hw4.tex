@@ -1,0 +1,109 @@
+%% Please change the file name by replacing N with the apporpriate number
+%% corresponding to the current homework and XX with your initials.
+%% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
+
+\documentclass[11pt,letterpaper]{report}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amsthm}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\exreals}{\overline{\mathbb{R}}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\mable}{measurable}
+\newcommand{\quats}{\mathbb{H}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\disk}{\mathbb{D}}
+\newcommand{\halfplane}{\mathbb{H}}
+\newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
+\newcommand{\supp}[1]{\text{supp}({#1})}
+\newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\field}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Gal}[1]{\text{Gal}\left({#1}\right)}
+\newcommand{\esssup}{\text{ess sup }}
+\newcommand{\essinf}{\text{ess inf }}
+\newcommand{\affine}{\mathbb{A}}
+\newcommand{\img}{\text{Im}}
+\newcommand{\dist}{\text{dist}}
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+\addtolength{\jot}{8pt}
+\linespread{1.3}
+
+\begin{document}
+\noindent{\em Liam Hardiman\hfill{December 7, 2018} }
+% Please give relevant information
+\begin{center}
+{\bf \Large 260A - Homework 4} %Replace N with the appropriate number
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\noindent\textbf{Problem 1. }Let $E$ and $F$ be two Banach spaces, and let $T\in \mcal{L}(E,F)$. Prove that $\img(T)$ is closed if and only if there exists a constant $C>0$ such that
+\[
+\dist(x, \ker T)\leq C\cdot \|Tx\|,\quad \forall x\in E.
+\]
+\begin{proof}
+	% By passing to $E/\ker T$, we can assume that $T$ is injective. In this setting, we're trying to show that the image of $T$ is closed if and only if there is some positive $C$ such that
+	% \[
+	% \|x\|\leq C\cdot \|Tx\|
+	% \]
+	% for all $x\in E$. If the image of $T$ is closed, then $F/\img T$ is a Banach space
+	First suppose that the given inequality holds for some $C>0$. Let $Tx_n$ be a convergent sequence in the image of $T$. Then the sequence of $x_n+\ker T$'s converges in the quotient $E/\ker T$ by the given inequality. Since $T$ is continuous, $\ker T$ is closed and the quotient $E/\ker T$ is complete. Thus, $x_n+\ker T$ converges to some $x+\ker T$. By continuity, $Tx_n$ then converges to $Tx$, which is in the image of $T$. Thus, the image of $T$ is closed.\\
+
+	\noindent Conversely, suppose that $\img(T)$ is closed. 
+\end{proof}
+
+\noindent\textbf{Problem 4. }
+Let $E = L^p(0,1)$ with $1\leq p<\infty$. Given $u\in E$, set
+\[
+Tu(x) = \int_0^xu(t)\ dt.
+\]
+\begin{enumerate}[(i)]
+	\item Prove that $T:E\to E$ is compact.
+\end{enumerate}
+
+\noindent\textbf{Problem 5. }
+Let $X$, $Y$, and $Z$ be three Banach spaces with norms $\|\cdot \|_X$, $\|\cdot \|_Y$, and $\|\cdot \|_Z$. Assume that $X\subseteq Y$ with compact injection and that $Y\subseteq Z$ with continuous injection. Prove that for any $\epsilon>0$ there exists $C_\epsilon\geq 0$ such that
+\[
+\|u\|_Y\leq \epsilon\|u\|_X+C_\epsilon\|u\|_Z
+\]
+for all $u\in X$.
+\begin{proof}
+	Suppose the proposition were false: that for some $\epsilon$ and for every $C\geq 0$ there exists a $u_C$ such that
+	\[
+	\|u_C\|_Y> \epsilon\|u_C\|_X+C\|u_C\|_Z
+	\]
+	for all $x\in X$. Set $C = n$ and let $u_n$ be a sequence in $X$ such that the above equality holds, i.e.
+	\begin{equation}\label{contra_ineq}
+	\|u_n\|_Y > \epsilon \|u_n\|_X + n\|u_n\|_Z.
+	\end{equation}
+	We can assume without loss of generality that the sequence $u_n$ has norm 1 in $X$, since replacing $u_n$ with $\frac{u_n}{\|u_n\|_X}$ gives the same inequality after multiplying through by $\|u_n\|_X$. By the compactness of the injection of $X$ into $Y$, we have that $u_n$ has a convergent subsequence in $Y$. Without loss of generality, assume then that $u_n$ converges in $Y$. Rearranging (\ref{contra_ineq}) gives
+	\begin{gather*}
+	n\|u_n\|_Z < \|u_n\|_Y - \epsilon \|u_n\|_X \leq \|u_n\|_Y
+	\\ \iff
+	\|u_n\|_Z <\frac{1}{n}\|u_n\|_Y.
+	\end{gather*}
+	\noindent Since $u_n$ converges in $Y$, the right-hand side of the above inequality must go to zero. Since $Y$ continuously embeds into $Z$ and $u_n$ converges in $Y$, we must have that $u_n$ converges to zero in both $Y$ and $Z$. But then the left-hand side of (\ref{contra_ineq}) will tend to 0 and the right-hand side will tend to $\epsilon$: a contradiction. We conclude that the proposition is true.\\
+
+	\noindent In class we showed (using the Arzela-Ascoli theorem) that $C^1([0,1])$ compactly embeds into $C([0,1])$. We also have that $C([0,1])$ continuously embeds into $L^1([0,1])$ by $\int_0^1|f|\ dx \leq \|f\|_\infty$. By the proposition we then have that for all $\epsilon>0$ there is some $C_\epsilon$ with
+	\[
+	\max_{x\in [0,1]}|f(x)| \leq \epsilon\cdot \max_{x\in [0,1]}|f'(x)| + C_\epsilon\Lp{f}{1}
+	\]
+	for all $f\in C^1([0,1])$.
+\end{proof}
+
+\end{document}
