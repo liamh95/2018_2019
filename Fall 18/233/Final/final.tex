@@ -3,7 +3,7 @@
 %% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
 
 \documentclass[11pt,letterpaper]{report}
-\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate,tikz-cd}
 \usepackage{tikz} %This package offers the ability to draw pictures
 \usepackage{amsthm}
 
@@ -72,7 +72,40 @@ Let $X$ and $Y$ be prevarieties with affine open covers $\{U_i\}$ and $\{V_j\}$,
 \begin{proof}
 	The affine varieties $U_i\times V_j$ (as the product of two affine varieties is an affine variety) form a finite affine open cover for $X\times Y$ as a topological space. The idea now is to glue the sets $U_i\times V_j$ and $U_k\times V_l$ along the identity morphism on the intersection $(U_i\cap U_k)\times (V_j\cap V_l)$. Let $f_{ijkl}:U_i\times V_j\to U_k\times V_l$ be the identity morphism on the intersection. Then we clearly have that $f_{ijkl} = (f_{klij})^{-1}$ and the cocycle condition holds on triple intersections.\\
 
-	\noindent Let $\pi_X:X\times Y\to X$ and $\pi_Y:X\times Y\to Y$ be the usual set-theoretic projection maps. As maps of topological spaces they are certainly continuous. We just have to show that they are morphisms. 
+	\noindent Let's show that $X\times Y$ is irreducible. Suppose that $X\times Y = F_1\cup F_2$ where $F_1$ and $F_2$ are closed, no-one properly containing $X\times Y$. For any fixed $y\in Y$, the map $\iota_y: X\to X\times Y$ that sends $x$ to $(x,y)$ is continuous. Consequently, the preimage, $\iota_y^{-1}(F_i)$ is closed in $X$ for $i=1,2$ and all $y$. Since the arbitrary intersection of closed sets is closed, we have that the covering of $X\times Y$ by closed sets induces a covering of $X$ by closed sets. But $X$ is irreducible, so this covering must be trivial. We conclude that $X\times Y$ is irreducible. So far we have that $X\times Y$ has an affine open covering, and is irreducible.\\
+
+	\noindent We build the ring of regular functions on $X\times Y$ locally. Say $U$ is open in $X\times Y$ and contains $x\in U_i\times V_j$ for some $i,j$. We say that a function $f$ is regular on $U$ if its restriction to $U\cap U_i\times V_j$ is regular when considered as a function on the variety $U_i\times V_j$. The sheaf properties of the rings of functions on $U_i\times V_j$ are inherited.\\
+
+	\noindent Let's show that our projection maps, $\pi_X$ and $\pi_Y$ are indeed morphisms. That they are continuous is clear. Say, $U\subseteq X$ is open and $f: U\to k$ is a regular function on $X$. Take $P\in \pi_X^{-1}(U)$ and write $P = (x, y)$ where $x\in X$ and $y\in Y$. The pullback, $\pi_X^*$ behaves as follows:
+	\[
+	(\pi_X^*f)(P) = f\circ \pi_X(P) = f(x).
+	\]
+	Since $f$ is regular, this shows that $\pi_X^*f$ is regular. Since $\pi_X$ pulls regular functions back to regular functions, it is a morphism. The same holds for $\pi_Y$.\\
+
+	\noindent Finally, let's show that our projections satisfy the universal property of products. Suppose we're given a prevariety $Z$ and morphisms $f: Z\to X$ and $f: Z\to Y$. We need to show that there is a unique morphism $h: Z\to X\times Y$ that makes the left diagram commute.
+	\[
+	\begin{tikzcd}
+		Z
+		\arrow[drr, bend left, "g"]
+		\arrow[ddr, bend right, "f"]
+		\arrow[dr, dotted, "h" description] & & \\
+			& X \times Y
+			\arrow[r, "\pi_Y"]
+			\arrow[d, "\pi_X"]& Y\\
+			& X
+	\end{tikzcd}\qquad 
+	\begin{tikzcd}
+		Z_{i,j}
+		\arrow[drr, bend left, "g|_{Z_{i,j}}"]
+		\arrow[ddr, bend right, "f_{Z_{i,j}}"]
+		\arrow[dr, dotted, "h_{i,j}" description] & & \\
+			& U_i \times V_j
+			\arrow[r, "\pi_Y|_{U_i\times V_j}"]
+			\arrow[d, "\pi_X|_{U_i\times V_j}"]& V_j\\
+			& U_i
+	\end{tikzcd}
+	\]
+	Define $h(z) = (f(z), g(z))$. This map clearly makes the diagram commute, at least set-theoretically. It remains to show that $h$ is a morphism and that it is unique. The idea is to pass to the universal property of the product varieties $U_i\times V_j$. Since the morphisms $f$ and $g$ are continuous, for any $U_i\times V_j$ we have that $f^{-1}(U_i)\cap g^{-1}(V_j)$ is an affine open set in $Z$. But then this set can be covered by an affine variety, say $Z_{i,j}$. The restrictions of $f$ and $g$ to $Z_{i,j}$ induce a unique map $h_{i,j}: Z_{i,j}\to U_i\times V_j$ by the universal property of products of affine varieties, shown in the diagram on the right. The $Z_{i,j}$ cover $Z$, so the $h_{i,j}$ weave together to agree with $h$. Since each $h_{i,j}$ is a unique morphism, we have that $h$ is a unique morphism too.
 \end{proof}
 
 
@@ -80,10 +113,52 @@ Let $X$ and $Y$ be prevarieties with affine open covers $\{U_i\}$ and $\{V_j\}$,
 Let $V$ be the vector space over $k$ of homogeneous degree-2 polynomials in three variables $x_0, x_1, x_2$ and let $\proj(V) \cong \proj^5$ be its projectivization.
 \begin{enumerate}[(i)]
 	\item Show that the space of conics in $\proj^2$ can be identified with an open subset $U$ of $\proj^5$. What geometric objects can be associated to the points in $\proj^5\setminus U$?
+	\begin{proof}
+		A conic in $\proj^2$ is determined by a homogeneous quadratic equation
+		\[
+		f(x,y,z) = ax^2 + bxy + cy^2 + dxz+eyz+fz^2 = 0.
+		\]
+		Equivalently, we can represent this equation with the matrix equation
+		\begin{equation}\label{matrix}
+		\begin{bmatrix}
+			x & y & z
+		\end{bmatrix}\begin{bmatrix}
+			a & b/2 & d/2\\
+			b/2 & c & e/2\\
+			d/2 & e/2 & f
+		\end{bmatrix}\begin{bmatrix}
+			x\\y\\z
+		\end{bmatrix} = 0.
+		\end{equation}
+		This matrix is symmetric, so we can change coordinates so that the above matrix is diagonal, giving the equation $AX^2+BY^2 +CZ^2 = 0$, for some $A,B,C$. If two of $A,B,C$ are zero, say $A=B=0$, then the conic $CZ^2 = CZ\cdot Z$ is reducible. If just $A = 0$, then $BY^2 + CZ^2 = (\sqrt{B}Y + \sqrt{-C}Z)(\sqrt{B}Y - \sqrt{-C}Z)$ is again reducible. These correspond to degenerate conics. If one or two of $A,B,C$ are zero, then the diagonal matrix with entries $A,B,C$ has determinant zero. But the determinant is invariant under coordinate changes, so the matrix in equation (\ref{matrix}) also has determinant zero.\\
+
+		\noindent Suppose that none of $A,B,C$ are zero. If $AX^2+BY^2+CZ^2$ were reducible, we could write
+		\[
+		AX^2+BY^2+CZ^2 = (\sqrt{A}X + g(Y,Z))(\sqrt{A}X+h(Y,Z)).
+		\]
+		Multiplying this out shows that $g(Y,Z)+h(Y,Z) = 0$ and $g(Y,Z)h(Y,Z) = BY^2+CZ^2$. This would imply that
+		\[
+		-g(Y,Z)^2 = (\sqrt{B}Y + \sqrt{-C}Z)(\sqrt{B}Y-\sqrt{-C}Z).
+		\]
+		$k[Y,Z]$ is a unique factorization domain, but the left-hand side of this equation is a square and the right-hand side isn't (under the modest assumption that the characteristic of $k$ is not 2). This shows that $AX^2+BY^2+CZ^2$ is irreducible, and therefore corresponds to a non-degenerate conic. By a similar argument used in the degerate case, this shows implies that the determinant of the matrix in (\ref{matrix}) is nonzero.\\
+
+		\noindent We have shown that our conic is non-degenerate if and only if the determinant of the matrix in (\ref{matrix}) is non-vanishing. The determinant is a polynomial in the in the coefficients $(a:b:c:d:e:f)\in \proj^5$, so the non-vanishing locus, and therefore the set of non-degenerate conics, corresponds to an open set in $\proj^5$.
+	\end{proof}
 
 	\item Show that it is a linear condition in $\proj^5$ for the conics to pass through a given point in $\proj^2$. If $P\in \proj^2$ is a point, show that there is a linear subspace $L\subseteq \proj^5$ such that the conics passing through $P$ are exactly those in $U\cap L$. What happens in $\proj^5\setminus U$?
+	\begin{proof}
+		Suppose that the conic determined by $f(x,y,z) = ax^2+bxy+cy^2 + dxz+eyz+fz^2$ passes through the point $(x_0, y_0, z_0)\in \proj^2$. Then the coefficients $a,b,c,d,e,f$ satisfy the linear equation
+		\[
+		ax_0^2+bx_0y_0+cy_0^2 + dx_0z_0+ey_0z_0+fz_0^2 = 0.
+		\]
+		Call the set of all coefficients satisfying the above equation $L$. Since $L$ is the solution set to a homogeneous linear equation, it is a linear subspace of $\proj^5$.
+		As the set $U$ corresponds to the non-degenerate conics in $\proj^2$, we have that $U\cap L$ corresponds to the non-degenerate conics passing through $(x_0: y_0: z_0)$. On the other hand, $(\proj^5\setminus U)\cap L$ corresponds to the degenerate conics passing through $(x_0:y_0:z_0)$.
+	\end{proof}
 
 	\item Prove that there is a unique conic through any five points in $\proj^2$, as long as no three of them lie on a line. What happens if three of them do lie on a line?
+	\begin{proof}
+		
+	\end{proof}
 \end{enumerate}
 
 \noindent\textbf{4.6.10}
