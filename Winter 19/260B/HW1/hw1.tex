@@ -21,7 +21,6 @@
 \newcommand{\disk}{\mathbb{D}}
 \newcommand{\halfplane}{\mathbb{H}}
 \newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
-\newcommand{\supp}[1]{\text{supp}({#1})}
 \newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
 \newcommand{\tr}{\text{tr}}
 \newcommand{\field}[1]{\mathbb{F}_{{#1}}}
@@ -29,6 +28,7 @@
 \newcommand{\esssup}{\text{ess sup }}
 \newcommand{\essinf}{\text{ess inf }}
 \newcommand{\affine}{\mathbb{A}}
+\newcommand{\supp}{\text{supp}}
 
 \newenvironment{solution}
 {\begin{proof}[Solution]}
@@ -50,31 +50,49 @@
 \hrule
 \end{center}
 
-\noindent\textbf{Problem 1. }Define the Sobolev space $H^s(\reals^n)$, $s\geq 0$ to be the set of all functions $u\in L^2(\reals^n)$ such that
+\noindent\textbf{Problem 1. }Define the Sobolev space $H^s(\reals^d)$, $s\geq 0$ to be the set of all functions $u\in L^2(\reals^d)$ such that
 \[
-\|u\|_{H^s}^2 = \frac{1}{(2\pi)^n}\int |\widehat{u}(\xi)|^2(1+|\xi|^2)^s\ d\xi<\infty.
+\|u\|_{H^s}^2 = \frac{1}{(2\pi)^d}\int |\widehat{u}(\xi)|^2(1+|\xi|^2)^s\ d\xi<\infty.
 \]
 \begin{enumerate}[(a)]
-	\item Show that $H^s(\reals^n)$ is a Hlibert space when equipped with the scalar product
+	\item Show that $H^s(\reals^d)$ is a Hlibert space when equipped with the scalar product
 	\[
-	(u,v)_{H^s} = \frac{1}{(2\pi)^n}\int \widehat{u}(\xi)\overline{\widehat{v}(\xi)}(1+|\xi|^2)^s\ d\xi.
+	(u,v)_{H^s} = \frac{1}{(2\pi)^d}\int \widehat{u}(\xi)\overline{\widehat{v}(\xi)}(1+|\xi|^2)^s\ d\xi.
 	\]
 	\begin{proof}
 		Denote $\langle \xi\rangle:= (1+|\xi|^2)^{1/2}$ (apparently this is sometimes called the ``Japanese bracket'' of $\xi$).\\
 		It's clear that the alleged inner product is linear, conjugate symmetric, and positive definite (since the Fourier transform is an isometry from $L^2$ to itself). That it is well-defined follows from H\"older's inequality:
 		\begin{align*}
-			|(u,v)| &\leq \frac{1}{(2\pi)^n}\int|\widehat{u}(\xi)||\widehat{v}(\xi)|\cdot \langle x\rangle^{2s}\ d\xi\\
-			&= \frac{1}{(2\pi)^n}\int (|\widehat{u}(\xi)|\cdot \langle \xi\rangle^s)\cdot (|\widehat{v}(\xi)|\cdot \langle \xi\rangle^s)\ d\xi\\
-			&\leq \frac{1}{(2\pi)^n}\Lp{\widehat{u}(\xi)\cdot \langle \xi\rangle^s}{2}\cdot \Lp{\widehat{v}(\xi)\cdot \langle \xi\rangle^s}{2}\\
+			|(u,v)| &\leq \frac{1}{(2\pi)^d}\int|\widehat{u}(\xi)||\widehat{v}(\xi)|\cdot \langle x\rangle^{2s}\ d\xi\\
+			&= \frac{1}{(2\pi)^d}\int (|\widehat{u}(\xi)|\cdot \langle \xi\rangle^s)\cdot (|\widehat{v}(\xi)|\cdot \langle \xi\rangle^s)\ d\xi\\
+			&\leq \frac{1}{(2\pi)^d}\Lp{\widehat{u}(\xi)\cdot \langle \xi\rangle^s}{2}\cdot \Lp{\widehat{v}(\xi)\cdot \langle \xi\rangle^s}{2}\\
 			&= \|u\|_{H^s}\cdot \|v\|_{H^s}\\
 			&<\infty.
 		\end{align*}
-		The interesting part is showing that this space is complete with respect to this norm. Suppose that $u_n$ is a Cauchy sequence in $H^s(\reals^n)$. Then for $\epsilon>0$ and $m,n$ sufficiently large we have
+		The interesting part is showing that this space is complete with respect to this norm. Suppose that $u_n$ is a Cauchy sequence in $H^s(\reals^d)$. Then for $\epsilon>0$ and $m,n$ sufficiently large we have
 		\begin{align*}
 			\epsilon &\geq \|u_n-u_m\|_{H^s}^2\\
-			&= \frac{1}{(2\pi)^n}\int|\widehat{u_n-u_m}(\xi)|^2\cdot \langle \xi\rangle^{2s}\ d\xi\\
-			&= \frac{1}{(2\pi)^n}
+			&= \frac{1}{(2\pi)^d}\int|\widehat{u_n-u_m}(\xi)|^2\cdot \langle \xi\rangle^{2s}\ d\xi\\
+			&= \frac{1}{(2\pi)^d}\int|\widehat{u_n}(\xi)\cdot\langle \xi\rangle^s - \widehat{u_m}(\xi)\cdot \langle \xi\rangle^s|^2\ d\xi.
 		\end{align*}
+		So the sequence $\widehat{u_n}(\xi)\cdot\langle \xi\rangle^s$ is Cauchy in $L^2$. Since $L^2(\reals^d)$ is complete, $\widehat{u_n}(\xi)\cdot \langle \xi\rangle^s$ converges to some $v\in L^2(\reals^d)$. By H\"older's inequality $v(\xi)\cdot \langle \xi\rangle^{-s}$ is also in $L^2(\reals^d)$, so it has a well-defined inverse Fourier transform.\\
+
+		\noindent We claim that $u_n$ converges to $\mcal{F}^{-1}(v(\xi)\cdot \langle \xi\rangle^{-s})$ in $H^s(\reals^d)$. It was designed for this purpose after all.
+		\begin{align*}
+			\|u_n - \mcal{F}^{-1}(v(\xi)\cdot \langle \xi\rangle^{-s})\|_{H^s}^2 &= \frac{1}{(2\pi)^d}\int |\widehat{u_n}(\xi) - v(\xi)\cdot \langle \xi\rangle^{-s}|^2\cdot \langle \xi\rangle^{2s}\ d\xi\\
+			&= \frac{1}{(2\pi)^d}\int|\widehat{u_n}(\xi)\cdot \langle \xi\rangle^s - v(\xi)|^2\ d\xi\\
+			&\to 0.
+		\end{align*}
+		That $\mcal{F}^{-1}(v(\xi)\cdot \langle \xi\rangle^{-s})$ is in $H^s(\reals^d)$ follows immediately from $v$ being in $L^2(\reals^d)$. Thus, $H^s(\reals^d)$ is complete.
+	\end{proof}
+
+	\item When $K\subseteq \reals^d$ is compact we define
+	\[
+	H^s(K) = \{u\in H^s(\reals^d): \supp(u)\subseteq K\}.
+	\]
+	Show that $H^s(K)$ is a closed linear subspace of $H^s(\reals^d)$, and hence also a Hilbert space. Show that the inclusion map $H^s(K)\to H^t(\reals^d)$ is compact if $s>t\geq 0$.
+	\begin{proof}
+		
 	\end{proof}
 \end{enumerate}
 

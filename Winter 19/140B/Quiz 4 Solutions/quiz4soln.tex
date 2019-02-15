@@ -1,0 +1,101 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+\begin{document}
+\begin{flushleft} 
+%%Paragraphs will not be indented in this 
+%%environment
+\centerline{\LARGE{Quiz 4}} 
+\vspace{5 mm}
+{Student ID Number:}\hfill  
+%%\hfill forces following text 
+%%to right margin
+{Name \rule {2 in}{0.01in}}\\
+Math 140B, 5PM
+\\
+%%gives a line of length 2in and 
+%%thickness 0.01in
+{Please justify all your answers}\hfill {February 15, 2019}
+\\
+{Please also write your full name on the back} 
+
+\medskip
+\end{flushleft}
+
+\begin{enumerate}
+	\item \begin{enumerate}
+		\item Suppose that $g$ is \textit{continuous} at $x=0$. Prove that $f(x) = xg(x)$ is differentiable at $x = 0$.
+		\begin{proof}
+			We use the definition of the derivative.
+			\[
+			\lim_{x\to 0}\frac{f(x)-f(0)}{x-0} = \lim_{x\to 0}\frac{xg(x) - 0}{x} = \lim_{x\to 0}g(x) = g(0).
+			\]
+			The equality $\lim_{x\to 0}g(x) = g(0)$ follows from the continuity of $g$.
+		\end{proof}
+		\vfill
+		\item Conversely, suppose that $f(0) = 0$ and $f$ is differentiable at $x=0$. Prove that there is a function $g$ that is continuous at $x=0$ and satisfies $f(x) = xg(x)$. \textit{Hint: What should $g(0)$ be?}
+		\begin{proof}
+			If $g(x)$ is going to satisfy $f(x) = xg(x)$ then we'll definitely have $g(x) = \frac{f(x)}{x}$ for $x\neq 0$. As it stands, this expression isn't defined at $x=0$, but it works everywhere else. If $g$ is to be continuous at zero we should be able to evaluate the limit at zero. Since $f(0)=0$ we have
+			\[
+			\lim_{x\to 0}g(x) = \lim_{x\to 0}\frac{f(x)}{x} = \lim_{x\to 0}\frac{f(x)-f(0)}{x-0} = f'(0).
+			\]
+			The last equality follows from the differentiability of $f$ at zero. Since this limit exists, if we define $g$ by
+			\[
+			g(x) = \begin{cases}
+				\frac{f(x)}{x},&\text{if }x\neq 0\\
+				f'(0),&\text{if }x=0
+			\end{cases},
+			\]
+			then $g$ will be continuous at zero and $f(x) = xg(x)$.
+		\end{proof}
+	\end{enumerate}
+	\vfill
+
+	\item If $f$ and $g$ are differentiable on $[a,b]$ and $f'(x) = g'(x)$ for all $a<x<b$, show that $g(x) = f(x)+c$ for some constant $c$. Give a proof directly from the mean value theorem.
+	\begin{proof}
+		Define the function $h(x)= f(x)-g(x)$. Since $f$ and $g$ are continuous and differentiable on $[a,b]$, so is $h$. We can then apply the mean value theorem to $h$. For any $x,y$ satisfying $a\leq x<y\leq b$ we then have
+		\[
+		\frac{h(x)-h(y)}{x-y} = h'(z)
+		\]
+		for some $z\in (x,y)$. Now $h'(z) = (f-g)'(z) = f'(z)-g'(z) = 0$ by hypothesis. The right-hand side of the above equation is then zero, so multiplying both sides by $x-y$ shows that $h(x)-h(y) = 0$. Since this holds for any $a\leq x<y\leq b$, we have that $h$ is constant on $[a,b]$. $h$ is the difference between $f$ and $g$, so $f$ and $g$ differ by a constant.
+	\end{proof}
+	\vfill
+\end{enumerate}
+
+%\vfill will divide page evenly
+%use \begin{enumerate} environment for ordered lists
+\end{document}
