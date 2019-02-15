@@ -43,7 +43,7 @@
 \linespread{1.3}
 
 \begin{document}
-\noindent{\em Liam Hardiman\hfill{December 5, 2018} }
+\noindent{\em Liam Hardiman\hfill{December 12, 2018} }
 % Please give relevant information
 \begin{center}
 {\bf \Large 233A - Final} %Replace N with the appropriate number
@@ -157,12 +157,30 @@ Let $V$ be the vector space over $k$ of homogeneous degree-2 polynomials in thre
 
 	\item Prove that there is a unique conic through any five points in $\proj^2$, as long as no three of them lie on a line. What happens if three of them do lie on a line?
 	\begin{proof}
-		
+		Given five points in $\proj^2$ in general linear position, that a conic $ax^2+bxy+cy^2+dxz+eyz+fz^2$ should pass through these points gives us five linear equations in $a,b,c,d,e,f$ by part (ii). At least one coefficient must be nonzero, so we can actually reduce this to five homogeneous equations in five unknowns. Solutions to this system correspond to the intersection of five hyperplanes: one per equation. Suppose that this system doesn't have a unique solution. Then the intersection of these hyperplanes must contain a line, $\ell$.\\
+
+		\noindent Say $f(x,y,z)$, $g(x,y,z)$ are two distinct points on this line, which correspond to distinct conics through our five points. Two distinct points on a line completely determine it, so $\ell$ can be parameterized as $\ell: [s\cdot f(x,y,z) + t\cdot g(x,y,z)]$, $[s:t]\in \proj^1$. Any point on this line is a conic through the five points.\\
+
+		\noindent I'm not quite sure how to draw a contradiction from here. I know that given any point in $\proj^2$ we can choose $s$ and $t$ so that $s\cdot f+t\cdot g=0$ passes through it. Given two of our five points, say $P$ and $Q$, we can then force $s\cdot f+t\cdot g$ to pass through a point collinear to $P$ and $Q$, say $R$. I think the idea is that after changing coordinates so that the line containing $P,Q,R$ is the $z$ coordinate axis, we'll have that $s\cdot f(x,y,0) + t\cdot g(x,y,0)$ will vanish at three points. This will somehow force $s\cdot f(x,y,0)+t\cdot g(x,y,0)$ to be identically zero and $f = z\cdot g$. This in turn will force $g$ to be linear and our conic $s\cdot f+t\cdot g = 0$ to be the union of two lines. Since we have five points and two lines, three points must lie on one line, contradicting the hypothesis that our points are in general position. I'm not quite sure how to work out the details here.
 	\end{proof}
 \end{enumerate}
 
 \noindent\textbf{4.6.10}
 Let $X\subseteq \affine^n$ be an affine variety, and let $Y_1, Y_2\subsetneq X$ be irreducible, closed subsets, no-one contained in the other. Let $\tilde{X}$ be the blow-up of $X$ at the (possibly non-radical) ideal $I(Y_1)+I(Y_2)$. Then the strict transforms of $Y_1$ and $Y_2$ on $\tilde{X}$ are disjoint.
+\begin{proof}
+	Say $I(Y_1) = \langle f_0, \ldots, f_r\rangle$ and $I(Y_2) = \langle g_0, \ldots, g_s\rangle$. Then $I(Y_1)+I(Y_2) = \langle f_0, \ldots, f_r, g_0, \ldots, g_s\rangle$. To construct the blowup of $X$, $\tilde{X}$, we let $U = X\setminus (Y_1\cap Y_2)$ and define the map $\phi: U\to \proj^{r+s}$ by
+	\begin{equation}\label{phi}
+	\phi(P) = [f_0(P):\cdots:f_r(P):g_0(P):\cdots : g_s(P)].
+	\end{equation}
+	This map is well-defined since the $f_i$ and $g_j$ do not vanish simultaneously on the complement of $Y_1\cap Y_2$.\\
+
+	\noindent Now the strict transform of $Y_1$, $\tilde{Y_1}$ is the closure of the set $\{(P, \phi(P)): P\in Y_1\cap U\}$ in  $\affine^n\times \proj^{r+s}$. Ditto for $\tilde{Y_2}$, where $P$ comes from $Y_2\cap U$. We might not have any earthly idea what these closures look like, but we do know that the strict transforms satisfy these containments.
+	\begin{gather*}
+		\tilde{Y_1}\subseteq Z(f_i(P) - x_i,\ y_jg_k(P) - y_kg_j(P),\ f_i(P)) = Z(x_i,\ y_jg_k(P)-y_kg_j(P),\ f_i(P))\\
+		\tilde{Y_2}\subseteq Z(g_i(P) - y_i,\ x_jf_k(P) - x_kf_j(P),\ g_i(P)) = Z(y_i,\ x_jf_k(P)-x_kf_j(P),\ g_i(P))
+	\end{gather*}
+	Let's explain why these containments hold. For $\tilde{Y_1}$, $f_i(P)$ must certainly vanish for $0\leq i\leq r$ since this condition merely says that $P$ must come from $Y_1$. That $f_i(P)-x_i$ must vanish comes from (\ref{phi}). Finally, that $y_jg_k(P)-y_kg_j(P)$ must vanish for $0\leq j,k\leq s$ comes from the fact that $\tilde{Y}\subseteq \tilde{X}$ and this holds in $\tilde{X}$. That $f_i(P)$ and $f_i(P)-x_i$ both vanish implies that $x_i$ must vanish. The same argument applied to $\tilde{Y_2}$ shows that the $y_j$ must vanish. Any $P$ that forces the $x_i$ and $y_j$ to vanish simultaneously leads to a contradiction since we can't allow all coordinates of a projective point to vanish. We conclude that there is no such $P$. Since these sets containing the strict transforms are disjoint, we must have that the strict transforms themselves are disjoint.
+\end{proof}
 
 
 \end{document}

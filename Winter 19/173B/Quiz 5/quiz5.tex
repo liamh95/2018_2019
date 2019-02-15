@@ -1,0 +1,78 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{flushleft} 
+%%Paragraphs will not be indented in this 
+%%environment
+\centerline{\LARGE{Quiz 5}} 
+\vspace{5 mm}
+{Student ID Number:}\hfill  
+%%\hfill forces following text 
+%%to right margin
+{Name \rule {2 in}{0.01in}}\\
+Math 173B, 1PM
+\\
+%%gives a line of length 2in and 
+%%thickness 0.01in
+{Please justify all your answers}\hfill {February 14, 2019}
+\\
+{Please also write your full name on the back} 
+
+\medskip
+\end{flushleft}
+
+\begin{enumerate}
+	\item Let $\mathbb{F}$ be a field with characteristic $p$. Prove that for any $a,b\in \mathbb{F}$
+	\[
+	(a+b)^p = a^p + b^p.
+	\]
+	\textit{Recall that the characteristic of $\mathbb{F}$ is the smallest nonnegative integer such that}
+	\[
+	\underbrace{1+1+\cdots+1}_{p\text{ times}} = 0.
+	\]
+	\vfill
+
+	\item True or False? Explain
+	\begin{enumerate}
+		\item $\mathbb{F}_5$ contains an element whose square is $-1\in \mathbb{F}_5$.
+		\vfill
+		\item $\mathbb{Z}/9\mathbb{Z}$ is a finite field.
+		\vfill
+	\end{enumerate}
+\end{enumerate}
+
+
+%\vfill will divide page evenly
+%use \begin{enumerate} environment for ordered lists
+\end{document}

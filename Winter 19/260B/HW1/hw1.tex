@@ -1,0 +1,82 @@
+%% Please change the file name by replacing N with the apporpriate number
+%% corresponding to the current homework and XX with your initials.
+%% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
+
+\documentclass[11pt,letterpaper]{report}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amsthm}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\exreals}{\overline{\mathbb{R}}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\mable}{measurable}
+\newcommand{\quats}{\mathbb{H}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\disk}{\mathbb{D}}
+\newcommand{\halfplane}{\mathbb{H}}
+\newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
+\newcommand{\supp}[1]{\text{supp}({#1})}
+\newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\field}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Gal}[1]{\text{Gal}\left({#1}\right)}
+\newcommand{\esssup}{\text{ess sup }}
+\newcommand{\essinf}{\text{ess inf }}
+\newcommand{\affine}{\mathbb{A}}
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+\addtolength{\jot}{8pt}
+\linespread{1.3}
+
+\begin{document}
+\noindent{\em Liam Hardiman\hfill{February 22, 2019} }
+% Please give relevant information
+\begin{center}
+{\bf \Large 260B - Homework 1} %Replace N with the appropriate number
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\noindent\textbf{Problem 1. }Define the Sobolev space $H^s(\reals^n)$, $s\geq 0$ to be the set of all functions $u\in L^2(\reals^n)$ such that
+\[
+\|u\|_{H^s}^2 = \frac{1}{(2\pi)^n}\int |\widehat{u}(\xi)|^2(1+|\xi|^2)^s\ d\xi<\infty.
+\]
+\begin{enumerate}[(a)]
+	\item Show that $H^s(\reals^n)$ is a Hlibert space when equipped with the scalar product
+	\[
+	(u,v)_{H^s} = \frac{1}{(2\pi)^n}\int \widehat{u}(\xi)\overline{\widehat{v}(\xi)}(1+|\xi|^2)^s\ d\xi.
+	\]
+	\begin{proof}
+		Denote $\langle \xi\rangle:= (1+|\xi|^2)^{1/2}$ (apparently this is sometimes called the ``Japanese bracket'' of $\xi$).\\
+		It's clear that the alleged inner product is linear, conjugate symmetric, and positive definite (since the Fourier transform is an isometry from $L^2$ to itself). That it is well-defined follows from H\"older's inequality:
+		\begin{align*}
+			|(u,v)| &\leq \frac{1}{(2\pi)^n}\int|\widehat{u}(\xi)||\widehat{v}(\xi)|\cdot \langle x\rangle^{2s}\ d\xi\\
+			&= \frac{1}{(2\pi)^n}\int (|\widehat{u}(\xi)|\cdot \langle \xi\rangle^s)\cdot (|\widehat{v}(\xi)|\cdot \langle \xi\rangle^s)\ d\xi\\
+			&\leq \frac{1}{(2\pi)^n}\Lp{\widehat{u}(\xi)\cdot \langle \xi\rangle^s}{2}\cdot \Lp{\widehat{v}(\xi)\cdot \langle \xi\rangle^s}{2}\\
+			&= \|u\|_{H^s}\cdot \|v\|_{H^s}\\
+			&<\infty.
+		\end{align*}
+		The interesting part is showing that this space is complete with respect to this norm. Suppose that $u_n$ is a Cauchy sequence in $H^s(\reals^n)$. Then for $\epsilon>0$ and $m,n$ sufficiently large we have
+		\begin{align*}
+			\epsilon &\geq \|u_n-u_m\|_{H^s}^2\\
+			&= \frac{1}{(2\pi)^n}\int|\widehat{u_n-u_m}(\xi)|^2\cdot \langle \xi\rangle^{2s}\ d\xi\\
+			&= \frac{1}{(2\pi)^n}
+		\end{align*}
+	\end{proof}
+\end{enumerate}
+
+
+\end{document}
