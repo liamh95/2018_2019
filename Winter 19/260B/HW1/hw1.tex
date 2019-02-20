@@ -92,7 +92,20 @@
 	\]
 	Show that $H^s(K)$ is a closed linear subspace of $H^s(\reals^d)$, and hence also a Hilbert space. Show that the inclusion map $H^s(K)\to H^t(\reals^d)$ is compact if $s>t\geq 0$.
 	\begin{proof}
-		
+		Let $u_n$ be a convergent sequence in $H^s(K)$. By part (a) we know that $u_n$ converges to some $u$ in $H^S(\reals^d)$ (and in $L^2(\reals^d)$). To show that $u$ indeed lives in $H^s(K)$, we need to show that its support is contained in $K$. If $u$'s support \textit{wasn't} contained in $K$ then it would have nonzero integral outside of $K$ just like all of the $u_n$'s. Let's do a computation.
+		\begin{align*}
+			\int_{\reals^d\setminus K}|u(x)|^2\ dx &\leq \int_{\reals^d\setminus K}|u(x)-u_n(x)|^2\ dx + \int_{\reals^d\setminus K}|u_n(x)|^2\ dx\\
+			&= \int_{\reals^d\setminus K}|u(x) - u_n(x)|^2\ dx.
+		\end{align*}
+		Taking the limit on both sides and using the fact that $u_n$ converges to $u$ in $L^2$ shows that $u$ isn't supported outside of $K$, so $u$ lives in $H^s(K)$ and the space is closed.\\
+
+		Now to show that the inclusion $H^s(K)\to H^t(\reals^d)$ is compact for $s>t\geq 0$. To this end, let $u_j\in H^s(K)$ be a bounded sequence. We claim that the $\widehat{u_j}$'s are smooth. To see this, we expand the exponential into its power series.
+		\begin{align*}
+		\widehat{u_j}(\xi) &= \int_Ku(x)e^{-ix\cdot \xi}\ dx\\
+		&= \int_Ku(x)\left(\sum_{n=0}^\infty \frac{(-ix\cdot \xi)^n}{n!}\right)dx\\
+		&= \sum_{n=0}^\infty \int_Ku(x)\frac{(-ix\cdot \xi)^n}{n!}\ dx.
+		\end{align*}
+		The interchange of summation and integration is justified since $K$ is compact and the power series of the exponential converges uniformly on compact sets. The $x\cdot \xi$ in the integrand can be expanded to show that the above sum is a series of polynomials 
 	\end{proof}
 \end{enumerate}
 

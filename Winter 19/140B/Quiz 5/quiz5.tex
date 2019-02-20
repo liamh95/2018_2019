@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{flushleft} 
+%%Paragraphs will not be indented in this 
+%%environment
+\centerline{\LARGE{Quiz 5}} 
+\vspace{5 mm}
+{Student ID Number:}\hfill  
+%%\hfill forces following text 
+%%to right margin
+{Name \rule {2 in}{0.01in}}\\
+Math 140B, 5PM
+\\
+%%gives a line of length 2in and 
+%%thickness 0.01in
+{Please justify all your answers}\hfill {February 21, 2019}
+\\
+{Please also write your full name on the back} 
+
+\medskip
+\end{flushleft}
+
+\begin{enumerate}
+	\item Suppose that $f$ is differentiable on $[a,b]$ and $f'(a)<0<f'(b)$.
+	\begin{enumerate}
+		\item Show that there are points $a<c<d<b$ such that $f(c)<f(a)$ and $f(d)<f(b)$.
+		\vfill
+		\item Show that the minimum of $f$ on $[a,b]$ occurs at an interior point (i.e. it doesn't occur at $a$ or $b$). Conclude that there is a point $x_0$ in $(a,b)$ such that $f'(x_0) = 0$.
+		\vfill
+	\end{enumerate}
+	\item Find the Taylor polynomial of order 3, $P_3(x)$, of $f(x) = \sinh x = \frac{1}{2}(e^{x}-e^{-x})$. Find an upper bound for the remainder, $|f(x)-P_3(x)|$, at $x = 1$.
+	\vfill
+\end{enumerate}
+
+%\vfill will divide page evenly
+%use \begin{enumerate} environment for ordered lists
+\end{document}* 
