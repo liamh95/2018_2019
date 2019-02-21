@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\newcommand{\integers}{\mathbb{Z}}
+
+\begin{document}
+\begin{center}
+{\bf \Large Braid Group Cryptography - Liam Hardiman}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\subsection*{Background}
+%Let $G$ be a finitely presented group with \textbf{generators} $x_1, x_2, \ldots, x_n$ and \textbf{relators} $r_1 = e$, $r_2 = e$, \ldots, $r_m = e$. For each generator $x_i$ there is a corresponding inverse $x_i^{-1}$. A \textbf{word} in $G$ is a finite string made of the symbols $x_i$ and $x_i^{-1}$. The empty string $e$ is a word that will serve as the identity element. Each relator $r_i$ is a word. 
+A \textbf{finitely presented group} is specified by the following data.
+\begin{enumerate}
+	\item \textbf{Generators} $x_1, x_2, \ldots, x_n$. Just a set of symbols.
+	\item \textbf{Relators} $r_1 = e$, $r_2 = e$, \ldots, $r_m = e$. More on these in a moment.
+\end{enumerate}
+
+\indent For each generator $x_i$ there is a corresponding inverse, $x_i^{-1}$. A \textbf{word} is just a finite string made of the symbols $x_i$ and $x_i^{-1}$. The empty string $e$ is a word and will be the identity element in $G$. The relators are words.\\
+\indent $G$ consists of all \textit{equivalence classes} of words, where two words $u$ and $v$ are equivalent if $u$ can be transformed into $v$ by a finite sequence of cancellations or eliminating/introducing relators.\\
+\indent Equivalently, $G$ is a quotient of the free group on the generators modulo the normal closure of the relators. 
+
+\subsection*{The Word Problem}
+The \textbf{word problem} is the decision problem that asks whether two words $u$ and $v$ are equivalent in $G$. In some finitely presented groups this is straight up \textbf{undecidable} -- it is provably impossible to give an algorithm that always outputs a correct answer.
+
+\subsection*{The Conjugacy Problem}
+The \textbf{conjugacy problem} is the decision problem that asks whether two words $u$ and $v$ are \textbf{conjugate} in $G$. In other words, it asks whether there exists a word $w$ such that $u = wvw^{-1}$. 
+
+
+\end{document}
