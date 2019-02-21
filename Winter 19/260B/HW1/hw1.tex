@@ -29,6 +29,7 @@
 \newcommand{\essinf}{\text{ess inf }}
 \newcommand{\affine}{\mathbb{A}}
 \newcommand{\supp}{\text{supp}}
+\newcommand{\weak}{\rightharpoonup}
 
 \newenvironment{solution}
 {\begin{proof}[Solution]}
@@ -92,22 +93,47 @@
 	\]
 	Show that $H^s(K)$ is a closed linear subspace of $H^s(\reals^d)$, and hence also a Hilbert space. Show that the inclusion map $H^s(K)\to H^t(\reals^d)$ is compact if $s>t\geq 0$.
 	\begin{proof}
-		Let $u_n$ be a convergent sequence in $H^s(K)$. By part (a) we know that $u_n$ converges to some $u$ in $H^S(\reals^d)$ (and in $L^2(\reals^d)$). To show that $u$ indeed lives in $H^s(K)$, we need to show that its support is contained in $K$. If $u$'s support \textit{wasn't} contained in $K$ then it would have nonzero integral outside of $K$ just like all of the $u_n$'s. Let's do a computation.
+		Let $u_n$ be a convergent sequence in $H^s(K)$. By part (a) we know that $u_n$ converges to some $u$ in $H^s(\reals^d)$ (and in $L^2(\reals^d)$). To show that $u$ indeed lives in $H^s(K)$, we need to show that its support is contained in $K$. If $u$'s support \textit{wasn't} contained in $K$ then it would have nonzero integral outside of $K$ just like all of the $u_n$'s. Let's do a computation.
 		\begin{align*}
 			\int_{\reals^d\setminus K}|u(x)|^2\ dx &\leq \int_{\reals^d\setminus K}|u(x)-u_n(x)|^2\ dx + \int_{\reals^d\setminus K}|u_n(x)|^2\ dx\\
 			&= \int_{\reals^d\setminus K}|u(x) - u_n(x)|^2\ dx.
 		\end{align*}
 		Taking the limit on both sides and using the fact that $u_n$ converges to $u$ in $L^2$ shows that $u$ isn't supported outside of $K$, so $u$ lives in $H^s(K)$ and the space is closed.\\
 
-		Now to show that the inclusion $H^s(K)\to H^t(\reals^d)$ is compact for $s>t\geq 0$. To this end, let $u_j\in H^s(K)$ be a bounded sequence. We claim that the $\widehat{u_j}$'s are smooth. To see this, we expand the exponential into its power series.
+		Now to show that the inclusion $H^s(K)\to H^t(\reals^d)$ is compact for $s>t\geq 0$. To this end, let $u_j\in H^s(K)$ be a bounded sequence, say with $\|u_j\|_{H^s(K)}\leq 1$. We claim that the $\widehat{u_j}$'s are smooth. To see this, we expand the exponential into its power series.
 		\begin{align*}
 		\widehat{u_j}(\xi) &= \int_Ku(x)e^{-ix\cdot \xi}\ dx\\
 		&= \int_Ku(x)\left(\sum_{n=0}^\infty \frac{(-ix\cdot \xi)^n}{n!}\right)dx\\
 		&= \sum_{n=0}^\infty \int_Ku(x)\frac{(-ix\cdot \xi)^n}{n!}\ dx.
 		\end{align*}
-		The interchange of summation and integration is justified since $K$ is compact and the power series of the exponential converges uniformly on compact sets. The $x\cdot \xi$ in the integrand can be expanded to show that the above sum is a series of polynomials 
+		The interchange of summation and integration is justified since $K$ is compact and the power series of the exponential converges uniformly on compact sets. The $x\cdot \xi$ in the integrand can be expanded to show that the above sum is a series of polynomials. The theory of power series then shows that since the Fourier transform is defined everywhere and is given by this power series, it is smooth.\\
+
+		Our plan is to apply the Arzela-Ascoli theorem to the sequence $\widehat{u_j}$. Let's show that this sequence is uniformly bounded. We use Parseval's theorem and the fact that the $u_j$'s are compactly supported.
+		\begin{align*}
+			|\widehat{u_j}(\xi)| &= \left|\int_{\reals^d}u_j(x)e^{-ix\cdot \xi}\ dx\right|\\
+			&= \left|\int_Ku_j(x)e^{-ix\cdot \xi}\ dx\right|\\
+			&\leq \|u_j\|_{L^2(K)}\cdot \|e^{-ix\cdot \xi}\|_{L^2(K)}\\
+			&= C_K\|\widehat{u_j}\|_{L^2(\reals^d)}\\
+			&\leq C_K\|u_j\|_{H^s(K)}.
+		\end{align*}
+		Since $\|u_j\|_{H^s(K)}\leq 1$, the Fourier transforms are uniformly bounded. The same argument shows that the partial derivatives of the $\widehat{u_j}$'s are uniformly bounded, which means that the $\widehat{u_j}$'s are Lipschitz continuous with the same Lipschitz constant. Consequently, the $\widehat{u_j}$'s are equicontinuous on compact subsets of $\reals^d$.\\
+
+		By the Arzela-Ascoli theorem, $\widehat{u_j}$ has a uniformly convergent subsequence on every compact subset of $\reals^d$. Let $F_k$ be the closed ball in $\reals^d$ with radius $k$. We get a uniformly convergent subsequence on $F_1$ and from this we can extract a further subsequence that converges uniformly on $F_2$, and so on. Taking the diagonal entries from these subsequences gives a subsequence, $\widehat{u_{j_k}}$, that converges \textit{pointwise} on $\reals^d$.\\
+
+		Finally, we'll show that the corresponding subsequence $u_{j_k}$ converges in $H^t(\reals^d)$.
 	\end{proof}
 \end{enumerate}
+
+\noindent\textbf{Problem 2. }Let $B_1$ and $B_2$ be Banach spaces and let $T\in \mcal{L}(B_1, B_2)$. Prove that if $T$ is compact then $\|Tu_n\|_{B_2}\to 0$ for every sequence $u_n\in B_1$ such that $u_n\to 0$ in the weak topology $\sigma(B_1, B_1^*)$. prove the converse when $B_1$ is reflexive and $B_1^*$ is separable.
+\begin{proof}
+	Our plan is to show that any subsequence of $Tu_n$ has a further subsequence converging to zero. To this end, let $Tu_{n_j}$ be a subsequence of $Tu_n$. Since $u_n \rightharpoonup 0$, we also have that $u_{n_j}\weak 0$. By the uniform boundedness principle, $u_{n_j}$ is strongly bounded. Since $T$ is compact, $Tu_{n_j}$ has a strongly convergent subsequence, $Tu_{n_{j_k}}$. This strongly convergent subsequence is also weakly convergent and we can compute its limit. For any continuous linear functional $\eta \in B_2^*$ we have by the weak convergence of $u_n$ to zero
+	\[
+	\langle Tu_{n_{j_k}}, \eta\rangle_2 = \langle u_{n_{j_k}}, T^*\eta\rangle_1 \to 0.
+	\]
+	So $Tu_{n_{j_k}}\weak 0$. Since $Tu_{n_{j_k}}$ converges weakly \textit{and} strongly, the limits must be the same. We conclude that $Tu_{n_{j_k}} \to 0$ strongly. Thus, any subsequence of $Tu_n$ contains a further subsequence strongly converging to zero, so $Tu_n \to 0$.\\
+
+	\noindent Conversely suppose that $B_1$ is reflexive, $B_1^*$ is separable, and that for every sequence $u_n\in B_1$ with $u_n\weak 0$ we also have that $Tu_n\to 0$.
+\end{proof}
 
 
 \end{document}
