@@ -33,6 +33,7 @@
 
 \newcommand{\integers}{\mathbb{Z}}
 
+
 \begin{document}
 \begin{center}
 {\bf \Large Braid Group Cryptography - Liam Hardiman}
@@ -53,10 +54,55 @@ A \textbf{finitely presented group} is specified by the following data.
 \indent Equivalently, $G$ is a quotient of the free group on the generators modulo the normal closure of the relators. 
 
 \subsection*{The Word Problem}
-The \textbf{word problem} is the decision problem that asks whether two words $u$ and $v$ are equivalent in $G$. In some finitely presented groups this is straight up \textbf{undecidable} -- it is provably impossible to give an algorithm that always outputs a correct answer.
+The \textbf{word problem} is the decision problem that asks whether two words $u$ and $v$ are equivalent in $G$. In some finitely presented groups this is \textbf{undecidable} -- it is provably impossible to give an algorithm that always outputs a correct answer\footnote{Novikov, P. S. (1955), "On the algorithmic unsolvability of the word problem in group theory", Proceedings of the Steklov Institute of Mathematics (in Russian)}.
 
 \subsection*{The Conjugacy Problem}
-The \textbf{conjugacy problem} is the decision problem that asks whether two words $u$ and $v$ are \textbf{conjugate} in $G$. In other words, it asks whether there exists a word $w$ such that $u = wvw^{-1}$. 
+The \textbf{conjugacy search problem} asks, given two conjugate words $u$ and $v$ in $G$, for a word $w$ such that $u = w^{-1}vw = v^w$. Like the word problem, this is undecidable in some finitely presented groups.
+
+\subsection*{The Braid Group}
+Symbolically, the braid group on $n$ strands has the following presentation
+\[
+B_n = \langle \sigma_1, \sigma_2, \ldots, \sigma_{n-1}\ |\  \sigma_i\sigma_j\sigma_i = \sigma_j\sigma_i\sigma_j\text{ if }|i-j| = 1,\ \sigma_i\sigma_j = \sigma_j\sigma_i\text{ if }|i-j|>1\rangle.
+\]
+Visually, imagine two sets of $n$ items arranged in vertical lines on either side of the page. Attach one end of a string to each item on the left side of the page. To each item on the right side attach the other end of one string. This connection is a \textbf{braid}. The strings might cross over or under one another any number of times and we say each such configuration gives a \textit{different} braid.\\
+\indent The generator $\sigma_i$ represents the braid formed by crossing strand $i$ under strand $i+1$ and leaving the other strings fixed.
+\begin{figure}[h]
+\centering
+	\includegraphics[scale=.61]{composition.PNG}
+\caption{Composing two braids in $B_4$}
+\end{figure}\pagebreak
+
+\indent Two connections that can be made to look the same by tightening the strings are considered the \textit{same} braid. Composing two braids consists of drawing them next to one another, gluing the points in the middle, and connecting the strands.\\
+
+
+\noindent \textbf{Theorem\footnote{Ko, K., Lee, S., Cheon, J., Han, J., Kang, J., Park, C.. New Public-Key Cryptosystem Using Braid Groups. CRYPTO 2000, 166-184. Springer Lecture Notes in Computer Science 1880 (2000).}: }Every braid, $w$, in $B_n$ has a unique representation called the left-canonical form,
+\[
+w = \Delta^uA_1A_2\cdots A_p,\quad \text{for some }u\in \integers
+\]
+where $\Delta$ is a particular braid, the fundamental braid, and the $A_i$'s are braids of a particular form that come from a \textit{finite} subset of $B_n$. Moreover, if $w$ is given as a word of length $\ell$ in the generators $\sigma_1, \sigma_2, \ldots, \sigma_{n-1}$, then this canonical form is computable in time $O(\ell^2n\log n)$. In particular, the word problem is easy in $B_n$.
+
+\subsection*{Diffie-Hellman with Braids\footnote{Anshel, I., Anshel, M., Goldfeld, D.}}
+\begin{enumerate}
+	\item Alice and Bob publicly agree on subgroups of $B_n$,  $A = \langle a_1, \ldots, a_k\rangle$ and $B = \langle b_1, \ldots b_m\rangle$.
+	\item Alice picks a secret word $x$ in $a_1, \ldots, a_k$, $x = x(a_1, \ldots, a_k)$. Bob picks a secret word $y$ in $b_1, \ldots, b_m$, $y = y(b_1, \ldots, b_m)$.
+	\item Alice sends $b_1^x, \ldots, b_m^x$ to Bob and Bob sends $a_1^y, \ldots, a_k^y$ to Alice.
+	\item Alice computes $x(a_1^y, \ldots, a_k^y) = x^y = y^{-1}xy$. Bob computes $y(b_1^x, \ldots, b_m^x) = y^x = x^{-1}yx$.
+	\item Alice multiplies on the left by $x^{-1}$, obtaining $x^{-1}y^{-1}xy$. Bob multiplies on the left by $y^{-1}$ and inverts, obtaining $(y^{-1}x^{-1}yx)^{-1} = x^{-1}y^{-1}xy$. The shared secret is the commutator $[x,y] = x^{-1}y^{-1}xy$.
+\end{enumerate}
+
+\subsection*{Security\footnote{Shpilrain, V. \& Ushakov, A. ``The Conjugacy Search Problem in Public Key Cryptography: Unnecessary and Insufficient.'' In: Applicable Algebra in Engineering, Communication and Computing (2006) 17:285}}
+An eavesdropper knows $a_1, \ldots, a_k, b_1, \ldots, b_m$ and $a_1^y, \ldots, a_k^y, b_1^x, \ldots, b_m^x$. It might appear that if they can solve the simultaneous conjugacy search problem then they can obtain the shared secret. But that might not be enough.
+\begin{itemize}
+	\item If $a_i^{y'} = a_i^y$ for all $i$, it need not be the case that $y' = y$, just that $y' = c_ay$ for some $c_a$ in the centralizer of $A$. Similarly, solving the simultaneous conjugacy problem in the $b_j^x$'s gives $x' = c_bx$ for some $c_b$ centralizing $B$.
+	\item The commutator of $x'$ and $y'$ is
+	\[
+	[x',y'] = (x')^{-1}(y')^{-1}x'y' = x^{-1}c_b^{-1}y^{-1}c_a^{-1}c_bxc_ay,
+	\]
+	which need not equal $[x,y]$.
+	\item However, if $x'$ is in $A$ and $y'$ is in $B$, then $c_b = x^{-1}x$ and $c_a = y^{-1}y'$ implies that $c_b \in A$ and $c_a\in B$. Consequently, $c_b$ commutes with $y$ and $c_a$ and $c_a$ commutes with $x$ and $c_b$, so we have the equality $[x',y'] = [x,y]$.
+\end{itemize}
+So evidently, the eavesdropper needs to not only solve the simultaneous conjugacy problem, but they need these conjugating elements to be words in $A$ and $B$.
+
 
 
 \end{document}
