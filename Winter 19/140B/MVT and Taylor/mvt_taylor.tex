@@ -1,0 +1,82 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{center}
+{\bf \Large Mean Value Theorem and Taylor's Theorem}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\begin{enumerate}
+	\item Let $f$ be differentiable on an open interval $I$ and suppose that $f'(x)$ is nonzero for all $x$ in $I$. Show that $f$ is one-to-one on $I$.
+	\vfill
+	\item Let $f$ be differentiable on an open interval $I$ and suppose that $|f'(x)| <M$ for some positive number $M$. Prove that $f$ is Lipschitz on $I$ with Lipschitz constant $M$, i.e.
+	$$|f(x)-f(y)|\leq M|x-y|\ \text{for all } x,y\in I.$$
+	\vfill
+	\item Suppose that $f$ is differentiable on an open interval $I$ and suppose that $f'(x) \neq 1$ for all $x\in I$. Prove that $f$ has at most one fixed point on $I$. A fixed point is a point $y$ such that $f(y) = y$.
+	\vfill
+	\item Suppose $f$ is differentiable on an open interval $I$ and suppose that $[a,b]$ is a closed interval contained in $I$ with $f'(a)<0<f'(b)$.
+	\begin{enumerate}
+		\item Show that there exist points $c$ and $d$ with $a<c<d<b$ such that $f(c)<f(a)$ and $f(d)<f(b)$.
+		\vfill
+		\item Show that $f$ attains its minimum value on $[a,b]$ at an interior point (i.e. not at $a$ or $b$).
+		\vfill
+		\item Conclude that $f'(x_0) = 0$ for some $x_0$ in $[a,b]$. Why can't we just use the intermediate value theorem?
+		\vfill
+		\item Deduce Darboux's theorem: if $f'(a)<L<f'(b)$ then $f'(x_0) = L$ for some $x_0$ in $(a,b)$.
+		\vfill
+		\null
+	\end{enumerate}
+	\pagebreak
+	\item Find the Taylor series representations for each of the following functions. For precisely what values of $x$ is each series representation valid?
+	\begin{enumerate}
+		\item $x\cos x^2$
+		\vfill
+		\item $\frac{x}{(1+4x^2)^2}$
+		\vfill
+		\item $\log(1+x^2)$
+		\vfill
+	\end{enumerate}
+	\item Find an example or explain why no such example exists.
+	\begin{enumerate}
+		\item An infinitely differentiable function $g(x)$ on all of $\mathbb{R}$ with a Taylor series that converges to $g(x)$ only for $x\in (-1, 1)$.
+		\vfill
+		\item An infinitely differentiable function $h(x)$ with the same Taylor series as that of $\sin x$ but such that $h(x)\neq \sin x$ for all $x\neq 0$.
+		\vfill
+		\item An infinitely differentiable function $f(x)$ on $\mathbb{R}$ with a Taylor series that converges to $f(x)$ if and only if $x\leq 0$.
+		\vfill
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}
