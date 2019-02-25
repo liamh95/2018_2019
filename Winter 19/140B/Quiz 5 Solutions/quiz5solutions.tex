@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{flushleft} 
+%%Paragraphs will not be indented in this 
+%%environment
+\centerline{\LARGE{Quiz 5}} 
+\vspace{5 mm}
+{Student ID Number:}\hfill  
+%%\hfill forces following text 
+%%to right margin
+{Name \rule {2 in}{0.01in}}\\
+Math 140B, 5PM
+\\
+%%gives a line of length 2in and 
+%%thickness 0.01in
+{Please justify all your answers}\hfill {February 21, 2019}
+\\
+{Please also write your full name on the back} 
+
+\medskip
+\end{flushleft}
+
+\begin{enumerate}
+	\item Suppose that $f$ is differentiable on an open interval $I$ containing the point $b$ and that $f'(b)<0$. Show there are numbers $a$ and $c$ with $a<b<c$ such that $f(a)>f(b)>f(c)$.
+	\begin{proof}
+		Note that $f'(b)<0$ does \textit{not} imply that $f$ is decreasing in a neighborhood of $b$. If $f$ were \textit{continuously} differentiable then this would be true. You saw an example in lecture of a differentiable, but not continuously differentiable function with positive derivative at a point that isn't increasing on any neighborhood of that point (we'll review it here too after these quiz questions). Let's use the definition of the derivative. We have that
+		\[
+		\lim_{x\to b}\frac{f(x)-f(b)}{x-b} = f'(b)<0.
+		\]
+		Consequently, for all $x$ sufficiently close to $b$ we have that $\frac{f(x)-f(b)}{x-b}<0$. Let $a<b$ be close enough to $b$ so that $\frac{f(a)-f(b)}{a-b}<0$. Since $a<b$, multiplying through by $a-b$ gives $f(a)-f(b)>0$, so $f(a)>f(b)$. Similarly, let $c>b$ be close enough to $b$ so that $\frac{f(c)-f(a)}{c-a}<0$. Since $c>a$, multiplying through by $c-a$ gives $f(c)-f(a)<0$, so $f(c)<f(a)$. We've then found our $a<b<c$ with $f(a)>f(b)>f(c)$.
+	\end{proof}
+	\vfill
+	\item Find the Taylor polynomial of degree 3 centered at zero, $P_3(x)$, of $f(x) = \sinh x = \frac{1}{2}(e^{x}-e^{-x})$. Find an upper bound for the remainder, $|f(x)-P_3(x)|$, at $x = 1$.
+	\begin{proof}
+		The third degree Taylor polynomial is given by
+		\[
+		P_3(x) = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \frac{f^{(3)}(0)}{3!}x^3.
+		\]
+		Let's compute the derivatives.
+		\begin{gather*}
+		f'(x) = \frac{1}{2}(e^x + e^{-x}) = \cosh x,\quad f''(x) = \frac{1}{2}(e^x-e^{-x}) = \sinh x,\\f^{(3)}(x)= \frac{1}{2}(e^x + e^{-x}) = \cosh x\\
+		f'(0) = \cosh 0 = 1,\quad f''(0) = \sinh 0 = 0,\quad f^{(3)}(0) = \cosh 0 = 1
+		\end{gather*}
+		So our polynomial is $P_3(x) = x + \frac{1}{3!}x^3$. Let $r>1$. By Taylor's theorem we have
+		\[
+		|f(1) - P_3(1)| = \left|\frac{f^{(4)}(y)}{4!}1^4\right|
+		\]
+		for some $y\in (-r, r)$. Now $f^{(4)}(x) = \sinh x$. On $(-r, r)$ we have
+		\[
+		\left|\frac{f^{(4)}(y)}{4!}1^4\right| = \frac{1}{4!}\cdot \frac{|e^y-e^{-y}|}{2} \leq \frac{1}{4!}e^r.
+		\]
+		Taking the limit $r\to 1^+$ shows that $|f(1)-P_3(1)| \leq \frac{1}{4!}e$.
+	\end{proof}
+	\vfill\null\pagebreak
+\end{enumerate}
+
+\noindent\textbf{Weird But Important Example: }Define the function $g$ by
+\[
+g(x) = \begin{cases}
+	-(x + 2x^2\sin \frac{1}{x}),&\text{if }x\neq 0\\
+	0,&\text{if }x = 0
+\end{cases}.
+\]
+We have by standard differentiation rules that
+\[
+g'(x) = -(1 + 4x\sin\frac{1}{x} - 2\cos\frac{1}{x})
+\]
+for $x \neq 0$. This thing is undefined at $x=0$, so to compute the derivative there we take the limit
+\[
+\lim_{x\to 0}\frac{g(x)-g(0)}{x-0} = \lim_{x\to 0}\frac{g(x)}{x} = \lim_{x\to 0}-(1+2x\sin\frac{1}{x}) = -1.
+\]
+So $g$ is differentiable everywhere and the derivative is
+\[
+g'(x) = \begin{cases}
+	-(1+4x\sin\frac{1}{x}-2\cos\frac{1}{x}),&\text{if }x\neq 0\\
+	-1,&\text{if }x=0
+\end{cases}.
+\]
+Looks innocent enough, but the derivative isn't continuous at zero. The $4x\sin\frac{1}{x}$ part behaves fine near zero, but $-2\cos\frac{1}{x}$ oscillates wildly and $\lim_{x\to 0}-2\cos \frac{1}{x}$ doesn't exist. This bad behavior of the derivative will show that $g$ isn't decreasing in any neighborhood of zero even though $g'(0)<0$.\\
+
+\noindent Consider the sequence $x_n = \frac{1}{2\pi n}$ which decreases monotonically to zero. We have that $g'(x_n) = 1$. By the first quiz problem, for any $n>1$ we can find $(a_n, b_n)\subseteq (x_{n+1}, x_{n-1})$ with $a_n<x_n<b_n$ and $g(a_n)<g(x_n)<g(b_n)$. Since we can find points $x_n$ arbitrarily close to zero, we conclude that $g$ isn't decreasing on any neighborhood of zero.
+
+%\vfill will divide page evenly
+%use \begin{enumerate} environment for ordered lists
+\end{document}* 
