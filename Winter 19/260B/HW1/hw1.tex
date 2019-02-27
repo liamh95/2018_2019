@@ -155,9 +155,91 @@
 
 	\item Show that the operator norm of $T$ does not exceed the Hilbert-Schmidt norm.
 	\begin{proof}
-		
+		Suppose $x\in H$ has norm 1. Write $x = \sum_j \langle x, e_j\rangle e_j$. By H\"older's inequality
+		\begin{align*}
+			\|Tx\|^2 = \left\|\sum_j\langle x, e_j\rangle Te_j\right\|^2 \leq \sum_j|\langle x, e_j\rangle|^2\cdot \sum_j\|Te_j\|^2 = \sum_j\|Te_j\|^2.
+		\end{align*}
+		The right-most expression is the Hilbert-Schmidt norm. Since this holds for all unit $x$, we have that the operator norm is bounded by the Hilbert-Schmidt norm.
+	\end{proof}
+
+	\item Show that if $T$ is of Hilbert-Schmidt class, then so is $T^*$ and $\|T\|_{HS} = \|T^*\|_{HS}$.
+	\begin{proof}
+		We proved this when proving part (a).
+	\end{proof}
+
+	\item Show that every Hilbert-Schmidt operator is compact.
+	\begin{proof}
+		Our plan is to write the Hilbert-Schmidt operator, $T$, as a limit of finite rank (and therefore compact) operators. Fix an orthonormal basis $e_j$. Define $T_N$ by
+		\begin{equation}\label{approx}
+		T_Ne_j = \begin{cases}
+			Te_j, &\text{if }1\leq j\leq N\\
+			0,&\text{else}
+		\end{cases}.
+		\end{equation}
+		Let's show that $\|T_N-T\|\to 0$ in the operator norm. For any $x\in H$ we have
+		\begin{align*}
+			\|(T_N - T)x\|^2 &= \left\|(T_N-T)\sum_j\langle x, e_j\rangle e_j\right\|^2\\
+			&= \left\|\sum_{j=N+1}^\infty\langle x, e_j\rangle Te_j\right\|^2\\
+			&\leq \sum_{j=N+1}^\infty |\langle x, e_j\rangle|^2\cdot \sum_{j=N+1}^\infty \|Te_j\|^2\\
+			&\leq \|x\|^2\cdot \sum_{j=N+1}^\infty \|Te_j\|^2
+		\end{align*}
+		Since $T$ is Hilbert-Schmidt, the last sum here is the tail of a convergent series, so it vanishes as $N\to \infty$. Since the set of compact operators is closed, we have that $T$ is compact.
+	\end{proof}
+
+	\item Show that if $T$ is a Hilbert-Schmidt operator and $S\in \mcal{L}(H, H)$ then $ST$ is Hilbert-Schmidt and
+	\[
+	\|ST\|_{HS}\leq \|S\|\cdot \|T\|_{HS}.
+	\]
+	\begin{proof}
+		A short computation.
+		\begin{align*}
+			\|ST\|_{HS}^2 = \sum_j\|STe_j\|^2 \leq \|S\|^2\cdot \sum_j\|Te_j\|^2 = \|S\|^2\cdot \|T\|_{HS}^2.
+		\end{align*}
+	\end{proof}
+
+	\item Let $K\in L^2(\reals^n\times \reals^n)$. Prove that if $f\in L^2(\reals^n)$, then
+	\[
+	\mcal{K}f(x) = \int K(x,y)f(y)\ dy
+	\]
+	exists for almost every $x$, and that $\mcal{K}$ is a Hilbert-Schmidt operator from $L^2(\reals^n)$ to itself, with Hilbert-Schmidt norm equal to the norm of $K$ in $L^2(\reals^n\times \reals^n)$. Prove that every Hilbert-Schmidt operator on $L^2(\reals^n)$ is of this form.
+	\begin{proof}
+		That $\mcal{K}f$ exists a.e. and is in $L^2(\reals^n)$ follows from Fubini-Tonelli: integrating $|K(x,y)|$ with respect to $y$ gives an integrable function in $x$.
+		\begin{align*}
+			\|\mcal{K}f\|_{L^2}^2 &= \int\left|\int K(x,y)f(y)\ dy\right|^2dx\\
+			&\leq \|f\|_{L^2}^2\cdot \|K(x,y)\|_{L^2}^2.
+		\end{align*}
+		Let $e_j$ be an orthonormal basis for $L^2(\reals^n)$. The theory of tensor products shows that $\overline{e_j(x)}e_k(y)$ is an orthonormal basis for $L^2(\reals^n\times \reals^n)$, so by Parseval,
+		\begin{align*}
+			\|\mcal{K}\|_{HS}^2 &= \sum_j\|\mcal{K}e_j\|_{L^2}^2\\
+			&= \sum_j\sum_k|\langle \mcal{K}e_j, e_k\rangle|^2\\
+			&= \sum_{j,k}\left|\int\int K(x,y)e_j(y)\ dy\ \overline{e_k(x)}\ dx\right|^2\\
+			&= \sum_{j,k}\left|\int\int K(x,y)e_j(y)\overline{e_k(x)}\ dydx\right|^2\\
+			&= \sum_{j,k}\langle K, \overline{e_j}e_k\rangle\\
+			&= \|K\|_{L^2}.
+		\end{align*}
+		Let $T$ be a Hilbert-Schmidt operator on $L^2$. The idea is to approximate $T$ by operators of the desired form and then show that the limit also has the desired form, much in the same way we proved part (d). Fix an orthonormal basis $e_j$ for $L^2(\reals^n)$ and define $T_N$ by (\ref{approx}) on the previous page. For any $f\in L^2(\reals^n)$ we have
+		\begin{align*}
+			(T_Nf)(x) &= \sum_{j=1}^N\langle f, e_j\rangle Te_j
+			= \sum_{j=1}^N\left[\int f(y)\overline{e_j}(y)\ dy\right](Te_j)(x)\\
+			&= \int\left[\sum_{j=1}^N(Te_j)(x)\overline{e_j}(y)\right]f(y)\ dy.
+		\end{align*}
+		This motivates us to define $K_N(x,y) := \sum_{j=1}^N(Te_j)(x)\overline{e_j}(y)$. That $T_N\to T$ in the operator norm follows from our discussion of part (d). It remains to show that $T_N$ converges to an operator of the desired form.   
 	\end{proof}
 \end{enumerate}
+
+\noindent\textbf{Problem 4. }Let $K$ be a compact self-adjoint operator on a Hilbert space $H$, and assume that $K\geq 0$. Let $\lambda_1 \geq \lambda_2\geq \ldots$ be the sequence of non-zero eigenvalues of $K$, repeated according to their multiplicity and arranged in a decreasing order. Prove the Courant-Fischer minimax formula
+\[
+\lambda_k = \min_{codim\ k = K-1}\max_{u\in V, \|u\|\leq 1}(Ku, u).
+\]
+\begin{proof}
+	By the spectral theorem for compact self-adjoint operators, we have an orthonormal basis of eigenvectors, $e_j$, of $K$. Let $E_k$ be the span of $e_1, \ldots, e_k$. Then $E_k^\perp$ is spanned by $e_{k+1}, \ldots$ and
+	\begin{align*}
+	\max_{u\in E_k^\perp, \|u\|\leq 1}(Ku,u) &= \max_{u\in E_k^\perp, \|u\|\leq 1}\sum_{j=k+1}^\infty \lambda_j|(u, e_j)|^2\\
+	&\leq\max_{u\in E_k^\perp, \|u\|\leq 1} \lambda_{k+1}\sum_{j = k+1}^\infty |(u, e_j)|^2\\
+	&\leq \lambda_{k+1}.
+	\end{align*}
+	Now suppose that $V$ has codimension $k-1$. We can split $H$ as $H = V\oplus V^\perp = E_k\oplus E_k^\perp$. Since $E_k$ has dimension $k$ and $V^\perp$ has dimension $k-1$, we must have that $E_k$ and $V$ overlap. 
+\end{proof}
 
 
 \end{document}

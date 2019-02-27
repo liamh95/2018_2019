@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{flushleft} 
+%%Paragraphs will not be indented in this 
+%%environment
+\centerline{\LARGE{Quiz 6}} 
+\vspace{5 mm}
+{Student ID Number:}\hfill  
+%%\hfill forces following text 
+%%to right margin
+{Name \rule {2 in}{0.01in}}\\
+Math 140B, 5PM
+\\
+%%gives a line of length 2in and 
+%%thickness 0.01in
+{Please justify all your answers}\hfill {February 28, 2019}
+\\
+{Please also write your full name on the back} 
+
+\medskip
+\end{flushleft}
+
+
+\begin{enumerate}
+	\item Let $f$ be bounded on $[a,b]$ and suppose there exists a partition $P$ with $L(f, P) = U(f, P)$. Describe $f$. Is it integrable? If so, what is the value of $\int_a^bf$?
+	\vfill
+	\item Show that if $f$ is bounded on $[a,b]$ and $|f(x)-f(y)|\leq M|x-y|$ for some constant $M$ and all $x,y\in [a,b]$ then for any partition $P$ of $[a,b]$, we have
+	$$U(f, P) - L(f,P) \leq M(b-a)\cdot \text{mesh}(P).$$
+	Recall that the mesh of the partition $P = \{a=x_0<x_1<\ldots < x_n = b\}$ is defined to be $\max_{1\leq i\leq n}(x_i - x_{i-1})$.
+	\vfill
+\end{enumerate}
+
+
+%\vfill will divide page evenly
+%use \begin{enumerate} environment for ordered lists
+\end{document}
