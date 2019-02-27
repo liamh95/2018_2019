@@ -132,8 +132,32 @@
 	\]
 	So $Tu_{n_{j_k}}\weak 0$. Since $Tu_{n_{j_k}}$ converges weakly \textit{and} strongly, the limits must be the same. We conclude that $Tu_{n_{j_k}} \to 0$ strongly. Thus, any subsequence of $Tu_n$ contains a further subsequence strongly converging to zero, so $Tu_n \to 0$.\\
 
-	\noindent Conversely suppose that $B_1$ is reflexive, $B_1^*$ is separable, and that for every sequence $u_n\in B_1$ with $u_n\weak 0$ we also have that $Tu_n\to 0$.
+	\noindent Conversely suppose that $B_1$ is reflexive, $B_1^*$ is separable, and that for every sequence $u_n\in B_1$ with $u_n\weak 0$ we also have that $Tu_n\to 0$ for some bounded operator $T$. Since $B_1^*$ is separable, we have by Banach-Alaoglu that the unit ball in $\sigma(B_1^{**}, B_1^*)$ is compactly metrizable. But $B_1$ is reflexive, so $B_1^{**}\cong B_1$ and the unit ball in $B_1$ is weakly compact.\\
+
+	\noindent Let $\{u_n\}$ be a sequence in $B_1$ with $\|u_n\|\leq 1$ for all $n$. Sequential compactness is equivalent to compactness in metric spaces, and since the unit ball in $B_1$ is compactly metrizable by the above paragraph, $u_n$ has a subsequence, $u_{n_k}$, that converges weakly to some $u$, i.e. $(u_{n_k} - u)\weak 0$. By hypothesis we then have that $T(u_{n_k} - u) \to 0$, so $Tu_{n_k}$ converges strongly to $Tu$. We have then shown that $Tu_n$ has a strongly convergent subsequence, so $T$ is compact.
 \end{proof}
+
+\noindent\textbf{Problem 3. }Let $H$ be a complex separable Hilbert space. An operator $T\in \mcal{L}(H, H)$ is called a Hilbert-Schmidt operator if for some orthonormal basis $\{e_j\}$ of $H$ we have
+\[
+\sum \|Te_j\|^2<\infty.
+\]
+\begin{enumerate}[(a)]
+	\item Show that if $T$ satisfies the above inequality for some orthonormal basis then it satisfies it for every orthonormal basis and the sum is independent of the choice of basis. Define $\|T\|_{HS}$ to be the square root of this sum.
+	\begin{proof}
+		Let $f_i$ be another orthonormal basis. By Parseval's theorem we have
+		\begin{align*}
+			\sum_i \|Tf_i\|^2 &= \sum_i\sum_j|\langle Tf_i, e_j\rangle|^2\\
+			&= \sum_i\sum_j|\langle T^*e_j, f_i\rangle|^2\\
+			&= \sum_j\|T^*e_j\|^2.
+		\end{align*}
+		Switching the order of summation is justified by Tonelli's theorem as each term is nonnegative. It looks like we can switch between orthonormal bases at the cost of switching from $T$ to its adjoint, $T^*$. But repeating the above calculation with $f_i = e_i$ shows that $\sum \|T^*e_j\|^2 = \sum \|Te_j\|^2$, so we have that the sum is independent of orthonormal basis.
+	\end{proof}
+
+	\item Show that the operator norm of $T$ does not exceed the Hilbert-Schmidt norm.
+	\begin{proof}
+		
+	\end{proof}
+\end{enumerate}
 
 
 \end{document}
