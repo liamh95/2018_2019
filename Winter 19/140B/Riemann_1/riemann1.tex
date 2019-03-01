@@ -1,0 +1,72 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{center}
+{\bf \Large Riemann Integration 1}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\begin{enumerate}
+	\item Let $f$ be a continuous function on $[a,b]$. Show that $f$ is Riemann integrable on $[a,b]$.
+	\vfill
+	\item Let $f(x) = \sin \frac{1}{x}$ if $x\neq 0$ and set $f(0) = 0$. Show that $f$ is Riemann integrable on $[0, 1]$.
+	\vfill
+	\item (Hard) Let $g(x) = \sin(\csc(1/x))$ where $\csc \frac{1}{x}$ is defined and zero otherwise. Show that $g$ is Riemann integrable on $[0,1]$. Hint: mimic the previous problem near every point where $\csc \frac{1}{x}$ is undefined.
+	\vfill
+	\item Suppose $f$ is integrable on $[a,b]$ and $c\in \mathbb{R}$. Define $g$ on $[a+c, b+c]$ by $g(x) = f(x-c)$. Show that $g$ is integrable and $\int_{a+c}^{b+c}g(x) = \int_a^b f(x)$. This is called the \textit{translation invariance} of the integral.
+	\vfill
+	\item If $f$ is Riemann integrable on $[a,b]$, show that for any real number $c$, $F(x) = c+\int_a^xf(t)\ dt$ is Lipschitz, i.e. there exists some constant $M$ such that $|F(x)-F(y)|\leq M|x-y|$ for all $x,y$ in $[a,b]$.
+	\vfill
+	\item Thomae's function (sometimes called the raindrop function) is defined by
+	\[
+	T(x) = \begin{cases}
+		1,&\text{if }x=0\\
+		1/n,&\text{if }x=m/n \in \mathbb{Q}\setminus \{0\}\text{ is in lowest terms with }n>0\\
+		0,&\text{if }x\notin \mathbb{Q}
+	\end{cases}.
+	\]
+	\begin{enumerate}
+		\item Show that $T$ has countably many discontinuities in $[0,1]$.
+		\vfill
+		\item Show that $L(T, P) = 0$ for any partition $P$ of $[0,1]$.
+		\vfill
+		\item Let $\epsilon>0$ and consider the set of points $D_{\epsilon/2} = \{x\in [0,1]: T(x)\geq \epsilon>2\}$. How big is $D_{\epsilon/2}$?
+		\vfill
+		\item Explain how to construct a partition $P_\epsilon$ of $[0,1]$ so that $U(T, P_\epsilon)<\epsilon$. Conclude that $T$ is Riemann integrable on $[0,1]$ and compute the integral.
+		\vfill
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}

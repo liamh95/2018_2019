@@ -229,16 +229,38 @@
 
 \noindent\textbf{Problem 4. }Let $K$ be a compact self-adjoint operator on a Hilbert space $H$, and assume that $K\geq 0$. Let $\lambda_1 \geq \lambda_2\geq \ldots$ be the sequence of non-zero eigenvalues of $K$, repeated according to their multiplicity and arranged in a decreasing order. Prove the Courant-Fischer minimax formula
 \[
-\lambda_k = \min_{codim\ k = K-1}\max_{u\in V, \|u\|\leq 1}(Ku, u).
+\lambda_k = \min_{codim\ V= k-1}\max_{u\in V, \|u\|\leq 1}(Ku, u).
 \]
 \begin{proof}
-	By the spectral theorem for compact self-adjoint operators, we have an orthonormal basis of eigenvectors, $e_j$, of $K$. Let $E_k$ be the span of $e_1, \ldots, e_k$. Then $E_k^\perp$ is spanned by $e_{k+1}, \ldots$ and
+	By the spectral theorem for compact self-adjoint operators, we have an orthonormal basis of eigenvectors, $e_j$, of $K$. Let $E_k$ be the span of $e_1, \ldots, e_k$. Then $E_k$
 	\begin{align*}
-	\max_{u\in E_k^\perp, \|u\|\leq 1}(Ku,u) &= \max_{u\in E_k^\perp, \|u\|\leq 1}\sum_{j=k+1}^\infty \lambda_j|(u, e_j)|^2\\
-	&\leq\max_{u\in E_k^\perp, \|u\|\leq 1} \lambda_{k+1}\sum_{j = k+1}^\infty |(u, e_j)|^2\\
-	&\leq \lambda_{k+1}.
+	\sup_{u\in E_k, \|u\|\leq 1}(Ku,u) &= \sup_{u\in E_k, \|u\|\leq 1}\sup_{j=1}^k \lambda_j|(u, e_j)|^2\\
+	&\geq\sup_{u\in E_k, \|u\|\leq 1} \lambda_k \sum_{j =1}^k |(u, e_j)|^2\\
+	&= \lambda_{k+1}.
 	\end{align*}
-	Now suppose that $V$ has codimension $k-1$. We can split $H$ as $H = V\oplus V^\perp = E_k\oplus E_k^\perp$. Since $E_k$ has dimension $k$ and $V^\perp$ has dimension $k-1$, we must have that $E_k$ and $V$ overlap. 
+	This supremum is actually realized by setting $u = e_k$. Now suppose that $V$ has codimension $k-1$. We can split $H$ as $H = V\oplus V^\perp = E_k\oplus E_k^\perp$. Since $E_k$ has dimension $k$ and $V^\perp$ has dimension $k-1$, we must have that $E_k$ and $V$ overlap. Taking the infimum over all such subspaces gives
+	\[
+	\inf_{codim\ V = k-1}\sup_{u\in V, \|u\|\leq 1}(Ku, u) \geq \lambda_k.
+	\]
+	Picking $V = E_{k-1}^\perp$ realizes this lower bound, so we have equality above. 
+\end{proof}
+
+\noindent\textbf{Problem 5. }Let $f\in C(\reals/2\pi \integers)$ be such that $f(\theta_0) = 0$ for some $\theta_0\in \reals/2\pi \integers$. Show that the associated Toeplitz operator, $T_f$ is not Fredholm on the Hardy space $H^2\subseteq L^2(\reals/2\pi\integers)$.
+\begin{proof}
+	Following Nicolas Raymond's approach, we first consider the case where $f$ vanishes in a neighborhood of $\theta_0$. Suppose $f$ is zero on the interval $(\theta_0-r, \theta_0+r)$ for some $r>0$. Finitely many translates of this interval fill up the entirety of the circle, so if we let $M_f$ be the operator that multiplies by $f$ and let $S_r$ be the operator that translates a function forward $r$ units we have that $(S_rM_f)^n = 0$ for some $n$.\\
+
+	\noindent $S_r$ is Fredholm, so if $T_f$ were also Fredholm, then the product $(S_rT_f)^n$ would be as well. This means that $(S_rT_f)^n$ would have an inverse modulo a compact operator, i.e. there would exist some $T: H^2\to H^2$ and a compact $K$ such that
+	\[
+	T(S_rT_f)^n = I_{H^2} + K.
+	\]
+	We claim that $(S_rT_f)^n$ is compact. Once we show this, subtracting $K$ from both sides of the above equation will show that the identity is a compact operator on $H^2$. By Riesz' theorem this is a contradiction because $H^2$ isn't finite dimensional.\\
+
+	\noindent Let $P$ be the projection from $L^2$ onto $H^2$. Then $T_f = PM_f$. We fiddle around with commutators and use the fact that $S_r$ and $P$ commute with one another
+	\begin{align*}
+		(S_rT_f)^n &= (PS_rM_f)^n\\
+		&= P(S_rM_fP)^{n-1}S_rM_f.
+	\end{align*}
+
 \end{proof}
 
 

@@ -1,0 +1,64 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{flushleft} 
+%%Paragraphs will not be indented in this 
+%%environment
+\centerline{\LARGE{Quiz 7}} 
+\vspace{5 mm}
+{Student ID Number:}\hfill  
+%%\hfill forces following text 
+%%to right margin
+{Name \rule {2 in}{0.01in}}\\
+Math 173B, 1 PM
+\\
+%%gives a line of length 2in and 
+%%thickness 0.01in
+{Please justify all your answers}\hfill {February 28, 2019}
+\\
+{Please also write your full name on the back} 
+
+\medskip
+\end{flushleft}
+
+\noindent Here we describe (with an example) a cryptosystem that requires Alice and Bob to exchange several messages.\\
+Bob and Alice fix a publicly known prime $p = 32611$ and all other numbers used are private. Alice takes her message $m = 11111$, chooses a random exponent $a = 3589$, and sends the number $u = m^a\pmod{p} = 15950$ to Bob. Bob chooses a random exponent $b = 4037$ and sends $v = u^b\pmod{p} = 15422$ back to Alice. Alice then computes $a^{-1} \equiv 15619 \pmod{p-1}$ then $w = v^{15619}\equiv 27257\pmod{32611}$ and sends $w = 27257$ to Bob. Finally, Bob computes $b^{-1} \equiv 31883 \pmod{p-1}$ then $w^{31883}\pmod{32611}$ and recovers the value $11111$ of Alice's message.\\
+\begin{enumerate}
+	\item Describe a version of this cryptosystem that uses the elliptic curve discrete log problem. It will start with them agreeing on an elliptic curve $E$ over $\mathbb{F}_p$ for some prime $p$ and some point $P\in E(\mathbb{F}_p)$. Assume that they both know the order of $P$ in $E(\mathbb{F}_p)$.
+	\vfill
+\end{enumerate}
+
+%\vfill will divide page evenly
+%use \begin{enumerate} environment for ordered lists
+\end{document}
