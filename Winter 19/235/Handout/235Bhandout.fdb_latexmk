@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1551318826 "235Bhandout.tex" "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.pdf" "235Bhandout" 1551318827
+["pdflatex"] 1551474087 "235Bhandout.tex" "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.pdf" "235Bhandout" 1551474087
   "/etc/texmf/web2c/texmf.cnf" 1532652117 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.aux" 1551318827 114 51ef3fd569cad071c6505d6354c079e9 ""
+  "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.aux" 1551474087 114 51ef3fd569cad071c6505d6354c079e9 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -83,12 +83,12 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1503343927 31343 93828589fb0cea665e553ee5a17ad2d4 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1532652118 127715 132155e7ee9993e0b74e204ed9b866dc ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1539710921 718488 c5108bf7b701d9d82ac4c24d6741da60 ""
-  "235Bhandout.aux" 1551318827 114 51ef3fd569cad071c6505d6354c079e9 ""
-  "235Bhandout.tex" 1551318826 8405 33507919c2043235dc0ad9778ff6690a ""
+  "235Bhandout.aux" 1551474087 114 51ef3fd569cad071c6505d6354c079e9 ""
+  "235Bhandout.tex" 1551474087 8406 1a68e81df554d3a04415865f87a0140b ""
   "composition.PNG" 1550869187 24140 12a832c6ebc7160eeecf21d449c3da9a ""
   (generated)
-  "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.pdf"
   "235Bhandout.aux"
   "235Bhandout.pdf"
-  "235Bhandout.log"
   "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.log"
+  "235Bhandout.log"
+  "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.pdf"
