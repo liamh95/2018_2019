@@ -1,0 +1,169 @@
+%% Please change the file name by replacing N with the apporpriate number
+%% corresponding to the current homework and XX with your initials.
+%% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
+
+\documentclass{beamer}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amsthm}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\exreals}{\overline{\mathbb{R}}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\mable}{measurable}
+\newcommand{\quats}{\mathbb{H}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\disk}{\mathbb{D}}
+\newcommand{\halfplane}{\mathbb{H}}
+\newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
+\newcommand{\supp}[1]{\text{supp}({#1})}
+\newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\field}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Gal}[1]{\text{Gal}\left({#1}\right)}
+\newcommand{\esssup}{\text{ess sup }}
+\newcommand{\essinf}{\text{ess inf }}
+\newcommand{\affine}{\mathbb{A}}
+
+% \newenvironment{solution}
+% {\begin{proof}[Solution]}
+% {\end{proof}}
+
+% \voffset=-3cm
+% \hoffset=-2.25cm
+% \textheight=24cm
+% \textwidth=17.25cm
+% \addtolength{\jot}{8pt}
+% \linespread{1.3}
+
+\title{Braid Group Cryptography}
+\author{Liam Hardiman}
+
+\usetheme{Frankfurt}
+
+
+\begin{document}
+\maketitle
+
+\begin{frame}
+	\frametitle{Finitely Presented Groups}
+	A finitely presented group $G=\langle S | R\rangle$ is specified by two sets, $S = \{x_i\}_{i\in I}$ and $R = \{r_j\}_{j\in J}$.\pause
+	\begin{itemize}
+		\item $S$ is a set of symbols called \textbf{generators}.\pause
+		\item $R$ is a set of words in $S$ called \textbf{relators}. A \textbf{word} in $S$ is a finite string consisting of symbols in $S$ and the symbols $x_i^{-1}$, where $x_i\in S$. The empty string, $e$, is also a word.\pause
+		\item We form a group by taking all possible words in $S$. The inverse of a word $w$ is formed by writing the symbols in $w$ in reverse order and replacing each $x_j$ appearing in $w$ by $x_j^{-1}$. The group operation is concatenation of words.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Finitely Presented Groups}
+	We form $G$ from $S$ and $R$ by taking all equivalence classes of words in $S$. Two words $v$ and $w$ are equivalent if $v$ can be transformed into $w$ by a finite sequence of these operations.\pause
+	\begin{enumerate}
+		\item Replacing $x_ix_i^{-1}$ or $x_i^{-1}x_i$ with $e$\pause
+		\item Inserting $x_ix_i^{-1}$ or $x_i^{-1}x_i$ at any position\pause
+		\item Replacing $r_j$ with $e$\pause
+		\item Inserting $r_j$ at any position\pause
+	\end{enumerate}
+	Equivalently, $G$ is the quotient of the free group on $S$ by the normal closure of $R$. We say $G$ is \textbf{finitely presented} if $S$ and $R$ are finite sets.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Finitely Presented Groups}
+	Some examples of finitely presented groups include...\pause
+	\begin{itemize}
+		\item Finite groups\pause
+		\item The free group $F_n$ on $n$ generators\pause
+		\item Finitely generated abelian groups\pause
+		\item The braid group $B_n$, $n\geq 0$.\pause
+	\end{itemize}
+	Nonexamples include\pause
+	\begin{itemize}
+		\item Any group with infinitely many generators, e.g. $\integers^{\oplus \integers}$\pause
+		\item There are finitely generated groups that are not finitely related, e.g. the wreath product of $\integers$ with itself.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Word Problem}
+	Say we have a finitely presented group $G$.\pause
+	\begin{block}{The word problem in $G$}
+		\begin{quote}
+		\begin{itemize}
+			\item[input: ]two words $v, w$ in the generators of $G$
+			\item[output: ]\textbf{yes} if $v$ is equivalent to $w$. \textbf{no} otherwise
+		\end{itemize}
+		\end{quote}
+	\end{block}\pause
+	\begin{example}[The word problem in $F_2 = \langle a, b\rangle$]
+		Iteratively scan through both words, deleting adjacent inverses.\\\pause
+		Given $v = aa^{-1}bba$ and $w = babb^{-1}a^{-1}ba$, we have\pause
+		\begin{align*}
+			\color{red}aa^{-1}\color{black}bba &= bba\\
+			b\color{red}a\color{blue}{bb^{-1}}\color{red}a^{-1}\color{black}ba &= bba.
+		\end{align*}\pause
+		Output \textbf{yes}.
+	\end{example}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Word Problem}
+	In 1955 Pyotr Novikov showed that there are finitely presented groups in which the word problem is \textbf{undecidable} - it is provably impossible to construct an algorithm that always outputs the correct answer.
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Conjugacy Search Problem}
+	Let $G$ be a group.\pause
+	\begin{block}{The Conjugacy Search Problem in $G$}
+		\begin{quote}
+			\begin{itemize}
+				\item[input: ]Two conjugate words $u$ and $v$ in the generators of $G$.
+				\item[output: ]A word $w$ such that $u = w^{-1}vw = v^w$
+			\end{itemize}
+		\end{quote}
+	\end{block}\pause
+	This is analogous to the discrete logarithm problem in a finite abelian group $H$.\pause
+	\begin{block}{Discrete Logarithm Problem in $H$}
+		\begin{quote}
+			\begin{itemize}
+				\item[input: ]Elements $g,h$ of $H$ such that $h\in \langle g\rangle$
+				\item[output: ]An integer $k$ such that $g^k = h$
+			\end{itemize}
+		\end{quote}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Braid Group}
+	\begin{definition}
+		The braid group on $n$ strands, $B_n$ is defined by the presentation
+		\begin{multline*}
+		B_n = \langle \sigma_1, \sigma_2, \ldots, \sigma_{n-1}\ |\ \sigma_i\sigma_j\sigma_i = \sigma_j\sigma_i\sigma_j,\ |i-j|=1;\\ \sigma_i\sigma_j = \sigma_j\sigma_i,\ |i-j|>1\rangle.
+		\end{multline*}
+	\end{definition}\pause
+	There is, however, a more geometric understanding of the braid group.
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Braid Group}
+	\begin{itemize}
+	\item Arrange two sets of $n$ items in vertical columns on opposite sides of the page. Fasten one end of a string to each item on the left side of the page. To each item on the right side attach the other end of one string. This connection is a \textbf{braid}.\pause
+
+	\item The generator $\sigma_i$ represents connecting the $i$-th item on the left to the $i+1$st on the right and the $i+1$st on the left to the $i$-th on the right with the latter string passing over the former.\pause
+
+	\item Two connections that can be made to look the same by tightening the strings are considered the same braid.\pause
+
+	\item Composing two braids consists of drawing them next to one another, gluing the points in the middle, and connecting the strands.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Braid Group}
+	
+\end{frame}
+
+\end{document}

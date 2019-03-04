@@ -1,28 +1,86 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: 235Bhandout.aux
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: 235Bhandout.aux
 The style file: biblatex.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: 235Bhandout-blx.bib
 Database file #2: handout_refs.bib
-Biblatex version: 3.11
+Biblatex version: 3.3
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2658 of file biblatex.bst
+while executing---line 2513 of file biblatex.bst
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2682 of file biblatex.bst
+while executing---line 2537 of file biblatex.bst
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2686 of file biblatex.bst
+while executing---line 2541 of file biblatex.bst
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2686 of file biblatex.bst
+while executing---line 2541 of file biblatex.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2774 of file biblatex.bst
+while executing---line 2659 of file biblatex.bst
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2774 of file biblatex.bst
+while executing---line 2659 of file biblatex.bst
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2774 of file biblatex.bst
+while executing---line 2659 of file biblatex.bst
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2774 of file biblatex.bst
+while executing---line 2659 of file biblatex.bst
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2774 of file biblatex.bst
+while executing---line 2659 of file biblatex.bst
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2774 of file biblatex.bst
+while executing---line 2659 of file biblatex.bst
 Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
-while executing---line 2774 of file biblatex.bst
-(There were 11 error messages)
+while executing---line 2659 of file biblatex.bst
+Name 2 in "Ko, K.H. and Lee, S.J, and Cheon, J.H. and Han J.W. and Kang, J. and Park, C." has a comma at the end for entry ko2000
+while executing---line 2659 of file biblatex.bst
+You've used 7 entries,
+            6047 wiz_defined-function locations,
+            1172 strings with 9174 characters,
+and the built_in function-call counts, 21050 in all, are:
+= -- 846
+> -- 749
+< -- 171
++ -- 283
+- -- 282
+* -- 1567
+:= -- 1463
+add.period$ -- 0
+call.type$ -- 7
+change.case$ -- 95
+chr.to.int$ -- 34
+cite$ -- 12
+duplicate$ -- 2283
+empty$ -- 2139
+format.name$ -- 483
+if$ -- 4722
+int.to.chr$ -- 0
+int.to.str$ -- 17
+missing$ -- 0
+newline$ -- 207
+num.names$ -- 291
+pop$ -- 1998
+preamble$ -- 1
+purify$ -- 126
+quote$ -- 0
+skip$ -- 1236
+stack$ -- 0
+substring$ -- 538
+swap$ -- 740
+text.length$ -- 158
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 254
+warning$ -- 0
+while$ -- 148
+width$ -- 0
+write$ -- 199
+(There were 12 error messages)

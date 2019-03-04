@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.0 $
+% $ biblatex version 2.6 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -16,227 +16,197 @@
   {}
 \endgroup
 
-\datalist[entry]{none/global//global/global}
-  \entry{nov55}{inproceedings}{}
-    \name{author}{1}{}{%
-      {{hash=NP}{%
-         family={Novikov},
-         familyi={N\bibinitperiod},
-         given={P.S.},
-         giveni={P\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Acad. Sci. USSR}%
-    }
-    \strng{namehash}{NP1}
-    \strng{fullhash}{NP1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{Trudy Mathematical Institute Steklov}
-    \field{pages}{3\bibrangedash 143}
-    \field{title}{On the algorithmic unsolvability of the word problem in group
+\entry{nov55}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Novikov}{N.}%
+     {P.S.}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Acad. Sci. USSR}%
+  }
+  \strng{namehash}{NP1}
+  \strng{fullhash}{NP1}
+  \field{booktitle}{Trudy Mathematical Institute Steklov}
+  \field{pages}{3\bibrangedash 143}
+  \field{title}{On the algorithmic unsolvability of the word problem in group
   theory}
-    \field{volume}{44}
-    \list{location}{1}{%
-      {Moscow}%
-    }
-    \field{year}{1955}
-  \endentry
+  \field{volume}{44}
+  \list{location}{1}{%
+    {Moscow}%
+  }
+  \field{year}{1955}
+\endentry
 
-  \entry{ko2000}{inproceedings}{}
-    \name{author}{6}{}{%
-      {{hash=KK}{%
-         family={Ko},
-         familyi={K\bibinitperiod},
-         given={K.H.},
-         giveni={K\bibinitperiod},
-      }}%
-      {{hash=LS}{%
-         family={Lee},
-         familyi={L\bibinitperiod},
-         given={S.J},
-         giveni={S\bibinitperiod},
-      }}%
-      {{hash=CJ}{%
-         family={Cheon},
-         familyi={C\bibinitperiod},
-         given={J.H.},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=JH}{%
-         family={J.W.},
-         familyi={J\bibinitperiod},
-         given={Han},
-         giveni={H\bibinitperiod},
-      }}%
-      {{hash=KJ}{%
-         family={Kang},
-         familyi={K\bibinitperiod},
-         given={J.},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=PC}{%
-         family={Park},
-         familyi={P\bibinitperiod},
-         given={C.},
-         giveni={C\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Springer}%
-    }
-    \strng{namehash}{KK+1}
-    \strng{fullhash}{KKLSCJJHKJPC1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{booktitle}{Advances in Cryptology - CRYPTO 2000}
-    \field{pages}{166\bibrangedash 184}
-    \field{series}{Lecture Notes in Computer Science}
-    \field{title}{New Public-Key Cryptosystem Using Braid Groups}
-    \list{location}{1}{%
-      {Berlin}%
-    }
-    \field{year}{2000}
-  \endentry
+\entry{ko2000}{inproceedings}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Ko}{K.}%
+     {K.H.}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lee}{L.}%
+     {S.J}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cheon}{C.}%
+     {J.H.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {J.W.}{J.}%
+     {Han}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kang}{K.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Park}{P.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{KK+1}
+  \strng{fullhash}{KKLSCJJHKJPC1}
+  \field{booktitle}{Advances in Cryptology - CRYPTO 2000}
+  \field{pages}{166\bibrangedash 184}
+  \field{series}{Lecture Notes in Computer Science}
+  \field{title}{New Public-Key Cryptosystem Using Braid Groups}
+  \list{location}{1}{%
+    {Berlin}%
+  }
+  \field{year}{2000}
+\endentry
 
-  \entry{aag99}{article}{}
-    \name{author}{3}{}{%
-      {{hash=AA}{%
-         family={Anshel},
-         familyi={A\bibinitperiod},
-         given={A.},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=AI}{%
-         family={Anshel},
-         familyi={A\bibinitperiod},
-         given={I.},
-         giveni={I\bibinitperiod},
-      }}%
-      {{hash=GD}{%
-         family={Goldfeld},
-         familyi={G\bibinitperiod},
-         given={D.},
-         giveni={D\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{AAAIGD1}
-    \strng{fullhash}{AAAIGD1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{287\bibrangedash 291}
-    \field{title}{An algebraic method for public-key cryptography}
-    \field{volume}{6}
-    \field{journaltitle}{Mathematical Research Letters}
-    \field{year}{1999}
-  \endentry
+\entry{aag99}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Anshel}{A.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Anshel}{A.}%
+     {I.}{I.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Goldfeld}{G.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{AAAIGD1}
+  \strng{fullhash}{AAAIGD1}
+  \field{pages}{287\bibrangedash 291}
+  \field{title}{An algebraic method for public-key cryptography}
+  \field{volume}{6}
+  \field{journaltitle}{Mathematical Research Letters}
+  \field{year}{1999}
+\endentry
 
-  \entry{su06}{article}{}
-    \name{author}{2}{}{%
-      {{hash=SV}{%
-         family={Shpilrain},
-         familyi={S\bibinitperiod},
-         given={V.},
-         giveni={V\bibinitperiod},
-      }}%
-      {{hash=UA}{%
-         family={Ushakov},
-         familyi={U\bibinitperiod},
-         given={A.},
-         giveni={A\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {Springer-Verlag}%
-    }
-    \strng{namehash}{SVUA1}
-    \strng{fullhash}{SVUA1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{pages}{285\bibrangedash 298}
-    \field{title}{The Conjugacy Search Problem in Public Key Cryptography:
+\entry{su06}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Shpilrain}{S.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ushakov}{U.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer-Verlag}%
+  }
+  \strng{namehash}{SVUA1}
+  \strng{fullhash}{SVUA1}
+  \field{pages}{285\bibrangedash 298}
+  \field{title}{The Conjugacy Search Problem in Public Key Cryptography:
   Unnecessary and Insufficient}
-    \field{volume}{17}
-    \field{journaltitle}{Applicable Algebra in Engineering, Communication and
+  \field{volume}{17}
+  \field{journaltitle}{Applicable Algebra in Engineering, Communication and
   Computing}
-    \field{year}{2006}
-  \endentry
+  \field{year}{2006}
+\endentry
 
-  \entry{ktv14}{misc}{}
-    \name{author}{3}{}{%
-      {{hash=KA}{%
-         family={Kalka},
-         familyi={K\bibinitperiod},
-         given={A.},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=TB}{%
-         family={Tsaban},
-         familyi={T\bibinitperiod},
-         given={B.},
-         giveni={B\bibinitperiod},
-      }}%
-      {{hash=VG}{%
-         family={Vinokur},
-         familyi={V\bibinitperiod},
-         given={G.},
-         giveni={G\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{KATBVG1}
-    \strng{fullhash}{KATBVG1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \verb{eprint}
-    \verb arXiv:1403.4622
-    \endverb
-    \field{title}{Complete simultaneous conjugacy invariants in Artin's braid
+\entry{ktv14}{misc}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Kalka}{K.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tsaban}{T.}%
+     {B.}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vinokur}{V.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KATBVG1}
+  \strng{fullhash}{KATBVG1}
+  \verb{eprint}
+  \verb arXiv:1403.4622
+  \endverb
+  \field{title}{Complete simultaneous conjugacy invariants in Artin's braid
   groups}
-    \field{year}{2014}
-  \endentry
+  \field{year}{2014}
+\endentry
 
-  \entry{kmmpu18}{article}{}
-    \name{author}{5}{}{%
-      {{hash=KM}{%
-         family={Kotov},
-         familyi={K\bibinitperiod},
-         given={M.},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=MA}{%
-         family={Menshov},
-         familyi={M\bibinitperiod},
-         given={A.},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=MA}{%
-         family={Myasnikov},
-         familyi={M\bibinitperiod},
-         given={A.D.},
-         giveni={A\bibinitperiod},
-      }}%
-      {{hash=PD}{%
-         family={Panteleev},
-         familyi={P\bibinitperiod},
-         given={D.},
-         giveni={D\bibinitperiod},
-      }}%
-      {{hash=UA}{%
-         family={Ushakov},
-         familyi={U\bibinitperiod},
-         given={A.},
-         giveni={A\bibinitperiod},
-      }}%
-    }
-    \strng{namehash}{KM+1}
-    \strng{fullhash}{KMMAMAPDUA1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{title}{Conjugacy Separation Problem in Braids: an Attack on the
+\entry{kmmpu18}{article}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Kotov}{K.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Menshov}{M.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Myasnikov}{M.}%
+     {A.D.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Panteleev}{P.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ushakov}{U.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KM+1}
+  \strng{fullhash}{KMMAMAPDUA1}
+  \field{title}{Conjugacy Separation Problem in Braids: an Attack on the
   Original Colored Burau Key Agreement Protocol}
-    \field{journaltitle}{IACR Cryptology ePrint Archive}
-    \field{year}{2018}
-  \endentry
-\enddatalist
+  \field{journaltitle}{IACR Cryptology ePrint Archive}
+  \field{year}{2018}
+\endentry
+
+\lossort
+\endlossort
+
 \endinput
