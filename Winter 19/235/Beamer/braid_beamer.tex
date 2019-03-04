@@ -163,7 +163,148 @@
 
 \begin{frame}
 	\frametitle{The Braid Group}
-	
+	\begin{example}
+		In $B_4$ the generators $\sigma_1$, $\sigma_2$, $\sigma_3$ can be represented by these braid diagrams.
+	\end{example}\pause
+	\vfill
+	\centering
+	\includegraphics[scale=.7]{b4gens.png}
 \end{frame}
+
+\begin{frame}
+	\frametitle{The Braid Group}
+	\centering
+	\includegraphics[scale=.6]{same.PNG}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Braid Group}
+	\begin{example}
+		Here's an example of composition of braids in $B_4$.
+	\end{example}\pause
+	\vfill
+	\centering
+	\includegraphics[scale=.5]{composition.png}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Braid Group Facts}
+	\begin{itemize}
+		\item $B_1$ is the trivial group. $B_2 \cong \integers$. $B_n$ for $n\geq 3$ is infinite and non-commutative.\pause
+		\item The $n-1$ transpositions $(i, i+1)$ in the symmetric group $S_n$ obey the braid relations and generate $S_n$. Consequently, there is a surjective homomorphism $\rho: B_n\to S_n$ that sends $\sigma_i$ to $(i, i+1)$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Special Braids}
+	\begin{definition}[Permutation Braid]
+		To each permutation $\tau = b_1b_2\cdots b_n\in S_n$, associate an $n$-braid $A$ by connecting the right $i$-th point to the left $b_i$-th point with positive crossings (the strand from $i$ to $b_i$ passes under the one from $j$ to $b_j$ if $i<j$). A braid of this form is called a \textbf{permutation braid} or \textbf{canonical factor}. The set of all such braids is denoted $\tilde{\Sigma}_n$.
+	\end{definition}\pause
+	\vfill
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=.7]{permutation.png}
+		\caption{The braid $A\in \tilde{\Sigma}_4$ corresponding to $\pi = 4213\in S_4$.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Special Braids}
+	\begin{definition}[Fundamental Braid]
+		The permutation braid corresponding to the permutation $\Omega_n = n(n-1)\cdots(2)1$ is called the \textbf{fundamental braid} and is denoted by $\Delta_n$.
+	\end{definition}\pause
+	\vfill
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=.7]{fundamental.png}
+		\caption{The fundamental braid $\Delta_4\in B_4$ corresponding to the permutation $\Omega_4 = 4321$.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Left-Canonical Form for Braids}
+	\begin{theorem}[Elrifai and Morton '94]
+		For any $W\in B_n$ there is a unique representation called the \textbf{left-canonical form} given by
+		\[
+		W = \Delta^uA_1A_2\cdots A_p,\quad u\in \integers, A_i\in \tilde{\Sigma}_n\setminus \{e, \Delta\},
+		\]
+		where $A_iA_{i+1}$ is left-weighted for $1\leq i\leq p-1$. We call $p$ the \textbf{canonical length} of $W$.
+	\end{theorem}\pause
+	Note that the correspondence between a permutation $\pi \in S_n$ to its canonical factor $A\in B_n$ is a right inverse of the homomorphism $\rho: B_n\to S_n$, so the cardinality of $\tilde{\Sigma}_n$ is $n!$. 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Left-Canonical Form for Braids}
+	\begin{theorem}[Ko et al.\ 2000 using Epstein et al.\ '92]
+	\begin{enumerate}
+		\item Let $W$ be any word in $\sigma_1, \ldots, \sigma_n\in B_n$ with word length $\ell$. Then the left-canonical form of $W$ can be computed in time $O(\ell^2 n\log n)$.\pause
+		\item Let $U = \Delta^uA_1\cdots A_p$ and $V = \Delta^vB_1\cdots B_q$ be the left-canonical forms of two $n$-braids. Then we can compute the left canonical form of $UV$ in time $O(pqn\log n)$.\pause
+		\item If $U = \Delta^uA_1\cdots A_p$ is the left-canonical form of $U\in B_n$, then we can compute the left-canonical form of $U^{-1}$ in time $O(pn)$.\pause
+	\end{enumerate}
+	\end{theorem}
+	These two theorems show that the word problem in $B_n$ is efficiently solvable, that is, we can efficiently differentiate between any two given elements of $B_n$.
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Diffie-Hellman with Braids: Anshel, Anshel, Goldfeld '99}
+	\begin{enumerate}
+		\item Alice and Bob publicly agree on subgroups $B_n$, $A = \langle a_1, \ldots, a_k\rangle$ and $B = \langle b_1, \ldots, b_m\rangle$.\pause
+		\item Alice picks a secret word $x$ in the generators of $A$, $x = x(a_1, \ldots, a_k)$. Bob picks a secret word $y$ in the generators of $B$, $y = y(b_1, \ldots, b_m)$.\pause
+		\item Alice sends $b_1^x,\ldots, b_m^x$ to Bob, Bob sends $a_1^y, \ldots, a_k^y$ to Alice.\pause
+		\item Alice computes $x(a_1^y, \ldots, a_k^y) = x^y = y^{-1}xy$. Bob computes $y(b_1^x, \ldots, b_m^x) = x^{-1}yx$.\pause
+		\item Alice multiplies on the left by $x^{-1}$, obtaining $x^{-1}y^{-1}xy$. Bob multiplies on the left by $y^{-1}$ and inverts, $(y^{-1}x^{-1}yx)^{-1} = x^{-1}y^{-1}xy$. Alice and Bob now share $[x,y]$.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Security of Braid Group Diffie-Hellman}
+	An eavesdropper, Eve, wants to derive the shared secret $[x,y]$. What does she know?\pause
+	\begin{enumerate}
+		\item The generators of the public subgroups $A = \langle a_1, \ldots, a_k\rangle$ and $B = \langle b_1, \ldots, b_m\rangle$.\pause
+		\item The conjugates of these generators by secret elements: $a_1^y, \ldots, a_k^y, b_1^x, \ldots, b_m^x$.\pause
+	\end{enumerate}
+	\begin{itemize}
+	\item This looks a lot like the classical Diffie-Hellman problem: find $g^{ab}\pmod{p}$ from $g^a$, $g^b$, $g$, and $p$. One way to solve the classical DHP is by solving the discrete logarithm problem in $\integers/p\integers$.\pause
+	\item How about solving the analog of the discrete log problem in $B_n$: the (simultaneous) conjugacy search problem?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Complications with the Conjugacy Problem}
+	\begin{itemize}
+		\item In the discrete log case, $g^a \equiv g^b\pmod{p}$ if and only if $a\cong b \pmod{p-1}$. In the conjugacy case, if $a_i^y = a_i^{y'}$ for all $i$ then $y = c_ay$ for some $c_a$ in the centralizer of $A$:\pause
+		\begin{multline*}
+		y^{-1}a_iy = (y')^{-1}a_iy' \iff y'y^{-1}a_iy(y')^{-1} = a_i\\ \iff y'y^{-1}\in C_A.
+		\end{multline*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Complications with the Conjugacy Problem}
+	\begin{itemize}
+		\item That exponents are only defined mod $p-1$ in the discrete log case doesn't matter much. On the other hand, suppose $y' = c_ay$ and $x' = c_bx$ for $c_a\in C_A$ and $c_b\in C_B$. Then\pause
+		\begin{equation*}
+			[x',y'] = (x')^{-1}(y')^{-1}x'y' = x^{-1}c_b^{-1}y^{-1}c_1^{-1}c_bxc_ay.
+		\end{equation*}\pause
+		\item If $x'\in A$ and $y'\in B$, then $c_b\in A$ and $c_a\in B$, so we can move the $c_a$'s and $c_b$'s around to obtain $[x,y] = [x', y']$.\pause
+		\item So solving the simultaneous conjugacy problem doesn't seem to be enough for Eve to compute $[x,y]$. She needs to find conjugating elements that lie in the public subgroups $A$ and $B$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Membership Search Problem}
+	\begin{block}{The Membership Search Problem in $G$}
+		\begin{quote}
+			\begin{itemize}
+				\item[input: ]elements $x, a_1, \ldots, a_k\in G$
+				\item[output: ]an expression (if it exists) of $x$ as a word in $a_1, \ldots, a_k$.
+			\end{itemize}
+		\end{quote}
+	\end{block}\pause
+	Shpilrain and Ushakov ('06) point out that the corresponding decision problem is unsolvable in $B_n$ for $n\geq 6$ since such groups contain subgroups isomorphic to $F_2\times F_2$, where the membership decision problem is unsolvable due to Mihailova ('58).
+\end{frame}
+
+
 
 \end{document}
