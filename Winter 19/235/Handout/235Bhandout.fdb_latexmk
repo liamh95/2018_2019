@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex 235Bhandout"] 1551662944 "235Bhandout.aux" "235Bhandout.bbl" "235Bhandout" 1551662945
+["bibtex 235Bhandout"] 1551662944 "235Bhandout.aux" "235Bhandout.bbl" "235Bhandout" 1551729805
   "/home/liam/texmf/bibtex/bst/biblatex/biblatex.bst" 1457393237 60786 42dbed70ec10de899715e0d60d2ca83b ""
   "235Bhandout-blx.bib" 1551662945 306 8aedc46d674b5860742be85189bfd363 ""
   "235Bhandout.aux" 1551662945 723 d81b23252d6d17914f90a06c692069d3 ""
   "235Bhandout.bcf" 0 -1 0 ""
   "handout_refs.bib" 1551654826 1613 f15263a8073ace5c1b13f7110f95c981 ""
   (generated)
-  "235Bhandout.bbl"
   "235Bhandout.blg"
-["pdflatex"] 1551662944 "235Bhandout.tex" "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.pdf" "235Bhandout" 1551662945
+  "235Bhandout.bbl"
+["pdflatex"] 1551662944 "235Bhandout.tex" "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.pdf" "235Bhandout" 1551729805
   "/etc/texmf/web2c/texmf.cnf" 1532652117 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.aux" 1551662945 723 d81b23252d6d17914f90a06c692069d3 ""
   "/home/liam/texmf/tex/latex/biblatex/bbx/numeric.bbx" 1457393237 1652 ba8d79811397c7cb8b37c85d1372356d ""
@@ -101,13 +101,13 @@
   "235Bhandout.aux" 1551662945 723 d81b23252d6d17914f90a06c692069d3 ""
   "235Bhandout.bbl" 1551662944 4027 eb113d66e43a751fa04d892a204402e8 "bibtex 235Bhandout"
   "235Bhandout.run.xml" 1551662945 2530 f51b34415f45ea9c572e78d4b12b4944 ""
-  "235Bhandout.tex" 1551662944 7619 c0666284293193bb65296d372c8014e6 ""
+  "235Bhandout.tex" 1551729805 7619 c0666284293193bb65296d372c8014e6 ""
   "composition.PNG" 1550869187 24140 12a832c6ebc7160eeecf21d449c3da9a ""
   (generated)
   "235Bhandout-blx.bib"
   "235Bhandout.pdf"
-  "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.log"
+  "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.pdf"
   "235Bhandout.run.xml"
   "235Bhandout.log"
-  "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.pdf"
   "235Bhandout.aux"
+  "/home/liam/Documents/UCI/Fall18-Spring19/Winter 19/235/Handout/235Bhandout.log"

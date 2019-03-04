@@ -297,12 +297,66 @@
 	\begin{block}{The Membership Search Problem in $G$}
 		\begin{quote}
 			\begin{itemize}
-				\item[input: ]elements $x, a_1, \ldots, a_k\in G$
+				\item[input: ]elements $x, a_1, \ldots, a_k\in G$\pause
 				\item[output: ]an expression (if it exists) of $x$ as a word in $a_1, \ldots, a_k$.
 			\end{itemize}
 		\end{quote}
 	\end{block}\pause
-	Shpilrain and Ushakov ('06) point out that the corresponding decision problem is unsolvable in $B_n$ for $n\geq 6$ since such groups contain subgroups isomorphic to $F_2\times F_2$, where the membership decision problem is unsolvable due to Mihailova ('58).
+
+	\begin{block}{Simultaneous Conjugacy Search Separation Problem (SCSSP)}
+		\begin{quote}
+			\begin{itemize}
+				\item[input: ]$b_1, \ldots, b_m$ and $a_1^y, \ldots, a_k^y$\pause
+				\item[output: ]$y'$ such that $a_i^{y'} = a_i^y$ for all $i$ and $y'$ is a word in $b_1, \ldots, b_m$
+			\end{itemize}
+		\end{quote}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Security of Braid Group Diffie-Hellman}
+	\begin{itemize}
+		\item Shpilrain and Ushakov ('06) point out that the membership decision problem is unsolvable in $B_n$ for $n\geq 6$ since such groups contain subgroups isomorphic to $F_2\times F_2$, where the membership decision problem is unsolvable due to Mihailova ('58).\pause
+		\item As of 2014 there is no known efficient algorithm for computing the centralizers of arbitrary subsets of braid groups (Kalka, Tsaban, Vinokur).\pause
+		\item Kotov et al.\ (2018) describe a heuristic attack on the SCSSP that works experimentally, but they don't appear to provide a bound on the complexity.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parameter Sizes in Kotov et al.\ Attack}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=.5]{time.png}
+		\caption{Time required to solve 100 random instances of the SCSSP (in minutes)}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parameter Sizes in Kotov et al.\ Attack}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=.5]{length.png}
+		\caption{Average word length of an instance after ``length reduction''}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parameter Sizes in Kotov et al.\ Attack}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=.5]{bit.png}
+		\caption{Average size (in bits) of an instance after ``length reduction''}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Quantum?}
+	In 2014, Alagic, Jeffery, and Jordan describe how braid groups can used to \textbf{obfuscate} classical and quantum computation.\pause
+	\begin{definition}[Obfuscator]
+		Loosely speaking, an obfuscator takes in a circuit and outputs a ``difficult to understand'' but functionally identical circuit.
+	\end{definition}
 \end{frame}
 
 
