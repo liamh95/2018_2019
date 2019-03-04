@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.7.7)  4 MAR 2019 04:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.7.7)  4 MAR 2019 05:00
 entering extended mode
 **./braid_beamer.tex
 (braid_beamer.tex
@@ -985,29 +985,19 @@ LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
 ] [36
 
 ]
-<b4gens.png, id=949, 511.9125pt x 197.98969pt>
+<b4gens.png, id=949, 346.29375pt x 87.32625pt>
 File: b4gens.png Graphic file (type png)
 <use b4gens.png>
 Package pdftex.def Info: b4gens.png  used on input line 172.
-(pdftex.def)             Requested size: 358.3363pt x 138.59183pt.
-
-Overfull \hbox (51.04643pt too wide) in paragraph at lines 172--172
- [][] 
- []
-
-[37
+(pdftex.def)             Requested size: 242.40396pt x 61.12794pt.
+ [37
 
  <./b4gens.png>]
 File: b4gens.png Graphic file (type png)
 <use b4gens.png>
 Package pdftex.def Info: b4gens.png  used on input line 172.
-(pdftex.def)             Requested size: 358.3363pt x 138.59183pt.
-
-Overfull \hbox (51.04643pt too wide) in paragraph at lines 172--172
- [][] 
- []
-
-[38
+(pdftex.def)             Requested size: 242.40396pt x 61.12794pt.
+ [38
 
 ]
 <same.PNG, id=1003, 373.395pt x 116.68594pt>
@@ -1174,7 +1164,7 @@ lic/amsfonts/cm/cmssi8.pfb><F:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmsy10.pfb><F:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmsy6.pfb><F:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ><F:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on braid_beamer.pdf (71 pages, 625713 bytes).
+Output written on braid_beamer.pdf (71 pages, 624820 bytes).
 PDF statistics:
  1909 PDF objects out of 2073 (max. 8388607)
  143 named destinations out of 1000 (max. 500000)
