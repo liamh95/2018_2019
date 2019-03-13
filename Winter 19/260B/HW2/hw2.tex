@@ -1,0 +1,82 @@
+%% Please change the file name by replacing N with the apporpriate number
+%% corresponding to the current homework and XX with your initials.
+%% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
+
+\documentclass[11pt,letterpaper]{report}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amsthm}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\exreals}{\overline{\mathbb{R}}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\mable}{measurable}
+\newcommand{\quats}{\mathbb{H}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\disk}{\mathbb{D}}
+\newcommand{\halfplane}{\mathbb{H}}
+\newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
+\newcommand{\supp}[1]{\text{supp}({#1})}
+\newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\field}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Gal}[1]{\text{Gal}\left({#1}\right)}
+\newcommand{\esssup}{\text{ess sup }}
+\newcommand{\essinf}{\text{ess inf }}
+\newcommand{\affine}{\mathbb{A}}
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+\addtolength{\jot}{8pt}
+\linespread{1.3}
+
+\begin{document}
+\noindent{\em Liam Hardiman\hfill{March 15, 2019} }
+% Please give relevant information
+\begin{center}
+{\bf \Large 260B - Homework 2} %Replace N with the appropriate number
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\noindent\textbf{Problem 1. }Let $H$ be a complex separable Hilbert space and let $T_1$, $T_2\in \mcal{L}(H, H)$ be Hilbert-Schmidt operators. Let $T = T_2T_1$. Show that
+\[
+\tr\ T = \sum(Te_j, e_j)
+\]
+exists if $e_j$ is an orthonormal basis for $H$, and prov that the sum is independent of the choice of basis.
+\begin{proof}
+	That the trace exists for any fixed orthonormal basis $e_j$ follows from Cauchy-Schwartz and H\"older's inequality.
+	\begin{align*}
+		|\tr\ T| &= \left|\sum (Te_j, e_j)\right|\\
+		&\leq \sum |(T_1e_j, T_2^*e_j)|\\
+		&\leq \sum \|T_1e_j\|\cdot \|T_2^*e_j\|\\
+		&\leq \left(\sum \|T_1e_j\|^2\right)^{1/2}\left(\sum \|T_2^*e_j\|^2\right)^{1/2}\\
+		&= \|T_1\|_{HS}\cdot \|T_2\|_{HS}<\infty.
+	\end{align*}
+	On the last line we used the fact that $\|T_2^*\|_{HS} = \|T_2\|_{HS}$. Since the Hilbert-Schmidt norm is independent of the choice of basis, we have that the trace exists regardless of choice of basis.\\
+
+	\noindent It remains to show that the actual value of the trace is basis-independent. Let $e_j$ and $f_k$ be two orthonormal bases for $H$. By Parseval we have
+	\begin{align*}
+		\sum (Te_j, e_j) &= \sum_j\left(\sum_k(Te_j, f_k)f_k, e_j\right)\\
+		&= \sum_j\sum_k(Te_j, f_k)(f_k, e_j)
+	\end{align*}
+	and
+	\begin{align*}
+		\sum (Tf_k, f_k) &= \sum_k\left(\sum_j(f_k, e_j)Te_j, f_k\right)\\
+		&= \sum_k\sum_j(f_k, e_j)(Te_j, f_k).
+	\end{align*}
+	Now if we can reverse the order of summation we will be done. 
+\end{proof}
+
+\end{document}
