@@ -29,6 +29,7 @@
 \newcommand{\esssup}{\text{ess sup }}
 \newcommand{\essinf}{\text{ess inf }}
 \newcommand{\affine}{\mathbb{A}}
+\newcommand{\im}{\text{Im}}
 
 \newenvironment{solution}
 {\begin{proof}[Solution]}
@@ -66,17 +67,128 @@ exists if $e_j$ is an orthonormal basis for $H$, and prov that the sum is indepe
 	\end{align*}
 	On the last line we used the fact that $\|T_2^*\|_{HS} = \|T_2\|_{HS}$. Since the Hilbert-Schmidt norm is independent of the choice of basis, we have that the trace exists regardless of choice of basis.\\
 
-	\noindent It remains to show that the actual value of the trace is basis-independent. Let $e_j$ and $f_k$ be two orthonormal bases for $H$. By Parseval we have
+	\noindent It remains to show that the actual value of the trace is basis-independent. Let $e_j$ and $f_k$ be two orthonormal bases of $H$. We use the parallelogram identity and the fact that the Hilbert-Schmidt norm is independent of basis
 	\begin{align*}
-		\sum (Te_j, e_j) &= \sum_j\left(\sum_k(Te_j, f_k)f_k, e_j\right)\\
-		&= \sum_j\sum_k(Te_j, f_k)(f_k, e_j)
+		2\|T_1\|_{HS}^2 + 2\|T_2\|_{HS}^2 &= \|T_1+T_2\|_{HS}^2 + \|T_1-T_2\|_{HS}^2\\
+		&= \left(\|T_1\|_{HS}^2 + \sum_j(T_1e_j, T_2e_j) + \sum_j(T_2e_j, T_1e_j) + \|T_2\|_{HS}^2\right)\\
+		&+ \left(\|T_1\|_{HS}^2 - \sum_k(T_1f_k, T_2f_k) - \sum_j(T_2f_k, T_1f_k) + \|T_2\|_{HS}^2\right).
 	\end{align*}
-	and
-	\begin{align*}
-		\sum (Tf_k, f_k) &= \sum_k\left(\sum_j(f_k, e_j)Te_j, f_k\right)\\
-		&= \sum_k\sum_j(f_k, e_j)(Te_j, f_k).
-	\end{align*}
-	Now if we can reverse the order of summation we will be done. 
+	After canceling the $\|T_1\|_{HS}$ and $\|T_2\|_{HS}$ terms from both sides, we see that the real parts of $\sum (Te_j, e_j)$ and $\sum (Tf_k, f_k)$ are equal. The same argument shows that their imaginary parts are equal as well, so the trace is basis-independent.
+
+	% \noindent It remains to show that the actual value of the trace is basis-independent. Let $e_j$ and $f_k$ be two orthonormal bases for $H$. By Parseval we have
+	% \begin{align*}
+	% 	\sum (Te_j, e_j) &= \sum_j\left(\sum_k(Te_j, f_k)f_k, e_j\right)\\
+	% 	&= \sum_j\sum_k(Te_j, f_k)(f_k, e_j).
+	% \end{align*}
+	% Now the summand is absolutely summable over $j$ and $k$ since
+	% \begin{align*}
+	% 	\sum_{j,k}|(Te_j, f_k)(f_k,e_j)| &\leq \sum_{j,k}|(T_1e_j, T_2^*f_k)|\\
+	% 	&\leq \sum_{j,k}
+	% \end{align*}
+	% and
+	% \begin{align*}
+	% 	\sum (Tf_k, f_k) &= \sum_k\left(\sum_j(f_k, e_j)Te_j, f_k\right)\\
+	% 	&= \sum_k\sum_j(f_k, e_j)(Te_j, f_k).
+	% \end{align*}
+	% Now if we can reverse the order of summation we will be done.
+
 \end{proof}
 
+
+\noindent\textbf{Problem 2. }When $a(x,\xi)\in \mcal{S}(\reals^n_x\times \reals^n_\xi)$, let us consider the Weyl quantization of $a$,
+\[
+a^w(x, D_x)u(x) = \frac{1}{(2\pi)^n}\int\int e^{i(x-y)\xi}a\left(\frac{x+y}{2}, \xi\right)u(y)\ dyd\xi,
+\]
+acting on the Schwartz space $\mcal{S}(\reals^n)$.
+\begin{enumerate}[(a)]
+	\item Show that $a^w(x, D_x)$ is symmetric on $\mcal{S}(\reals^n)$,
+	\[
+	(a^w(x, D_x)u, v)_{L^2} = (u, a^w(x, D_x)v)_{L^2},\quad u,v\in \mcal{S}(\reals^n)
+	\]
+	precisely when $a$ is real-valued.
+	\begin{proof}
+		We have that
+		\begin{align*}
+			(a^w(x, D_x)u, v)_{L^2} &= \frac{1}{(2\pi)^n}\int\int\int e^{i(x-y)\xi}a\left(\frac{x+y}{2}, \xi\right)u(y)\overline{v(x)}\ dyd\xi dx\\
+			&= \frac{1}{(2\pi)^n}\int\int\int \overline{e^{i(y-x)\xi}\overline{a}\left(\frac{x+y}{2}, \xi\right)\overline{u(y)}v(x)}\ dyd\xi dx.
+		\end{align*}
+		Now $a$, $u$, an $v$ are all Schwartz functions in their respective variables, so their product is absolutely integrable. We can then use Fubini to switch the order of integration.
+		\begin{align*}
+			(a^w(x, D_x)u, v) &= \frac{1}{(2\pi)^n}\int\int\int \overline{e^{i(y-x)\xi}\overline{a}\left(\frac{x+y}{2}, \xi\right)\overline{u(y)}v(x)}\ dxd\xi dy\\
+			&= \frac{1}{(2\pi)^n}\int u(y) \overline{\int\int e^{i(y-x)\xi}\overline{a}\left(\frac{x+y}{2}\xi\right)v(x)}\ dxd\xi dy\\
+			&= (u, \overline{a}^w(x, D_x)v).
+		\end{align*}
+		If $a$ is real valued then we clearly have that $a^w(x, D_x)$ is symmetric. Conversely, if $a^w(x, D_x)$ is symmetric, then we must have that $a^w(x, D_x)u = \overline{a}^w(x, D_x)u$ for all $u\in \mcal{S}(\reals)$. Let's compute the difference:
+		\begin{align*}
+			[a^w(x, D_x) - \overline{a}^w(x, D_x)]u &= \frac{1}{(2\pi)^n}\int\int e^{i(x-y)\xi}\left[a\left(\frac{x+y}{2},\xi\right) - \overline{a}\left(\frac{x+y}{2},\xi\right)\right]u(x)\ dyd\xi dx\\
+			&= 0.
+		\end{align*}
+		I want to say that this is the Fourier transform of another Fourier transform and then invoke the injectivity of the Fourier transform on $L^2$. That would then force the above integrand to vanish identically for all $u\in \mcal{S}(\reals)$, which would mean that $a = \overline{a}$, so $a$ would be real-valued. I'm not quite sure how to fill in the details.
+	\end{proof}
+	\item Suppose now that $a = a(\xi)$ is real-valued and depends only on the momentum variable $\xi$. Show that $a^w(D_x)$ is unitarily equivalent to a multiplication operator by $a(\xi)$. What is the spectrum of $a^w(D_x)$.
+	\begin{proof}
+		Let's compute $a^w(D_x)u$ for $u\in \mcal{S}(\reals)$. We have
+		\begin{align*}
+			a^w(D_x)u &= \frac{1}{(2\pi)^n}\int\int e^{i(x-y)\xi}a(\xi)u(y)\ dyd\xi\\
+			&= \frac{1}{(2\pi)^n}\int e^{ix\xi}a(\xi)\int e^{-iy\xi}u(y)\ dy d\xi\\
+			&= \frac{1}{(2\pi)^n}\int e^{ix\xi}a(\xi)\widehat{u}(\xi)\ d\xi\\
+			&= \mcal{F}^{-1}(a\cdot \widehat{u})\\
+			&= (\mcal{F}^{-1}M_a\mcal{F})u,
+		\end{align*}
+		where $M_a$ is the multiplication by $a$ operator. Since the Fourier transform is a unitary isomorphism $\mcal{S}(\reals)\to \mcal{S}(\reals)$, we have that $a^w(D_x)$ is unitarily equivalent to $M_a$.\\
+		Now let's compute the spectrum. Since $a^w(D_x)$ is unitarily equivalent to multiplication by $a(\xi)$, it suffices to compute the spectrum of $M_a$. The resolvent set $\rho(M_a)$ is the set of complex $\lambda$ such that $(M_a-\lambda)$ is bijective onto $L^2(\reals)$. Now for any $\varphi \in \mcal{S}(\reals)$, we have that
+		\[
+		(M_a-\lambda)\varphi = a\varphi - \lambda\varphi.
+		\]
+		Since $a\in \mcal{S}(\reals)$, we have that $a\varphi$ is in $\mcal{S}(\reals)$ as well, as is $\lambda\varphi$. Then the image of $(M_a-\lambda)$ is contained in $\mcal{S}(\reals)$, so this operator cannot possibly biject onto $L^2(\reals)$ for any $\lambda$. The resolvent set is then empty, so the spectrum of $M_a$, and therefore $a^w(D_x)$, is all of $\complex$.
+	\end{proof}
+\end{enumerate}
+
+\noindent\textbf{Problem 3. }Let us consider the Sturm-Liouville operator
+\[
+P = -\frac{d}{dt}\left(p(t)\frac{d}{dt}\right)+q(t),
+\]
+where $p\in C^1(\reals)$, $p>0$, and $q\in C(\reals)$, $q\geq 0$. Show that the operator $P$ equipped with the domain $C_0^\infty(\reals)$, is essentially self-adjoint on $L^2(\reals)$.
+\begin{proof}
+	$P$ is self-adjoint if and only if its closure, $\overline{P}$, is equal to its adjoint, $P^*$. We will show this by showing that $P+I$, equipped with the domain of $P$, is essentially self-adjoint. We claim that it suffices to show that the image of $C_0^\infty$ under $P+1$ is dense in $L^2(\reals)$. We will prove this claim after we have shown the density.\\
+
+	\noindent We have the splitting $L^2(\reals) = \ker(P+I) \oplus \overline{\im(P+I)}$. If we can show that $P+I$ is injective then we will have shown that its image is dense in $L^2(\reals)$. Suppose that for $u\in L^2(\reals)$ we have that $(P+I)u = 0$ in the distributional sense. Then the real and imaginary parts of $(P+I)u$ vanish, so we can restrict our attention to real valued functions $u\in L^2(\reals)$.\\
+
+	\noindent Since $u$ satisfies a second-order ODE it must have $C^2(\reals)$ regularity (why?). We claim that if $u$ is in both $C^2(\reals)$ and $L^2(\reals)$, and it satisfies $(P+I)u \geq 0$ then $u\geq 0$. To see this, suppose that $u(x_0)<0$ for some $x_0$. If this point is a local minimum of $u$ then $u'(x_0) = 0$ and $u''(x_0)>0$. From the definition of our operator $P$ and the fact that $p$ and $q$ are nonnegative we have
+	\[
+	-p(x_0)u''(x_0) = (P+1)u(x_0)-(q(x_0)+1)u(x_0) > 0.
+	\]
+	But this would force $u''(x_0)$ to be negative, contradicting the assumption that $x_0$ is a local minimum of $u$. We have then shown that if $u(x_0)<0$ then $x_0$ cannot be a local minimum.\\
+
+	\noindent Now let $R>|x_0|$ and let $x_1$ be such that $u(x_1) = \min_{|x|\leq R}u(x)<0$. By our above discussion, $x_1$ must lie on the boundary of $[-R, R]$, or else $u$ would have a local minimum at a point where it assumes a negative value. Suppose $x_1 = R$ and let $x>R$. If $u(x)>u(R)$ then $u$ would have need to have a local minimum on $[R, x]$, again contradicting our above discussion. But then $u(x)\leq u(R)\leq u(x_0)<0$. This shows that $u$ is away from zero for $x$ sufficiently large, contradicting the assumption that $u\in L^2(\reals)$. A similar contradiction arises if $x_0 = -R$. We conclude that $u$ cannot assume negative values if $(P+I)u \geq 0$.\\
+
+	\noindent If $(P+I)u = 0$ then $(P+I)u\geq 0$ and $(P+I)(-u)\geq 0$. By our previous discussion we have $u\geq 0$ and $-u\geq 0$, so $u = 0$. We have then shown that $(P+I)$ is injective, so its image must be dense.
+\end{proof}
+
+\noindent\textbf{Problem 4. }Let $T$ be a closed densely defined operator on a complex separable Hilbert space. Show that the operators $T^*T$ and $TT^*$ are self-adjoint, when equipped with their natural domains of definition.
+\begin{proof}
+	We'll show that $T^*T$ is self-adjoint. Applying this result to $T^*$ will show that $TT^*$ is self-adjoint too.\\
+
+	\noindent We have that $V(G(T))^\perp = G(T^*)$ where $V:H\times H\to H\times H$ sends $(u, v)$ to $(v, -u)$ and $G(T)$ is the graph of $T$. Showing that $T$ is self-adjoint amounts to showing that $G(T) = V(G(T))^\perp$. This orthogonality statement says that $H\oplus H = G(T^*)\oplus V(G(T))$. So for any $w\in H$ there are unique $u\in \mcal{D}(T^*)$ and $v\in \mcal{D}(T)$ with
+	\begin{equation}\label{oplus}
+	H\oplus H\ni (0, w)= (u, T^*u) + V(v, Tv) = (u, T^*u) + (Tv, -v).
+	\end{equation}
+	Looking at each component, we have that $Tv = -u$ and $T^*u = w+v$. Substitution gives $T^*Tv = -(w+v)$, so $v$ is in $\mcal{D}(T^*T)$. Since $w$ was arbitrary, we also have that $T^*T+I$ is surjective. Suppose $(T^*T+I)x = (T^*T+I)y$. By the uniqueness of $u$ and $v$ in (\ref{oplus}), we must then have that $x = y$.\\
+
+	\noindent Since $T^*T+I$ is bijective, it has an inverse $(T^*T+I)^{-1}: H\to \mcal{D}(T^*T)$. Given $x\in H$ we can write $x = (T^*T+I)y$ for some $y\in \mcal{D}(T^*T)$ by surjectivity. Since $T$ is closed we also have that $T^{**} = T$. In the following computation the parentheses denote inner products of elements in $H$.
+	\begin{align*}
+		((T^*T+I)^{-1}x, x) &= (y, (T^*T+I)y)\\
+		&= (Ty, Ty) + \|y\|^2\\
+		&= ((T^*T+I)y, y)\\
+		&= (x, (T^*T+I)^{-1}x).
+	\end{align*}
+	Thus, $(T^*T+I)$ is symmetric with domain $H$, so it is self-adjoint. Now let's look at the graph of $T^*T+I$. Since $(T^*T+I)^{-1}$ is self-adjoint we have
+	\begin{align*}
+		V(G(T^*T+I))^\perp &= G(-(T^*T+I)^{-1})^\perp\\
+		&= V(G(-(T^*T+I)^{-1}))\\
+		&= G(T^*T+I),
+	\end{align*}
+	so $T^*T+I$ is self-adjoint. We claim that this forces $T^*T$ to be self-adjoint as well. Clearly $T^*T$ is symmetric if and only if $T^*T+I$ is symmetric, and $\mcal{D}(T^*T)= \mcal{D}((T^*T)^*)$ if and only if $\mcal{D}(T^*T+I) = \mcal{D}((T^*T+I)^*)$ follows from the Riesz representation theorem.
+\end{proof}
+	
 \end{document}
