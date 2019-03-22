@@ -61,25 +61,25 @@
 \noindent\textbf{5.6.12}
 Let $X$ be a prevariety over an algebraically closed field $k$, and let $P\in X$ be a (closed) point of $X$. Let $D = \Spec\ k[x]/(x^2)$ be the ``double point''. Show that the tangent space $T_{X,P}$ to $X$ at $P$ can be canonically identified with the set of morphisms $D\to X$ that map the unique point of $D$ to $P$.
 \begin{proof}
-	Let $f:D\to X$ be a morphism mapping $(x)\in D$ to $P\in X$. Because morphisms of schemes correspond to homomorphisms of ringed spaces, we have a map on the stalk, $f^*: \mcal{O}_{X, P}\to k[x]/(x^2)$, that sends the maximal ideal $\mathfrak{m}_P$ to $(x)$. Write $f^*(g) = \alpha(g) + \beta(g)x\in k[x]/(x^2)$ so that $f^^(g) = \beta(g)\in (x)$ for $g\in \mathfrak{m}_P$.  We can then use $f^*$ to build a functional $\varphi: \mathfrak{m}_P\to k$ by $\varphi(g) = \beta(g)$. Now take $g,h\in \mathfrak{m}_P$. We then have
+	Let $f:D\to X$ be a morphism mapping $(x)\in D$ to $P\in X$. Because morphisms of schemes correspond to homomorphisms of ringed spaces, we have a map on the stalk, $f^*: \mcal{O}_{X, P}\to k[x]/(x^2)$, that sends the maximal ideal $\mathfrak{m}_P$ to $(x)$. Write $f^*(g) = \alpha(g) + \beta(g)x\in k[x]/(x^2)$ so that $f^*(g) = \beta(g)\in (x)$ for $g\in \mathfrak{m}_P$.  We can then use $f^*$ to build a functional $\varphi: \mathfrak{m}_P\to k$ by $\varphi(g) = \beta(g)$. Now take $g,h\in \mathfrak{m}_P$. We then have
 	\begin{align*}
 		&f^*(gh) = f^*(g)f^*(h)\\
 		\iff& \beta(gh)x = \beta(g)\beta(h)x^2\\
 		\iff&\beta(gh) = 0,
 	\end{align*}
-	so $\mathfrak{m}_P^2\subseteq \ker \beta$ and we can consider $\beta$ as a functional $\mathfrak{m}_P/\mathfrak{m}_P^2\to k$, an element of the tangent space at $P$.\\
+	so $\mathfrak{m}_P^2\subseteq \ker \beta$ and we can consider $\varphi$ as a functional $\mathfrak{m}_P/\mathfrak{m}_P^2\to k$, an element of the tangent space at $P$. In short, we have constructed a map $\Phi: \Hom(\mcal{O}_{X, P}, k[x]/(x^2))\to \Hom(\mathfrak{m}_P/\mathfrak{m}_P^2, k)\cong T_{X, P}$ that sends $[g\mapsto \alpha(g)+\beta(g)x]$ to $[g+\mathfrak{m}_P^2\mapsto \beta(g)]$.\\
 
-	\noindent Let's show that this assignment is injective. Suppose that $f_1^*, f_2^*: \mcal{O}_{X, P}\to k[x]/(x^2)$ give rise to the same functional $\mathfrak{m}_P/\mathfrak{m}_P^2$.\\
+	\noindent One (I) should show that this assignment is injective.\\
 
-	\noindent On the other hand, suppose we have functional $\varphi\in \Hom(\mathfrak{m_P}/\mathfrak{m}_P^2, k) \cong T_{X, P}$. Our goal is to use $\varphi$ to build a morphism $D\to X$ mapping $(x)$ to $P$.
+	\noindent On the other hand, suppose we have functional $\varphi\in \Hom(\mathfrak{m}_P/\mathfrak{m}_P^2, k) \cong T_{X, P}$. Our goal is to use $\varphi$ to build a morphism $D\to X$ mapping $(x)$ to $P$. Since the stalk $\mcal{O}_{X, P}$ is a local ring with maximal ideal $\mathfrak{m}_P$, we can write $\mcal{O}_{X, P} = k\oplus \mathfrak{m}_P$ and uniquely define a map $f^*: \mcal{O}_{X, P}\to k[x]/(x^2)$ by specifying what it does on the components of this decomposition. Define $f^*: \mcal{O}_{X, P}\to k[x]/(x^2)$ by $f^*(g) = 0$ if $g\in k$ and $f^*(g) = \varphi(g+\mathfrak{m}_P^2)x$ if $g\in \mathfrak{m}_P$. Furthermore, this assignment is inverse to $\Phi$.
 \end{proof}
 
 \noindent\textbf{5.6.13}
 Let $X$ be an affine variety, let $Y$ be a closed subscheme of $X$ defined by the ideal $I\subset A(X)$, and let $\tilde{X}$ be the blow-up of $X$ at $I$. Show that:
 \begin{enumerate}[(i)]
-	\item $\tilde{X} = \Proj(\bigoplus_{d\geq 0}I^d)$, where $I^{(0)}:= A(X)$.
-	\item The projection map $\tilde{X}\to X$ is the morphism induced by the ring homomorphism $I^{(0)}\to \bigoplus_{d\geq 0}I^{(d)}$.
-	\item The exceptional divisor of the blow-up, i.e. the fiber $Y\times_X\tilde{X}$ of the blow-up $\tilde{X}\to X$ over $Y$, is isomorphic to $\Proj(\bigoplus_{d\geq 0}I^{(d)}/I^{(d+1)}$.
+	\item $\tilde{X} = \Proj(\bigoplus_{d\geq 0}I^d)$, where $I^{0}:= A(X)$.
+	\item The projection map $\tilde{X}\to X$ is the morphism induced by the ring homomorphism $I^{0}\to \bigoplus_{d\geq 0}I^{d}$.
+	\item The exceptional divisor of the blow-up, i.e. the fiber $Y\times_X\tilde{X}$ of the blow-up $\tilde{X}\to X$ over $Y$, is isomorphic to $\Proj(\bigoplus_{d\geq 0}I^{d}/I^{d+1})$.
 \end{enumerate}
 \begin{proof}
 	
@@ -90,21 +90,92 @@ Let $X$ be an affine variety, let $Y$ be a closed subscheme of $X$ defined by th
 Let $X\subset \projective^n$ scheme with Hilbert polynomial $\chi$. Define the arithmetic genus of $X$ to be $g(X) = (-1)^{\dim X}\cdot (\chi(0)-1)$.
 \begin{enumerate}[(i)]
 	\item Show that $g(\projective^n) = 0$.
+	\begin{proof}
+		We follow the lead of Example 6.1.2 from Gathmann's notes. The coordinate ring of $\projective^n$ is $k[x_0, \ldots, x_n]$. The corresponding Hilbert function $h_{\projective^n}(d)$ then counts the number of monomials in $k[x_0, \ldots, x_n]$ of degree $d$, so we have
+		\[
+		h_{\projective^n}(d) = \binom{d+n}{n}.
+		\]
+		This Hilbert function is a polynomial in $d$, so it coincides with the corresponding Hilbert function $\chi_{\projective^n}$ and the genus of $\projective^n$ is given by
+		\begin{align*}
+			g(\projective^n) &= (-1)^{\dim \projective^n}\left(\binom{n+0}{n} - 1\right)\\
+			&= (-1)^n\cdot 0\\
+			&= 0.
+		\end{align*}
+	\end{proof}
 	\item If $X$ is a hypersurface of degree $d$ in $\projective^n$, show that $g(X) = \binom{d-1}{n}$. In particular, if $C\subset \projective^2$ is a plane curve of degree $d$, then $g(C) = \frac{1}{2}(d-1)(d-2)$.
+	\begin{proof}
+		Now we follow example 6.1.8(iii). Since the coordinate ring of $X$ is given by $k[x_0, \ldots, x_n]/(f) = k[x_0, \ldots, x_n]/(f\cdot k[x_0, \ldots, x_n])$ for some polynomial $f$ we have that
+		\begin{align*}
+			h_X(t) &= \dim_k(k[x_0, \ldots, x_n]/(f\cdot k[x_0, \ldots, x_n]))^{(t)}\\
+			&= \dim_k k[x_0, \ldots, x_n]^{(t)} - \dim_kk[x_0, \ldots, x_n]^{(t-\deg f)}\\
+			&= \binom{t+n}{n} - \binom{t-d+n}{n}.
+		\end{align*}
+		This is again a polynomial in $t$, so the Hilbert function and Hilbert polynomial coincide. We then have
+		\begin{align*}
+			g(X) &= (-1)^{\dim X}\left(\binom{0+n}{n} - \binom{-d+n}{n}-1\right)\\
+			&= (-1)^{n-1}\cdot (-1)^n\binom{d-1}{n}\\
+			&= \binom{d-1}{n}.
+		\end{align*}
+		Moving from the first to the second line we used the lesser-known (to me at least) identity $\binom{m}{k} = (-1)^k\binom{k-m-1}{k}$.\\
+
+		\noindent If $C$ is a plane curve in $\projective^2$ then we simply substitute $n=2$ into the above formula to obtain $g(C) = \frac{1}{2}(d-1)(d-2)$ as desired.
+	\end{proof}
 	\item Compute the arithmetic genus of the union of the three coordinate axes
 	\[
 	Z(x_1x_2, x_1x_3, x_2x_3)\subset \projective^3.
 	\]
+	\begin{solution}
+		Let $X$ be the union of the three coordinate axes in $\projective^3$. From the definition of the Hilbert function we that $h_X(d)$ is the dimension of the degree $d$ piece of the graded coordinate ring $k[x_0, \ldots, x_3]/(x_1x_2, x_1x_3, x_2x_3)$ -- the number of degree $d$ monomials divisible by at most one of $x_1$, $x_2$, $x_3$ and possibly divisible by $x_0$. These can look like $x_0^{d-k}x_i^k$ for $i=1$, 2, 3 and $1\leq k\leq d$ or $x_0^d$. There are $3d$ monomials in the former category and one in latter, so $h_X(d) = 3d+1$ for sufficiently large $d$. We then have
+		\begin{align*}
+		g(X) &= (-1)^{\dim X}(3\cdot 0+1-1)\\
+		&= 0.
+		\end{align*}
+	\end{solution}
 \end{enumerate}
 
 \noindent\textbf{6.7.8}
 Let $C_1 = \{f_1=0\}$ and $C_2 = \{f_2 = 0\}$ be affine curves in $\affine_k^2$, and let $P\in C_1\cap C_2$ be a point. Show that the intersection multiplicity of $C_1$ and $C_2$ at $P$ (i.e. the length of the component at $P$ of the intersection scheme $C_1\cap C_2$) is equal to the dimension of the vector space $\mcal{O}_{\affine^2, P}/(f_1, f_2)$ over $k$.
+\begin{proof}
+	Write $C_1 = \Spec\ k[x,y]/(f_1)$ and $C_2 = \Spec\ k[x,y]/(f_2)$. The intersection scheme is then given by $C_1\cap C_2 = \Spec\ k[x,y]/(f_1, f_2)$. Essentially, all there is to show is that looking at the component at $P$ of $C_1\cap C_2$ corresponds to localizing $k[x,y]$ at $P$ and then quotienting by $(f_1, f_2)$.\\
+
+	\noindent The component of $C_1\cap C_2$ at $P$ corresponds to (equivalence classes of) quotients $\frac{f}{g}$ with $f,g\in k[x,y]/(f_1, f_2)$ where $g$ does not vanish at $P$. But we obtain the same set by looking at quotients $\frac{f}{g}\in k[x,y]$ where $g$ doesn't vanish at $P$, i.e. the stalk $\mcal{O}_{\affine^2, P}$, and then quotienting by $(f_1, f_2)$, so the component of $C_1\cap C_2$ at $P$ is $\mcal{O}_{\affine^2, P}/(f_1, f_2)$.\\
+
+	\noindent Now the intersection multiplicity of $C_1$ and $C_2$ at $P$ is defined to be the length of the component at $P$ of the intersection scheme $C_1\cap C_2$. We have just shown that this component is $\Spec\ \mcal{O}_{\affine^2, P}/(f_1, f_2)$, so the length is the dimension over $k$ of $\mcal{O}_{\affine^2, P}/(f_1, f_2)$.
+\end{proof}
 
 \noindent\textbf{7.8.8}
-What is the line bundle on $\projective^n\times \projective^m$ leading to the Segre embedding $\projective^n\times \projective^m\to \projective^N$ by the correspondence of ... What is the line bundle leading to the degree-$d$ Veronese embedding $\projective^n\to \projective^N$?
+What is the line bundle on $\projective^n\times \projective^m$ leading to the Segre embedding $\projective^n\times \projective^m\to \projective^N$ by the correspondence of lemma 7.5.14? What is the line bundle leading to the degree-$d$ Veronese embedding $\projective^n\to \projective^N$?
+\begin{solution}
+	The Segre embedding $S: \projective^n\times \projective^m\to \projective^N$, where $N = (n+1)(m+1)-1$ is given by $S([x_0:\ldots : x_n], [y_0:\ldots:y_m]) = [x_iy_j]$ where $0\leq i\leq m$ and $0\leq j\leq n$. By lemma 7.5.14 we have that the corresponding line bundle is given by $\mcal{L} = S^*\mcal{O}_{\projective^N}(1)$. By the discussion in example 7.2.12 we have that since $S$ is given by homogeneous degree 2 polynomials, $S^*\mcal{O}_{\projective^N}(1) = \mcal{O}_{\projective^m\times \projective^n}(2\cdot 1) = \mcal{O}_{\projective^m\times \projective^n}(2)$. Let's briefly reiterate that discussion here for the sake of completeness.\\
+
+	\noindent Directly computing the pullback $S^*\mcal{O}_{\projective^N}(1)$ gives quotients of the form
+	\[
+	\frac{f(x_0y_0, \ldots, x_my_n)}{g(x_0y_0, \ldots, x_my_n)}
+	\]
+	where $\deg f - \deg g = 1$. But this isn't a sheaf of $\mcal{O}_{\projective^m\times \projective^n}$ modules (and therefore not a line bundle) since multiplying a section like $x_0y_0 \in S^*\mcal{O}_{\projective^N}$ by the section $\frac{x_0}{y_0}\in \mcal{O}_{\projective^m\times \projective^n}$ gives $x_0^2$, which is not of the form described by the pullback. The actual definition of the pullback sheaf is given by
+	\begin{align*}
+	S^*\mcal{O}_{\projective^N} &= S^{-1}\mcal{O}_{\projective^N}\otimes_{S^{-1}\mcal{O}_{\projective^N}}\mcal{O}_{\projective^m\times \projective^n},
+	\end{align*}
+	which is exactly the set of quotients $\frac{f}{g}$ with $\deg f - \deg g = 2$ since $\deg S = 2$.\\
+
+	\noindent By the same reasoning, since the degree $d$ Veronese embedding $V_d: \projective^n\to \projective^N$, unsurprisingly, has degree $d$, we have that the corresponding line bundle is given by $\mcal{O}_{\projective^n}(d)$.
+\end{solution}
 
 
 \noindent\textbf{7.8.10}
 Let $X$ be a smooth projective curve, and let $P\in X$ be a point. Show that there is a rational function on $X$ that is regular everywhere except at $P$.
+\begin{proof}
+	The Riemann-Roch theorem states that the dimension of the space of global sections of a divisor $D$, $h^0(D)$ satisfies
+	\[
+	h^0(D) - h^0(K_X-D) = \deg D + 1 - g(X),
+	\]
+	where $K_X$ is the divisor class associated to the canonical bundle of $X$, $\omega_X$. Let $Q$ be a point on $X$ not equal to $P$ and let $D$ be the divisor $D = kQ - P$ where $k$ is strictly larger than the genus of $X$. We then have that $\deg D = k-1$ and the Riemann-Roch theorem gives
+	\begin{align*}
+	h^0(D) - h^0(K_X-D)&= (k-1)+1 - g(X)\\
+	&=k-g(X)\\
+	&>0.
+	\end{align*}
+	Since $h^0(D)$ and $h^0(K_X-D)$ are both nonnegative, we must have $h^0(D)>0$, so the space of sections with divisor class $D$ is nonempty. But sections in this divisor class are regular everywhere except at $P$, so we have shown that there are functions with the desired property.
+\end{proof}
 
 \end{document}
