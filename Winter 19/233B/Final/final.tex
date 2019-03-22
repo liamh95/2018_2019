@@ -22,7 +22,7 @@
 \newcommand{\halfplane}{\mathbb{H}}
 \newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
 \newcommand{\supp}[1]{\text{supp}({#1})}
-\newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
+\newcommand{\Hom}{\text{Hom}}
 \newcommand{\tr}{\text{tr}}
 \newcommand{\field}[1]{\mathbb{F}_{{#1}}}
 \newcommand{\Gal}[1]{\text{Gal}\left({#1}\right)}
@@ -61,13 +61,23 @@
 \noindent\textbf{5.6.12}
 Let $X$ be a prevariety over an algebraically closed field $k$, and let $P\in X$ be a (closed) point of $X$. Let $D = \Spec\ k[x]/(x^2)$ be the ``double point''. Show that the tangent space $T_{X,P}$ to $X$ at $P$ can be canonically identified with the set of morphisms $D\to X$ that map the unique point of $D$ to $P$.
 \begin{proof}
-	
+	Let $f:D\to X$ be a morphism mapping $(x)\in D$ to $P\in X$. Because morphisms of schemes correspond to homomorphisms of ringed spaces, we have a map on the stalk, $f^*: \mcal{O}_{X, P}\to k[x]/(x^2)$, that sends the maximal ideal $\mathfrak{m}_P$ to $(x)$. Write $f^*(g) = \alpha(g) + \beta(g)x\in k[x]/(x^2)$ so that $f^^(g) = \beta(g)\in (x)$ for $g\in \mathfrak{m}_P$.  We can then use $f^*$ to build a functional $\varphi: \mathfrak{m}_P\to k$ by $\varphi(g) = \beta(g)$. Now take $g,h\in \mathfrak{m}_P$. We then have
+	\begin{align*}
+		&f^*(gh) = f^*(g)f^*(h)\\
+		\iff& \beta(gh)x = \beta(g)\beta(h)x^2\\
+		\iff&\beta(gh) = 0,
+	\end{align*}
+	so $\mathfrak{m}_P^2\subseteq \ker \beta$ and we can consider $\beta$ as a functional $\mathfrak{m}_P/\mathfrak{m}_P^2\to k$, an element of the tangent space at $P$.\\
+
+	\noindent Let's show that this assignment is injective. Suppose that $f_1^*, f_2^*: \mcal{O}_{X, P}\to k[x]/(x^2)$ give rise to the same functional $\mathfrak{m}_P/\mathfrak{m}_P^2$.\\
+
+	\noindent On the other hand, suppose we have functional $\varphi\in \Hom(\mathfrak{m_P}/\mathfrak{m}_P^2, k) \cong T_{X, P}$. Our goal is to use $\varphi$ to build a morphism $D\to X$ mapping $(x)$ to $P$.
 \end{proof}
 
 \noindent\textbf{5.6.13}
 Let $X$ be an affine variety, let $Y$ be a closed subscheme of $X$ defined by the ideal $I\subset A(X)$, and let $\tilde{X}$ be the blow-up of $X$ at $I$. Show that:
 \begin{enumerate}[(i)]
-	\item $\tilde{X} = \Proj(\bigoplus_{d\geq 0}I^{(d)})$, where $I^{(0)}:= A(X)$.
+	\item $\tilde{X} = \Proj(\bigoplus_{d\geq 0}I^d)$, where $I^{(0)}:= A(X)$.
 	\item The projection map $\tilde{X}\to X$ is the morphism induced by the ring homomorphism $I^{(0)}\to \bigoplus_{d\geq 0}I^{(d)}$.
 	\item The exceptional divisor of the blow-up, i.e. the fiber $Y\times_X\tilde{X}$ of the blow-up $\tilde{X}\to X$ over $Y$, is isomorphic to $\Proj(\bigoplus_{d\geq 0}I^{(d)}/I^{(d+1)}$.
 \end{enumerate}
