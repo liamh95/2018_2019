@@ -78,13 +78,19 @@ Let $X$ be a prevariety over an algebraically closed field $k$, and let $P\in X$
 Let $X$ be an affine variety, let $Y$ be a closed subscheme of $X$ defined by the ideal $I\subset A(X)$, and let $\tilde{X}$ be the blow-up of $X$ at $I$. Show that:
 \begin{enumerate}[(i)]
 	\item $\tilde{X} = \Proj(\bigoplus_{d\geq 0}I^d)$, where $I^{0}:= A(X)$.
+	\begin{proof}
+		Any projective scheme is obtained by taking $\Proj$ of its coordinate ring, so this problem amounts to showing that the coordinate ring of the blowup $\tilde{X}$ is $\bigoplus_{d\geq 0}I^d$.
+	\end{proof}
 	\item The projection map $\tilde{X}\to X$ is the morphism induced by the ring homomorphism $I^{0}\to \bigoplus_{d\geq 0}I^{d}$.
+	\begin{proof}
+		As $X$ is an affine variety, any morphism of schemes $\tilde{X}\to X$ corresponds to a homomorphism of rings of global sections
+		\[
+		\mcal{O}_X(X) = I^0 \to \mcal{O}_{\tilde{X}}(\tilde{X}) = \bigoplus_{d\geq 0}I^d,
+		\]
+		so the projection $\pi: \tilde{X}\to X$ certainly corresponds to \textit{some} morphism of the desired form. ``The'' map in question is presumably the one that sends $x\in I^0$ to $(x, 0, \ldots)\in \bigoplus_{d\geq 0}I^d$, which we'll call $\varphi$. I think the idea is to take an open affine cover $U_i = \Spec\ R_i$ of $\tilde{X}$ and define $\pi_i: U_i\to X$ by $\pi_i(\mathfrak{p}) = \varphi^{-1}(\mathfrak{p})$. We should then be able to glue these $\pi_i$'s into a map $\tilde{X}\to X$. The problem is I'm not sure how prime ideals in the $R_i$ correspond to those in $\bigoplus_{d\geq 0}I^d$.
+	\end{proof}
 	\item The exceptional divisor of the blow-up, i.e. the fiber $Y\times_X\tilde{X}$ of the blow-up $\tilde{X}\to X$ over $Y$, is isomorphic to $\Proj(\bigoplus_{d\geq 0}I^{d}/I^{d+1})$.
 \end{enumerate}
-\begin{proof}
-	
-\end{proof}
-
 
 \noindent\textbf{6.7.3}
 Let $X\subset \projective^n$ scheme with Hilbert polynomial $\chi$. Define the arithmetic genus of $X$ to be $g(X) = (-1)^{\dim X}\cdot (\chi(0)-1)$.
