@@ -1,0 +1,193 @@
+%% Please change the file name by replacing N with the apporpriate number
+%% corresponding to the current homework and XX with your initials.
+%% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
+
+\documentclass[11pt,letterpaper]{report}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amsthm}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\exreals}{\overline{\mathbb{R}}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\mable}{measurable}
+\newcommand{\quats}{\mathbb{H}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\disk}{\mathbb{D}}
+\newcommand{\halfplane}{\mathbb{H}}
+\newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
+\newcommand{\supp}[1]{\text{supp}({#1})}
+\newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\field}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\esssup}{\text{ess sup }}
+\newcommand{\essinf}{\text{ess inf }}
+\newcommand{\affine}{\mathbb{A}}
+\newcommand{\Gal}{\text{Gal}}
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+\addtolength{\jot}{8pt}
+\linespread{1.3}
+
+\begin{document}
+%\noindent{\em Liam Hardiman\hfill{Date} }
+% Please give relevant information
+\begin{center}
+{\bf \Large Algebra Qualifying Exams} %Replace N with the appropriate number
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\section*{Spring 2016}
+\begin{enumerate}
+	\item 
+	\begin{enumerate}
+		\item Prove that every subgroup of a cyclic group is cyclic.
+		\begin{proof}
+			Let $G$ be a cyclic group. First, suppose that $G$ is of infinite order. Then sending the generator of $G$ to $1\in \integers$ gives an isomorphism $G\cong \integers$. We claim that every subgroup of $\integers$ is of the form $n\integers$, which is clearly cyclic. Let $H$ be a subgroup of $G$ and let $n$ be the smallest positive integer in $H$. Then $n\integers \subseteq H$. Suppose the containment is strict and let $m$ be the smallest positive integer in $H\setminus n\integers$. We then have that $1\leq \gcd(m,n)<n$ and by Bezout's identity we have that $\gcd(m,n) = um+vn$ for some $u,v\in \integers$ is in $H$. But this contradicts the minimality of $n$, so we conclude that $H= n\integers$.\\
+
+			\noindent Suppose now that $G = \langle g\rangle$ is finite of order $n$ so that $G\cong \integers/n\integers$. By the fourth isomorphism theorem (or lattice/correspondence theorem) there is a one-to-one correspondence between subgroups of $\integers/n\integers$ and subgroups of $\integers$ containing $n\integers$. We have already shown that all subgroups of $\integers$ are cyclic, and since the homomorphic image of a cyclic group is cyclic ($\varphi(g^k) = \varphi(g)^k$), we have that all subgroups of $\integers/n\integers$ are cyclic.
+		\end{proof}
+
+		\item Is the automorphism group of a cyclic group necessarily cyclic?
+		\begin{solution}
+			This need not be the case. Let $G \cong \integers/N\integers$. As $G$ is cyclic, any automorphism of $G$ is determined by where it sends a generator and it must map a generator to a generator. The generators of $\integers/N\integers$ exactly correspond to the elements of $(\integers/N\integers)^\times$ and we have that $\Aut(\integers/N\integers) \cong (\integers/N\integers)^\times$. If $N$ is a product of distinct primes $p, q>2$ then the Chinese remainder theorem says that
+			\[
+			(\integers/N\integers)^\times \cong (\integers/p\integers)^\times \times (\integers/q\integers)^\times \cong \integers/(p-1)\integers \times \integers/(q-1)\integers,
+			\]
+			which is not cyclic
+		\end{solution}
+	\end{enumerate}
+
+	\item Let $G = \integers/25\integers$ be the cyclic group of order 25.
+	\begin{enumerate}
+		\item Can $G$ be given the structure of a $\integers[i]$-module?
+		\begin{solution}
+			Yes it can. Observe that in $\integers/25\integers$, $-1 = 24 = 6\cdot 4 = 9^2\cdot 2^2$, so $18^2 = -1$. Define the action of $a+bi\in \integers[i]$ on $m\in \integers/25\integers$ by 
+			\[
+			(a+bi)\cdot m = (a+18b)m.
+			\]
+			This action gives $G$ the structure of a $\integers[i]$-module since
+			\begin{align*}
+				[(a+bi)+(c+di)]\cdot m &= [(a+c)+(b+d)i]\cdot m\\
+				&= [(a+c)+18(b+d)]m\\
+				&= (a+bi)\cdot m + (c+di)\cdot m.\\
+				(a+bi)\cdot (m+n) &= (a+18b)(m+n)\\
+				&= (a+bi)\cdot m + (a+bi)\cdot n.\\
+				[(a+bi)(c+di)]\cdot m&= [(ac-bd)+(ad+bc)i]m\\
+				&= [(ac-bd)+18(ad+bc)]m\\
+				&= (a+bi)\cdot [(c+di)\cdot m].
+			\end{align*}
+		\end{solution}
+		\item Can $G$ be given the structure of a $\integers/5\integers$ module?
+		\begin{solution}
+			No it cannot. If it could then we would have
+			\begin{align*}
+				0 &= 0\cdot 1\\
+				&= 5\cdot 1\\
+				&= (1+1+1+1+1)\cdot 1\\
+				&= 1\cdot 1 + 1\cdot 1 + 1\cdot 1+1\cdot 1 + 1\cdot 1\\
+				&= 5\\
+				&\neq 0.
+			\end{align*}
+		\end{solution}
+	\end{enumerate}
+
+	\item Prove that there is no simple group of order 520.
+	\begin{proof}
+		Write $520 = 2^3\cdot 5\cdot 13$. By Sylow's theorems, the number of Sylow-5 subgroups, $n_5$ is 1 mod 5 and divides $2^3\cdot 13 = 104$. The only positive integers satisfying these constraints are 1 and 26. The same reasoning shows that $n_{13}$ must be 1 or 40. If either of $n_5$ or $n_{13}$ is 1, then since Sylow-$p$ subgroups are conjugate to one another, then that subgroup would be normal. Suppose then that $n_5 = 26$ and $n_{13} = 40$. Then there are $26\cdot 4 = 104$ elements of order 5 and $40\cdot 12 = 480$ elements of order 13. But $104+480 = 584 > 520$, so this cannot be the case. We conclude that there must be a unique Sylow-5 or Sylow-13 subgroup which is normal.
+	\end{proof}
+
+	\item Let $G$ be a finite group acting transitively on a set $X$ with $|X|>1$.
+	\begin{enumerate}
+		\item State the orbit-stabilizer theorem.
+		\begin{solution}
+			If a group $G$ acts on a set $X$ then for any $x\in X$, the size of the orbit of $x$ under $G$ is the index of the stabilizer of $x$ under $G$, $|\mcal{O}(x)| = [G: \text{Stab}(x)]$.
+		\end{solution}
+		\item Show that there is some element of $G$ fixing no element of $X$.
+		\begin{proof}
+			Since the action of $G$ on $X$ is transitive there is a single orbit. Burnside's lemma (which immediately follows from the orbit-stabilizer theorem) then states that
+			\[
+			1 = \frac{1}{|G|}\sum_{g\in G}|\{x\in X: g\cdot x = x\}|.
+			\]
+			If $g\in G$ has fixed points then it contributes at least $1/|G|$ to the above sum. If \textit{every} element has a fixed point then we must have that every term in the sum is $1/|G|$. But the identity element fixes every element in $X$ and $|X|>1$, so we must have that one term in this sum is zero, i.e. at least one element of $G$ is fixed point free.
+		\end{proof}
+	\end{enumerate}
+
+	\item Let $K$ be a field and let $\overline{K}$ be an algebraic closure of $K$. Assume $\alpha,\beta\in \overline{K}$ have degree 2 and 3 over $K$, respectively.
+	\begin{enumerate}
+		\item Can $\alpha\beta$ have degree 5 over $K$?
+		\begin{solution}
+			No it cannot. We have that $K(\alpha\beta)$ is contained in the composite extension $K(\alpha)K(\beta)$. Furthermore, since the degrees of $K(\alpha)$ and $K(\beta)$ over $K$ are relatively prime, we have that the composite extension has degree 6 over $K$. Since $K(\alpha\beta)$ is a subfield of the composite extension, its degree over $K$ must divide 6. Since 5 doesn't divide 6 we have that $K(\alpha\beta)$ cannot have degree 5 over $K$.
+		\end{solution}
+		\item Can $\alpha\beta$ have degree 6 over $K$?
+		\begin{solution}
+			Yes it can. Consider $\rationals(\sqrt{2})$ and $\rationals(\sqrt[3]{2})$. $x^2-2$ and $x^3-2$ are irreducible over $\rationals$ by Eisenstein so these extensions are of degree 2 and 3, respectively. We claim that the product $2^{1/2}\cdot 2^{1/3} = 2^{5/6}$ has degree 6 over $\rationals$.\\
+
+			\noindent We start by showing that $\rationals(2^{5/6}) = \rationals(2^{1/6})$. Clearly $\rationals(2^{5/6})\subseteq \rationals(2^{1/6})$. On the other hand, $\frac{1}{2^4}(2^{5/6})^5 = 2^{1/6}$, so $\rationals(2^{1/6})\subseteq \rationals(2^{5/6})$. Finally, $2^{1/6}$ is a root of the polynomial $x^6-2$, which is irreducible over $\rationals$ by Eisenstein, so we have that $2^{1/6}$, and therefore $2^{5/6}$, has degree 6 over $\rationals$.
+		\end{solution}
+	\end{enumerate}
+
+	\item Let $L/\rationals$ denote a Galois extension with Galois group isomorphic to $A_4$.
+	\begin{enumerate}
+		\item Does there exist a quadratic extension $K/\rationals$ contained in $L$?
+		\begin{solution}
+			By the fundamental theorem of Galois theory, a quadratic extension $K/\rationals$ corresponds to a subgroup of $\Gal(L/\rationals)\cong A_4$ of index 2 (order 6). We claim that there is no such subgroup, and therefore no such quadratic sub-extension.\\
+
+			\noindent Any group of order 6 is isomorphic to either $\integers/6\integers$ or $S_3$. $A_4$ consists of double 2-cycles, e.g. $(1\ 2)(3\ 4)$, and 3-cycles, e.g. $(1\ 2\ 3)$, none of which have order 6, so that leaves $S_3$. $S_3$ has three elements of order 2, and since the three double 2-cycles in $A_4$ are exactly its elements of order 2, they must all lie in any subgroup isomorphic to $S_3$. However, the elements of order 2 don't commute with one another in $S_3$ while they do in $A_4$, so we cannot have a subgroup of $A_4$ isomorphic to $S_3$.
+		\end{solution}
+		\item Does there exist a degree 4 polynomial in $\rationals[x]$ with splitting field equal to $L$?
+		\begin{solution}
+			
+		\end{solution}
+	\end{enumerate}
+	\item Let $A: V\to V$ be a linear transformation of a vector space $V$ over the field $\rationals$ which satisfies the relation $(A^3+3I)(A^3-2I)=0$. Show that the dimension $\dim_\rationals(V)$ is divisible by 3.
+	\begin{proof}
+		Since $A$ satisfies the polynomial $(x^3+3)(x^3-2)$, the minimal polynomial of $A$ over $\rationals$ must divide $(x^3+3)(x^3-2)$. Since $x^3+3$ and $x^3-2$ are both irreducible over $\rationals$ by Eisenstein, the minimal polynomial must be either $x^3+3$, $x^3-2$ or $(x^3+3)(x^3-2)$. Furthermore, the minimal polynomial divides the characteristic polynomial whose degree is the dimension of $V$ over $\rationals$. Since the minimal polynomial and characteristic polynomial have the same roots in an algebraic closure, we must have that the characteristic polynomial is of the form $(x^3+3)^a(x^3-2)^b$ for some nonnegative integers $a,b$ at least one of which is positive. Since the degree of such a polynomial is divisible by 3, we must have that the dimension of $V$ over $\rationals$ is divisible by 3.
+	\end{proof}
+
+	\item True/False.
+	\begin{enumerate}
+		\item If $K_1$, $K_2$ are fields and $\varphi: K_1\to K_2$ is a ring homomorphism such that $\varphi(1)=1$, then $\varphi$ is injective.
+		\begin{solution}
+			True. The kernel of $\varphi$ is an ideal in $K_1$. Since $K_1$ is a field its only ideals are $(0)$ and all of $K_1$. Since $\varphi(1) = 1$, we have that the kernel of $\varphi$ is not all of $K_1$, so it must be trivial, forcing $\varphi$ to be injective.
+		\end{solution}
+		\item The unit group of $\complex$ is isomorphic to the additive group of $\complex$.
+		\begin{solution}
+			Assuming ``the unit group of $\complex$'' means the nonzero complex numbers, $\complex^\times$, then this is false. $\complex^\times$ contains an element of order 2, $-1$, whereas the additive group $(\complex, +)$ contains no elements of order 2.
+		\end{solution}
+		\item Let $n$ be a positive integer. Then $\integers/n\integers\otimes_\integers\rationals = 0$.
+		\begin{solution}
+			True. For any simple tensor $a\otimes \frac{p}{q}$ in $\integers/n\integers\otimes_\integers \rationals$ we have
+			\begin{align*}
+				a\otimes \frac{p}{q} &= a\otimes \frac{np}{nq}\\
+				&= na\otimes \frac{p}{nq}\\
+				&= 0\otimes \frac{p}{nq}\\
+				&= 0.
+			\end{align*}
+		\end{solution}
+	\end{enumerate}
+
+	\item For each of the following either give an example or show that none exists.
+	\begin{enumerate}
+		\item An element $\alpha\in \rationals(\sqrt{2}, i)$ such that $\rationals(\alpha)= \rationals(\sqrt{2}, i)$.
+		\begin{solution}
+			As this is a finite extension of $\rationals$ and since any such extension is separable as $\rationals$ is perfect, the primitive element theorem guarantees the existence of such an $\alpha$.
+		\end{solution}
+		\item A tower of field extensions $L\supseteq K'\supseteq K$ such that $L/K'$ and $K'/K$ are Galois extensions but $L/K$ is not Galois.
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}
