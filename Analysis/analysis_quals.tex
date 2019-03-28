@@ -1,0 +1,132 @@
+%% Please change the file name by replacing N with the apporpriate number
+%% corresponding to the current homework and XX with your initials.
+%% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
+
+\documentclass[11pt,letterpaper]{report}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amsthm}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\exreals}{\overline{\mathbb{R}}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\mable}{measurable}
+\newcommand{\quats}{\mathbb{H}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\disk}{\mathbb{D}}
+\newcommand{\halfplane}{\mathbb{H}}
+\newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
+\newcommand{\supp}[1]{\text{supp}({#1})}
+\newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\field}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Gal}[1]{\text{Gal}\left({#1}\right)}
+\newcommand{\esssup}{\text{ess sup }}
+\newcommand{\essinf}{\text{ess inf }}
+\newcommand{\affine}{\mathbb{A}}
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+\addtolength{\jot}{8pt}
+\linespread{1.3}
+
+\begin{document}
+% Please give relevant information
+\begin{center}
+{\bf \Large Real Analysis Qualifying Exams} %Replace N with the appropriate number
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\section*{Spring 2016}
+\begin{enumerate}
+	\item Assume $f\in L^1[0,1]$. Compute
+	\[
+	\lim_{k\to \infty}\int_{[0,1]}|f|^{1/k}\ dx.
+	\]
+	\begin{solution}
+		Let's split this integral into three regions.
+		\[
+		\int_{[0,1]}|f|^{1/k}\ dx = \int_{f=0}|f|^{1/k}\ dx + \int_{0<|f|\leq 1}|f|^{1/k}\ dx + \int_{|f|>1}|f|^{1/k}\ dx.
+		\]
+		The integral over the first region is clearly zero for all $k$. On the second region we have that $|f|^{1/k} \leq 1$ for all $k$. Since the interval $[0,1]$ has finite measure, we have that the constant function 1 is in $L^1(\{x: 0<|f|\leq 1\})$, so the dominated convergence theorem says that the integral over the second region goes to $m(\{0<|f|\leq 1\})$. Similarly, on the third region we have that $|f|^{1/k}\leq |f|$, which is in $L^1$, so the dominated convergence theorem says that the third integral goes to $m(\{|f|>1\})$. Combining these, we have that
+		\[
+		\lim_{k\to \infty}\int_{[0,1]}|f|^{1/k}\ dx = m(\{|f|>0\}).
+		\]
+	\end{solution}
+
+	\item Let $\{f_n\}$ be a sequence of measurable functions on $[0,1]$ and $0\leq f_n\leq 1$ a.e. Assume that
+	\[
+	\lim_{n\to \infty}\int_{[0,1]}f_ng\ dx = \int_{[0,1]}fg\ dx
+	\]
+	for some $f\in L^1[0,1]$ and any $g\in C[0,1]$. Prove that $0\leq f\leq 1$ a.e.
+	\begin{solution}
+		Since $f\in L^1[0,1]$, by the Lebesgue differentiation theorem we have that
+		\begin{equation}\label{s16_2_ldt}
+		\frac{1}{m(E)}\int_Ef(t)\ dt \to f(x)
+		\end{equation}
+		as $E$ shrinks to $x$ for almost all $x$. Furthermore, since $0\leq f_n\leq 1$ we also have that
+		\[
+		\frac{1}{m(E)}\int_Ef_n(t)\ dt\to f_n(x)\in [0,1]
+		\]
+		as $E$ shrink to $x$ for almost all $x$.  Intuitively, we'd like to replace the integral of $f$ in (\ref{s16_2_ldt}) with a limit of integrals of $f_n$.\\
+
+		\noindent We claim that the function $g$ in the given hypothesis can be replaced with the indicator function of an interval $\chi_I$. To see this, let $g_m$ be a sequence of continuous functions with $g_m\to \chi_I$ in $L^1$ and $0\leq \chi_I\leq 1$. By extracting a subsequence we can assume that $g_m\to \chi_I$ a.e. as well. We then have
+		\[
+		\int_0^1|f_n\chi_I - f\chi_i| \leq \int_0^1|f_n\chi_I-f_ng_m| + \int_0^1|f_ng_m-fg_m| + \int_0^1|fg_m-f\chi_i|.
+		\]
+		Since $\|f_n\|_{L^\infty}\leq 1$, we have that the first integral on the RHS can be made small uniformly in $n$ by picking $m$ large. The second integral goes to zero as $n\to \infty$ by hypothesis since $g_m$ is continuous. The third integral can be made small for $m$ large by dominated convergence since $|fg_m| \leq |f|\in L^1$.\\
+
+		For almost all $x$, if $I_k$ is a sequence of intervals shrinking to $x$ then
+		\begin{align*}
+		\frac{1}{m(I_k)}\int_{I_k}f\ dx &= \frac{1}{m(I_k)}\int f\chi_{I_k}\ dx\\
+		&= \lim_{n\to \infty}\frac{1}{m(I_k)}\int f_n\chi_{I_k}\ dx.
+		\end{align*}
+		Since $0\leq f_n\leq 1$, the RHS is in $[0, 1]$ for almost all $x$. By the Lebesgue differentiation theorem we then have that $0\leq f\leq 1$ a.e.
+	\end{solution}
+
+	\item Let $f,g\in L^2(\reals, \mcal{M}_L, \mu_L)$. Show that $f*g$ is a continuous function on $\reals$ vanishing at infinity, that is, $f*g\in C(R)$ and $\lim_{|x|\to \infty}(f*g)(x) = 0$.
+	\begin{proof}
+		For any $h$ we have by H\"older's inequality
+		\begin{align}\label{s16_3_main}
+			|(f*g)(x+h)-(f*g)(x)| &= \left|\int f(t)[g(x+h-t) - g(x-t)]\ dt\right|\\
+			&\leq \|f\|_{L^2}\cdot \|g_h-g\|_{L^2},
+		\end{align}
+		where $F_h(x) = F(x+h)$ for any function $F$. Now for any $\epsilon>0$ we can find $\varphi\in C_0(\reals)$ with $\|g-\varphi\|_{L^2} = \|g_h-\varphi_h\|_{L^2} <\epsilon$. By the triangle inequality we then have
+		\begin{align*}
+		\Lp{g_h-g}{2} &\leq \Lp{g_h-\varphi_h}{2} + \Lp{\varphi_h-\varphi}{2} +\Lp{\varphi-g}{2}\\
+		&< \Lp{\varphi_h-\varphi}{2} + 2\epsilon.
+		\end{align*}
+		Suppose that $\varphi$ has support contained in the compact set $K$. If we pick $h$ small enough then we can guarantee that $\varphi_h-\varphi$ is supported on a set with measure at most $2\cdot m(K)$. Now since $\varphi$ is continuous with compact support, it is uniformly continuous, so we can choose $h$ small enough that $|\varphi_h(x)-\varphi(x)| = |\varphi(x+h)-\varphi(x)|<\epsilon$ for all $x$ in the support of $\varphi_h-\varphi$. For such $h$ we have
+		\[
+		\Lp{\varphi_h-\varphi}{2} \leq \epsilon \cdot (2\cdot m(K))^{1/2},
+		\]
+		so (\ref{s16_3_main}) can be made arbitrarily small, which shows that $f*g$ is continuous.\\
+
+		\noindent First we claim that if $\varphi$ and $\psi$ are continuous with compact support then $\varphi*\psi$ vanishes at infinity. By definition we have that
+		\[
+		(\varphi*\psi)(x) = \int\varphi(t)\psi(x-t)\ dt.
+		\]
+		The product $\varphi(t)\psi(x-t)$ is nonzero only if $t$ is in the support of $\varphi$ and $x-t$ is in the support of $\varphi$. If pick $x$ large enough then supports of $t\mapsto \varphi(t)$ and $t\mapsto \psi(x-t)$ are disjoint, so this integral is zero.\\
+
+		\noindent Let $f_n$ and $g_n$ be sequences in $C_0(\reals)$ converging in $L^2$ to $f$ and $g$, respectively. We then have
+		\begin{align*}
+			|(f*g)(x)-(f_n*g_n)(x)| &\leq |(f*g)(x)-(f_n*g)(x)| + |(f_n*g)(x)-(f_n*g_n)(x)|\\
+			&\leq \Lp{g}{2}\cdot \Lp{f-f_n}{2} + \Lp{f_n}{2}\cdot \Lp{g-g_n}{2}.
+		\end{align*}
+		Since $f_n\to f$ and $g_n\to g$ in $L^2$, we have that $f_n*g_n$ converges uniformly to $f*g$. Since $f_n*g_n$ vanishes at infinity, we must then have that $f*g$ vanishes at infinity.
+	\end{proof}
+\end{enumerate}
+
+\end{document}

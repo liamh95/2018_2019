@@ -184,10 +184,33 @@
 	\begin{enumerate}
 		\item An element $\alpha\in \rationals(\sqrt{2}, i)$ such that $\rationals(\alpha)= \rationals(\sqrt{2}, i)$.
 		\begin{solution}
-			As this is a finite extension of $\rationals$ and since any such extension is separable as $\rationals$ is perfect, the primitive element theorem guarantees the existence of such an $\alpha$.
+			As this is a finite extension of $\rationals$ and since any such extension is separable as $\rationals$ is perfect, the primitive element theorem guarantees the existence of such an $\alpha$. We claim that $\rationals(\sqrt{2}, i) = \rationals(\sqrt{2}+i)$. The inclusion $\rationals(\sqrt{2}+i)\subseteq \rationals(\sqrt{2}, i)$ is obvious. Note that $(\sqrt{2}+i)^3 = -\sqrt{2}+5i$. This gives
+			\[
+			(\sqrt{2}+i)^3 + (\sqrt{2}+i) = 6i,
+			\]
+			so $i\in \rationals(\sqrt{2}+i)$. Subtracting $i$ from $\sqrt{2}+i$ shows that $\sqrt{2}\in \rationals(\sqrt{2}+i)$ as well and we have the reverse inclusion.
 		\end{solution}
 		\item A tower of field extensions $L\supseteq K'\supseteq K$ such that $L/K'$ and $K'/K$ are Galois extensions but $L/K$ is not Galois.
+		\begin{solution}
+			Consider the extensions $\rationals(\sqrt{2})/\rationals$ and $\rationals(\sqrt[4]{2})/\rationals(\sqrt{2})$. Both of these extensions are Galois since they are quadratic. However, $\rationals(\sqrt[4]{2})/\rationals$ is not Galois because it doesn't contain the non-real roots of $x^4-2$.
+		\end{solution}
 	\end{enumerate}
+
+	\item Let $L_1, \ldots, L_r$ be all pairwise non-isomorphic complex irreducible representations of a group $G$ of order 12. What are the possible values for their dimensions $n_i = \dim_\complex L_i$? For each of the possible answers of the form $(n_1, \ldots, n_r)$ give an example of $G$ which has such irreducible representations.
+	\begin{solution}
+		We have that $n_1^2 + \cdots + n_r^2 = 12$ and that $r$ is the number of conjugacy classes in $G$. Since the one-dimensional trivial representation is always a representation of $G$, we know that at least one of the $n_i$ is 1. We also know that the number of conjugacy classes divides the order of $G$ by Lagrange's theorem. These constraints give us three possible configurations of the $n_i$:
+		\[
+		(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)\quad (1, 1, 1, 1, 2, 2)\quad (1, 1, 1, 3).
+		\]
+		Here are some examples from each class.
+		\begin{itemize}
+			\item[$(1, \ldots, 1)$:]The irreducible representations of an abelian group are all one-dimensional, so a group like $\integers/12\integers$ would fall into this category.
+
+			\item[$(1, 1, 1, 1, 2, 2)$:] We can safely place the dihedral group $D_{12}$ in this category because it has six conjugacy classes and this is the only configuration of the $n_i$ consistent with this.
+
+			\item[$(1, 1, 1, 3)$:] The alternating group $A_4$ is in this category because it has four conjugacy classes.
+		\end{itemize}
+	\end{solution}
 \end{enumerate}
 
 \end{document}
