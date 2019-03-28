@@ -127,6 +127,21 @@
 		\end{align*}
 		Since $f_n\to f$ and $g_n\to g$ in $L^2$, we have that $f_n*g_n$ converges uniformly to $f*g$. Since $f_n*g_n$ vanishes at infinity, we must then have that $f*g$ vanishes at infinity.
 	\end{proof}
+
+	\item Let $(X, \mcal{A}, \mu)$ be a finite measure space, and let $p_1\in (1, \infty]$. Let $\{f_n\}$ be a uniformly bounded sequence in $L^{p_1}(X, \mcal{A}, \mu)$. Suppose $f = \lim_{n\to \infty}f_n$ exists $\mu$-a.e. Prove that $f\in L^p(X, \mcal{A}, \mu)$ for all $p\in [1, p_1]$ and $f_n\to f$ in $L^p(X, \mcal{A}, \mu)$ for all $p\in [1, p_1)$.
+	\begin{proof}
+		Suppose that $\Lp{f_n}{p_1}\leq M$ for all $n$. First we claim that the $f_n$ are in $L^p(X, \mcal{A}, \mu)$ for all $p\in [1, p_1]$. In fact, they are uniformly bounded:
+		\begin{align*}
+			\int_X|f_n|^p &= \int_{|f_n|<1}|f_n|^p + \int_{|f_n|\geq 1}|f_n|^p\\
+			&\leq \int_{|f_n|<1}1 + \int_{|f_n|\geq 1}|f_n|^{p_1}\\
+			&\leq \mu(\{f\leq 1\}) + M^{1/p_1}.
+		\end{align*}
+		Since $(X, \mcal{A}, \mu)$ is a finite measure space, this quantity is finite, so $f_n\in L^p(X, \mcal{A}, \mu)$ for all $n$ and $p\in [1, p_1]$. We can then use the fact that $f_n\to f$ a.e. and Fatou's lemma to show that $f\in L^p(X, \mcal{A}, \mu)$ for $p\in [1, p_1]$:
+		\[
+		\int_X|f|^p \leq \liminf_{n\to \infty}\int_X|f_n|^p<\infty,
+		\]
+		where the finiteness follows from the $L^p$ uniform-boundedness of the $f_n$.
+	\end{proof}
 \end{enumerate}
 
 \end{document}
