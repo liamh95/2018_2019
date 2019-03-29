@@ -252,9 +252,37 @@
 		\end{proof}
 		\item Prove that $A$ is diagonalizable over $\complex$ and describe the corresponding diagonal matrices.
 		\begin{proof}
-			
+			The minimal polynomial of $A$, $x^2+1$ splits completely into distinct linear factors over $\complex$, $(x+i)(x-i)$, so $A$ is diagonalizable over $\complex$. The Jordan blocks of $A$ are all of size 1, so $A$ is similar to a diagonal matrix with an equal number of $i$'s and $-i$'s along the diagonal. 
 		\end{proof}
 	\end{enumerate}
+
+	\item Let $G$ be a group of order 70. Prove that $G$ has a normal subgroup of order 35.
+	\begin{proof}
+		Any subgroup of $G$ with order 35 will be normal as it will have index 2. It then suffices to simply show that $G$ has a subgroup of order 35.\\
+
+		\noindent $70 = 2\cdot 5\cdot 7$. By Sylow's theorem, the number of Sylow-7 subgroups, $n_7$ is 1 mod 7 and divides $2\cdot 5 = 10$. The only possibility is $n_7 = 1$. Similarly we have that $n_5 = 1$ as well. Since the Sylow-$p$ subgroups are conjugate to one another, the fact that we have unique Sylow-5 and Sylow-7 subgroups shows that these subgroups, $H$ and $K$, are normal in $G$. Consequently, the product subgroup $HK$ is a subgroup of $G$ with order
+		\[
+		|HK| = \frac{|H|\cdot |K|}{|H\cap K|}.
+		\]
+		Since $H$ and $K$ are cyclic with relatively prime orders they must intersect trivially, so $|HK| = 35$.
+	\end{proof}
+
+	\item Construct a Galois extension $F$ of $\rationals$ satisfying $\Gal(F/\rationals)\cong D_8$.
+	\begin{solution}
+		Consider the splitting field of $p(x) = x^4-2$ over $\rationals$. $p$ has roots $i^k2^{1/4}$ for $k = 0, 1, 2, 3$, so $F = \rationals(2^{1/4}, i)$. $\rationals(2^{1/4})$ is a real degree 4 subextension. $[\rationals(2^{1/4}, i): \rationals(2^{1/4})]=2$, so we have that $[\rationals(2^{1/4}, i):\rationals] = 8$. Since $\Gal(F/\rationals)$ is the Galois group of a degree-4 polynomial, it must be a subgroup of $S_4$. Any order 8 subgroup of $S_4$ is one of its (all isomorphic) Sylow-2 subgroups. The dihedral group $D_8$ is an order 8 subgroup of $S_4$, so we must have that $\Gal(F/\rationals)\cong D_8$.
+	\end{solution}
+
+	\item Let $F$ be a field. Prove that every ideal of $F[x]$ is principal.
+	\begin{proof}
+		Let $I$ be a nonzero proper ideal of $F[x]$ and let $a$ be an element of $I$ of minimal degree. If $\deg a = 0$ then $a$ is a unit, in which case $I = F[x]$. We claim that $a$ divides every element of $I$, so since $(a)$ is clearly contained in $I$, we'll have that $I = (a)$. Let $b$ be any element of $I$. Since $F$ is a field we can perform polynomial division with remainder to obtain unique $q$ and $r$ with $b = aq+r$, where $r$ is either zero or has degree strictly less than that of $a$. $r$ cannot have degree strictly less than that of $a$ because $a$ was chosen to have minimal degree, so we must have that $r=0$ and $a$ divides every element of $I$.
+	\end{proof}
+
+	\item Give an example of a module $M$ over a ring $R$ such that $M$ is not finitely generated as an $R$-module.
+	\begin{proof}
+		Any infinitely generated abelian group will do the trick, e.g. $\bigoplus_{\naturals}\integers$. Abelian groups are $\integers$-modules, so an infinitely generated abelian group is not a finitely generated $\integers$-module.\\
+
+		\noindent Suppose $\bigoplus_\naturals\integers$ is finitely generated. Elements of this module are of the form $(a_i)_{i=1}^\infty$ where all but finitely many of the $a_i$ are zero. If we could find a finite generating set of this module, there would be some maximal $N$ with $a_N$ nonzero an $a_j = 0$ for all $j>N$ and all generators $(a_i)$. But $\bigoplus_\naturals\integers$ clearly contains elements where $a_j\neq 0$ for $j>N$, so this module cannot be finitely generated.
+	\end{proof}
 \end{enumerate}
 
 \end{document}
