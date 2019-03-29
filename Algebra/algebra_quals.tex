@@ -213,4 +213,48 @@
 	\end{solution}
 \end{enumerate}
 
+\section*{Fall 2015}
+\begin{enumerate}
+	\item \begin{enumerate}
+		\item Define \textbf{prime ideal}.
+		\begin{solution}
+			An ideal $P\neq R$ of the commutative ring $R$ is prime if $ab\in R$ implies that $a\in R$ or $b\in R$. Equivalently, $P$ is prime if and only if $R/P$ is an integral domain.
+		\end{solution}
+		\item Define \textbf{maximal ideal}.
+		\begin{solution}
+			An ideal $I\neq R$ of the ring $R$ is maximal if $I$ is not properly contained in another ideal (that isn't all of $R$). If $R$ is commutative, then $I$ is maximal if and only if $R/I$ is a field.
+		\end{solution}
+		\item Give an example of a ring $R$ and ideal $P_1$, $P_2$, and $P_3$ of $R$ such that for the properties ``prime ideal'' and ``maximal ideal'' of $R$,
+		\begin{enumerate}
+			\item $P_1$ satisfies both properties,
+			\item $P_2$ satisfies neither property
+			\item $P_3$ satisfies one property but not the other.
+		\end{enumerate}
+		\begin{solution}
+			Let $R = \rationals[x,y]$. The ideal $P_1 = (x,y)$ is maximal since $R/P_1 = \rationals$, which is a field. Since all fields are integral domains, we have that $P_1$ is prime as well.\\
+
+			\noindent The ideal $P_2 = (x^2)$ is not prime since $x\cdot x$ is in $P_2$ but $x$ is not. Since maximal ideals are always prime, this shows that $P_2$ isn't maximal either.\\
+
+			\noindent The ideal $P_3 = (x)$ is prime but not maximal since $R/P_3 = \rationals[y]$, which is an integral domain but not a field.
+		\end{solution}
+	\end{enumerate}
+
+	\item Show that if a group $G$ has only finitely many subgroups then $G$ is a finite group.
+	\begin{proof}
+		Suppose $G$ is an infinite group. If $G$ has an element $g$ of infinite order then $\langle g\rangle\cong \integers$, which has infinitely many subgroups. Suppose then that every element of $G$ has finite order. Since $G = \cup_{g\in G}\langle g\rangle$ and every $\langle g\rangle$ is a finite set, the only way to cover the infinite set $G$ by finite sets $\langle g\rangle$ is to have infinitely many distinct $\langle g\rangle$. Thus, an infinite group must have infinitely many subgroups, so a group with finitely many subgroups must be finite.
+	\end{proof}
+
+	\item Let $A$ be an $n\times n$ matrix with entires in $\reals$ such that $A^2 = -I$.
+	\begin{enumerate}
+		\item Prove that $n$ is even.
+		\begin{proof}
+			Since $A$ satisfies the polynomial $x^2+1$, its minimal polynomial over $\mathbb{R}$ must divide $x^2+1$. This polynomial is irreducible over $\mathbb{R}$ and since the minimal polynomial divides the characteristic polynomial and both polynomials have the same roots in $\complex$, the characteristic polynomial must be $(x^2+1)^d$ for some $d\geq 1$. The degree of the characteristic polynomial, $2d$, is $n$, so $n$ is even.
+		\end{proof}
+		\item Prove that $A$ is diagonalizable over $\complex$ and describe the corresponding diagonal matrices.
+		\begin{proof}
+			
+		\end{proof}
+	\end{enumerate}
+\end{enumerate}
+
 \end{document}

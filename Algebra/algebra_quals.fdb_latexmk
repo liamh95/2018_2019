@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1553729726 "algebra_quals.tex" "algebra_quals.pdf" "algebra_quals" 1553729727
+["pdflatex"] 1553829252 "algebra_quals.tex" "algebra_quals.pdf" "algebra_quals" 1553829252
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1550406775 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1550406775 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1550406775 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -21,6 +21,7 @@
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1550406775 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1550406775 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1550406775 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1550406775 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1550406775 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1550406775 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1550406775 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
@@ -133,9 +134,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1550406775 33301 a3134070eacafb10b1f371612ce2650d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1552550283 334148 1b9d30ff8c861d6082e3e9bfccd8d7eb ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1552550282 7919196 b3fa504efbcf384599d28e0d58904fc8 ""
-  "algebra_quals.aux" 1553729727 8 a94a2480d3289e625eea47cd1b285758 ""
-  "algebra_quals.tex" 1553729726 14788 9ed6322e2eeea5c991efce6dd2bf2c4b ""
+  "algebra_quals.aux" 1553829252 8 a94a2480d3289e625eea47cd1b285758 ""
+  "algebra_quals.tex" 1553829251 17691 ef25d8a9c756c12cb4ebfc62be17659f ""
   (generated)
   "algebra_quals.log"
-  "algebra_quals.aux"
   "algebra_quals.pdf"
+  "algebra_quals.aux"

@@ -140,8 +140,82 @@
 		\[
 		\int_X|f|^p \leq \liminf_{n\to \infty}\int_X|f_n|^p<\infty,
 		\]
-		where the finiteness follows from the $L^p$ uniform-boundedness of the $f_n$.
+		where the finiteness follows from the $L^p$ uniform-boundedness of the $f_n$.\\
+
+		\noindent To establish convergence in $L^p$, $p\in [1, p_1)$ our plan is to use the Vitali convergence theorem. The family $f_n$ is tight over $X$ since $X$ is a finite measure space and we're given that $f_n\to f$ a.e., so it only remains to show that the $f_n$'s are uniformly integrable. Intuitively, since the $f_n$'s are in $L^p$, the measure of the set $\{f_n \geq N\}$ should shrink as $N$ grows.  Now since $p<p_1$, if $N>1$ then
+		\[
+		|f_n|^p\chi_{\{|f_n|\geq N\}}N^{p_1-p}\leq |f_n|^{p_1}.
+		\]
+		If we integrate both sides over any measurable set $E$ we have
+		\[
+		\int_{E\cap \{|f_n|\geq N\}}|f_n|^p \leq \frac{M}{N^{p_1-p}}.
+		\]
+		On the complement we have
+		\[
+		\int_{E\cap \{|f_n|<N\}}|f_n|^p \leq N^p\cdot \mu(E).
+		\]
+		Putting these together, we have that
+		\begin{align*}
+			\int_E|f_n|^p &= \int_{E\cap \{|f_n|\geq N\}}|f_n|^p + \int_{E\cap \{|f_n|<N\}}|f_n|^p\\
+			&\leq \frac{M}{R^{p_1-p}} + R^p\cdot\mu(E).
+		\end{align*}
+		If we choose $R$ so that $M/R^{p_1-p}<\epsilon/2$ and $E$ so that $R^p\cdot \mu(E)<\epsilon/2$ then we'll have that $\int_E |f_n|^p<\epsilon$ for any $E$ of sufficiently small measure, so the $f_n$'s are uniformly integrable. By the Vitali convergence theorem we have that $f_n\to f$ in $L^p$ for $p\in [1, p_1)$.
 	\end{proof}
+
+	\item Let $(X, \mcal{A}, \mu)$ be a measure space, and let $f: X\to [0, \infty)$ be $\mcal{A}$-measurable. Consider the measure space $(\reals, \mcal{B}_\reals, \mu_L)$, where $\mcal{B}_\reals$ is the Borel $\sigma$-algebra on $\reals$ and $\mu_L$ is the Lebesgue measure, and form the product measure space $(X\times \reals, \sigma(\mcal{A}\times \mcal{B}_\reals), \mu\times \mu_L)$. Define $E\subset X\times R$ by $(x,y)\in E\iff y\in [0, f(x))$. Prove that $E\in \sigma(\mcal{A}\times \mcal{B}_\reals)$ and $(\mu\times \mu_L)(E) = \int_Xf\ d\mu$.
+	\begin{proof}
+		A function is measurable if it pulls measurable sets back to measurable sets. The plan is then to write $E$ is a union and/or intersection of preimages of measurable sets under measurable functions. The function $F(x,y) = f(x)$ is measurable since
+		\[
+		F^{-1}[(-\infty, \alpha]) = \{(x,y): f(x)\leq \alpha\} = \{x: f(x)\leq \alpha\} \times \reals \in \sigma(\mcal{A}\times \mcal{B}_\reals),
+		\]
+		as $f$ is $\mu$-measurable. We also clearly have that the function $G(x,y) = y$ is measurable. Now consider the function $H(x,y) = y-f(x)$. $H$ is measurable as it is the difference of the measurable functions $G$ and $F$. We then have that $E$ is measurable through the following decomposition
+		\begin{align*}
+			E &= \{(x,y): 0\leq y<f(x)\}\\
+			&= \{(x,y): y\geq 0\} \cap \{(x,y): y<f(x)\}\\
+			&= G^{-1}[[0, \infty)]\cap H^{-1}[(-\infty, 0)].
+		\end{align*}
+		If $\{f>0\}$ is $\sigma$-finite we can use Tonelli's theorem to say
+		\begin{align*}
+			(\mu\times \mu_L)(E) &= \int_{X\times \reals}\chi_E(x,y)\ d(\mu\times \mu_L)\\
+			&= \int_X\int_\reals\chi_E(x,y)\ d\mu_Ld\mu\\
+			&= \int_X\int_\reals \chi_{[0, f(x))}(y)\ dyd\mu\\
+			&= \int_Xf(x)\ d\mu.
+		\end{align*}
+		On the other hand, suppose that $\{f>0\}$ is note $\sigma$-finite. We claim that $\int_Xf\ d\mu = +\infty$. Indeed, since we can decompose this set into a countable union,
+		\begin{equation}\label{s16_5_main}
+		\{f>0\} = \bigcup_{m=1}^\infty \{\frac{1}{m+1}<f\leq \frac{1}{m}\} \cup \bigcup_{n=1}^\infty\{n<f\leq n+1\},
+		\end{equation}
+		we must have that one of these sets has infinite measure. We need to show that $(\mu\times \mu_L)(E) = +\infty$ too. For any $\alpha,\beta>0$ we have that if $\alpha\leq f(x)<\beta$ then the product set
+		\[
+		\{x: \alpha\leq f(x)<\beta\} \times \{y: 0\leq \alpha\}
+		\]
+		is contained in $E$. This product set has measure $\alpha\cdot \mu_L\{\alpha\leq f<\beta\}$, so by monotonicity we have that
+		\[
+		\alpha\cdot \mu_L\{\alpha\leq f<\beta\} \leq (\mu\times \mu_L)(E)
+		\]
+		for all $\alpha,\beta>0$. But by the decomposition (\ref{s16_5_main}), we have that some set of the form $\{\alpha\leq f(x)<\beta\}$ must have infinite measure, so we must have $(\mu\times \mu_L)(E) = +\infty$.
+	\end{proof}
+
+	\item Let $f\in L^1(\reals)$ and let $a_1, \ldots, a_k\in \reals$ and $b_1, \ldots, b_k\in \reals\setminus\{0\}$. Assume that the quotients $\frac{a_j}{b_j}$ are all distinct. Determine
+	\[
+	\lim_{t\to \infty}\int\left|\sum_{j=1}^kf(b_jx+ta_j)\right| dx.
+	\]
+	\begin{solution}
+		Let $\varphi\in C_0(\reals)$ be such that $\Lp{f-\varphi}{1}<\epsilon$. Our plan is to compute the desired limit with $\varphi$ in place of $f$ and then argue that the difference can be made small. We have
+		\[
+		\int\left|\sum_{j=1}^k\varphi(b_jx+ta_j)\right| dx = \int\left|\sum_{j=1}^k\varphi\left[b_j\left(x+\frac{a_j}{b_j}t\right)\right]\right|dx
+		\]
+		Now $\varphi(b_jx+ta_j)$ is $\varphi$ stretched horizontally by a factor of $b_j$ and shifted over $a_j/b_j$. Since the support of $\varphi$ is compact and the $a_j/b_j$ are distinct, the supports of these transformations are disjoint for sufficiently large $t$. When these supports are disjoint we then have
+		\begin{align*}
+		\int\left|\sum_{j=1}^k\varphi(b_jx+ta_j)\right| dx &= \int\sum_{j=1}^k|\varphi(b_jx+ta_j)|\ dx\\
+		&= \Lp{\varphi}{1}\cdot \sum_{j=1}^k\frac{1}{b_j}.
+		\end{align*}
+		That we can approximate the desired sum for $f\in L^1$ follows from the reverse triangle inequality.
+		\begin{align*}
+			\left|\int\left|\sum_{j=1}^kf(b_jx+ta_j)\right|dx - \int\left|\sum_{j=1}^k\varphi(b_jx+ta_j)\right|dx\right| &\leq \sum_{j=1}^k\int|f(b_jx+ta_j)-\varphi(b_jx+ta_j)|\ dx\\
+			&= \epsilon\cdot \sum_{j=1}^k\frac{1}{b_k}.
+		\end{align*}
+	\end{solution}
 \end{enumerate}
 
 \end{document}
