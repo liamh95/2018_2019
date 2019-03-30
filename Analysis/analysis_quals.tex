@@ -274,7 +274,49 @@
 		\begin{align*}
 		\sum_{n=1}^\infty \mu\{|f(x)|\geq n^{1/p}\} &\leq \sum_{n=1}^\infty \frac{C^2}{n^{2/p}},
 		\end{align*}
-		which converges for all $p\in [1, 2)$.
+		which converges for all $p\in [1, 2)$.\\
+
+		\noindent 
+	\end{proof}
+
+	\item Show that a function $f: \reals^n\to \reals^+$ is measurable if and only if $E = \{(x,y): 0\leq y\leq f(x)\}$ is a measurable set of $\reals^{n+1}$.
+	\begin{proof}
+		Suppose $f$ is measurable. Then the function $F(x,y) = f(x)$ is a measurable function $\reals^{n+1}\to \reals$. Since $G(x,y)=y$ is also measurable, $H(x,y) = y-f(x)$ is measurable as the difference of measurable functions. We can then write $E$ as the intersection of two measurable sets:
+		\[
+		E = G^{-1}[[0,\infty)]\cap H^{-1}[(-\infty,0]].
+		\]
+		Thus, $E$ is measurable if $f$ is measurable.\\
+
+		\noindent Conversely, suppose that $E$ is a measurable set. Then for any $\alpha\geq 0$ the set $A\cap G^{-1}(\alpha) = F^{-1}[[\alpha, \infty)]$. This shows that $F$, and therefore $f$, is measurable.
+	\end{proof}
+
+	\item Let $f\in L^1(\reals)$ and set
+	\[
+	f_h(x) = \frac{1}{2h}\int_{x-h}^{x+h}f(t)\ dt,\quad h>0.
+	\]
+	Show that $f_h\in L^1(\reals)$ and $f_h\to f$ in $L^1(\reals)$.
+	\begin{proof}
+		Let's integrate $f_h$. By Tonelli we have
+		\begin{align}\label{f15_4_main}
+		\begin{split}
+			\int |f_h(x)|\ dx &= \frac{1}{2h}\int\left|\int f(t)\chi_{[x-h, x+h]}(t)\ dt\right|dx\\
+			&\leq \frac{1}{2h}\int\int |f(t)|\chi_{[t-h, t+h]}(x)\ dxdt\\
+			&= \Lp{f}{1}.
+		\end{split}
+		\end{align}
+		Since $f\in L^1(\reals)$, we have that this quantity is finite and $f_h\in L^1(\reals)$.\\
+
+		\noindent Now since $f\in L^1(\reals)$, $f_h\to f$ a.e. by the Lebesgue differentiation theorem. By Fatou's lemma and (\ref{f15_4_main}), we have for any sequence $h_n\to 0$
+		\begin{align*}
+			\int |f|\ dx &\leq \liminf_{n\to \infty}\int |f_{h_n}|\ dx\\
+			&\leq \int |f|\ dx,
+		\end{align*}
+		so $\liminf_{n\to \infty} \int|f_{h_n}| = \int|f|$. By the triangle inequality we have $|f_{h_n}| + |f| - |f-f_{h_n}|\geq 0$. Since $|f_{h_n}|+|f| - |f-f_{h_n}|$ converges to $2|f|$ a.e., another application of Fatou's lemma gives
+		\begin{align*}
+		&2\int|f|\ dx \leq \liminf_{n\to \infty}\int(|f_{h_n}| + |f| - |f-f_{h_n}|)\ dx\\
+		\iff&\limsup_{n\to \infty} \int |f-f_{h_n}|\ dx\leq 0.
+		\end{align*}
+		We then have $\int |f-f_{h_n}|\to 0$, so $f_{h_n}\to f$ in $L^1$ for any $h_n\to 0$.
 	\end{proof}
 \end{enumerate}
 
