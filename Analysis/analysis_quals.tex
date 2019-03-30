@@ -218,4 +218,64 @@
 	\end{solution}
 \end{enumerate}
 
+
+\section*{Fall 2015}
+\begin{enumerate}
+	\item Let $E$ be a measurable subset of $[0, 2\pi]$. Assume that $f\in C(\reals)$ is 1-periodic, i.e. $f(x+1) = f(x)$. Compute
+	\[
+	\lim_{n\to \infty}\int_Ef(nx)\ dx.
+	\]
+	\begin{solution}
+		We rewrite the integral over $E$ as an integral over $\reals$ against the indicator function of $E$:
+		\[
+		\int_Ef(nx)\ dx = \int f(nx)\chi_E(x)\ dx.
+		\]
+		Now let $\varphi\in C^\infty_0(\reals)$. Since $f\in C(\reals)$ is 1-periodic, it has a 1-periodic continuous primitive $F$ with $F' = f$. By the chain rule we have $[\frac{1}{n}F(nx)]' = f(nx)$. Integration by parts gives
+		\begin{align*}
+		\int f(nx)\varphi(x)\ dx&= -\frac{1}{n}\int F(nx)\varphi'(x)\ dx.
+		\end{align*}
+		$F(nx)$ is bounded since $F$ is 1-periodic and $\varphi\in C^\infty_0(\reals)$, so it's integrable. We then have
+		\begin{align*}
+			\left|\int f(nx)\varphi(x)\ dx\right|& \leq \frac{1}{n}\|F\|_\infty\cdot \Lp{\varphi'}{1}\\
+			&\to 0.
+		\end{align*}
+		Since $E$ is a measurable subset of $[0,2\pi]$, it has finite measure and $\chi_E\in L^1(\reals)$. We can then find $\varphi\in C_0^\infty(\reals)$ with $\Lp{\chi_E-\varphi}{1}<\epsilon$. Since $f$ is continuous and 1-periodic, it is bounded and we have
+		\begin{align*}
+			\left|\int f(nx)\chi_E(x)\ dx - \int f(nx)\varphi(x)\ dx\right| &\leq \|f\|_\infty\cdot \Lp{\chi_E-\varphi}{1}\\
+			&\leq \|f\|_\infty\cdot \epsilon.
+		\end{align*}
+		Since $\int f(nx)\varphi(x)\ dx\to 0$, we must have $\int_Ef(nx)\to 0$.
+	\end{solution}
+
+	\item Suppose $f\in L^1[0,1]$ and assume that there exists $C>0$ such that for all measurable subsets $E\subset [0,1]$ we have
+	\[
+	\int_E|f(x)|\ dx \leq C\mu(E)^{1/2}.
+	\]
+	Show that $f\in L^p[0,1]$ for $1\leq p<2$. Show that the statement fails for $p=2$ by giving a counterexample.
+	\begin{proof}
+		% Since $[0,1]$ is a $\sigma$-finite measure space, we can use Tonelli's theorem to write
+		% \begin{align*}
+		% \int_{[0,1]}|f|^p\ dx &= \int_0^\infty \mu\{x: |f(x)|^p\geq t\}\ dt\\
+		% &= \int_0^1\mu\{x: |f(x)|^p\geq t\}\ dt + \int_1^\infty \mu\{x: |f(x)|^p\geq t\}\ dt.
+		% \end{align*}
+		We have that
+		\[
+		|f(x)|^p-1 \leq \sum_{n=1}^\infty \chi_{\{|f|^p\geq n\}}(x) \leq |f(x)|^p.
+		\]
+		Since $[0,1]$ is a finite measure space, integrating through this inequality shows that $f\in L^p[0,1]$ if and only if the series
+		\[
+		\sum_{n=1}^\infty \mu\{|f(x)|^p\geq n\} = \sum_{n=1}^\infty \mu\{|f(x)|\geq n^{1/p}\}.
+		\]
+		converges. By Chebyshev's inequality and the given hypotheses we have
+		\[
+		n^{1/p}\mu\{|f|\geq n^{1/p}\} \leq \int_{\{|f|\geq n^{1/p}\}}|f|\ dx \leq C\mu\{|f|\geq n^{1/p}\}^{1/2}.
+		\]
+		Dividing through by $n^{1/p}\mu\{|f|\geq n^{1/p}\}^{1/2}$ and squaring gives
+		\begin{align*}
+		\sum_{n=1}^\infty \mu\{|f(x)|\geq n^{1/p}\} &\leq \sum_{n=1}^\infty \frac{C^2}{n^{2/p}},
+		\end{align*}
+		which converges for all $p\in [1, 2)$.
+	\end{proof}
+\end{enumerate}
+
 \end{document}
