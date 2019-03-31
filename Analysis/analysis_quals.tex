@@ -318,6 +318,34 @@
 		\end{align*}
 		We then have $\int |f-f_{h_n}|\to 0$, so $f_{h_n}\to f$ in $L^1$ for any $h_n\to 0$.
 	\end{proof}
+
+	\item Let $(X, \mcal{A}, \mu)$ be a measure space and let $f_k: X\to \reals$ be a sequence of measurable functions satisfying the following:
+	\[
+	\int_X |f_k|^2\ d\mu\leq 2015,\quad \text{for all }k,
+	\]
+	and
+	\[
+	\int_X f_jf_k\ d\mu=0,\quad \text{for all }j\neq k.
+	\]
+	Prove that for all $\beta>3/2$,
+	\[
+	\lim_{n\to \infty}\frac{1}{n^\beta}\sum_{k=1}^{n^2}f_k(x) = 0,\quad \text{for a.a. } x\in X.
+	\]
+	\begin{proof}
+		Let's compute the $L^2$ norm of the sum
+		\begin{align*}
+			\left\|\frac{1}{n^\beta}\sum_{j=1}^{n^2}f_j\right\|_{L^2}^2 &= \frac{1}{n^{2\beta}}\left(\sum_{j=1}^{n^2}f_j, \sum_{k=1}^{n^2}f_k\right)\\
+			&= \frac{1}{n^{2\beta}}\sum_{j=1}^{n^2}\sum_{k=1}^{n^2}(f_j, f_k)\\
+			&= \frac{1}{n^{2\beta}}\sum_{j=1}^{n^2}\Lp{f_j}{2}^2\\
+			&\leq \frac{2015}{n^{2\beta-2}}.
+		\end{align*}
+		Now if $\beta>3/2$, $2\beta-2>1$, so the above quantity is summable in $n$. Summability and wanting to show that something holds for almost all $x$ leads us to thing Borel-Cantelli might be useful. For any fixed $\epsilon>0$, Chebyshev gives us
+		\begin{align*}
+			\mu\left\{x: \left|\frac{1}{n^\beta}\sum_{j=1}^{n^2}f_j\right|^2\geq\epsilon\right\} &\leq \frac{1}{\epsilon^2}\int_X \left(\frac{1}{n^\beta}\sum_{j=1}^{n^2}f_j\right)^2dx\\
+			&\leq \frac{2015}{\epsilon^2n^{2\beta-2}}.
+		\end{align*}
+		If we call the set on the LHS $A_n$, then we have $\sum \mu(A_n)<\infty$. By Borel-Cantelli we have $\mu(\limsup_{n\to \infty}A_n) = 0$, i.e., the set of $x$ that belong to infinitely many $A_n$ has measure zero, so the sum is zero for almost all $x$.
+	\end{proof}
 \end{enumerate}
 
 \end{document}
