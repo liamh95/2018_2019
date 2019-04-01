@@ -348,4 +348,20 @@
 	\end{proof}
 \end{enumerate}
 
+\section*{Spring 2015}
+\begin{enumerate}
+	\item Show that if $f\in L^4(\reals)$ then
+	\[
+	\lim_{c\to 1}\int_\reals|f(cx)-f(x)|^4\ dx = 0.
+	\]
+	\begin{proof}
+		Suppose $\varphi$ is continuous with compact support. Then $\varphi(cx)$ converges to $\varphi(x)$ uniformly, and since the support of $\varphi$ is compact, we have that the desired limit holds with $\varphi$ in place of $f$.\\
+
+		\noindent Now let $\varphi\in C_0(\reals)$ be such that $\Lp{f-\varphi}{4}<\epsilon$. Since $|a+b|^p \leq 2^p(|a|^p+|b|^p)$ for all $p>0$ we have
+		\begin{align*}
+			\int|f(cx)-f(x)|^4\ dx &= \int|f(cx)-\varphi(cx)+\varphi(cx)-\varphi(x)+\varphi(x)-f(x)|^4\ dx
+		\end{align*}
+	\end{proof}
+\end{enumerate}
+
 \end{document}

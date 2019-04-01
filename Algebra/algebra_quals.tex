@@ -435,9 +435,95 @@
 		\end{proof}
 		\item If $n = 2m$ with $m$ odd, prove that $D_n = D_{2m} \cong C_2\times D_m$.
 		\begin{proof}
-			
+			First let's show that $D_{2m}$ contains subgroups isomorphic to $C_2$ and $D_m$. Let $H = \langle b, a^2\rangle$ and let $K = \langle r^m\rangle$. It's clear that $H\cong D_m$ and $K\cong C_2$. Since $m$ is odd, $H\cap K$ contains only the identity element. $H$ is normal in $D_n$ since it has index two and $K$ is normal by part (a).\\
+
+			\noindent Since $H$ and $K$ are normal and $H\cap K$ is trivial, we have that $HK \cong H\times K$. Furthermore, since
+			\[
+			|HK| = \frac{|H|\cdot |K|}{|H\cap K|} = |H|\cdot |K| = D_n,
+			\]
+			we have that $D_n \cong H\times K = D_m\times C_2$.
 		\end{proof}
 		\item Is $D_{12}\cong C_3\times D_4$?
+		\begin{proof}
+			It is not. Since $C_3$ has no elements of order 2, the elements of $C_3\times D_4$ of order 2 are of the form $(e,k)$, where $k\in D_4$ has order 2. In particular, this product has just as many elements of order 2 as $D_4$ does. $D_4$ (when viewed as the symmetries of the square) has five elements of order 2: the rotation through an angle of $\pi$, the two flips through opposite faces, and the two flips through opposite vertices. However, $D_{12}$, when viewed as the symmetries of a dodecagon, has at least seven elements of order 2: the $\pi$-rotation and six flips through opposite faces.
+		\end{proof}
+	\end{enumerate}
+
+	\item Suppose that $p$ and $q$ are prime numbers with $p<q$. Prove that no group of order $p^2q$ is simple.
+	\begin{proof}
+		Let $G$ be a group of order $p^2q$. By Sylow's theorem, the number of Sylow-$q$ subgroups is 1 mod $q$ and divides $p^2$. Since $p<q$, we have that $n_q$ is 1 or $p^2$. If $n_q = 1$ then the unique Sylow-$q$ subgroup is normal and we're done. Suppose then that $n_q = p^2$. Each Sylow-$q$ subgroup is isomorphic to $\integers/q\integers$, so these subgroups intersect trivially, giving us $p^2(q-1) = p^2q-p^2$ non-identity elements. This leaves room for only $p^2$ other elements, and since we have at least one Sylow-$p$ subgroup, which must have order $p^2$, we conclude that there is only one such subgroup, forcing it to be normal.
+	\end{proof}
+
+	\item Determine the maximal ideals of the following rings.
+	\begin{enumerate}
+		\item $\rationals[x]/(x^2-5x+6)$,
+		\begin{solution}
+			By the Chinese remainder theorem we have
+			\[
+			\rationals[x]/(x^2-5x+6) \cong \rationals[x]/(x-2) \oplus \rationals[x]/(x-3) \cong \rationals \oplus \rationals.
+			\]
+			The maximal ideals in a sum of rings $R\oplus S$ are of the form $M\oplus S$ or $R\oplus N$, where $M$ is maximal in $R$ and $N$ is maximal in $S$. Since $\rationals$ is a field, its only maximal ideal is $(0)$, so the maximal ideals of this ring are $\rationals\oplus (0)$ and $(0)\oplus \rationals$.
+		\end{solution}
+		\item $\rationals[x]/(x^2+4x+6)$.
+		\begin{solution}
+			The discriminant of this quadratic is $4^2-4(1)(6)<0$, so the quadratic is irreducible. Consequently, this quotient is a field, so its only maximal ideal is $(0)$.
+		\end{solution}
+	\end{enumerate}
+
+	\item Find two matrices having the same characteristic polynomials and minimal polynomials but different Jordan canonical forms.
+	\begin{solution}
+		Let the matrix $A$ have invariant factors $\{(x-2)^2,\ (x-2)^2\}$ and let the matrix $B$ have the invariant factors $\{(x-2),\ (x-2),\ (x-2)^2\}$. $A$ and $B$ both have the same minimal polynomial, $(x-2)^2$, and the same characteristic polynomial, $(x-2)^4$, but their Jordan forms are
+		\[
+		A\sim \begin{bmatrix}
+			2 & 1 & 0 & 0\\
+			0 & 2 & 0 & 0\\
+			0 & 0 & 2 & 1\\
+			0 & 0 & 0 & 2
+		\end{bmatrix},\quad
+		B\sim \begin{bmatrix}
+			2 & 0 & 0 & 0\\
+			0 & 2 & 0 & 0\\
+			0 & 0 & 2 & 1\\
+			0 & 0 & 0 & 2
+		\end{bmatrix}.
+		\]
+	\end{solution}
+	\item \begin{enumerate}
+		\item What does it mean for a field to be perfect?
+		\begin{solution}
+			A field is perfect if every finite extension of it is separable.
+		\end{solution}
+		\item Given an example of a perfect field.
+		\begin{solution}
+			$\rationals$ is perfect. To see this, note that any finite extension of $\rationals$ is of the form $\rationals[x]/(p(x))$, where $p(x)$ is an irreducible polynomial. Irreducible polynomials over $\rationals$ (or any field of characteristic zero) have no repeated roots, so they are separable.
+		\end{solution}
+		\item Give an example of a field that is not perfect.
+		\begin{solution}
+			$\field_2(t)$ is not perfect. Consider the polynomial $x^2-t$. This polynomial is irreducible, but its derivative is identically zero (it factors as $(x-\sqrt{t})^2$).
+		\end{solution}
+	\end{enumerate}
+
+	\item \begin{enumerate}
+		\item Classify the conjugacy classes of the symmetric group $S_3$.
+		\begin{solution}
+			Two elements of a symmetric group are conjugate if and only if they have the same cycle type, so the conjugacy classes of $S_3$ are the identity, the two-cycles, and the three-cycles.
+		\end{solution}
+		\item Construct the character table of $S_3$.
+		\begin{solution}
+			$S_3$ has three conjugacy classes, so it has three irreducible complex representations. Any group has the trivial representation and any symmetric group has the alternating representation (which we can verify is irreducible by computing the norm of its character). We can use orthogonality relations to compute the third and final character.
+			\[
+			\begin{array}{r||c|c|c|}
+				S_3 & e & (1\ 2) & (1\ 2\ 3)\\
+				\hline\hline
+				\text{Trivial}&1&1&1\\
+				\hline
+				\text{Alternating}&1 & -1 & 1\\
+				\hline
+				\text{Third Rep}&2&0&-1\\
+				\hline
+			\end{array}
+			\]
+		\end{solution}
 	\end{enumerate}
 \end{enumerate}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.7.7)  31 MAR 2019 01:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.7.7)  31 MAR 2019 21:36
 entering extended mode
 **./algebra_quals.tex
 (algebra_quals.tex
@@ -573,15 +573,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 408--409
 
  []
 
-[11] [12] [13] (algebra_quals.aux) ) 
+[11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 438--439
+
+ []
+
+[13] [14] [15] (algebra_quals.aux) ) 
 Here is how much of TeX's memory you used:
  12312 strings out of 493305
  242078 string characters out of 3138878
- 281164 words of memory out of 3000000
+ 282165 words of memory out of 3000000
  15621 multiletter control sequences out of 15000+200000
  9547 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,10n,54p,851b,336s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,10n,54p,851b,338s stack positions out of 5000i,500n,10000p,200000b,50000s
 <F:/Program Files/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmbx10.pfb><F:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmbx12.pfb><F:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
@@ -594,9 +599,9 @@ les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><F:/Program Files/MiKTeX
 ublic/amsfonts/cm/cmsy8.pfb><F:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmti10.pfb><F:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
 mbols/msbm10.pfb>
-Output written on algebra_quals.pdf (13 pages, 185689 bytes).
+Output written on algebra_quals.pdf (15 pages, 194505 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
+ 102 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
