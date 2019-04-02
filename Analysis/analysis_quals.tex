@@ -359,8 +359,40 @@
 
 		\noindent Now let $\varphi\in C_0(\reals)$ be such that $\Lp{f-\varphi}{4}<\epsilon$. Since $|a+b|^p \leq 2^p(|a|^p+|b|^p)$ for all $p>0$ we have
 		\begin{align*}
-			\int|f(cx)-f(x)|^4\ dx &= \int|f(cx)-\varphi(cx)+\varphi(cx)-\varphi(x)+\varphi(x)-f(x)|^4\ dx
+			\int|f(cx)-f(x)|^4\ dx &= \int|f(cx)-\varphi(cx)+\varphi(cx)-\varphi(x)+\varphi(x)-f(x)|^4\ dx\\
+			&\leq 2^4\int|f(cx)-\varphi(cx)|^4\ dx\\
+			&+ 2^8\int|\varphi(cx)-\varphi(x)|^4\ dx + 2^8\int|\varphi(x)-f(x)|^4\ dx.
 		\end{align*}
+		The first and third integrals are small since $\Lp{f-\varphi}{4}<\epsilon$ and the second integral can be made small as $c\to 1$ since $\varphi(cx)\to \varphi(x)$ uniformly on a compact set.
+	\end{proof}
+
+	\item Let $f_n: (0, \infty)\to \reals$, be a sequence of Lebesgue measurable functions such that $f_n\to f$ a.e. as $n\to \infty$. Assume that there exists $g: (0, \infty)\to \reals$ such that $|f_n|\leq g$ for all $n$ and $g\in L^1(0, a)$ for all $0<a<\infty$. Assume furthermore that
+	\[
+	\int_1^\infty |f_n(\sqrt{x})|\ dx\leq C,
+	\]
+	for all $n$ and for some constant $C>0$. Show that $f_n\in L^1(0, \infty)$, $f\in L^1(0, \infty)$ and $f_n\to f$ in $L^1(0, \infty)$ as $n\to \infty$.
+	\begin{proof}
+		First let's show that $f_n\in L^1(0, \infty)$ for all $n$. Write
+		\begin{equation}\label{s15_2_main}
+		\int_0^\infty |f_n|\ dx = \int_0^1|f_n|\ dx + \int_1^\infty |f_n|\ dx.
+		\end{equation}
+		For the first integral, since $|f_n| \leq g$ and $g\in L^1(0, 1)$ we have
+		\[
+		\int_0^1|f_n|\ dx \leq \int_0^1 g\ dx <\infty.
+		\]
+		For the second integral in (\ref{s15_2_main}) we use the hypothesis about $f_n(\sqrt{x})$.
+		\begin{align*}
+			C &\geq \int_1^\infty |f_n(\sqrt{x})|\ dx\\
+			&= 2\int_1^\infty t|f_n(t)|\ dt\\
+			&\geq \int_1^\infty |f_n(t)|\ dt.
+		\end{align*}
+		Both integrals in (\ref{s15_2_main}) are then finite, so $f_n\in L^1(0, \infty)$. In fact, we actually have that the $f_n$ are uniformly bounded in $L^1(0, \infty)$ by $\int_0^1g\ dx + C$. Since $f_n\to f$ a.e. we can apply Fatou's lemma to show that $f\in L^1(0, \infty)$:
+		\begin{align*}
+			\int_0^\infty |f|\ dx &\leq \liminf_{n\to \infty}\int_0^\infty |f_n|\ dx\\
+			&\leq \int_0^1 g\ dx + C\\
+			&<\infty.
+		\end{align*}
+		Finally, since $|f-f_n|\to 0$ a.e. and $|f-f_n| \leq |f| + g\in L^1(0, \infty)$, we can apply the dominated convergence theorem to show that $f_n\to f$ in $L^1(0, \infty)$.
 	\end{proof}
 \end{enumerate}
 
