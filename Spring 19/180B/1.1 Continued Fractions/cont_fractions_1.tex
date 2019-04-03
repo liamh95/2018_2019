@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{center}
+{\bf \Large Continued Fractions 1}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\begin{enumerate}
+	\item Expand the fractions $\frac{17}{3}$ and $\frac{3}{17}$ into continued fractions.
+	\vfill
+	\item Convert into rational numbers: $[2; 1, 4]$, $[-3;2, 12]$, $[0;1, 1, 100]$.
+	\vfill
+	\item Given positive integers $b$, $c$, $d$ with $c>d$, prove that $[a; c]<[a; d]$ but $[a;b,c]>[a,b,d]$ for any integer $a$.
+	\vfill
+	\item Let $a_1, a_2, \ldots, a_n$ and $c$ be positive real numbers. Prove that
+	\[
+	[a_0; a_1, \ldots, a_n]>[a_0; a_1, \ldots, a_n+c]
+	\]
+	holds if $n$ is odd, but is false if $n$ is even.
+	\vfill
+	\item Verify that $[2;3, 7]$ and $[2;3,6,1]$ are two continued fraction expansions of $\frac{51}{52}$. In general, any rational number $\frac{u_0}{u_1}$ has at least two continued fraction expansions:
+	\begin{equation}\label{two}
+	\frac{u_0}{u_1} = [a_0; a_1, \ldots, a_{j-1}, a_j] = [a_0;a_1, \ldots, a_{j-1}, a_j-1, 1].
+	\end{equation}
+	\vfill
+	\item Prove that the expansions in (\ref{two}) are the only continued fraction expansions of $\frac{u_0}{u_1}$. In other words, show that if $[a_0;a_1, \ldots, a_j] = [b_0;b_1,\ldots, b_n]$ with $a_j>1$ and $b_n>1$, then $j=n$ and $a_i=b_i$ for $i=0, 1, \ldots, n$.
+	\vfill
+\end{enumerate}
+
+\end{document}
