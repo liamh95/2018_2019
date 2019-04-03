@@ -400,6 +400,14 @@
 	\int_0^1x|f'|^p\ dx <+\infty
 	\]
 	for some $p>2$. Show that $\lim_{x\to 0^+}f(x)$ exists.
+	\begin{proof}
+		Let $x_n\to 0$. We have
+		\begin{align*}
+			|f(x_n)-f(x_m)| &= \int_{x_m}^{x_n}f'(x)\ dx\\
+			&\leq \int_{x_m}^{x_n}|f'(x)|\ dx\\
+			&= \int_0^1x^{1/p}|f'(x)|x^{-1/p}\chi_{[x_m, x_n]}(x)\ dx
+		\end{align*}
+	\end{proof}
 \end{enumerate}
 
 \end{document}
