@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{center}
+{\bf \Large More Continued Fractions Exercises}
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\begin{enumerate}
+	\item Let $n$ be a positive integer. Come up with the continued fraction expansion for $\sqrt{n^2+1}$.
+	\vfill
+	\item Let $\{c_n\}$ be the convergents of $\phi = [1; 1, 1, \ldots]$. Prove that for $n\geq 1$, we have $\frac{F_{n+1}}{F_n} = c_{n-1}$, i.e. $p_n = F_{n+2}$ and $q_n = F_{n+1}$. Conclude that $\phi = \lim_{n\to \infty}\frac{F_{n+1}}{F_n}$.
+	\vfill
+	\item A continued fraction $[a_0; a_1, a_2, \ldots]$ where the $a_n$ are all positive \textit{real} numbers for $n\geq 1$ is called unary. In this problem we'll prove that a unary continued fraction converges if and only if $\sum a_n = \infty$.
+	\begin{enumerate}
+		\item Prove that $q_n \leq \prod_{k=1}^n(1+a_k)$.
+		\vfill
+		\item Prove that if the unary continued fraction converges, then $\sum a_n = \infty$
+		\vfill
+		\item Prove that
+		\[
+		q_{2n}\geq 1+a_1(a_2+a_4 + \cdots + a_{2n}),\quad q_{2n-1} \geq a_1 + a_3 + \cdots + a_{2n-1},
+		\]
+		where the first inequality holds for $n\geq 1$ and the second for $n\geq 2$.
+		\vfill
+		\item Prove that if $\sum a_n =  \infty$, then the unary continued fraction converges.
+	\end{enumerate}
+	\vfill
+\end{enumerate}
+
+\end{document}
