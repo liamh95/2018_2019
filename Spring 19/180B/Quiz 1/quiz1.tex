@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{flushleft} 
+%%Paragraphs will not be indented in this 
+%%environment
+\centerline{\LARGE{Quiz 1}} 
+\vspace{5 mm}
+{Student ID Number:}\hfill  
+%%\hfill forces following text 
+%%to right margin
+{Name \rule {2 in}{0.01in}}\\
+Math 180B, 3PM
+\\
+%%gives a line of length 2in and 
+%%thickness 0.01in
+{Please justify all your answers}\hfill {April 11, 2019}
+\\
+{Please also write your full name on the back} 
+
+\medskip
+\end{flushleft}
+
+\begin{enumerate}
+	\item Compute the continued fraction expansions of the following numbers.
+	\begin{enumerate}
+		\item $\sqrt{11}$
+		\vfill
+		\item $\sqrt{n^2+2}$ where $n$ is a positive integer
+	\end{enumerate}
+	\vfill
+	\item Let $p_n/q_n$ be the convergents of $[a_1; a_2, \ldots]$. Show that for $n\geq 2$
+	\[
+	\frac{q_n}{q_{n-1}} = [a_n; a_{n-1}, \ldots, a_2].
+	\]
+	Bonus: come up with a similar expansion for $p_n/p_{n-1}$, assuming $a_1>0$.
+	\vfill
+\end{enumerate}
+
+%\vfill will divide page evenly
+%use \begin{enumerate} environment for ordered lists
+\end{document}

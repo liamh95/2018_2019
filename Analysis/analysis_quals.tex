@@ -6,6 +6,7 @@
 \usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
 \usepackage{tikz} %This package offers the ability to draw pictures
 \usepackage{amsthm}
+\usepackage{bookmark}
 
 \newcommand{\naturals}{\mathbb{N}}
 \newcommand{\integers}{\mathbb{Z}}
@@ -49,7 +50,7 @@
 \hrule
 \end{center}
 
-\section*{Spring 2016}
+\section{Spring 2016}
 \begin{enumerate}
 	\item Assume $f\in L^1[0,1]$. Compute
 	\[
@@ -131,35 +132,46 @@
 	\item Let $(X, \mcal{A}, \mu)$ be a finite measure space, and let $p_1\in (1, \infty]$. Let $\{f_n\}$ be a uniformly bounded sequence in $L^{p_1}(X, \mcal{A}, \mu)$. Suppose $f = \lim_{n\to \infty}f_n$ exists $\mu$-a.e. Prove that $f\in L^p(X, \mcal{A}, \mu)$ for all $p\in [1, p_1]$ and $f_n\to f$ in $L^p(X, \mcal{A}, \mu)$ for all $p\in [1, p_1)$.
 	\begin{proof}
 		Suppose that $\Lp{f_n}{p_1}\leq M$ for all $n$. First we claim that the $f_n$ are in $L^p(X, \mcal{A}, \mu)$ for all $p\in [1, p_1]$. In fact, they are uniformly bounded:
-		\begin{align*}
+		\begin{equation}\label{s16_4_main}
+		\begin{split}
 			\int_X|f_n|^p &= \int_{|f_n|<1}|f_n|^p + \int_{|f_n|\geq 1}|f_n|^p\\
 			&\leq \int_{|f_n|<1}1 + \int_{|f_n|\geq 1}|f_n|^{p_1}\\
-			&\leq \mu(\{f\leq 1\}) + M^{1/p_1}.
-		\end{align*}
+			&\leq \mu(\{f\leq 1\}) + M^{p_1}.
+		\end{split}
+		\end{equation}
 		Since $(X, \mcal{A}, \mu)$ is a finite measure space, this quantity is finite, so $f_n\in L^p(X, \mcal{A}, \mu)$ for all $n$ and $p\in [1, p_1]$. We can then use the fact that $f_n\to f$ a.e. and Fatou's lemma to show that $f\in L^p(X, \mcal{A}, \mu)$ for $p\in [1, p_1]$:
 		\[
 		\int_X|f|^p \leq \liminf_{n\to \infty}\int_X|f_n|^p<\infty,
 		\]
 		where the finiteness follows from the $L^p$ uniform-boundedness of the $f_n$.\\
 
-		\noindent To establish convergence in $L^p$, $p\in [1, p_1)$ our plan is to use the Vitali convergence theorem. The family $f_n$ is tight over $X$ since $X$ is a finite measure space and we're given that $f_n\to f$ a.e., so it only remains to show that the $f_n$'s are uniformly integrable. Intuitively, since the $f_n$'s are in $L^p$, the measure of the set $\{f_n \geq N\}$ should shrink as $N$ grows.  Now since $p<p_1$, if $N>1$ then
-		\[
-		|f_n|^p\chi_{\{|f_n|\geq N\}}N^{p_1-p}\leq |f_n|^{p_1}.
-		\]
-		If we integrate both sides over any measurable set $E$ we have
-		\[
-		\int_{E\cap \{|f_n|\geq N\}}|f_n|^p \leq \frac{M}{N^{p_1-p}}.
-		\]
-		On the complement we have
-		\[
-		\int_{E\cap \{|f_n|<N\}}|f_n|^p \leq N^p\cdot \mu(E).
-		\]
-		Putting these together, we have that
+		\noindent To establish convergence in $L^p$, $p\in [1, p_1)$ our plan is to use the Vitali convergence theorem. The family $f_n$ is tight over $X$ since $X$ is a finite measure space and we're given that $f_n\to f$ a.e., so it only remains to show that the $f_n$'s are uniformly integrable.
+		To this end, let $E$ be any measurable subset of $X$. Since $f_n$ is in $L^{p_1}$, we have that $|f_n|^p\in L^{p_1/p}$. If we let $q$ be the H\"older conjugate to $p_1/p$ then we have
 		\begin{align*}
-			\int_E|f_n|^p &= \int_{E\cap \{|f_n|\geq N\}}|f_n|^p + \int_{E\cap \{|f_n|<N\}}|f_n|^p\\
-			&\leq \frac{M}{R^{p_1-p}} + R^p\cdot\mu(E).
+			\int_E|f_n|^p &= \int_X |f_n|^p \cdot \chi_E\\
+			&\leq \Lp{|f_n|^p}{p_1/p}\cdot \Lp{\chi_E}{q}\\
+			&\leq M^{p_1^2/p}\cdot \mu(E)^{1/q}.
 		\end{align*}
-		If we choose $R$ so that $M/R^{p_1-p}<\epsilon/2$ and $E$ so that $R^p\cdot \mu(E)<\epsilon/2$ then we'll have that $\int_E |f_n|^p<\epsilon$ for any $E$ of sufficiently small measure, so the $f_n$'s are uniformly integrable. By the Vitali convergence theorem we have that $f_n\to f$ in $L^p$ for $p\in [1, p_1)$.
+		% Intuitively, since the $f_n$'s are in $L^p$, the measure of the set $\{f_n \geq N\}$ should shrink as $N$ grows.  Now since $p<p_1$, if $N>1$ then
+		% \[
+		% |f_n|^p\chi_{\{|f_n|\geq N\}}N^{p_1-p}\leq |f_n|^{p_1}.
+		% \]
+		% If we integrate both sides over any measurable set $E$ we have
+		% \[
+		% \int_{E\cap \{|f_n|\geq N\}}|f_n|^p \leq \frac{M}{N^{p_1-p}}.
+		% \]
+		% On the complement we have
+		% \[
+		% \int_{E\cap \{|f_n|<N\}}|f_n|^p \leq N^p\cdot \mu(E).
+		% \]
+
+		% Putting these together, we have that
+		% \begin{align*}
+		% 	\int_E|f_n|^p &= \int_{E\cap \{|f_n|\geq N\}}|f_n|^p + \int_{E\cap \{|f_n|<N\}}|f_n|^p\\
+		% 	&\leq \frac{M}{R^{p_1-p}} + R^p\cdot\mu(E).
+		% \end{align*}
+		% If we choose $R$ so that $M/R^{p_1-p}<\epsilon/2$ and $E$ so that $R^p\cdot \mu(E)<\epsilon/2$ then we'll have that $\int_E |f_n|^p<\epsilon$ for any $E$ of sufficiently small measure, so the $f_n$'s are uniformly integrable. By the Vitali convergence theorem we have that $f_n\to f$ in $L^p$ for $p\in [1, p_1)$.
+		If we choose $E$ so that $\mu(E)^{1/q} < \epsilon\cdot M^{-p_1^2/p}$, then we'll have that $\int_E|f_n|^p <\epsilon$, so the $f_n$'s are uniformly integrable. By the Vitali convergence theorem we have that $f_n\to f$ in $L^p$ for $p\in [1, p_1]$.
 	\end{proof}
 
 	\item Let $(X, \mcal{A}, \mu)$ be a measure space, and let $f: X\to [0, \infty)$ be $\mcal{A}$-measurable. Consider the measure space $(\reals, \mcal{B}_\reals, \mu_L)$, where $\mcal{B}_\reals$ is the Borel $\sigma$-algebra on $\reals$ and $\mu_L$ is the Lebesgue measure, and form the product measure space $(X\times \reals, \sigma(\mcal{A}\times \mcal{B}_\reals), \mu\times \mu_L)$. Define $E\subset X\times R$ by $(x,y)\in E\iff y\in [0, f(x))$. Prove that $E\in \sigma(\mcal{A}\times \mcal{B}_\reals)$ and $(\mu\times \mu_L)(E) = \int_Xf\ d\mu$.
@@ -219,7 +231,7 @@
 \end{enumerate}
 
 
-\section*{Fall 2015}
+\section{Fall 2015}
 \begin{enumerate}
 	\item Let $E$ be a measurable subset of $[0, 2\pi]$. Assume that $f\in C(\reals)$ is 1-periodic, i.e. $f(x+1) = f(x)$. Compute
 	\[
@@ -348,7 +360,7 @@
 	\end{proof}
 \end{enumerate}
 
-\section*{Spring 2015}
+\section{Spring 2015}
 \begin{enumerate}
 	\item Show that if $f\in L^4(\reals)$ then
 	\[
@@ -409,5 +421,7 @@
 		\end{align*}
 	\end{proof}
 \end{enumerate}
+
+
 
 \end{document}
