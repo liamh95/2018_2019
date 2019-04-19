@@ -706,8 +706,17 @@
 	\end{solution}
 
 	\item Suppose $p$ is a prime, and suppose $r$ and $N$ are positive integers. Consider the map $\field_{p^r}^\times \to \field_{p^r}^\times$ that sends $x$ to $x^N$. What is the cardinality of its kernel and image?
-\end{enumerate}
+	\begin{solution}
+		Let's compute the kernel of this map, which we'll denote by $\varphi$, first. Since the multiplicative group of a finite field is cyclic, we can write $\field_{p^r} = \langle g \rangle$. The kernel $\varphi$ is then the set of $g^k$ such that $Nk \equiv 0 \pmod{p^r-1}$.
+		This is equivalent to $Nk = m(p^r-1)$ for some integer $m$. If we let $\gamma = \gcd(N, p^r-1)$, then we can divide through by $\gamma$ to obtain
+		\[
+		\frac{N}{\gamma}k\equiv 0 \pmod{\frac{p^r-1}{\gamma}}.
+		\]
+		Since $N/\gamma$ and $(p^r-1)/\gamma$ are coprime, we can multiply through by the inverse of $N/\gamma$ to see that $k \equiv 0 \pmod{\frac{p^r-1}{\gamma}}$. The size of $\ker \varphi$ is then the number of multiples of $\frac{p^r-1}{\gamma}$ in $\{0, 1, \ldots, p^r-2\}$, $\gamma$.\\
 
+		\noindent By the first isomorphism theorem, $\field_{p^r}^\times/\ker \varphi \cong \text{Im}\ \varphi$, so the image of $\varphi$ contains $(p^r-1)/\gamma$ elements.
+	\end{solution}
+\end{enumerate}
 
 
 \end{document}

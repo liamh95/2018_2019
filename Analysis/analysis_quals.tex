@@ -358,6 +358,21 @@
 		\end{align*}
 		If we call the set on the LHS $A_n$, then we have $\sum \mu(A_n)<\infty$. By Borel-Cantelli we have $\mu(\limsup_{n\to \infty}A_n) = 0$, i.e., the set of $x$ that belong to infinitely many $A_n$ has measure zero, so the sum is zero for almost all $x$.
 	\end{proof}
+
+	\item Let $A, B\subseteq \reals^n$ be Lebesgue measurable sets and assume that for every $x\in \rationals^n$ there exists a null set $N_x$ such that
+	\[
+	A+x\subset B\cup N_x.
+	\]
+	Show that if $A$ is not a null set then the complement of $B$ in $\reals^n$ is a null set.
+	\begin{proof}
+		Suppose $A$ has positive measure. Since $\rationals$ is countable and the countable union of null sets is null, we have that $A+\rationals \subset B \cup N$ for some null set $N$. If $A+\rationals$ missed a set of positive measure, then the complement of $B$ would contain a set of positive measure. Let's show that this cannot happen.\\
+
+		\noindent Suppose $E$ is a set of positive measure with $E\cap (A+\rationals) = \emptyset$. Define the function $f$ by the convolution
+		\[
+		f(x) = \int_{\reals^n}\chi_A(x-y)\chi_E(y)\ dy.
+		\]
+		Since 
+	\end{proof}
 \end{enumerate}
 
 \section{Spring 2015}
@@ -413,15 +428,105 @@
 	\]
 	for some $p>2$. Show that $\lim_{x\to 0^+}f(x)$ exists.
 	\begin{proof}
-		Let $x_n\to 0$. We have
+		Let $x_n\to 0$ and say the integral in the problem statement has value $C<\infty$. If $q$ is such that $\frac{1}{p}+\frac{1}{q} = 1$, we have by H\"older's inequality
 		\begin{align*}
 			|f(x_n)-f(x_m)| &= \int_{x_m}^{x_n}f'(x)\ dx\\
 			&\leq \int_{x_m}^{x_n}|f'(x)|\ dx\\
-			&= \int_0^1x^{1/p}|f'(x)|x^{-1/p}\chi_{[x_m, x_n]}(x)\ dx
+			&= \int_0^1x^{1/p}|f'(x)|x^{-1/p}\chi_{[x_m, x_n]}(x)\ dx\\
+			&\leq \left(\int_0^1x|f'(x)|^p\ dx\right)^{1/p}\cdot \left(\int_{x_m}^{x_n}x^{-q/p}\ dx\right)^{1/q}.
 		\end{align*}
+		Since $p>2$, we have that $q<2$, so the last line above becomes
+		\begin{align*}
+			|f(x_n)-f(x_m)| \leq C\cdot \left.\frac{x^{1-q/p}}{1-q/p}\right|_{x_m}^{x_n}.
+		\end{align*}
+		Since $q<2$, we have that $1-\frac{q}{p}>0$, so as $x_m,x_n\to 0$, this expression goes to zero. Thus, the sequence $f(x_n)$ is Cauchy, so $\lim_{x\to 0}f(x)$ exists.
+	\end{proof}
+
+	\item Suppose that $E\subset [0,1]^2$ is measurable. Denote
+	\[
+	E_x = \{y\in [0,1]: (x,y)\in E\},\quad E_y = \{x\in [0,1]: (x,y)\in E\}.
+	\]
+	Show that if $m(E_x) = 0$ for almost all $x\in [0, \frac{1}{2}]$, then
+	\[
+	m(\{y\in [0,1]: m(E_y) = 1\})\leq \frac{1}{2}.
+	\]
+	\begin{proof}
+		$E$ is contained in the unit square, which has finite measure. By Tonelli's theorem we then have
+		\begin{align*}
+			m(E) &= \int \chi_E(x,y)\ d(\mu_x\times \mu_y)\\
+			&= \int_0^1\int_0^1\chi_E(x,y)\ dydx\\
+			&= \int_0^1 m(E_y)\ dy =  \int_0^1m(E_x)\ dx\\
+			&= \int_{1/2}^1m(E_x)\ dx\\
+			&\leq \frac{1}{2}.
+		\end{align*}
+		This gives us
+		\begin{align*}
+		m(\{y\in [0,1]: m(E_y) = 1\}) &= \int_{\{y\in [0,1]: m(E_y) = 1\}}m(E_y)\ dy\\
+		&\leq \int_0^1 m(E_y)\ dy\\
+		&\leq \frac{1}{2}.
+		\end{align*}
+	\end{proof}
+
+	\item Let $f\in L^p(\reals)$, $1<p<\infty$, and let $\alpha>1-\frac{1}{p}$. Show that the series
+	\[
+	\sum_{n=1}^\infty \int_n^{n+n^{-\alpha}}|f(x+y)|\ dy
+	\]
+	converges for a.e. $x\in \reals$.
+	\begin{proof}
+		Our strategy is to show that the sum, as a function of $x$, is locally integrable, and therefore finite almost everywhere. To this end, let $k$ be an arbitrary integer. Since the above integrands are nonnegative, the monotone convergence theorem will let us interchange the sum with integrals. By Tonelli we will interchange the integrals.
+		\begin{align*}
+			\int_k^{k+1}\sum_{n=1}^\infty \int_n^{n+n^{-\alpha}}|f(x+y)|\ dydx &= \sum_{n=1}^\infty \int_k^{k+1}\int_n^{n+n^{-\alpha}}|f(x+y)|\ dydx\\
+			&= \sum_{n=1}^\infty \int_k^{k+1}\int|f(y)|\cdot \chi_{[n+x, n+n^{-\alpha}+x]}(y)\ dydx\\
+			&= \sum_{n=1}^\infty \int\int_k^{k+1}|f(y)|\cdot \chi_{[y-n-n^{-\alpha}, y-n]}(x)\ dxdy.
+		\end{align*}
+		Let's compute the values of $y$ for which $[y-n-n^{-\alpha}, y-n]\cap [k, k+1]$ is nonzero. We need $k<y-n$, so $k+n<y$. We also need $y-n-n^{-\alpha}<k+1$, so $y<k+n+n^{-\alpha}+1$. This gives us
+		\begin{align*}
+			\int_k^{k+1}\sum_{n=1}^\infty \int_n^{n+n^{-\alpha}}|f(x+y)|\ dydx &= \sum_{n=1}^\infty \int_{k+n}^{k+n+n^{-\alpha}+1}\int|f(y)|\chi_{[y-n-n^{-\alpha}, y-n]}(x)\ dxdy\\
+			&= \sum_{n=1}^\infty n^{-\alpha}\int_{k+n}^{k+n+n^{-\alpha}+1}|f(y)|\ dy.
+		\end{align*}
+		Our plan is to use H\"older's inequality with respect to the counting measure on the sequences $n^{-\alpha}$ and $\int_{k+n}^{k+n+n^{-\alpha}+1}|f(y)|\ dy$. Since $\alpha$ is given to be larger than the H\"older conjugate of $p$, we have that $n^{-\alpha}$ is in $\ell^q$. We also have
+		\[
+		\sum_{n=1}^\infty\left(\int_{k+n}^{k+n+n^{-\alpha}+1}|f(y)|\ dy\right)^p
+		\]
+	\end{proof}
+
+	\item Suppose $E\subset \reals$ is measurable and $E = E+\frac{1}{n}$ for every natural number $n\geq 1$. Show that either $m(E) = 0$ or $m(E^c) = 0$.
+	\begin{proof}
+		
 	\end{proof}
 \end{enumerate}
 
+\section{Fall 2014}
+\begin{enumerate}
+	\item Let $A$ be the collection of all subsets of $\reals$ that consist of exactly 5 points. Find the $\sigma$-algebra of sets generated by $A$.
+	\begin{solution}
+		By intersecting five element sets with exactly one point in common we can obtain all singleton subsets of $\mathbb{R}$. We claim that the $\sigma$-algebra generated by the singleton sets, which will be the $\sigma$-algebra generated by $A$, consists of all countable or co-countable subsets of $\mathbb{R}$.\\
 
+		\noindent Call the $\sigma$-algebra consisting of all countable or co-countable sets $\mcal{A}$. Since $\mcal{A}$ contains all singletons, we clearly have $\sigma(A)\subseteq \mcal{A}$. Conversely, let $S\in \mcal{A}$. If $S$ is countable, then it is a countable union of singletons, so $S\in \sigma(A)$. On the other hand, if $S$ is co-countable, then its complement is in $\sigma(A)$. Since $\sigma(A)$ is closed under taking complements, this puts $S$ in $\sigma(A)$ as well. We conclude that $\sigma(A) = \mcal{A}$.
+	\end{solution}
+
+	\item Assume that $f\in L^1(0, 1)$ is a non-negative real-valued function satisfying $\int_{[0,1]}f(x)\ dx = 1$. Show that
+	\[
+	\int_{[0,1]}\frac{1}{f(x)}\ dx \geq 1.
+	\]
+	\begin{proof}
+		Since $f\in L^1$ and $f\geq 0$, we have that $\sqrt{f}\in L^2$. We then have by H\"older's inequality
+		\begin{align*}
+			1 &= \int 1\ dx\\
+			&= \int \frac{\sqrt{f}}{\sqrt{f}}\ dx\\
+			&\leq \Lp{\sqrt{f}}{2} \cdot \Lp{1/\sqrt{f}}{2}\\
+			&= \sqrt{\Lp{f}{1}}\cdot \sqrt{\Lp{1/f}{1}}\\
+			&= \sqrt{\Lp{1/f}{1}}.
+		\end{align*}
+	\end{proof}
+
+	\item Denote
+	\[
+	E = \left\{x\in [0,1]: \text{there exist infinitely many $p, q\in \naturals$ such that }|x-\frac{p}{q}| \leq \frac{1}{q^3}\right\}.
+	\]
+	Show that $m(E) = 0$.
+	\begin{proof}
+	\end{proof}
+\end{enumerate}
 
 \end{document}

@@ -1,11 +1,13 @@
 # Fdb version 3
-["pdflatex"] 1555102303 "analysis_quals.tex" "analysis_quals.pdf" "analysis_quals" 1555102303
+["pdflatex"] 1555610588 "analysis_quals.tex" "analysis_quals.pdf" "analysis_quals" 1555610588
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1550406775 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1550406775 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1550406775 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1550406775 916 f87d7c45f9c908e672703b83b72241a3 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1550406775 924 9904cf1d39e9767e7a3622f2a125a565 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1550406775 928 2dc8d444221b7a635bb58038579b861a ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1550406775 908 2921f8a10601f252058503cc6570e581 ""
+  "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1550406775 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1550406775 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1550406775 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1550406775 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -148,9 +150,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1550406775 33301 a3134070eacafb10b1f371612ce2650d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1554330684 334148 1b9d30ff8c861d6082e3e9bfccd8d7eb ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1554330679 7919195 c1aa91c0e02db4bcd5971db28534d456 ""
-  "analysis_quals.aux" 1555102303 1640 90e28af04e68c0e25b4b3a9354ba60ff ""
-  "analysis_quals.tex" 1555102302 24197 186ef902d848562ce8433198c7915cd7 ""
+  "analysis_quals.aux" 1555610588 1833 ef00f7b384d67bbc4b7124da6007a4ac ""
+  "analysis_quals.tex" 1555610587 30210 c6abd1595c99a9b24c48caeda1f914f7 ""
   (generated)
+  "analysis_quals.log"
   "analysis_quals.pdf"
   "analysis_quals.aux"
-  "analysis_quals.log"

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.4.3)  12 APR 2019 13:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.4.3)  18 APR 2019 11:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -656,24 +656,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 318--320
  []
 
 [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 370--371
+Underfull \hbox (badness 10000) in paragraph at lines 368--369
 
  []
 
-[9] [10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 425.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 425.
+
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
+
+ []
+
+[9] [10] [11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 502--503
+
+ []
+
+[13] [14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 531.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 531.
  (./analysis_quals.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 425.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 425.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 425.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 531.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 531.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 531.
  ) 
 Here is how much of TeX's memory you used:
- 16333 strings out of 492616
- 303370 string characters out of 6135178
- 377283 words of memory out of 5000000
- 19919 multiletter control sequences out of 15000+600000
- 9547 words of font info for 36 fonts, out of 8000000 for 9000
+ 16351 strings out of 492616
+ 303509 string characters out of 6135178
+ 377284 words of memory out of 5000000
+ 19923 multiletter control sequences out of 15000+600000
+ 10192 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,15n,48p,589b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/
@@ -687,10 +697,10 @@ lic/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
 sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf
 -dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on analysis_quals.pdf (10 pages, 173605 bytes).
+Output written on analysis_quals.pdf (14 pages, 189650 bytes).
 PDF statistics:
- 153 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
- 35 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 185 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
+ 47 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
