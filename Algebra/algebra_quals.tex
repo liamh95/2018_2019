@@ -54,6 +54,60 @@
 \hrule
 \end{center}
 
+\section{Spring 2018}
+\begin{enumerate}
+	\item Classify groups of order $2018 = 2\cdot 1009$.
+	\begin{solution}
+		Let $G$ have order 2018. By Sylow's theorems, the number of Sylow-1009 subgroups is 1 mod 1009 and divides 2. There is then just one Sylow-1009 subgroup, which we denote by $P$. Again by Sylow's theorem, $G$ acts transitively by conjugation on its Sylow subgroups of a given order, so $P$ is normal in $G$.\\
+
+		\noindent By the same reasoning, the number of Sylow-2 subgroups is either 1 or 1009. Any proper subgroup of $G$ has order either 1009 or 2 by Lagrange's theorem. Furthermore, the Sylow-2 and Sylow-1009 subgroups intersect trivially as they are cyclic of relatively prime order. We conclude that there cannot be just one Sylow-2 subgroup, or else we would have only $1009+1$ elements in $G$.\\
+
+		\noindent Now let $Q$ be any Sylow-2 subgroup of $G$. Since $P$ is normal in $G$, $P\cap Q = \{e\}$, and $|P|\cdot |Q| = |G|$, we have that $G$ is a semidirect product of $P$ and $Q$. Such a product is given by a homomorphism $\varphi: Q\to \Aut(P) \cong \integers/1008\integers$. Such a map must take the identity in $Q$ to an element with order dividing 2. We can then have the trivial map $\varphi \equiv 0$ or $\varphi(1) = 504\in \integers/1008\integers$. We conclude that there are exactly two groups of order 2018 up to isomorphism.\\
+
+		\noindent $\integers/2018\integers$ and the dihedral group of order 2018, $D_{1009}$, are two non-isomorphic ($D_{1009}$ is non-abelian by looking at its standard presentation) groups of order 2018, so this must be a complete list of such groups.
+	\end{solution}
+	\item Let $P$ be a group of order $|P|=p^r$ for some prime $p$.
+	\begin{enumerate}
+		\item Prove that $Z(P)\neq 1$.
+		\begin{proof}
+			We assume that $r>0$. By the class equation (which itself follows from letting $P$ act on itself by conjugation and applying the orbit-stabilizer theorem) we have that
+			\[
+			|P| = p^r = |Z(P)| + \sum_{i=1}^k[G: C_G(g_i)],
+			\]
+			where $g_1, \ldots, g_k$ are representatives from the distinct conjugacy classes of $G$ not contained in the center and $C_G(g_i)$ is the centralizer of $g_i$. By Lagrange's theorem, each term $[G: C_G(g_i)]$ is also a prime power $p^{e_i}$ for some $e_i>0$ (if $e_i = 0$ then $g_i$ would be in the center). Subtracting gives
+			\[
+				|Z(P)| = p^r - \sum_{i=1}^k[G: C_G(g_i)].
+			\] 
+			Reducing mod $p$ shows that $|Z(P)|$ is a multiple of $p$. Since the center always contains the identity, we conclude that the center is nontrivial.
+		\end{proof}
+		\item Prove that $P$ is solvable.
+		\begin{proof}
+			We induct on $k$. If $r=1$ then $P \cong \integers/p\integers$, which is abelian, and therefore solvable. Suppose then that the claim holds for all powers of $p$ up to $k$ and let $|P| = p^{k+1}$. If the center of $P$ is all of $P$, then again $P$ is abelian and solvable. Suppose then that $P$ is not abelian. By part (a) we know that the center is nontrivial, so $P/Z(P)$ is a $p$-group with size strictly smaller than that of $P$. By the inductive hypothesis, $P/Z(P)$ and $Z(P)$ are solvable, so $P$ is solvable.
+		\end{proof}
+	\end{enumerate}
+
+	\item Let $\mathfrak{m}\subset R = \integers[x]$ be a maximal ideal. Prove that $R/\mathfrak{m}$ is a finite field. \textit{Hint: first show that the image of $\integers$ is finite.}
+	\begin{proof}
+		$R/\mathfrak{m}$ is a ring, so it admits a homomorphism $\varphi$
+	\end{proof}
+	\item Let $R$ be a UFD and assume that any ideal in $I$ is finitely generated. Suppose that for every nonzero $a,b$ in $R$ and any $d = \gcd(a,b)$ in $R$ is expressible as $d = ra+sb$ for some $r,s\in R$. Prove that $R$ is a PID.
+	\item Classify all finite abelian groups $G$ such that $G\otimes_\integers (\integers/9\integers)\cong G$.
+	\item Let $F$ be a field and let $A$ and $B$ be non-singular $3\times 3$ matrices over $F$. Suppose that $B^{-1}AB = 2A$.
+	\begin{enumerate}
+		\item find the characteristic of $F$.
+		\item if $n$ is a positive or negative integer not divisible by 3, prove that the matrix $A^n$ has trace 0.
+		\item prove that the characteristic polynomial of $A$ is $X^3-a$ for some $a\in F$.
+	\end{enumerate}
+	\item Let $K$ be a field an let $A$ be an $n\times n$ matrix over $K$. Suppose that $f\in K[x]$ is an irreducible polynomial such that $f(A) = 0$. Show that $\deg(f)|n$.
+	\item Let $F$ be a field and $f(x)\in F[x]$ be irreducible. Let $E$ be a splitting field of $f(x)$ over $F$. Suppose that $a$ in $E$ is such that $a$ and $a+1$ are both roots of $f(x)$. Show that $F$ doesn't have characteristic zero.
+	\item Let $\field_q$ be a finite field and let $\alpha\in \field_q^\times$. Let $K$ be a splitting field over $\field_q$ of $X^{q+1}-\alpha$. Prove that $[K: \field_q] = 2$.
+	\item For the alternating group $A_4$
+	\begin{enumerate}
+		\item Classify the conjugacy classes of $A_4$.
+		\item Construct the character table of $A_4$.
+	\end{enumerate}
+\end{enumerate}
+
 \section{Spring 2016}
 \begin{enumerate}
 	\item 
