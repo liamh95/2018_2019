@@ -371,7 +371,12 @@
 		\[
 		f(x) = \int_{\reals^n}\chi_A(x-y)\chi_E(y)\ dy.
 		\]
-		Since 
+		If we choose $x=q\in \rationals^n$, then the integrand is nonzero if and only if $y\in E\cap (A+q) = \emptyset$, so $f(q) = 0$. But the convolution is continuous if we take $E$ to have finite measure and $\rationals^n$ is dense, so we must have $f \equiv 0$. But by Tonelli we have
+		\begin{align*}
+		\int_{\reals^n\times \reals^n}\chi_A(x-y)\chi_E(y)\ d(\mu_x\times \mu_y) &= \int \int \chi_A(x-y)\chi_E(y)\ dxdy\\
+		&= m(A)m(E).
+		\end{align*}
+		Since $A$ is not null and $E$ is assumed to have positive measure, this must be positive, contradicting $f\equiv 0$. We conclude that $A+\rationals$ is null.
 	\end{proof}
 \end{enumerate}
 
@@ -492,7 +497,11 @@
 
 	\item Suppose $E\subset \reals$ is measurable and $E = E+\frac{1}{n}$ for every natural number $n\geq 1$. Show that either $m(E) = 0$ or $m(E^c) = 0$.
 	\begin{proof}
-		
+		By induction we can see that $E = E+\rationals$. Suppose $E$ isn't null and $E=E+\rationals$ misses a set $A$ of positive finite measure. Consider the consider the convolution
+		\[
+		f(x) = \int_\reals \chi_E(x-y)\chi_A(y)\ dy.
+		\]
+		Since $E+\rationals\cap A$ is empty, if $x\in \rationals$ then $f(x) = 0$. Furthermore, since $A$ has finite measure and $E$ is in $L^\infty(\reals)$, the convolution is continuous. Since $\rationals$ is dense and $f$, a continuous function vanishes on $\rationals$, we must have $f\equiv 0$. But by Tonelli we have that $\int f(x)\ dx = m(E)m(A)$, which is positie. We conclude that $E$ cannot miss a set of positive measure if it isn't null.
 	\end{proof}
 \end{enumerate}
 
@@ -526,6 +535,35 @@
 	\]
 	Show that $m(E) = 0$.
 	\begin{proof}
+		Let $E_{p,q} = \{x\in [0,1]: |x-p/q|\leq 1/q^3\}$ where $p,q$ range over $\naturals$. Note that since we're confined to $[0,1]$, these sets are empty for $p>q$ for any fixed $q$. We also have that $m(E_{p,q}) \leq \frac{2}{q^3}$. We can then sum (using Tonelli to sum over $p$ and $q$ individually)
+		\begin{align*}
+			\sum_{p,q\in \naturals}m(E_{p,q}) &= \sum_{q\in \naturals}\sum_{0\leq p< q}m(E_{p,q})\\
+			&\leq \sum_{q\in \naturals}q\cdot \frac{2}{q^3}\\
+			&= \frac{\pi^2}{3}.
+		\end{align*}
+		Since this sum is finite, by Borel-Cantelli we must have that $m(\limsup E_{p,q}) = 0$. $\limsup E_{p,q}$ is the set of $x\in [0,1]$ belonging to infinitely many $E_{p,q}$, which is exactly the definition of $E$.
+	\end{proof}
+
+	\item Assume that $\eta \in L^1(\reals)$ is a non-negative function satisfying $\int_\reals\eta\ dx = 1$. Show that for any $f\in L^1(\reals)$,
+	\[
+	\Lp{f*\eta}{1} \leq \Lp{f}{1}.
+	\]
+	\begin{proof}
+		We use Tonelli's theorem
+		\begin{align*}
+			\int |(f*\eta)(x)|\ dx &\leq \int\int |f(x-y)|\eta(y)\ dydx\\
+			&= \int\int |f(x-y)|\eta(y)\ dxdy\\
+			&= \Lp{f}{1}\int\eta(y)\ dy\\
+			&= \Lp{f}{1}.
+		\end{align*}
+	\end{proof}
+
+	\item Let $f:\reals\to \reals$ be continuous and periodic with period one. Prove that
+	\[
+	\lim_{n\to \infty}\int_0^1f(nx)\cos^2(2\pi x)\ dx = \frac{1}{2}\int_0^1f(x)\ dx.
+	\]
+	\begin{proof}
+		
 	\end{proof}
 \end{enumerate}
 
