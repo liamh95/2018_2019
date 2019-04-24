@@ -3,8 +3,7 @@
 %% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
 
 \documentclass[11pt,letterpaper]{report}
-\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
-\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate,tikz-cd} %This package offers the ability to draw pictures
 \usepackage{amsthm}
 \usepackage{bookmark}
 \usepackage{mathtools}
@@ -88,9 +87,46 @@
 
 	\item Let $\mathfrak{m}\subset R = \integers[x]$ be a maximal ideal. Prove that $R/\mathfrak{m}$ is a finite field. \textit{Hint: first show that the image of $\integers$ is finite.}
 	\begin{proof}
-		$R/\mathfrak{m}$ is a ring, so it admits a homomorphism $\varphi$
+		Denote $k = R/\mathfrak{m}$ and let $\varphi: \integers \to k$ be the map that takes 1 to 1 (any ring admits such a map from $\integers$). We claim that this map is not injective. If it were, then it would have to extend to an injection $\Phi: \rationals \to k$. Let $\pi: \integers[x]\to k$ be the projection map (which agrees with $\varphi$ on $\integers\subseteq \integers[x]$). If we set $\Pi(x) = \pi(x)$ and $\Pi(q) = \Phi(q)$ for any $q\in \rationals$ then we have a commutative diagram.
+		\[
+		\begin{tikzcd}
+			\integers[x]\arrow[r, "\pi"]\arrow[d, hook] & k\\
+			\rationals[x]\arrow[ur, "\Pi"]
+		\end{tikzcd}
+		\]
+		$\Pi$ is surjective since $\pi$ is, so by the first isomorphism theorem we have that $\rationals[x]/\ker \Pi \cong k$. $\ker\Pi$ is then a maximal ideal of $\rationals[x]$, so it has the form $(f(x))$ for some irreducible polynomial $f(x)$, which we can take to be primitive. Since $k\cong \rationals[x]/(f(x))$, we have a surjection from $\integers[x]$ onto $\rationals[x]/(f(x))$.\\
+
+		\noindent The kernel of this surjection is $\ker \Pi \cap \integers[x] = f(x)\rationals[x]\cap \integers[x]$. By Gauss' lemma we have that $f(x)\rationals[x]\cap \integers[x] = f(x)\integers[x]$, so we have an isomorphism $\integers[x]/(f(x))\cong \rationals[x]/(f(x))$. We claim that this can't happen since $\rationals[x]/(f(x))$ is a field while $\integers[x]/(f(x))$, as we'll show, cannot be a field.\\
+
+		\noindent Choose $a\in \integers$ such that $f(a) \neq 0, \pm 1$ and let $p$ be any prime dividing $f(a)$. If we let $\psi: \integers[x]\to \integers/p\integers$ that sends $x$ to $a$ mod $p$, then $(f(x))$ is in the kernel of $\psi$, so we get another commutative diagram.
+		\[
+		\begin{tikzcd}
+			\integers[x]\arrow[r, "\psi"]\arrow[d, twoheadrightarrow] & \integers/p\integers\\
+			\integers[x]/(f(x))\arrow[ur, "\Psi"]
+		\end{tikzcd}
+		\]
+		$\integers/p\integers$ is a field, so if $\integers[x]/(f(x))$ is a field, then $\Psi$ must be either injective or the zero map. But $\integers[x]/(f(x))$ is infinite in size, so $\Psi$ must be identically zero. In particular, $\Psi(1) = 0$. By the commutativity of the diagram, we must have that for some $u(x), v(x)\in \integers[x]$,
+		\[
+		1 = u(x)f(x) + v(x)p.
+		\]
+		But substituting $x = a$ and reducing mod $p$ gives a contradiction. We conclude that the image of $\integers$ in $k$ is finite.\\
+
+		Since the image of $\integers$ in $k$ is finite, we have that $k$ has positive characteristic, say $p$. In particular, we have that $(p)\subset \mathfrak{m}$. Since $\integers[x]$ is Noetherian, we can write
+		\[
+		\mathfrak{m} = (p, f_1(x), \ldots, f_k(x))
+		\]
+		for some finite $k$, which gives
+		\[
+		\integers[x]/\mathfrak{m}\cong (\integers/p\integers)[x]/(f_1(x), \ldots, f_k(x)),
+		\]
+		which is a finite field.
 	\end{proof}
+
 	\item Let $R$ be a UFD and assume that any ideal in $I$ is finitely generated. Suppose that for every nonzero $a,b$ in $R$ and any $d = \gcd(a,b)$ in $R$ is expressible as $d = ra+sb$ for some $r,s\in R$. Prove that $R$ is a PID.
+	\begin{proof}
+		
+	\end{proof}
+	
 	\item Classify all finite abelian groups $G$ such that $G\otimes_\integers (\integers/9\integers)\cong G$.
 	\item Let $F$ be a field and let $A$ and $B$ be non-singular $3\times 3$ matrices over $F$. Suppose that $B^{-1}AB = 2A$.
 	\begin{enumerate}
