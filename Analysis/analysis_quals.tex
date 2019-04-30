@@ -424,7 +424,12 @@
 			&\leq \int_0^1 g\ dx + C\\
 			&<\infty.
 		\end{align*}
-		Finally, since $|f-f_n|\to 0$ a.e. and $|f-f_n| \leq |f| + g\in L^1(0, \infty)$, we can apply the dominated convergence theorem to show that $f_n\to f$ in $L^1(0, \infty)$.
+		Our plan is to use the Vitali convergence theorem to show that $f_n\to f$ in $L^1(0, \infty)$. We are given that $f_n\to f$ a.e., which implies that $f_n\to f$ in measure. Since $|f-f_n| \leq |f| + g$, we have that $f_n\to f$ in $L^1(0,a)$ for any $a$ by the dominated convergence theorem, so the $f_n$'s are uniformly integrable. To establish tightness, note that for any $t>1$ we have
+		\begin{align*}
+			\int_t^\infty |f_n(x)|\ dx &= \int_{t^2}^\infty\frac{|f_n(\sqrt{x})|}{2\sqrt{x}}\ dx\\
+			&\leq \frac{C}{2t},
+		\end{align*}
+		which goes to zero as $t\to \infty$. By the Vitali convergence theorem we have that $f_n\to f$ in $L^1(0, \infty)$.
 	\end{proof}
 
 	\item Assume that $f\in C^1(0, 1)$ and
@@ -435,7 +440,7 @@
 	\begin{proof}
 		Let $x_n\to 0$ and say the integral in the problem statement has value $C<\infty$. If $q$ is such that $\frac{1}{p}+\frac{1}{q} = 1$, we have by H\"older's inequality
 		\begin{align*}
-			|f(x_n)-f(x_m)| &= \int_{x_m}^{x_n}f'(x)\ dx\\
+			|f(x_n)-f(x_m)| &=\left| \int_{x_m}^{x_n}f'(x)\ dx\right|\\
 			&\leq \int_{x_m}^{x_n}|f'(x)|\ dx\\
 			&= \int_0^1x^{1/p}|f'(x)|x^{-1/p}\chi_{[x_m, x_n]}(x)\ dx\\
 			&\leq \left(\int_0^1x|f'(x)|^p\ dx\right)^{1/p}\cdot \left(\int_{x_m}^{x_n}x^{-q/p}\ dx\right)^{1/q}.
