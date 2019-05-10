@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1556214912 "analysis_quals.tex" "analysis_quals.pdf" "analysis_quals" 1556214912
+["pdflatex"] 1557182636 "analysis_quals.tex" "analysis_quals.pdf" "analysis_quals" 1557182637
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1550406775 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1550406775 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1550406775 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -148,11 +148,11 @@
   "/usr/share/texmf-dist/tex/latex/url/url.sty" 1550406775 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1550406775 55589 34128738f682d033422ca125f82e5d62 ""
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1550406775 33301 a3134070eacafb10b1f371612ce2650d ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1555960824 334148 1b9d30ff8c861d6082e3e9bfccd8d7eb ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1555960808 7919196 648509f094b91eba64e2132650cbf3d2 ""
-  "analysis_quals.aux" 1556214912 1833 64ec91f0ea8e4aee97478aa6da4b1bce ""
-  "analysis_quals.tex" 1556214911 33338 b55de0b5a0bdbd4a25824fec338cf555 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1556565280 334148 1b9d30ff8c861d6082e3e9bfccd8d7eb ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1556565266 7919196 519d474b2cde920532b24c5aa120ece3 ""
+  "analysis_quals.aux" 1557182637 2031 84b21f65ea11eed4ff860871e7d69e63 ""
+  "analysis_quals.tex" 1557182636 37690 c74a5faecd03fc6859e7f9bd8254ced8 ""
   (generated)
-  "analysis_quals.log"
   "analysis_quals.aux"
+  "analysis_quals.log"
   "analysis_quals.pdf"
