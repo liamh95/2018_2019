@@ -50,6 +50,101 @@
 \hrule
 \end{center}
 
+\section{Spring 2018}
+\begin{enumerate}
+	\item Let $f\in L^2(\reals)$ and let $(\alpha_n)_{n=1}^\infty$, $(\beta_n)_{n=1}^\infty$ be sequences of real numbers such that $\alpha_n \neq 0$ for all $n$ and $\sum_{n=1}^\infty \frac{|\beta_n|}{|\alpha_n|^{1/2}}<\infty$. Show that $\lim_{n\to \infty}\beta_nf(\alpha_nx) = 0$ for almost all $x\in \reals$.
+	\begin{proof}
+		It suffices to show that the function $F(x) = \sum_{n=1}^\infty \beta_nf(\alpha_nx)$ is locally integrable. To this end, let $K$ be any compact subset of $\reals$. We integrate over $K$.
+		\begin{align*}
+			\left|\int_K\sum_{n=1}^\infty\beta_nf(\alpha_nx)\ dx\right| &\leq \int_K\sum_{n=1}^\infty|\beta_nf(\alpha_nx)|\ dx.
+		\end{align*}
+		Since each term in the sum is nonnegative, we can interchange summation and integration by Tonelli's theorem, then do a change of variables and apply H\"older's inequality.
+		\begin{align*}
+			\left|\int_K\sum_{n=1}^\infty\beta_nf(\alpha_nx)\ dx\right|&\leq \sum_{n=1}^\infty\int |\beta_nf(x)\cdot \frac{1}{\alpha_n}\chi_{\alpha_nK}(x)|\ dx\\
+			&\leq \Lp{f}{2}\cdot \sqrt{m(K)}\cdot\sum_{n=1}^\infty|\beta_n|/|\alpha_n|^{1/2}\\
+			&<\infty.
+		\end{align*}
+		Since $F(x)$ is integrable we must have that the tail of the series, $\beta_nf(\alpha_nx)$ must go to zero as $n\to \infty$ for almost all $x$.
+	\end{proof}
+
+
+	\item Let $g_k, g\in L^1(\reals)$ and assume that $g_k\to g$ in $L^1(\reals)$ as $k\to \infty$. Let $(\alpha_k)_{k=1}^\infty$ be a bounded sequence in $\reals$, and let $f_k(x):= g_k(x+\alpha_k)$, $k=1, 2, \ldots$. Prove that the sequence of functions $(f_k)_{k=1}^\infty$ has a subsequence that converges in $L^1(\reals)$ almost everywhere and in measure.
+	\begin{proof}
+		Convergence in $L^1$ implies subsequential a.e. convergence. a.e. convergence implies convergence in measure, so it suffices to show that $f_k$ has a subsequence that converges in $L^1(\reals)$. Since $\alpha_k$ is a bounded sequence, it has a convergent subsequence by Bolzano-Weierstrass. For notational clarity, let's just assume that $\alpha_k$ itself converges to $\alpha\in \reals$. The plan is to use a standard approximation argument to show that $g_k(x+\alpha_k)$ converges in $L^1$ to $g(x+\alpha)$.\\
+
+		Observe that
+		\[
+		\Lp{g(x+\alpha)-g_k(x+\alpha_k)}{1} \leq \Lp{g(x+\alpha)-g(x+\alpha_k)}{1} + \Lp{g(x+\alpha_k)-g_k(x+\alpha_k)}{1}.
+		\]
+		Now since $g_k\to g$ in $L^1$, given $\epsilon>0$ the second integral on the RHS is less than $\epsilon$ for $k$ sufficiently large. Furthermore, a standard approximation by compactly supported continuous functions shows that the first integral can be made less than $\epsilon$ for $k$ large.
+	\end{proof}
+
+
+	\item Let $f,g\in L^p(\reals^n)$ for some $1<p<\infty$. Assume that for every $0<t<\infty$,
+	\[
+	m(\{x\in \reals^n: |g(x)|>t\})\leq \frac{1}{t}\int_{\{x\in \reals^n: |g(x)|>t\}}|f(x)|\ dx,
+	\]
+	where $m$ is the Lebesgue measure. Show that
+	\[
+	\|g\|_{L^p(\reals^n)}\leq p'\|f\|_{L^p(\reals^n)},\quad \frac{1}{p}+\frac{1}{p'} = 1.
+	\]
+	\begin{proof}
+		By Tonelli's theorem we have for any $L^1(X)$ function $\varphi$,
+		\begin{align*}
+			\int_0^\infty m(\{x: |\varphi(x)|>t\})\ dt &= \int_0^\infty \int_X\chi_{\{x:\ |\varphi(x)|>t\}}(x)\ dxdt\\
+			&= \int_X\int_0^\infty\chi_{\{t:\ |\varphi(x)|>t\}}(t)\ dtdx\\
+			&= \int_X|\varphi(x)|\ dx.
+		\end{align*}
+		In the context of this problem we then have, again by Tonelli
+		\begin{align*}
+			\int_{\reals^n}|g(x)|^p\ dx &= \int_0^\infty m(\{x: |g(x)|>t^{1/p}\})\ dt\\
+			&\leq \int_0^\infty t^{-1/p}\int_{\{x:\ |f(x)|>t^{1/p}\}}|f(x)|\ dxdt\\
+			&=\int_{\reals^n}\int_0^{|f(x)|^p} t^{-1/p}|f(x)|\ dtdx\\
+			&= p'\int_{\reals^n}|f(x)|^{p/p'}\cdot |f(x)|\ dx\\
+			&= p'\int_{\reals^n}|f(x)|^p\ dx.
+		\end{align*}
+		The desired result follows after taking the $p$-th root of both sides and using $(p')^{1/p}\leq p'$ as $p>1$.
+	\end{proof}
+
+	\item Let $f\in L^1(\reals)$ be such that
+	\[
+	\int_Ef(y)\ dy = 0
+	\]
+	for all Lebesgue measurable sets $E\subset \reals$ with $m(E) = \pi$. Prove or disprove that $f(x) = 0$ for almost all $x\in \reals$.
+	\begin{proof}
+		Let $F(x) = \int_0^xf(t)\ dt$. Since $f\in L^1(\reals)$, the Lebesgue differentiation theorem says that for almost all $x\in \reals$,
+		\begin{align*}
+			\lim_{h\to 0}\frac{F(x+h)-F(x)}{h} &= \lim_{h\to 0}\frac{1}{h}\int_x^{x+h}f(t)\ dt\\
+			&= f(x).
+		\end{align*}
+		Thus, $F$ is differentiable almost everywhere with a.e. derivative $f$. We also have that $F$ is $\pi$-periodic since for all $x\in \reals$
+		\begin{align*}
+			F(x+\pi)-F(x) &= \int_x^{x+\pi}f(t)\ dt\\
+			&= 0.
+		\end{align*}
+		Intuitively, since $F$ is (a.e.) differentiable and $\pi$-periodic, its derivative should be $\pi$-periodic too. The Lebesgue differentiation theorem confirms this intuition: for almost all $x\in \reals$ we have
+		\begin{align*}
+			f(x+\pi)-f(x) &= \lim_{h\to 0}\frac{1}{h}\int_{x+\pi}^{x+\pi+h}f(t)\ dt -\frac{1}{h}\int_x^{x+h}f(t)\ dt\\
+			&= \lim_{h\to 0}\frac{1}{h}(F(x+\pi+h)-F(x+\pi)-F(x+h)+F(x))\\
+			&= 0.
+		\end{align*}
+		Since $f$ is equal to a periodic function almost everywhere and is integrable over $\reals$, it must be zero almost everywhere.
+	\end{proof}
+
+	\item Let $\mu$ be a positive finite Borel measure on $[0,1]$ and let $\varphi: [0,1]\to [0,1]$ be continuous. Assume that $\mu(\varphi^{-1}(E)) = 0$ for every Borel set $E\subset [0,1]$ with $\mu(E) = 0$. Show that there is a Borel measurable function $f:[0,1]\to [0, \infty)$ such that
+	\[
+	\int_0^1g(\varphi(x))\ d\mu(x) = \int_0^1g(x)f(x)\ d\mu(x)
+	\]
+	for all continuous $g: [0,1]\to \reals$.
+	\begin{proof}
+		Consider the map that sends a Borel set $E\subset [0,1]$ to $\mu(\varphi^{-1}(E))$ (called the \textit{pushforward} of $\mu$ along $\varphi$, $\varphi_*\mu$). One easily checks that this map indeed defines a Borel measure on $[0,1]$. The condition that $\mu(\varphi^{-1}(E)) = 0$ for all $E$ with $\mu(E) = 0$ says that $\varphi_*\mu$ is absolutely continuous with respect to $\mu$. By the Radon-Nikodym theorem, there is then a Borel-measurable function $f$ with $d(\varphi_*\mu) = fd\mu$.\\
+
+		\noindent We claim that if $g$ is continuous, then $\int_0^1g\ d(\varphi_*\mu) = \int g\circ \varphi\ d\mu$.
+	\end{proof}
+\end{enumerate}
+
+
+
 \section{Spring 2016}
 \begin{enumerate}
 	\item Assume $f\in L^1[0,1]$. Compute
