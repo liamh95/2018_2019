@@ -2,10 +2,10 @@
 %% corresponding to the current homework and XX with your initials.
 %% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
 
-\documentclass[11pt,letterpaper]{report}
+\documentclass[11pt,letterpaper]{article}
 \usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
 \usepackage{tikz} %This package offers the ability to draw pictures
-\usepackage{amsthm}
+\usepackage{amsthm,mathtools}
 
 \newcommand{\naturals}{\mathbb{N}}
 \newcommand{\integers}{\mathbb{Z}}
@@ -34,6 +34,13 @@
 {\begin{proof}[Solution]}
 {\end{proof}}
 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}{Lemma}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
 \voffset=-3cm
 \hoffset=-2.25cm
 \textheight=24cm
@@ -49,6 +56,46 @@
 \vspace{0.2cm}
 \hrule
 \end{center}
+%LLL
+%	Gram-Schmidt
+%	
+%Coppersmith
+\section{Motivation}
+The rows of the following matrix form a basis for a lattice $L$ in $\reals^4$:
+\[
+X = \begin{bmatrix*}[r]
+	-2 & 7 & 7 & -5\\
+	3 & -2 & 6 & -1\\
+	2 & -8 & -9 & -7\\
+	8 & -9 & 6 & -4
+\end{bmatrix*}.
+\]
+One can check that the rows of the following matrix also form a basis for the same lattice:
+\[
+Y = \begin{bmatrix*}[r]
+	-13071 & -5406 & -9282 & -2303\\
+	-20726 & -8571 & -14772 & -3651\\
+	-2867 & -1186 & -2043 & -505\\
+	-14338 & -5936 & -10216 & -2525
+\end{bmatrix*}.
+\]
+Intuitively, the rows of $Y$ seem to be a ``worse'' basis for $L$ than those of $X$. Here we make precise the notion of a ``nice'' basis and introduce a polynomial time algorithm that transforms a ``bad'' basis into a ``good'' one. 
+
+\section{Lattices in $\reals^n$}
+\begin{definition}
+	Let $n\geq 1$ and let $x_1, \ldots, x_n$ be a basis of $\reals^n$. The \textbf{lattice} with dimension $n$ and basis $x_1, \ldots, x_n$ is the set $L$ of all linear combinations of the basis vectors with integral coefficients:
+	\[
+	L = \integers x_1 + \integers x_2 + \cdots + \integers x_n = \left\{\sum_{i=1}^na_ix_i: a_1, \ldots, a_n\in \integers\right\}.
+	\]
+	Let $X$ be the matrix whose rows are the basis vectors $x_1, \ldots, x_n$. The \textbf{determinant} of the lattice $L$ is
+	\[
+	\det(L) = |\det(X)|.
+	\]
+\end{definition}
+
+\begin{lemma}
+	Let $x_1, \ldots, x_n$ be a basis for the lattice $L\subset \reals^n$ and let $y_1, \ldots, y_n$ be a collection of $n$ vectors in $L$. Let $X$ and $Y$ be the $n\times n$ matrices with rows $x_1, \ldots, x_n$ and $y_1, \ldots, y_n$, respectively. Then $y_1, \ldots, y_n$ is a basis for $L$ if and only if there is an $n\times n$ matrix $C$ with integer entries and $\det(C) = \pm 1$ such that $Y = CX$.
+\end{lemma}
 
 
 
