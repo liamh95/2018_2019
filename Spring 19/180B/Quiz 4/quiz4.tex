@@ -1,0 +1,85 @@
+\documentclass[12pt]{article}  
+%%Read the manual for other options. 
+
+\pagestyle{empty} %%Eliminates page numbers
+%%\input rmb_macros
+%%Collect your favorite macros in a 
+%%separate file
+
+%\input amssym.def
+%\input amssym
+%\input mssymb
+%%Defines additional symbols
+
+
+
+\usepackage{graphics}
+\usepackage{amsmath,amssymb,amsthm, multicol}
+\usepackage[pdftex]{graphicx}
+\usepackage{epsf}
+%%Use to include pictures. 
+\newcommand{\integers}{\mathbb{Z}}
+
+%\newcommand{\comment}[1]{}
+%\newcommand{\sobolev}[2]{W^{#1,#2}}
+%\newcommand{\sobolev}[2]{L^#2_#1}
+%%Some examples of macros or new commands.
+
+\addtolength{\oddsidemargin}{-.75in}
+\addtolength{\evensidemargin}{-.75in}
+\addtolength{\textwidth}{1.5in}
+\addtolength{\topmargin}{-1in}
+\addtolength{\textheight}{2.25in}
+%%Set margins, defaults are ok. 
+
+\begin{document}
+\begin{flushleft} 
+%%Paragraphs will not be indented in this 
+%%environment
+\centerline{\LARGE{Quiz 4}} 
+\vspace{5 mm}
+{Student ID Number:}\hfill  
+%%\hfill forces following text 
+%%to right margin
+{Name \rule {2 in}{0.01in}}\\
+Math 180B, 3PM
+\\
+%%gives a line of length 2in and 
+%%thickness 0.01in
+{Please justify all your answers}\hfill {May 16, 2019}
+\\
+{Please also write your full name on the back} 
+
+\medskip
+\end{flushleft}
+
+In these problems we'll show that if $d\in \integers$ is not a perfect cube then $\sqrt[3]{d}$ is irrational.
+\begin{enumerate}
+	\item Suppose $\sqrt[3]{d} = a/b$ with $a,b$ nonzero integers and $d$ isn't a perfect cube. Let
+	\[
+	A = \begin{pmatrix}
+		0 & 0 & d\\
+		1 & 0 & 0\\
+		0 & 1 & 0
+	\end{pmatrix},\quad v = \begin{pmatrix}
+		a^2\\
+		ab\\
+		b^2
+	\end{pmatrix}.
+	\]
+	Compute the eigenvalues of $A$ and show that $v$ is an eigenvector of $A$. \textit{Hint: When showing that $v$ is an eigenvector, use the fact that $d = a^3/b^3$.}
+	\vfill
+
+	\item Let $\ell\in \integers$ be such that $\ell < \sqrt[3]{d}<\ell+1$. Show that
+	\[
+	(A-\ell I)^rv = (\sqrt[3]{d}-\ell)^rv
+	\]
+	for all $r\geq 1$. \textit{Hint: Show it for $r=1$ first using part (a).}
+	\vfill
+	\item Prove that $(A-\ell I)^rv$ is a vector with integer entries for all $r\geq 1$. What can you say about the size of $\sqrt[3]{d}-\ell$? Take the limit as $r\to \infty$ to derive a contradiction, i.e. no such $a$ and $b$ exist.
+	\vfill
+\end{enumerate}
+
+%\vfill will divide page evenly
+%use \begin{enumerate} environment for ordered lists
+\end{document}
