@@ -7,6 +7,8 @@
 \usepackage{tikz} %This package offers the ability to draw pictures
 \usepackage{amsthm,mathtools}
 
+\usepackage{algorithm, algpseudocode}
+
 \newcommand{\naturals}{\mathbb{N}}
 \newcommand{\integers}{\mathbb{Z}}
 \newcommand{\complex}{\mathbb{C}}
@@ -65,35 +67,44 @@
 The rows of the following matrix form a basis for a lattice $L$ in $\reals^4$:
 \[
 X = \begin{bmatrix*}[r]
-	-2 & 7 & 7 & -5\\
-	3 & -2 & 6 & -1\\
-	2 & -8 & -9 & -7\\
-	8 & -9 & 6 & -4
+	-168 & 602 & 58\\
+	157 & -564 & -57\\
+	594 & -2134 & -219\\
 \end{bmatrix*}.
 \]
 One can check that the rows of the following matrix also form a basis for the same lattice:
 \[
 Y = \begin{bmatrix*}[r]
-	-13071 & -5406 & -9282 & -2303\\
-	-20726 & -8571 & -14772 & -3651\\
-	-2867 & -1186 & -2043 & -505\\
-	-14338 & -5936 & -10216 & -2525
+	-6 & 6 & -4\\
+	9 & 4 & 1\\
+	-1 & 8 & 6\\
 \end{bmatrix*}.
 \]
-Intuitively, the rows of $Y$ seem to be a ``worse'' basis for $L$ than those of $X$. Here we make precise the notion of a ``nice'' basis and introduce a polynomial time algorithm that transforms a ``bad'' basis into a ``good'' one. 
+Intuitively, the rows of $X$ seem to be a ``worse'' basis for $L$ than those of $Y$. Here we make precise the notion of a ``nice'' basis and introduce a polynomial time algorithm that transforms a ``bad'' basis into a ``good'' one. 
 
-\section{Lattices in $\reals^n$}
+\section{Basis Reduction and the LLL Algorithm}
+A basis is ``nice'' if the constituent vectors are short and orthogonal to one another. The Gram-Schmidt process transforms a given basis into an orthogonal basis, but when working in a lattice $L$, this Gram-Schmidt basis need not live in $L$.
 \begin{definition}
-	Let $n\geq 1$ and let $x_1, \ldots, x_n$ be a basis of $\reals^n$. The \textbf{lattice} with dimension $n$ and basis $x_1, \ldots, x_n$ is the set $L$ of all linear combinations of the basis vectors with integral coefficients:
-	\[
-	L = \integers x_1 + \integers x_2 + \cdots + \integers x_n = \left\{\sum_{i=1}^na_ix_i: a_1, \ldots, a_n\in \integers\right\}.
-	\]
-	Let $X$ be the matrix whose rows are the basis vectors $x_1, \ldots, x_n$. The \textbf{determinant} of the lattice $L$ is
-	\[
-	\det(L) = |\det(X)|.
-	\]
+	Let $x_1, \ldots, x_n$ be an ordered basis for a lattice $L$ in $\reals^n$, and let $x_1^*, \ldots, x_n^*$ be its Gram-Schmidt orthogonalization (GSO). Write $X = MX^*$ where $X$ (respectively $X^*$) is the matrix with $x_i$ (respectively $x_i^*$) as row $i$ and $M = (\mu_{ij})$ is the matrix of GSO coefficients. Let $\alpha$ be a real number with $\frac{1}{4}<\alpha<1$, called the reduction parameter (usually taken to be $\frac{3}{4}$). We say that the basis $x_1, \ldots, x_n$ is \textbf{$\alpha$-reduced} if it satisfies
+	\begin{enumerate}
+		\item $|\mu_{ij}|\leq \frac{1}{2}$ for all $1\leq j<i\leq n$,
+		\item $|x_i^* + \mu_{i, i-1}x_{i-1}^*|^2 \geq \alpha|x_{i-1}^*|^2$ for $2\leq i\leq n$.
+	\end{enumerate}
 \end{definition}
 
+\noindent Condition (1) says that the $i$-th basis vector is ``almost orthogonal'' to the span of the previous $i-1$ vectors. The vector $x_i^*+\mu_{i, i-1}x_{i-1}^*$ is the vector one obtains when swapping vectors $x_i$ and $x_{i-1}$ and then computing the $(i-1)$-st vector of the GSO. Condition (2) then says that this new GSO vector, while potentially shorter than $x_{i-1}^*$ isn't ``too much'' shorter.\\
+\begin{algorithm}
+\caption{test}
+\begin{algorithmic}
+\If {$i\geq maxval$}
+    \State $i\gets 0$
+\Else
+    \If {$i+k\leq maxval$}
+        \State $i\gets i+k$
+    \EndIf
+\EndIf
+\end{algorithmic}
+\end{algorithm}
 % \begin{lemma}
 % 	Let $x_1, \ldots, x_n$ be a basis for the lattice $L\subset \reals^n$ and let $y_1, \ldots, y_n$ be a collection of $n$ vectors in $L$. Let $X$ and $Y$ be the $n\times n$ matrices with rows $x_1, \ldots, x_n$ and $y_1, \ldots, y_n$, respectively. Then $y_1, \ldots, y_n$ is a basis for $L$ if and only if there is an $n\times n$ matrix $C$ with integer entries and $\det(C) = \pm 1$ such that $Y = CX$.
 % \end{lemma}
