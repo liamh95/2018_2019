@@ -7,7 +7,8 @@
 \usepackage{tikz} %This package offers the ability to draw pictures
 \usepackage{amsthm,mathtools}
 
-\usepackage{algorithm, algpseudocode}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
 
 \newcommand{\naturals}{\mathbb{N}}
 \newcommand{\integers}{\mathbb{Z}}
@@ -64,23 +65,20 @@
 %	
 %Coppersmith
 \section{Motivation}
-The rows of the following matrix form a basis for a lattice $L$ in $\reals^4$:
+The rows of the following matrices form bases for lattices in $\reals^3$:
 \[
 X = \begin{bmatrix*}[r]
 	-168 & 602 & 58\\
 	157 & -564 & -57\\
 	594 & -2134 & -219\\
-\end{bmatrix*}.
-\]
-One can check that the rows of the following matrix also form a basis for the same lattice:
-\[
+\end{bmatrix*}, \quad
 Y = \begin{bmatrix*}[r]
 	-6 & 6 & -4\\
 	9 & 4 & 1\\
 	-1 & 8 & 6\\
 \end{bmatrix*}.
 \]
-Intuitively, the rows of $X$ seem to be a ``worse'' basis for $L$ than those of $Y$. Here we make precise the notion of a ``nice'' basis and introduce a polynomial time algorithm that transforms a ``bad'' basis into a ``good'' one. 
+In fact, one can check that the rows of $X$ and the rows of $Y$ actually span the \textit{same} lattice. Intuitively, the rows of $X$ seem to be a ``worse'' basis for $L$ than those of $Y$. Here we make precise the notion of a ``nice'' basis and introduce a polynomial time algorithm that transforms a ``bad'' basis into a ``good'' one. 
 
 \section{Basis Reduction and the LLL Algorithm}
 A basis is ``nice'' if the constituent vectors are short and orthogonal to one another. The Gram-Schmidt process transforms a given basis into an orthogonal basis, but when working in a lattice $L$, this Gram-Schmidt basis need not live in $L$.
@@ -94,15 +92,67 @@ A basis is ``nice'' if the constituent vectors are short and orthogonal to one a
 
 \noindent Condition (1) says that the $i$-th basis vector is ``almost orthogonal'' to the span of the previous $i-1$ vectors. The vector $x_i^*+\mu_{i, i-1}x_{i-1}^*$ is the vector one obtains when swapping vectors $x_i$ and $x_{i-1}$ and then computing the $(i-1)$-st vector of the GSO. Condition (2) then says that this new GSO vector, while potentially shorter than $x_{i-1}^*$ isn't ``too much'' shorter.\\
 \begin{algorithm}
-\caption{test}
-\begin{algorithmic}
-\If {$i\geq maxval$}
-    \State $i\gets 0$
-\Else
-    \If {$i+k\leq maxval$}
-        \State $i\gets i+k$
-    \EndIf
-\EndIf
+\caption{The Original LLL Algorithm}
+\textbf{Input: }A basis $x_1, \ldots, x_n$ of the lattice $L\subset \reals^n$ and a reduction parameter $\alpha\in (\frac{1}{4}, 1)$.\\
+\textbf{Output: }An $\alpha$-reduced basis $y_1, \ldots, y_n$ of the lattice $L$.
+\begin{algorithmic}[1]
+	\Procedure{reduce}{$k, \ell$}
+		\If{$|\mu_{k\ell}|>\frac{1}{2}$}
+			\State Set $y_k \gets y_k - \lceil \mu_{k\ell}\rfloor y_\ell$.
+			\For{$j = 1, 2, \ldots, \ell-1$}
+				\State Set $\mu_{kj}\gets \mu_{kj}-\lceil\mu_{k\ell}\rfloor\mu_{\ell j}$.
+			\EndFor
+			\State Set $\mu_{k\ell}\gets \mu_{k\ell}-\lceil \mu_{k\ell}\rfloor$.
+		\EndIf
+	\EndProcedure
+
+	\Procedure{exchange}{k}
+		\State Set $z\gets y_{k-1}$, $y_{k-1}\gets y_k$, $y_k\gets z$.\Comment{exchange $y_{k-1}$ and $y_k$}
+		\State Set $\nu\gets \mu_{k, k-1}$. Set $\delta \gets \gamma_k^* + \nu^2\gamma_{k-1}^*$.
+		\State Set $\mu_{k, k-1}\gets \nu\gamma_{k-1}^*/\delta$. Set $\gamma_k^*\gets \gamma_k^*\gamma_{k-1}^*/\delta$. Set $\gamma_{k-1}^*\gets \delta$.
+		\For{$j=1, 2, \ldots, k-2$}
+			\State Set $t\gets \mu_{k-1, j}$, $\mu_{k-1, j}\gets \mu_{kj}$, $\mu_{kj}\gets t$.\Comment{exchange $\mu_{k-1, j}$ and $\mu_{kj}$}
+		\EndFor
+		\For{$i=k+1, \ldots, n$}
+			\State Set $\xi \gets \mu_{ik}$. Set $\mu_{ik}\gets \mu_{k,k-1}-\nu\mu_{ik}$.
+			\State Set $\mu_{i,k-1}\gets \mu_{k, k-1}\mu_{ik}+\xi$.
+		\EndFor
+	\EndProcedure
+
+	\Procedure{Main}{}
+		\For{$i=1, 2, \ldots, n$}
+			\State Set $y_i\gets x_i$.
+		\EndFor
+		\For{$i=1, 2, \ldots, n$}
+			\State Set $y_i^*\gets y_i$.
+			\For{$j=1, 2, \ldots, i-1$}
+				\State $\mu_{ij}\gets (y_i\cdot y_j^*)/\gamma_j^*$ and $y_i^*\gets y_i^*-\mu_{ij}y_j^*$.
+			\EndFor
+			\State Set $\gamma_i^*\gets y_i^*\cdot y_i^*$.
+		\EndFor
+		\State Set $k\gets 2$.
+		\While{$k\leq n$}
+			\State Call \Call{reduce}{$k, k-1$}.
+			\If{$\gamma_k^* \geq (\alpha-\mu_{k,k-1}^2)\gamma_{k-1}^*$}
+				\For{$\ell = k-2, \ldots, 2, 1$}
+					\State Call \Call{reduce}{$k, \ell$}.
+				\EndFor
+				\State Set $k\gets k+1$.
+			\Else
+				\State Call \Call{exchange}{$k$}.
+				\If{$k>2$}
+					\State Set $k\gets k-1$.
+				\EndIf
+			\EndIf
+		\EndWhile
+	\EndProcedure
+% \If {$i\geq maxval$}
+%     \State $i\gets 0$
+% \Else
+%     \If {$i+k\leq maxval$}
+%         \State $i\gets i+k$
+%     \EndIf
+% \EndIf
 \end{algorithmic}
 \end{algorithm}
 % \begin{lemma}
