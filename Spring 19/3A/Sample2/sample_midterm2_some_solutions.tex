@@ -1,0 +1,352 @@
+%% Please change the file name by replacing N with the apporpriate number
+%% corresponding to the current homework and XX with your initials.
+%% https://www.math.uci.edu/~gpatrick/jsOnline/hw1.html
+
+\documentclass[11pt,letterpaper]{report}
+\usepackage{amssymb,amsfonts,color,graphicx,amsmath,enumerate}
+\usepackage{tikz} %This package offers the ability to draw pictures
+\usepackage{amsthm}
+
+\newcommand{\naturals}{\mathbb{N}}
+\newcommand{\integers}{\mathbb{Z}}
+\newcommand{\complex}{\mathbb{C}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\exreals}{\overline{\mathbb{R}}}
+\newcommand{\mcal}[1]{\mathcal{#1}}
+\newcommand{\mable}{measurable}
+\newcommand{\quats}{\mathbb{H}}
+\newcommand{\rationals}{\mathbb{Q}}
+\newcommand{\norm}{\trianglelefteq}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\disk}{\mathbb{D}}
+\newcommand{\halfplane}{\mathbb{H}}
+\newcommand{\Lp}[2]{\left\|{#1}\right\|_{L^{#2}}}
+\newcommand{\supp}[1]{\text{supp}({#1})}
+\newcommand{\Hom}[2]{\text{Hom}_{{#1}}({#2})}
+\newcommand{\tr}{\text{tr}}
+\newcommand{\field}[1]{\mathbb{F}_{{#1}}}
+\newcommand{\Gal}[1]{\text{Gal}\left({#1}\right)}
+\newcommand{\esssup}{\text{ess sup }}
+\newcommand{\essinf}{\text{ess inf }}
+\newcommand{\affine}{\mathbb{A}}
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+\voffset=-3cm
+\hoffset=-2.25cm
+\textheight=24cm
+\textwidth=17.25cm
+\addtolength{\jot}{8pt}
+\linespread{1.3}
+
+\begin{document}
+%\noindent{\em Liam Hardiman\hfill{Date} }
+% Please give relevant information
+\begin{center}
+{\bf \Large Some Solutions to Sample Midterm 2 Problems} %Replace N with the appropriate number
+\vspace{0.2cm}
+\hrule
+\end{center}
+
+\begin{enumerate}
+	\item Consider the matrix
+	\[
+	A = \begin{bmatrix}
+		k & 1 & 0 &\\
+		k^2+1 & -2 & 1\\
+		k-1 & 3 & 2
+	\end{bmatrix}
+	\]
+	\begin{enumerate}
+		\item Show that for $k=0$ the given matrix is invertible and find the inverse of the matrix $A$.
+		\begin{solution}
+			Substitute in $k=0$ to obtain
+			\[
+			A = \begin{bmatrix}
+				0 & 1 & 0\\
+				1 & -2 & 1\\
+				-1 & 3 & 2
+			\end{bmatrix}.
+			\]
+			We can check that $A$ is invertible and find its inverse all in one step by attempting to compute its inverse. We start by augmenting $A$ against the identity matrix:
+			\[
+			\left[
+				\begin{array}{rrr|rrr}
+					0 & 1 & 0 & 1 & 0 & 0\\
+					1 & -2 & 1 & 0 & 1 & 0\\
+					-1 & 3 & 2 & 0 & 0 & 1
+				\end{array}
+			\right].
+			\]
+			We row reduce until we have the identity on the left:
+			\[
+			\left[
+				\begin{array}{rrr|rrr}
+					1 & 0 & 0 & 7/3 & 2/3 & -1/3\\
+					0 & 1 & 0 & 1 & 0 & 0\\
+					0 & 0 & 1 &-1/3 & 1/3 & 1/3
+				\end{array}
+			\right].
+			\]
+			The matrix on the right is then the inverse of $A$, so $A$ is invertible. If it happened that we \textit{couldn't} reduce $A$ to the identity, then we would conclude that $A$ isn't invertible (since $A$ is invertible if and only if it is row equivalent to the identity matrix.)
+		\end{solution}
+
+		\item Find all real numbers $k$ such that the given matrix is not invertible.
+		\begin{solution}
+			$A$ is singular if and only if its determinant is zero. We'll compute the determinant using cofactor expansion. We can expand along any row or column we want. The first row seems good since it has a zero in it (in general, you'll want to expand along the row or column with the most zeros since this expansion will have the fewest terms). Remember to alternate the sign!
+			\begin{align*}
+				\det A &= k \begin{vmatrix}
+					-2 & 1\\3&2
+				\end{vmatrix} - \begin{vmatrix}
+					k^2+1 & 1\\
+					k-1 & 2
+				\end{vmatrix}\\
+				&= -2k^2 - 6k - 3.
+			\end{align*}
+			Since we need the determinant of $A$ to be zero, we set $-2k^2-6k-3 = 0$ and use the quadratic formula to obtain
+			\[
+			k = \frac{-3 \pm \sqrt{3}}{2}.
+			\]
+		\end{solution}
+	\end{enumerate}
+
+	\item Let $H$ be the set of vectors $v = \begin{bmatrix}
+		x_1\\x_2\\x_3\\x_4\\x_5
+	\end{bmatrix}$ in $\reals^5$ such that $x_1+2x_3-x_5 = 0$ and $x_1+x_2+x_4 = 0$.
+	\begin{enumerate}
+		\item Prove that $H$ is a subspace of $\reals^5$.
+		\begin{solution}
+			$v$ is in $H$ if it solves the linear system
+			\begin{equation}\label{linear}
+			\begin{split}
+				x_1+2x_3-x_5 &= 0\\
+				x_1+x_2+x_4&= 0.
+			\end{split}
+			\end{equation}
+			This is equivalent to $v$ satisfying $Av = 0$ where $A$ is the matrix
+			\[
+			A = \begin{bmatrix}
+				1 & 0 & 2 & 0 & -1\\
+				1 & 1 & 0 & 1 & 0
+			\end{bmatrix}.
+			\]
+			We need the zero vector to be in $H$. This is definitely true since $A\cdot 0 = 0$. If $v,w$ are in $H$ (i.e. $Av = 0$ and $Aw = 0$) we need $v+w$ in $H$. This is true since
+			\[
+			A(v+w) = Av+Aw = 0+0 = 0.
+			\]
+			Finally, we need $cv$ to be in $H$ if $v$ is in $H$ and $c$ is any real number. This is true since
+			\[
+			A(c\cdot v) = c\cdot Av = c\cdot 0 = 0.
+			\]
+			Since $H$ satisfies the properties necessary to make it a subspace, it is a subspace.
+		\end{solution}
+
+		\item Find a basis for $H$ and find its dimension.
+		\begin{solution}
+			Our plan is to write the solution set to (\ref{linear}) in parametric vector form (solve for the basic variables in terms of the free variables). Doing this gives
+			\[
+			\begin{bmatrix}
+				x_1\\x_2\\x_3\\x_4\\x_5
+			\end{bmatrix}= x_3 \begin{bmatrix}
+				-2\\2\\1\\0\\0
+			\end{bmatrix} + x_4 \begin{bmatrix}
+				0\\-1\\0\\1\\0
+			\end{bmatrix} + x_5 \begin{bmatrix}
+				1\\-1\\0\\0\\1
+			\end{bmatrix}.
+			\]
+			The three column vectors on the right hand side form a basis for $H$. Since this basis consists of three vectors, the dimension of $H$ is 3.
+		\end{solution}
+
+		\item Find $a,b$ such that the vector $u= \begin{bmatrix}
+			1\\4\\-3\\a\\b
+		\end{bmatrix}$ is in the subspace $H$.
+		\begin{solution}
+			Substituting the entries of $u$ into the system (\ref{linear}) gives
+			\begin{align*}
+				-5 - b &= 0\\
+				5+a&= 0.
+			\end{align*}
+			Solving gives $a = -5$ and $b = -5$.
+		\end{solution}
+
+		\item For the same vector $u$ and using the basis you found in part (b), find the coordinates of $u$ in your basis.
+		\begin{solution}
+			Call the basis vectors from part (b) $v_1$, $v_2$, $v_3$. The idea is to write $u$ as a linear combination of these vectors, $u = c_1v_1+c_2v_2+c_3v_3$. The coordinate vector will then be $\begin{bmatrix}
+				c_1\\c_2\\c_3
+			\end{bmatrix}$.
+			Since $u$ is in $H$ if and only if $a$ and $b$ take the values we found in part (c), setting this up gives
+			\[
+			\begin{bmatrix}
+				1\\4\\-3\\-5\\-5
+			\end{bmatrix} = c_1 \begin{bmatrix}
+				-2\\2\\1\\0\\0
+			\end{bmatrix} + c_2\begin{bmatrix}
+				0\\-1\\0\\1\\0
+			\end{bmatrix} + c_3 \begin{bmatrix}
+				1\\-1\\0\\0\\1
+			\end{bmatrix}.
+			\]
+			The last three entries on the right-hand side are $c_1$, $c_2$, and $c_3$. Matching them up with the left-hand side we must have that $c_1 = -3$, $c_2 = -5$, and $c_3 = -5$, so the coordinate vector of $u$ is $\begin{bmatrix}
+				-3\\-5\\-5
+			\end{bmatrix}$.
+		\end{solution}
+	\end{enumerate}
+
+	\item Fill in the blank or mark true or false.
+	\begin{enumerate}
+		\item The nullspace of a matrix $A$ is the set of all vectors $x$ such that \underline{\hspace{1.5cm}}.
+		\begin{solution}
+			$Ax = 0$. This is the definition of nullspace.
+		\end{solution}
+		\item An $n\times n$ matrix is invertible if its columns form a \underline{\hspace{1.5cm}} for $\reals^n$.
+		\begin{solution}
+			\textit{basis}. This follows from the invertible matrix theorem.
+		\end{solution}
+		\item A \underline{\hspace{1.5cm}} is the matrix obtained by removing a column and a row from a given matrix.
+		\begin{solution}
+			\textit{cofactor}.
+		\end{solution}
+		\item There is a set of 4 vectors in $\reals^3$ such that the dimension of their span is 2.
+		\begin{solution}
+			True. Take any two linearly independent vectors in $\reals^3$, say $e_1 = \begin{bmatrix}
+				1\\0\\0
+			\end{bmatrix}$ and $e_2 = \begin{bmatrix}
+				0\\1\\0
+			\end{bmatrix}$. Now take any two linear combinations of these vectors, say $2e_1$ and $e_1 + 3e_2$. The span of the set $\{e_1, e_2, 2e_1, e_1+3e_2\}$ is a set of four vectors in $\reals^3$, but their span is dimension two since this set has only two independent vectors.
+		\end{solution}
+
+		\item There is a $3\times 5$ matrix $A$ such that $\text{rank}(A) = \dim\ \text{Nul}(A)$.
+		\begin{solution}
+			False. By the rank-nullity theorem we must have
+			\[
+			5 = \text{rank}(A) + \dim\text{Nul}(A).
+			\]
+			If $\text{rank}(A) = \dim\text{Nul}(A) = n$, then we would have $5 = 2n$. Since $n$ is an integer and $5$ is odd, we conclude that there is no such $n$, so this can't happen.
+		\end{solution}
+
+		\item If a matrix $A$ satisfies $A^2 = I$ then $\det A = 1$.
+		\begin{solution}
+			False. If $A^2 = I$, then taking the determinant of both sides of this equation and using the fact that $\det(A^2) = \det(AA) = \det(A)\det(A) = \det(A)^2$, we see that $\det(A)^2 = 1$. This means that $\det(A)$ is 1 or $-1$.
+		\end{solution}
+
+		\item If 1 is the only eigenvalue of a $2\times 2$ matrix then the matrix must be equal to $I_2$.
+		\begin{solution}
+			False. The idea is to come up with a non-identity matrix whose characteristic polynomial is $(1-\lambda)^2$. Consider
+			\[
+			A = \begin{bmatrix}
+				1 & 1\\
+				0&1
+			\end{bmatrix}.
+			\]
+			This matrix has characteristic polynomial $(1-\lambda)^2$, so its only eigenvalue is 1, but $A\neq I$.
+		\end{solution}
+	\end{enumerate}
+
+	\item Let $A_n$ be the matrix that has 2 on the main diagonal, 1's in the first row except the entry on the main diagonal, 1's in the last row except the entry on the main diagonal, and zeros everywhere else. Let $a_n$ be the determinant of $A_n$.
+	\begin{enumerate}
+		\item Find $a_3$ and $a_4$.
+		\begin{solution}
+			The trick is to cofactor expand along the second row since it has only one nonzero entry.
+			\begin{align}
+				a_3 &= \begin{vmatrix}
+					2&1&1\\
+					0&2&0\\
+					1&1&2
+				\end{vmatrix} = 2(-1)^{2+2} \begin{vmatrix}
+					2&1\\
+					1&2
+				\end{vmatrix} = 6.
+			\end{align}
+			\[
+			a_4 = \begin{vmatrix}
+				2&1&1&1\\
+				0&2&0&0\\
+				0&0&2&0\\
+				1&1&1&2
+			\end{vmatrix} = 2(-1)^{2+2} \begin{vmatrix}
+				2 & 1 & 1\\
+				0&2&0\\
+				1&1&2
+			\end{vmatrix} = 2a_3 = 12.
+			\]
+		\end{solution}
+		\item Show that $a_n = 2a_{n-1}$ for $n\geq 4$.
+		\begin{solution}
+			Just like before, the plan is to cofactor expand along the second row since we'll have only one term.
+			\[
+			a_n = \begin{vmatrix}
+				2&1&1&\cdots&1\\
+				0&2&0&\cdots&0\\
+				\vdots&&\ddots&&\vdots\\
+				1&1&\cdots&&2
+			\end{vmatrix} = 2 \begin{vmatrix}
+				2&1&1&\cdots&1\\
+				0&2&0&\cdots&0\\
+				\vdots&&\ddots&&\vdots\\
+				1&1&\cdots&&2
+			\end{vmatrix} = 2a_{n-1}.
+			\]
+			The second matrix in the equation above is simply $A_{n-1}$, so its determinant is $a_{n-1}$.
+		\end{solution}
+	\end{enumerate}
+
+	\item Let $A$ be the matrix $A = \begin{bmatrix}
+		0 & 1 & 2\\
+		-4 & 1 & 4\\
+		-5 & 1 & 7
+	\end{bmatrix}$.
+	\begin{enumerate}
+		\item Is $u = \begin{bmatrix}
+			1\\-1\\0
+		\end{bmatrix}$ an eigenvector for the matrix $A$?
+		\begin{solution}
+			$u$ is an eigenvector if and only if $Au = \lambda u$ for some scalar $\lambda$. Let's see if that's the case.
+			\[
+			Au = \begin{bmatrix}
+			0 & 1 & 2\\
+			-4 & 1 & 4\\
+			-5 & 1 & 7
+			\end{bmatrix}\begin{bmatrix}
+			1\\-1\\0
+			\end{bmatrix} = \begin{bmatrix}
+				-1\\-5\\-6
+			\end{bmatrix}.
+			\]
+			If this were to be a multiple of $u$, then looking at the first entries gives $-1 = \lambda\cdot 1$, so $\lambda = -1$. But looking at the second entries we have $-5 = \lambda \cdot -1 = -1\cdot -1 = 1$, a contradiction. We conclude that $u$ is not an eigenvector of $A$.
+		\end{solution}
+
+		\item Show that $\lambda = 1$ is an eigenvalue and find an eigenvector for it.
+		\begin{solution}
+			$x$ is an eigenvector with eigenvalue 1 if and only if $x\neq 0$ and $Ax = x$, or $(A-I)x = 0$. Phrased differently, 1 is an eigenvalue if and only if $(A-I)$ has non-trivial nullspace. We write the solution set to $(A-I)x = 0$ in parametric vector form, obtaining
+			\[
+			\begin{bmatrix}
+				x_1\\x_2\\x_3
+			\end{bmatrix} = x_3 \begin{bmatrix}
+				1\\-1\\1
+			\end{bmatrix}.
+			\]
+			Since $x_3$ is free, we can set $x_3 =1$ to get $(A-I)v = 0$, where $v = \begin{bmatrix}
+				1\\-1\\1
+			\end{bmatrix}$. This is an eigenvector of $A$.
+		\end{solution}
+
+		\item Find all the eigenvalues of the matrix $A$.
+		\begin{solution}
+			The eigenvalues of $A$ are the roots of its characteristic polynomial, $p(\lambda) = \det(A-\lambda I)$. Taking the determinant, we see that
+			\[
+				p(\lambda) = -\lambda^3+8\lambda^2-17\lambda+10.
+			\]
+			Normally, this would be really obnoxious to try and factor, but since we're told that 1 is an eigenvalue of $A$, we know that 1 is a root of $p(\lambda)$. This tells us that $p(\lambda)$ is divisible by $(1-\lambda)$. Doing polynomial division shows that
+			\[
+			p(\lambda) = (1-\lambda)(\lambda^2-7\lambda+10) = (1-\lambda)(\lambda-5)(\lambda-2).
+			\]
+			We conclude that the eigenvalues are 1, 2, and 5.
+		\end{solution}
+	\end{enumerate}
+\end{enumerate}
+
+
+\end{document}
