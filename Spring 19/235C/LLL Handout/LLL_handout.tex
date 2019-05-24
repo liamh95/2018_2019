@@ -84,11 +84,13 @@ The rows of $X$ and the rows of $Y$ actually span the \textit{same} lattice. Int
 A basis is ``nice'' if its vectors are short and orthogonal to one another. The Gram-Schmidt process transforms a given basis into an orthogonal basis, but when working in a lattice $L$, this Gram-Schmidt basis need not live in $L$.
 \begin{definition}
 	Let $x_1, \ldots, x_n$ be an ordered basis for a lattice $L$ in $\reals^n$, and let $x_1^*, \ldots, x_n^*$ be its Gram-Schmidt orthogonalization (GSO). Write $X = MX^*$ where $X$ (respectively $X^*$) is the matrix with $x_i$ (respectively $x_i^*$) as row $i$ and $M = (\mu_{ij})$ is the matrix of GSO coefficients. Let $\alpha$ be a real number with $\frac{1}{4}<\alpha<1$. We say that the basis $x_1, \ldots, x_n$ is \textbf{$\alpha$-reduced} if it satisfies
-	\begin{enumerate}
+	\begin{enumerate}[(1)]
 		\item $|\mu_{ij}|\leq \frac{1}{2}$ for all $1\leq j<i\leq n$,
 		\item $|x_i^* + \mu_{i, i-1}x_{i-1}^*|^2 \geq \alpha|x_{i-1}^*|^2$ for $2\leq i\leq n$.
 	\end{enumerate}
 \end{definition}
+
+% https://math.mit.edu/~apost/courses/18.204-2016/18.204_Xinyue_Deng_final_paper.pdf
 
 \noindent Condition (1) says that the $i$-th basis vector is ``almost orthogonal'' to the span of the previous $i-1$ vectors. The vector $x_i^*+\mu_{i, i-1}x_{i-1}^*$ is the vector one obtains after swapping vectors $x_i$ and $x_{i-1}$ and then computing the $(i-1)$-st vector of the GSO. Condition (2) then says that this new GSO vector, while potentially shorter than $x_{i-1}^*$, isn't ``too much'' shorter.
 
@@ -101,56 +103,65 @@ Say we want to find a root $x_0$ of $f(x) \equiv 0 \pmod{M}$ (e.g. where $f(x) =
 \textbf{Input: }A basis $x_1, \ldots, x_n$ of the lattice $L\subset \reals^n$ and a reduction parameter $\alpha\in (\frac{1}{4}, 1)$.\\
 \textbf{Output: }An $\alpha$-reduced basis $y_1, \ldots, y_n$ of the lattice $L$.
 \begin{algorithmic}[1]
-	\Procedure{reduce}{$k, \ell$}\Comment{makes $y_k$ ``almost'' orthogonal to $y_\ell$ then updates GSO}
-		\If{$|\mu_{k\ell}|>\frac{1}{2}$}
-			\State Set $y_k \gets y_k - \lceil \mu_{k\ell}\rfloor y_\ell$.\Comment{$\lceil \mu_{k\ell}\rfloor$ is the closest integer to $\mu_{k\ell}$}
-			\For{$j = 1, 2, \ldots, \ell-1$}
-				\State Set $\mu_{kj}\gets \mu_{kj}-\lceil\mu_{k\ell}\rfloor\mu_{\ell j}$.
-			\EndFor
-			\State Set $\mu_{k\ell}\gets \mu_{k\ell}-\lceil \mu_{k\ell}\rfloor$.
-		\EndIf
-	\EndProcedure
+	\State Set $k=2$
+	\While{$k\leq n$}
+		\For{$j=k-1, k-2, \ldots, 2, 1$}
+			\State Set $x_k - \lceil \mu_{k,j}\rfloor x_j$.
+		\EndFor
+		\If{$|x_k^*|$}
+	\EndWhile
 
-	\Procedure{exchange}{$k$}\Comment{Exchange $y_{k-1}$ and $y_k$ then update the GSO}
-		\State Set $z\gets y_{k-1}$, $y_{k-1}\gets y_k$, $y_k\gets z$.%\Comment{exchange $y_{k-1}$ and $y_k$}
-		\State Set $\nu\gets \mu_{k, k-1}$. Set $\delta \gets \gamma_k^* + \nu^2\gamma_{k-1}^*$.
-		\State Set $\mu_{k, k-1}\gets \nu\gamma_{k-1}^*/\delta$. Set $\gamma_k^*\gets \gamma_k^*\gamma_{k-1}^*/\delta$. Set $\gamma_{k-1}^*\gets \delta$.
-		\For{$j=1, 2, \ldots, k-2$}
-			\State Set $t\gets \mu_{k-1, j}$, $\mu_{k-1, j}\gets \mu_{kj}$, $\mu_{kj}\gets t$.%\Comment{exchange $\mu_{k-1, j}$ and $\mu_{kj}$}
-		\EndFor
-		\For{$i=k+1, \ldots, n$}
-			\State Set $\xi \gets \mu_{ik}$. Set $\mu_{ik}\gets \mu_{i,k-1}-\nu\mu_{ik}$.
-			\State Set $\mu_{i,k-1}\gets \mu_{k, k-1}\mu_{ik}+\xi$.
-		\EndFor
-	\EndProcedure
 
-	\Procedure{Main}{}
-		\For{$i=1, 2, \ldots, n$}\Comment{Initialize the vectors $y_1, \ldots, y_n$}
-			\State Set $y_i\gets x_i$.
-		\EndFor
-		\For{$i=1, 2, \ldots, n$}\Comment{Compute the GSO of the vectors $y_1, \ldots, y_n$}
-			\State Set $y_i^*\gets y_i$.
-			\For{$j=1, 2, \ldots, i-1$}
-				\State $\mu_{ij}\gets (y_i\cdot y_j^*)/\gamma_j^*$ and $y_i^*\gets y_i^*-\mu_{ij}y_j^*$.
-			\EndFor
-			\State Set $\gamma_i^*\gets y_i^*\cdot y_i^*$.
-		\EndFor
-		\State Set $k\gets 2$.
-		\While{$k\leq n$}
-			\State Call \Call{reduce}{$k, k-1$}.
-			\If{$\gamma_k^* \geq (\alpha-\mu_{k,k-1}^2)\gamma_{k-1}^*$}
-				\For{$\ell = k-2, \ldots, 2, 1$}
-					\State Call \Call{reduce}{$k, \ell$}.
-				\EndFor
-				\State Set $k\gets k+1$.
-			\Else
-				\State Call \Call{exchange}{$k$}.
-				\If{$k>2$}
-					\State Set $k\gets k-1$.
-				\EndIf
-			\EndIf
-		\EndWhile
-	\EndProcedure
+	% \Procedure{reduce}{$k, \ell$}\Comment{makes $y_k$ ``almost'' orthogonal to $y_\ell$ then updates GSO}
+	% 	\If{$|\mu_{k\ell}|>\frac{1}{2}$}
+	% 		\State Set $y_k \gets y_k - \lceil \mu_{k\ell}\rfloor y_\ell$.\Comment{$\lceil \mu_{k\ell}\rfloor$ is the closest integer to $\mu_{k\ell}$}
+	% 		\For{$j = 1, 2, \ldots, \ell-1$}
+	% 			\State Set $\mu_{kj}\gets \mu_{kj}-\lceil\mu_{k\ell}\rfloor\mu_{\ell j}$.
+	% 		\EndFor
+	% 		\State Set $\mu_{k\ell}\gets \mu_{k\ell}-\lceil \mu_{k\ell}\rfloor$.
+	% 	\EndIf
+	% \EndProcedure
+
+	% \Procedure{exchange}{$k$}\Comment{Exchange $y_{k-1}$ and $y_k$ then update the GSO}
+	% 	\State Set $z\gets y_{k-1}$, $y_{k-1}\gets y_k$, $y_k\gets z$.%\Comment{exchange $y_{k-1}$ and $y_k$}
+	% 	\State Set $\nu\gets \mu_{k, k-1}$. Set $\delta \gets \gamma_k^* + \nu^2\gamma_{k-1}^*$.
+	% 	\State Set $\mu_{k, k-1}\gets \nu\gamma_{k-1}^*/\delta$. Set $\gamma_k^*\gets \gamma_k^*\gamma_{k-1}^*/\delta$. Set $\gamma_{k-1}^*\gets \delta$.
+	% 	\For{$j=1, 2, \ldots, k-2$}
+	% 		\State Set $t\gets \mu_{k-1, j}$, $\mu_{k-1, j}\gets \mu_{kj}$, $\mu_{kj}\gets t$.%\Comment{exchange $\mu_{k-1, j}$ and $\mu_{kj}$}
+	% 	\EndFor
+	% 	\For{$i=k+1, \ldots, n$}
+	% 		\State Set $\xi \gets \mu_{ik}$. Set $\mu_{ik}\gets \mu_{i,k-1}-\nu\mu_{ik}$.
+	% 		\State Set $\mu_{i,k-1}\gets \mu_{k, k-1}\mu_{ik}+\xi$.
+	% 	\EndFor
+	% \EndProcedure
+
+	% \Procedure{Main}{}
+	% 	\For{$i=1, 2, \ldots, n$}\Comment{Initialize the vectors $y_1, \ldots, y_n$}
+	% 		\State Set $y_i\gets x_i$.
+	% 	\EndFor
+	% 	\For{$i=1, 2, \ldots, n$}\Comment{Compute the GSO of the vectors $y_1, \ldots, y_n$}
+	% 		\State Set $y_i^*\gets y_i$.
+	% 		\For{$j=1, 2, \ldots, i-1$}
+	% 			\State $\mu_{ij}\gets (y_i\cdot y_j^*)/\gamma_j^*$ and $y_i^*\gets y_i^*-\mu_{ij}y_j^*$.
+	% 		\EndFor
+	% 		\State Set $\gamma_i^*\gets y_i^*\cdot y_i^*$.
+	% 	\EndFor
+	% 	\State Set $k\gets 2$.
+	% 	\While{$k\leq n$}
+	% 		\State Call \Call{reduce}{$k, k-1$}.
+	% 		\If{$\gamma_k^* \geq (\alpha-\mu_{k,k-1}^2)\gamma_{k-1}^*$}
+	% 			\For{$\ell = k-2, \ldots, 2, 1$}
+	% 				\State Call \Call{reduce}{$k, \ell$}.
+	% 			\EndFor
+	% 			\State Set $k\gets k+1$.
+	% 		\Else
+	% 			\State Call \Call{exchange}{$k$}.
+	% 			\If{$k>2$}
+	% 				\State Set $k\gets k-1$.
+	% 			\EndIf
+	% 		\EndIf
+	% 	\EndWhile
+	% \EndProcedure
 % \If {$i\geq maxval$}
 %     \State $i\gets 0$
 % \Else
