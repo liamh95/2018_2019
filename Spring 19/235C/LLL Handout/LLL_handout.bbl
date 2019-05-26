@@ -1,0 +1,127 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.0 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{lll82}{article}{}
+    \name{author}{3}{}{%
+      {{hash=LAK}{%
+         family={Lenstra},
+         familyi={L\bibinitperiod},
+         given={A.\bibnamedelima K.},
+         giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod},
+      }}%
+      {{hash=LJHW}{%
+         family={Lenstra\bibnamedelima Jr.},
+         familyi={L\bibinitperiod\bibinitdelim J\bibinitperiod},
+         given={H.\bibnamedelima W.},
+         giveni={H\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=LL}{%
+         family={Lov\'asz},
+         familyi={L\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LAKLJHWLL1}
+    \strng{fullhash}{LAKLJHWLL1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{pages}{515\bibrangedash 534}
+    \field{title}{Factoring polynomials with rational coefficients}
+    \field{volume}{261}
+    \field{journaltitle}{Mathematische Annalen}
+    \field{year}{1982}
+  \endentry
+
+  \entry{hps14}{book}{}
+    \name{author}{3}{}{%
+      {{hash=HJ}{%
+         family={Hoffstein},
+         familyi={H\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=PJ}{%
+         family={Pipher},
+         familyi={P\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Silverman},
+         familyi={S\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer-Verlag New York}%
+    }
+    \strng{namehash}{HJPJSJ1}
+    \strng{fullhash}{HJPJSJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{An Introduction to Mathematical Cryptography}
+    \field{year}{2014}
+  \endentry
+
+  \entry{coppersmith96}{inproceedings}{}
+    \name{author}{1}{}{%
+      {{hash=CD}{%
+         family={Coppersmith},
+         familyi={C\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{CD1}
+    \strng{fullhash}{CD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{booktitle}{Eurocrypt 1996: Advances in Cryptology}
+    \field{pages}{155\bibrangedash 165}
+    \field{series}{Lecture Notes in Computer Science, 1070}
+    \field{title}{Finding a small root of a univariate modular equation}
+    \field{year}{1996}
+  \endentry
+
+  \entry{galbraith18}{misc}{}
+    \name{author}{1}{}{%
+      {{hash=GS}{%
+         family={Galbraith},
+         familyi={G\bibinitperiod},
+         given={S.},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GS1}
+    \strng{fullhash}{GS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Mathematics of Public Key Cryptography}
+    \verb{url}
+    \verb https://www.math.auckland.ac.nz/~sgal018/crypto-book/main.pdf
+    \endverb
+    \field{year}{2018}
+  \endentry
+\enddatalist
+\endinput
