@@ -49,7 +49,7 @@
     \field{year}{1982}
   \endentry
 
-  \entry{hps14}{book}{}
+  \entry{hps14}{inbook}{}
     \name{author}{3}{}{%
       {{hash=HJ}{%
          family={Hoffstein},
@@ -77,6 +77,7 @@
     \strng{fullhash}{HJPJSJ1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{chapter}{7}
     \field{title}{An Introduction to Mathematical Cryptography}
     \field{year}{2014}
   \endentry
@@ -104,7 +105,7 @@
     \field{year}{1996}
   \endentry
 
-  \entry{galbraith18}{misc}{}
+  \entry{galbraith18}{booklet}{}
     \name{author}{1}{}{%
       {{hash=GS}{%
          family={Galbraith},
@@ -117,6 +118,7 @@
     \strng{fullhash}{GS1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
+    \field{chapter}{19}
     \field{title}{Mathematics of Public Key Cryptography}
     \verb{url}
     \verb https://www.math.auckland.ac.nz/~sgal018/crypto-book/main.pdf

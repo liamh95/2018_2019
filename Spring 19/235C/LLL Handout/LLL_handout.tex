@@ -67,7 +67,7 @@
 %	Gram-Schmidt
 %	
 %Coppersmith
-\section*{Motivation}
+\subsection*{Motivation}
 The rows of the following matrices form bases for lattices in $\reals^3$:
 \[
 X = \begin{bmatrix*}[r]
@@ -83,10 +83,14 @@ Y = \begin{bmatrix*}[r]
 \]
 The rows of $X$ and the rows of $Y$ actually span the \textit{same} lattice. Intuitively, the rows of $X$ seem to be a ``worse'' basis for $L$ than those of $Y$. Here we make precise the notion of a ``nice'' basis and introduce a polynomial-time algorithm that transforms a ``bad'' basis into a ``good'' one. 
 
-\section*{Basis Reduction and the LLL Algorithm \cite{lll82}, \cite{hps14}}
+\subsection*{Basis Reduction and the LLL Algorithm \cite{lll82}, \cite{hps14}}
 A basis is ``nice'' if its vectors are short and orthogonal to one another. The Gram-Schmidt process transforms a given basis into an orthogonal basis, but when working in a lattice $L$, this Gram-Schmidt basis need not live in $L$.
 \begin{definition}
-	Let $x_1, \ldots, x_n$ be an ordered basis for a lattice $L$ in $\reals^n$, and let $x_1^*, \ldots, x_n^*$ be its Gram-Schmidt orthogonalization (GSO). Write $X = MX^*$ where $X$ (respectively $X^*$) is the matrix with $x_i$ (respectively $x_i^*$) as row $i$ and $M = (\mu_{ij} = \frac{x_i\cdot x_j^*}{x_j^*\cdot x_j^*})$ is the matrix of GSO coefficients. Let $\alpha$ be a real number with $\frac{1}{4}<\alpha<1$. We say that the basis $x_1, \ldots, x_n$ is \textbf{$\alpha$-reduced} if it satisfies
+	Let $x_1, \ldots, x_n$ be an ordered basis for a lattice $L$ in $\reals^n$, and let $x_1^*, \ldots, x_n^*$ be its Gram-Schmidt orthogonalization (GSO):
+	\begin{equation*}
+	x_i^* = x_i - \sum_{j=1}^{i-1}\mu_{ij}x_j^*,\qquad \text{where }\mu_{ij} = \frac{x_i\cdot x_j^*}{x_j^*\cdot x_j^*}\text{, and }x_1^* = x_1.
+	\end{equation*}
+	Let $\alpha$ be a real number with $\frac{1}{4}<\alpha<1$. We say that the basis $x_1, \ldots, x_n$ is \textbf{$\alpha$-reduced} if it satisfies
 	\begin{enumerate}[(I)]
 		\item (size condition) $|\mu_{ij}|\leq \frac{1}{2}$ for all $1\leq j<i\leq n$,
 		\item (Lov\'asz condition) $|x_i^*|^2\geq (\alpha-\mu_{i,i-1}^2)|x_{i-1}^*|^2$ for $2\leq i\leq n$.
@@ -95,14 +99,11 @@ A basis is ``nice'' if its vectors are short and orthogonal to one another. The 
 
 % https://math.mit.edu/~apost/courses/18.204-2016/18.204_Xinyue_Deng_final_paper.pdf
 
-\noindent In the Gram-Schmidt process we build $x_i^*$, the projection of $x_i$ onto $\text{span}(x_1^*, \ldots, x_{i-1}^*)^\perp$, by subtracting each $\mu_{i,j}x_j^*$ from $x_i$:
-\[
-x_i^* = x_i - \sum_{j=1}^{i-1}\mu_{i,j}x_j^*.
-\]
-Since $\mu_{i,j}$ need not be an integer, this vector generally won't be an element of $L$. If we instead subtract off the integer multiple of $x_j$ closest to $\mu_{i,j}$ then we stay in $L$ and end up nearly orthogonal to $x_j$. Condition (I) then says that the closest integer to $\mu_{i,j}$ is zero: $x_i$ is already nearly orthogonal to $x_j$ for each $j$.\\
+\noindent In the Gram-Schmidt process we build $x_i^*$, the projection of $x_i$ onto $\text{span}\{x_1^*, \ldots, x_{i-1}^*\}^\perp$, by subtracting each $\mu_{ij}x_j^*$ from $x_i$. Since $\mu_{ij}$ need not be an integer, this vector generally won't be an element of $L$. If we instead subtract off the integer multiple of $x_j$ closest to $\mu_{ij}$ then we stay in $L$ and end up nearly orthogonal to $x_j$. Condition (I) then says that the closest integer to $\mu_{ij}$ is zero: $x_i$ is already nearly orthogonal to $x_j$ for each $j$.\\
+
 \noindent Condition (II) states that while the GSO vectors may get shorter, they do not decrease in length too quickly. In particular, if $\beta = \frac{1}{\alpha-1/4}$ then repeatedly applying conditions (I) and (II) gives the estimate
 \[
-|x_1| \leq \beta^{(n-1)/2}\min_{1\leq i\leq n}|x_i^*|.
+|x_1| = |x_1^*| \leq \beta^{(n-1)/2}\min_{1\leq i\leq n}|x_i^*|.
 \]
 
 %\noindent The vector $x_i^*+\mu_{i, i-1}x_{i-1}^*$ is the vector one obtains after swapping vectors $x_i$ and $x_{i-1}$ and then computing the $(i-1)$-st vector of the GSO. Condition (II) then says that this new GSO vector, while potentially shorter than $x_{i-1}^*$, isn't ``too much'' shorter.\\
@@ -203,19 +204,22 @@ Since $\mu_{i,j}$ need not be an integer, this vector generally won't be an elem
 %\end{algorithmic}
 %\end{algorithm}
 
-\section*{An Application: Small Roots of Polynomials mod $M$ \cite{coppersmith96}, \cite{galbraith18}}
-Say we want to find a root $x_0$ of $f(x) \equiv 0 \pmod{M}$ (e.g., where $f(x) = x^e$ and $M$ is an RSA modulus). Our plan is to use the LLL algorithm to construct an \textit{integer} polynomial with small coefficients that also has $x_0$ as a root. Since approximating roots of polynomials over $\rationals$ is easy, this gives us a solution to $f(x)\equiv 0 \pmod{M}$. Importantly, we do not need to know the factorization of $M$!\\
+\subsection*{An Application: Finding Small Roots of Polynomials mod $M$ \cite{coppersmith96}, \cite{galbraith18}}
+%Suppose that $f(x)\in (\integers/M\integers)[x]$ has a small root $x_0$ modulo $M$ with $|x_0|<X$ for some specified integer $X$. Our plan to find $x_0$ is to use the LLL algorithm to construct a polynomial $g(x)\in \integers[x]$ that also has $x_0$ as a root. Since approximating roots of polynomials over $\rationals$ is easy, this gives us a solution to $f(x)\equiv 0 \pmod{M}$. Importantly, we do not need to know the factorization of $M$!\\
+Suppose we're given $f(x)\in \integers[x]$ and we know that it has a ``small'' root modulo $M\in \integers$ that we want to find, $x_0$. The root is small in the sense that $|x_0|<X$ for some specified integer $X$. Approximating roots of polynomials in $\rationals[x]$ is easy, but we might not have $f(x_0) = 0$ unless all of the coefficients of $f(x)$ are small. The idea is to use the LLL algorithm to build a polynomial $g(x)\in \integers[x]$ that has the same root $x_0$ modulo $M$, but whose coefficients are small enough that $g(x_0) = 0$ as well.\\
 \noindent Write $f(x) = a_0 + a_1x+\cdots + a_dx^d$ with $a_i\in \integers$ and consider the matrix 
 \[
 B = \begin{bmatrix}
 	M & 0 & \cdots & 0 & 0\\
-	0 & Mx & \cdots & 0 & 0\\
+	0 & MX & \cdots & 0 & 0\\
 	\vdots &  && \vdots & \vdots\\
-	0 & 0 & \cdots & Mx^{d-1} & 0\\
-	a_0 & a_1x & \cdots & a_{d-1}x^{d-1} & a_dx^d
+	0 & 0 & \cdots & MX^{d-1} & 0\\
+	a_0 & a_1X & \cdots & a_{d-1}X^{d-1} & a_dX^d
 \end{bmatrix}.
 \]
-The rows of $B$, which we identify with polynomials, span a $d+1$ dimensional lattice of polynomials, each having the solution $x=x_0$ modulo $M$. Running the LLL algorithm on the rows of $B$ will give a reduced basis for this lattice. Let $G(x)$ be the first element in this reduced basis. If $x_0$ is small enough (as a function of $M$ and $d$), then $G(x_0) = 0$ over $\integers$.
+Any vector in the lattice spanned by the rows of $B$ is of the form $(b_0, b_1X, \ldots, b_dX^d)$, $b_i\in \integers$. We can identify such a vector with a polynomial in $\integers[x]$ via $(b_0, b_1X, b_2X^2, \ldots, b_dX^d)\mapsto b_0 + b_1x + \cdots b_dx^d$.
+Under this identification, every vector in the lattice generated by $B$ corresponds to a polynomial $F(x)\in \integers[x]$ with $F(x_0)\equiv 0 \pmod{M}$, since this is true for every row of $B$.\\
+Running the LLL algorithm on the rows of $B$ will give a reduced basis for this lattice. Let $g(x)\in \integers[x]$ be the first element in this reduced basis. If $X<2^{-1/2}(d+1)^{-1/d}M^{2/d(d+1)}$, then $g(x_0) = 0$ and we can use numerical methods to find $x_0$.
 
 \printbibliography
 \end{document}
