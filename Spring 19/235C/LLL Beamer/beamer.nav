@@ -1,7 +1,31 @@
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
-\headcommand {\beamer@partpages {1}{1}}
-\headcommand {\beamer@subsectionpages {1}{1}}
 \headcommand {\beamer@sectionpages {1}{1}}
-\headcommand {\beamer@documentpages {1}}
-\headcommand {\gdef \inserttotalframenumber {1}}
+\headcommand {\beamer@subsectionpages {1}{1}}
+\headcommand {\sectionentry {1}{Motivation}{2}{Motivation}{0}}
+\headcommand {\slideentry {1}{0}{1}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\slideentry {1}{0}{2}{3/4}{}{0}}
+\headcommand {\beamer@framepages {3}{4}}
+\headcommand {\slideentry {1}{0}{3}{5/6}{}{0}}
+\headcommand {\beamer@framepages {5}{6}}
+\headcommand {\slideentry {1}{0}{4}{7/9}{}{0}}
+\headcommand {\beamer@framepages {7}{9}}
+\headcommand {\slideentry {1}{0}{5}{10/11}{}{0}}
+\headcommand {\beamer@framepages {10}{11}}
+\headcommand {\slideentry {1}{0}{6}{12/14}{}{0}}
+\headcommand {\beamer@framepages {12}{14}}
+\headcommand {\slideentry {1}{0}{7}{15/17}{}{0}}
+\headcommand {\beamer@framepages {15}{17}}
+\headcommand {\beamer@sectionpages {2}{17}}
+\headcommand {\beamer@subsectionpages {2}{17}}
+\headcommand {\sectionentry {2}{Setup}{18}{Setup}{0}}
+\headcommand {\slideentry {2}{0}{1}{18/18}{}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\slideentry {2}{0}{2}{19/19}{}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\beamer@partpages {1}{19}}
+\headcommand {\beamer@subsectionpages {18}{19}}
+\headcommand {\beamer@sectionpages {18}{19}}
+\headcommand {\beamer@documentpages {19}}
+\headcommand {\gdef \inserttotalframenumber {10}}
