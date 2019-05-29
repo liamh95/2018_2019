@@ -209,8 +209,25 @@
 
 \section{Setup}
 \begin{frame}
-	\frametitle{How do we quantify orthogonality?}
-	
+	\frametitle{Gram-Schmidt}
+		\begin{definition}
+			Let $x_1, \ldots, x_m \in \reals^n$ be a basis for a nonzero subspace, $H$. The \textbf{Gram-Schmidt process} produces an orthogonal basis for $H$:
+			\begin{align*}
+				x_1^* &= x_1\\
+				x_2^* &= x_2 - \frac{x_2\cdot x_1^*}{x_1^*\cdot x_1^*}x_1^*\\
+				x_3^* &= x_3 - \frac{x_3\cdot x_1^*}{x_1^*\cdot x_1^*}x_1^* - \frac{x_3\cdot x_2^*}{x_2^*\cdot x_2^*}x_2^*\\
+				\vdots\\
+				x_m^* &= x_m - \frac{x_m\cdot x_1^*}{x_1^*\cdot x_1^*}x_1^* - \cdots - \frac{x_m\cdot x_{m-1}^*}{x_{m-1}^*\cdot x_{m-1}^*}x_{m-1}^*.
+			\end{align*}
+			We call $\{x_1^*, \ldots, x_m^*\}$ the \textbf{Gram-Schmidt orthogonalization (GSO)} of $\{x_1, \ldots, x_m\}$.
+		\end{definition}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Gram-Schmidt}
+	\begin{itemize}
+		\item 
+	\end{itemize}
 \end{frame}
 
 \end{document}

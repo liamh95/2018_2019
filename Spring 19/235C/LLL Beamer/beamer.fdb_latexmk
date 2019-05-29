@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1559006966 "beamer.tex" "beamer.pdf" "beamer" 1559006967
+["pdflatex"] 1559090959 "beamer.tex" "beamer.pdf" "beamer" 1559090961
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1550406775 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1550406775 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1550406775 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -197,16 +197,16 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1550406775 33301 a3134070eacafb10b1f371612ce2650d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1556565280 334148 1b9d30ff8c861d6082e3e9bfccd8d7eb ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1556565266 7919196 519d474b2cde920532b24c5aa120ece3 ""
-  "beamer.aux" 1559006967 2767 e9f46f95680c92db8def8fa366001cd0 ""
-  "beamer.nav" 1559006967 1423 9e2be47ae3f603c5d37eec0db86fe71e ""
-  "beamer.out" 1559006967 85 00fb60a73b72b768e0886463c1856933 ""
-  "beamer.tex" 1559006965 6168 bac8e2e5c176cd64c02ca6af609cb3c7 ""
-  "beamer.toc" 1559006967 88 135e5a39b36c5c0c2aad3eb41f2485e6 ""
+  "beamer.aux" 1559090960 2767 e9f46f95680c92db8def8fa366001cd0 ""
+  "beamer.nav" 1559090960 1423 9e2be47ae3f603c5d37eec0db86fe71e ""
+  "beamer.out" 1559090960 85 00fb60a73b72b768e0886463c1856933 ""
+  "beamer.tex" 1559090959 6832 fb9cf9fbf0073c12dd9f1f6471ec1512 ""
+  "beamer.toc" 1559090960 88 135e5a39b36c5c0c2aad3eb41f2485e6 ""
   (generated)
-  "beamer.log"
   "beamer.aux"
-  "beamer.out"
-  "beamer.snm"
-  "beamer.pdf"
   "beamer.toc"
   "beamer.nav"
+  "beamer.pdf"
+  "beamer.snm"
+  "beamer.out"
+  "beamer.log"
