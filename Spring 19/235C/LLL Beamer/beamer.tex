@@ -525,4 +525,235 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}
+	\frametitle{An example}
+	\begin{itemize}
+		\item Let $L\subset \reals^n$ be the $\integers$-span of the rows of the matrix $X$:
+		\[
+		X = \begin{bmatrix*}[r]
+			4 & 5 & 1\\
+			4 & 8 & 2\\
+			6 & 2 & 6
+		\end{bmatrix*}.\pause
+		\]
+		\item Running the LLL algorithm with $\alpha = \frac{3}{4}$ gives the reduced basis
+		\[
+		Y = \begin{bmatrix*}[r]
+			0 & 3 & 1\\
+			4 & -1 & -1\\
+			2 & -3 & 5
+		\end{bmatrix*}.\pause
+		\]
+		\item It's clear that the vectors in the $Y$ basis are shorter: the longest row vector in $Y$ is shorter than the shortest row vector in $X$!\pause
+		\item The $Y$ basis is more orthogonal than the $X$ basis:
+		\[
+		\det L=  76,\quad |x_1||x_2||x_3| \approx 518,\quad |y_1||y_2||y_3| \approx 83
+		\]
+		% \item First we compute the GSO coefficients
+		% \[
+		% M = \begin{bmatrix*}
+		% 	1&&\\
+		% 	29/21 & 1\\
+		% 	20/21 & 13/21&1
+		% \end{bmatrix*}.\pause
+		% \]
+		% \item We compute
+		% \[
+		% y_2 = [4\ 8\ 2] - \lceil \frac{29}{21}\rfloor[4\ 5\ 1] = [0\ 3\ 1].
+		% \]
+	\end{itemize}
+\end{frame}
+
+% \begin{frame}
+% 	\frametitle{An example}
+% 	\begin{itemize}
+% 		\item Our $Y$ matrix and associated GSO become
+% 		\[
+% 		Y = \begin{bmatrix}
+% 			4 & 5 & 1\\
+% 			0 & 3 & 1\\
+% 			6 & 2 & 6
+% 		\end{bmatrix},\qquad M = \begin{bmatrix}
+% 			1&&\\
+% 			8/21 & 1&\\
+% 			20/21 & 6/5&1
+% 		\end{bmatrix}.\pause
+% 		\]
+% 		\item We compute $y_2^*$:
+% 		\[
+% 		y_2^* = y_2 - \mu_{2,1}y_1 = \left[\frac{-32}{21}\ \frac{23}{21}\ \frac{13}{21}\right].
+% 		\]
+% 	\end{itemize}
+% \end{frame}
+
+\begin{frame}
+	\frametitle{Does the algorithm terminate?}
+	\begin{itemize}
+		\item Because we swap the vectors in the $y_i$ basis, it's not obvious that the LLL algorithm terminates.\pause
+		\item For simplicity, let's assume our basis vectors $x_i$ have integer entries. Define the quantities
+		\[
+		d_\ell = \prod_{i=1}^\ell |x_i^*|^2,\qquad D = \prod_{i=1}^nd_i = \prod_{i=1}^n|x_i^*|^{2(n+1-i)}.\pause
+		\]
+		\item $D$ changes when we swap $x_k$ and $x_{k-1}$, so the only terms that will contribute to this change are $|x_k^*|^2$ and $|x_{k-1}^*|^2$.\pause
+		\item We swap when the Lov\'asz condition isn't met, i.e. when
+		\[
+		|x_k^*|^2 <(\alpha - \mu_{k,k-1}^2)|x_{k-1}^*|^2 \leq \alpha |x_{k-1}^*|^2.
+		\] 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Does the algorithm terminate?}
+	\begin{itemize}
+		\item Swapping $x_k$ and $x_{k-1}$ changes only $d_{k-1}$ and it changes by:
+		\begin{align*}
+			d_{k-1}^{new} &= |x_1^*|^2 \cdots |x_{k-2}^*|^2\cdot|x_k^*|^2\\
+			&= |x_1^*|^2 \cdots |x_{k-2}^*|^2\cdot |x_{k-1}^*|^2\cdot \frac{|x_k^*|^2}{|x_{k-1}^*|^2}\\
+			&= d_{k-1}^{old}\cdot \frac{|x_k^*|^2}{|x_{k-1}^*|^2} \leq \alpha\cdot  d_{k-1}^{old}.\pause
+		\end{align*}
+		\item If we execute $N$ swaps then $D$ must be reduced by a factor of at least $\alpha^N$, since each swap changes exactly one $d_i$, reducing it by a factor of $\alpha$, and $D$ is the product of all the $d_i$'s.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Does the algorithm terminate?}
+	\begin{itemize}
+		\item Since our lattice vectors live in $\integers^n$, each $d_i$ is a positive integer, so
+		\[
+		D = \prod_{i=1}^nd_i \geq 1.\pause
+		\]
+		\item D is a positive integer bounded away from zero that decreases by a factor of at least $\alpha$ after each swap.\pause
+		\item Such a positive integer can be multiplied by $\alpha$ only finitely many times before dropping below 1, so we must execute only finitely many swaps: the LLL algorithm terminates.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Runtime}
+	\begin{itemize}
+		\item The LLL algorithm is only practical if it finishes execution in a reasonable amount of time.\pause
+		\item Say the algorithm terminates after $N$ swaps and let $D_{init}$ be the value of $D$ in the input basis. Since $D$ decreases by a factor of $\alpha$ after each swap, we have that
+		\[
+		1\leq D_{final}\leq \alpha^ND_{init}.\pause
+		\]
+		\item Taking logarithms and using $\log \alpha <0$ gives
+		\[
+		N = O(\log D_{init}).
+		\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Runtime}
+	\begin{itemize}
+		\item How large is $D_{init}$ in terms of the input basis?\pause
+		\item Since $|x_i^*| \leq |x_i|$ for all $i$ by the Pythagorean theorem we have
+		\begin{align*}
+			D_{init} &= \prod_{i=1}^n|x_i^*|^{2(n+1-i)}\\
+			&\leq \prod_{i=1}^n|x_i|^{2(n+1-i)}\\
+			&\leq (\max_{1\leq i\leq n}|x_i|)^{2(1+2+\cdots +n)}\\
+			&= B^{n^2+n},
+		\end{align*}
+		where $B$ is the length of the longest vector in the input basis, $x_1, \ldots, x_n$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Putting it all together}
+	We have proved the following theorem.
+	\begin{theorem}[Lenstra, Lenstra, Lov\'asz (1982)]
+		Let $x_1, x_2, \ldots, x_n$ be a basis for the lattice $L\subset \reals^n$ and let $\alpha \in (1/4, 1)$. There exists an $\alpha$-reduced basis for $L$ that can be computed in time
+		\[
+		O(n^2 \log B),
+		\]
+		where $B = \max_{1\leq i\leq n}|x_i|$.
+	\end{theorem}
+\end{frame}
+
+
+\section{An application}
+\begin{frame}
+	\frametitle{Small roots of polynomials mod $M$ (D. Coppersmith '96)}
+	\begin{itemize}
+		\item Suppose we know that $f(x)\in \integers[x]$ has a small root, $x_0$ modulo $M$ and we want to find $x_0$: think $f(x) = x^e-c$ where $M$ is an RSA modulus.\pause
+		\item We can use Newton's method to approximate the roots to $f(x)$, but these roots might not be roots mod $M$ unless the coefficients of $f(x)$ are small.\pause
+		\item Plan: build a polynomial $g(x)\in \integers[x]$ that has the same root $x_0$ modulo $M$ as $f(x)$, but with coefficients small enough that $g(x_0) = 0$ as well.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{From polynomials to lattices}
+	\begin{itemize}
+		\item Suppose we know that $|x_0|<X$ for some integer $X$. Write $f(x) = a_0 + a_1x + \cdots + a_dx^d$, $a_i \in \integers$. Consider the matrix
+		\[
+			B = \begin{bmatrix}
+			M & 0 & \cdots & 0 & 0\\
+			0 & MX & \cdots & 0 & 0\\
+			\vdots &  && \vdots & \vdots\\
+			0 & 0 & \cdots & MX^{d-1} & 0\\
+			a_0 & a_1X & \cdots & a_{d-1}X^{d-1} & a_dX^d
+			\end{bmatrix}.\pause
+		\]
+		\item The rows of $B$ are linearly independent and span a lattice $L\subset \reals^{d+1}$.\pause
+		\item Each row vector in $L$ is of the form $(b_0, b_1X, \ldots, b_dX^d)$, $b_i\in \integers$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{From polynomials to lattices}
+	\begin{itemize}
+		\item Identify elements of $L$ with polynomials in $\integers[x]$ by
+		\[
+		(b_0, b_1X, \ldots, b_dX^d)\mapsto b_0 + b_1x + \cdots + b_dx^d.\pause
+		\]
+		\item Under this identification, each row of $B$ corresponds to a polynomial with root $x_0$ modulo $M$. Consequently, every element in $L$ corresponds to a polynomial with the same property.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{How small should the coefficients be?}
+	\begin{theorem}[N. Howgrave-Graham ('97)]
+		Let $b_F$ be a vector in $L\subset \reals^d$ and let $F(x)$ be the corresponding polynomial in $\integers[x]$. If $|b_F| \leq M/\sqrt{d+1}$ then $F(x_0)= 0$.\pause
+	\end{theorem}
+	\begin{itemize}
+		\item This tells us how small the coefficients of $F(x)$ need to be in order for $x_0$ to be a root of $F(x)$ mod $M$ and $F(x_0) = 0$.
+	\end{itemize}
+	% \begin{itemize}
+	% 	\item 
+	% \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Applying the LLL algorithm}
+	\begin{itemize}
+		\item The lattice $L$ generated by $B$ has determinant $M^dX^{d(d+1)/2}$.\pause
+		\item Apply the LLL algorithm to the matrix $B$ to obtain an $\alpha$-reduced basis for the lattice $L$, $y_1, \ldots, y_d$.\pause
+		\item Recall that $|y_1|^2 \leq \beta^{i-1}|y_i^*|^2$ for all $1\leq i \leq d+1$. Using this (and $\beta\leq 2$) we obtain the bound
+		\begin{align*}
+		|y_1| &\leq 2^{d/4}(\det L)^{1/(d+1)} = 2^{d/4}M^{d/(d+1)}X^{d/2}.
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Applying the LLL algorithm}
+	\begin{itemize}
+		\item Howgrave-Graham's theorem tells us how small $y_1$ needs to be in order for it to correspond to a polynomial $g(x)$ such that $g(x_0) = 0$. This lets us solve for $X$ to obtain:
+		\begin{align*}
+			&|y_1| < M/\sqrt{d+1}\\
+			\iff & 2^{d/4}M^{d/(d+1)}X^{d/2}< M/\sqrt{d+1}\\
+			\iff &X < 2^{-1/2}(d+1)^{-1/d}M^{2/d(d+1)}.
+		\end{align*}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Coppersmith's theorem}
+	\begin{theorem}[D. Coppersmith ('96)]
+		Let $f(x)$ be an integer polynomial with small root $x_0$ modulo $M$ and $|x_0|<X$. If $X<2^{-1/2}(d+1)^{-1/d}M^{2/d(d+1)}$ then there exists an algorithm that computes $x_0$ in time polynomial in the size of the coefficients of $f(x)$ and the degree of $f$.\pause
+	\end{theorem}
+	\begin{itemize}
+		\item This gives an efficient attack on RSA implementations with small encryption exponents.
+	\end{itemize}
+\end{frame}
+
 \end{document}

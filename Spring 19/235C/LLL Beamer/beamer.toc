@@ -2,3 +2,4 @@
 \beamer@sectionintoc {2}{Gram-Schmidt}{23}{0}{2}
 \beamer@sectionintoc {3}{Basis Reduction}{37}{0}{3}
 \beamer@sectionintoc {4}{The LLL algorithm}{55}{0}{4}
+\beamer@sectionintoc {5}{An application}{82}{0}{5}
