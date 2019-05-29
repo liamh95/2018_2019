@@ -1,2 +1,4 @@
 \beamer@sectionintoc {1}{Motivation}{2}{0}{1}
-\beamer@sectionintoc {2}{Setup}{18}{0}{2}
+\beamer@sectionintoc {2}{Gram-Schmidt}{23}{0}{2}
+\beamer@sectionintoc {3}{Basis Reduction}{37}{0}{3}
+\beamer@sectionintoc {4}{The LLL algorithm}{55}{0}{4}
